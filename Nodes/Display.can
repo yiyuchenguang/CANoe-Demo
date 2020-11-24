@@ -1,0 +1,70 @@
+/*@!Encoding:1252*/
+
+variables 
+{
+  const long kOFF = 0;
+  const long kON = 1;
+
+  int gDebugCounter = 0;
+}
+
+on message EngineState 
+{  
+  // engine state received
+  if (this.dir == RX)
+  {
+    @sysvar::Engine::EngineSpeedDspMeter = this.EngineSpeed / 1000.0;
+  }
+}
+
+
+on message LightState 
+{
+  gDebugCounter++;
+
+  if (this.dir == RX)
+  {
+    SetLightDsp(this.HeadLight,this.FlashLight);
+
+    if(gDebugCounter == 10)
+    {
+      write("LightState RX received by node %NODE_NAME%");
+      gDebugCounter = 0;
+    }    
+  }
+  else
+  {
+    if(gDebugCounter == 10)
+    {
+      write("Error: LightState TX received by node %NODE_NAME%"); 
+      gDebugCounter = 0; 
+    }
+  }
+}
+
+SetLightDsp (long headLight, long hazardFlasher)
+{
+  if(headLight == kON) 
+  {
+    if(hazardFlasher == kON) 
+    {
+      @sysvar::Lights::LightDisplay = 7;
+    } 
+    else if(hazardFlasher == kOFF) 
+    {
+      @sysvar::Lights::LightDisplay = 4;
+    }
+  }
+  else if(headLight == kOFF) 
+  {
+    if(hazardFlasher == kON)  
+    {
+      @sysvar::Lights::LightDisplay = 3;
+    } 
+    else if(hazardFlasher == kOFF) 
+    {
+      @sysvar::Lights::LightDisplay = 0; 
+    }
+  }
+}
+

@@ -1,0 +1,37 @@
+/*@!Encoding:1252*/
+variables 
+{
+  msTimer tFlashLightFrequency;
+  const int gFlashLightFrequency = 500;
+  int gHazardLightsStatus = 0;
+}
+
+
+on timer tFlashLightFrequency
+{
+  // ?????????????500ms 0/1??,?????????500ms
+  gHazardLightsStatus = (gHazardLightsStatus == 1 ? 0 : 1);
+  $LightState::FlashLight = gHazardLightsStatus;
+  setTimer(this, gFlashLightFrequency);
+  write("current light state is : %d ...",gHazardLightsStatus);
+}
+
+
+
+on sysvar sysvar::Lights::HazardLightsSwitch
+{
+  if (@this)
+  {
+    gHazardLightsStatus = 1;
+    setTimer(tFlashLightFrequency, gFlashLightFrequency);
+  }
+  else
+  {
+    cancelTimer(tFlashLightFrequency);
+    gHazardLightsStatus = 0;
+  }
+
+  $LightState::FlashLight = gHazardLightsStatus;
+}
+
+

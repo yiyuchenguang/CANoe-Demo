@@ -1,0 +1,46 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+/*@!Encoding:ASCII*/
+On key 'a'
+{
+	//???
+  @Engine::EngineStateSwitch = 0;
+  write("close the engine...");
+  @Engine::EngineStateSwitch = 1;
+  write("open the engine...");
+  @Engine::EngineSpeedEntry =1000;
+  
+}
+
+on sysvar sysvar::Engine::EngineStateSwitch // ?????
+{
+ $EngineState::OnOff = @this;
+  if(@this)   
+  {
+    $EngineState::EngineSpeed = @sysvar::Engine::EngineSpeedEntry;
+    write("EngineSpeed is %f...", @this);
+  }
+  else
+    $EngineState::EngineSpeed = 0;
+  
+  
+}
+
+on sysvar sysvar::Engine::EngineSpeedEntry // ?????
+{
+  if(@sysvar::Engine::EngineStateSwitch)  // ?????????,???????????????
+  {
+    $EngineState::EngineSpeed = @this;
+    write("EngineSpeed is %f...", @this);
+  }
+}
+

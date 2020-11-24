@@ -1,0 +1,2626 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>develop case test</title>
+    <style type="text/css">
+      
+       
+      
+      @media screen
+      {
+        body
+        {
+          background-color: rgb(255, 255, 255);
+          font-family:      arial, verdana, trebuchet, officina, sans-serif;
+        }
+      }
+  
+      
+      @media print
+      {
+        
+        body
+        {
+          background-color: rgb(255, 255, 255);
+          font-family:      arial, verdana, trebuchet, officina, sans-serif;
+        }
+        
+        
+        a
+        {
+          text-decoration: none;
+        }
+        
+        
+        .HeadingTable, .SubHeadingTable, .GroupHeadingTable , .GroupEndTable
+        {
+          border-width: 2px;
+          border-style: solid;
+          border-color: rgb(150,150,150);
+        }
+        
+        .ResultBlockHeading
+        {
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(150,150,150);
+        }
+        
+        table.ResultTable, table.OverviewTable, table.CheckStatisticsTable
+        {
+          border-collapse: collapse;
+        }
+        
+        td.DefaultCell, td.DefineCell, td.NumberCell, td.NumberCellPositiveResult, td.NumberCellNegativeResult, 
+        td.NumberCellErrorResult, td.NumberCellInconclusiveResult, td.NumberCellNoneResult, td.NumberCellNoColor,
+        td.PositiveResultCell, td.NegativeResultCell, td.WarningCell, td.NoneResultCell, td.InconclusiveResultCell,
+        td.ErrorResultCell, th.TableHeadingCell
+        {
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(150,150,150);
+        }
+        
+        .PatternSeparator
+        {
+          
+          border-style: none;
+        }
+        
+        .PositiveResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+        
+        .NegativeResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+        
+        .NoneResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+        
+        .InconclusiveResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+        
+        .ErrorResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+
+        
+        .TestcaseHeadingDefaultResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+        
+        .TestcaseHeadingPositiveResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+        
+        .TestcaseHeadingNegativeResult
+        {
+          
+          border-bottom: 2px solid;
+        }
+        
+        table.ScreenOnly, a.Undecorated, .LinkCell
+        {
+          display: none;
+        }
+      }
+      
+      a.Undecorated:hover 
+      {
+        color:red;
+      }
+      a.Undecorated
+      { 
+        text-decoration: none; 
+      }
+      
+      .NavStyle
+      {
+        background-color: rgb(220, 221, 222);
+      }
+      
+      td.LinkCell, td.UpCell
+      {
+        
+        width:              1px;
+        white-space:        nowrap;
+      }
+
+      
+      table
+      {
+        margin-bottom:    10px;
+        vertical-align:   top; 
+        border:           0;
+        border-spacing:   1px;
+        padding:          2px;
+      }
+      table.ScreenOnly
+      {
+        vertical-align: top; 
+        margin-bottom:  10px;
+      }
+      .NoMarginBottom
+      {
+        margin-bottom:    0px;
+      }
+      .HeadingTable
+      {
+        width:            100%;
+        text-align:       center;
+        margin-top:       15px;
+        margin-bottom:    30px;
+        margin-left:      auto;
+        margin-right:     auto;
+        background-color: rgb(220, 221, 222);
+      }
+      
+      .SubHeadingTable
+      {
+        width:            100%;
+        text-align:       center;
+        margin-top:       15px;
+        margin-bottom:    25px;
+        background-color: rgb(220, 221, 222);
+      }
+      
+      .GroupHeadingTable, .GroupEndTable
+      {
+        width:            100%;
+        text-align:       center;
+        margin-top:       15px;
+        padding-right:    20px;
+        background-color: rgb(220, 221, 222);
+      }
+      
+      .DefaultTable
+      {
+        padding:        0px;
+        border-spacing: 0px;
+      }
+      
+      .CheckStatisticsTable
+      {
+        margin-bottom: 8px;
+        padding-right:  20px;
+      }
+  
+      .OverviewTable
+      {
+        text-align:     left;
+      }
+      
+      .OverviewResultTable
+      {
+        width:          100%;
+        margin-bottom:  0px;
+        border-spacing: 0px;
+        padding:        0px;
+        text-align:     center;
+      }
+      
+      .ResultTable
+      {
+        width:          100%;
+        text-align:     left;
+        padding-right:  20px;
+      }
+      
+      .ResultTableInner
+      {
+        width:          100%;
+        text-align:     left;
+        padding-right:  0px;
+      }
+  
+      table.ResultTable td, table.ChildLinkTable td
+      {
+        vertical-align: top;
+      }
+      .ChildLinkTable
+      {
+        width:          1px;
+        text-align:     left;
+      }
+      .InfoTable
+      {
+        text-align:     left;
+        padding-right:  0px;
+        margin-bottom:  0px;
+        border-spacing: 0px;
+      }
+      .InfoTableExpand
+      {
+        width:          100%;
+        text-align:     left;
+        padding-right:  0px;
+        margin-bottom:  0px;
+        border-spacing: 0px;
+      }
+      .OverallResultTable
+      {
+        width:         50%;
+        text-align:    center;
+        margin-bottom: 20px;
+        margin-left:   auto;
+        margin-right:  auto;
+        font-weight:   bold;
+      }
+      
+      .TableHeadingCell
+      {
+        background-color: rgb(179, 179, 179);
+        font-family:      arial, verdana, trebuchet, officina, sans-serif;
+        font-weight:      bold;
+        text-align:       center;
+      }
+  
+      .CellNoColor
+      {
+        text-align:     left;
+        vertical-align: top;
+      }   
+      
+      .DefineCell
+      {
+        background-color: rgb(179, 179, 179);
+        text-align:       left;
+      }
+      
+      .DefaultCell, .DefaultCellBold
+      {
+        background-color: rgb(229, 229, 229);
+        text-align:       left;
+      }
+      
+      .DefaultCellBold
+      {
+        font-weight:      bold;
+      }
+        
+      .NumberCell
+      {
+        background-color: rgb(229, 229, 229);
+        text-align:       center;
+        min-width:        50px;
+      }
+      
+      .NumberCellNegativeResult
+      {
+        background-color: rgb(240, 0, 0);
+        text-align:       center;
+        min-width:        50px;
+      }
+      
+      .NumberCellPositiveResult
+      {
+        background-color: rgb(25, 165, 88);
+        text-align:       center;
+        min-width:        50px;
+      }
+      
+      .NumberCellNoneResult
+      {
+        background-color: rgb(105, 105, 105);
+        text-align:       center;
+        min-width:        50px;
+      }
+      
+      .NumberCellInconclusiveResult
+      {
+        background-color: rgb(255, 165, 0);
+        text-align:       center;
+        min-width:        50px;
+      }
+      
+      .NumberCellErrorResult
+      {
+        background-color: rgb(205, 0, 0);
+        text-align:       center;
+        min-width:        50px;
+      }
+      
+      .NumberCellNoColor
+      {        
+        text-align: center;
+      }
+      
+      .PositiveResultCell
+      {
+        background-color: rgb(25, 165, 88);
+      }
+    
+      .NegativeResultCell
+      {
+        background-color: rgb(240, 0, 0);
+      }
+      
+      .NoneResultCell
+      {
+        background-color: rgb(105, 105, 105);
+      }
+      
+      .InconclusiveResultCell
+      {
+        background-color: rgb(255, 165, 0);
+      }
+      
+      .ErrorResultCell
+      {
+        background-color: rgb(205, 0, 0);
+        white-space:        nowrap;
+      }
+
+      .WarningCell
+      {
+        background-color: rgb(255, 255, 0);
+      }
+
+      .TestcaseHeadingDefaultResult
+      {
+        background-color: rgb(179, 179, 179);
+      }
+      .TestcaseHeadingPositiveResult
+      {
+        background-color: rgb(25, 165, 88);
+      }      
+      .TestcaseHeadingNegativeResult
+      {
+        background-color: rgb(240, 0, 0);
+      }      
+      .TestcaseHeadingNoneResult
+      {
+        background-color: rgb(105, 105, 105);
+      }
+      .TestcaseHeadingInconclusiveResult
+      {
+        background-color: rgb(255, 165, 0);
+      }
+      .TestcaseHeadingErrorResult
+      {
+        background-color: rgb(205, 0, 0);
+      }
+      
+      .PatternSeparator
+      {
+        height: 0.2em;
+      }
+      
+      .NegativeResult
+      {
+        background-color: rgb(240, 0, 0);
+        text-align:       center;
+        font-weight:      bold;
+      }
+      .PositiveResult
+      {
+        background-color: rgb(25, 165, 88);
+        text-align:       center;
+        font-weight:      bold;
+      }
+      .NoneResult
+      {
+        background-color: rgb(105, 105, 105);
+        text-align:       center;
+        font-weight:      bold;
+      }
+      .InconclusiveResult
+      {
+        background-color: rgb(255, 165, 0);
+        text-align:       center;
+        font-weight:      bold;
+      }
+      .ErrorResult
+      {
+        background-color: rgb(205, 0, 0);
+        text-align:       center;
+        font-weight:      bold;
+      }
+      
+      
+      
+      .Heading1
+      {
+        font-family: arial, sans-serif;
+        font-weight: bold;
+        font-size:   26px;
+      }
+      
+      .Heading2
+      {
+        font-family: arial, sans-serif;
+        font-weight: bold;
+        font-size:   20px;
+      }
+      
+      .Heading3
+      {
+        font-family:   arial, sans-serif;
+        font-weight:   bold;
+        font-size:     18px;
+        margin-bottom: 20px;
+        margin-top:    20px;
+      }
+      
+      .Heading4
+      {
+        font-family:   arial, sans-serif;
+        font-weight:   bold;
+        font-size:     16px;
+        margin-top:    10px;
+        margin-bottom: 10px;
+      }
+      
+      
+      img
+      {
+        Margin-bottom: 10px;
+        Margin-right:  10px;
+      }
+      
+      
+      p
+      {
+        Margin-bottom: 20px;
+      }
+      
+      
+      .DefaultTableBackground
+      {
+        background-color: rgb(229, 229, 229);
+        border-spacing:   0px;
+        padding:          0px;
+      }
+      
+      .NegativeResultBackground
+      {
+        background-color: rgb(240, 0, 0);
+        border-spacing:   0px;
+        padding:          0px;
+      }
+      
+      .PositiveResultBackground
+      {
+        background-color: rgb(25, 165, 88);
+        border-spacing:   0px;
+        padding:          0px;
+      }
+      
+      .WarningResultBackground
+      {
+        background-color: rgb(255, 255, 0);
+        border-spacing:   0px;
+        padding:          0px;
+      }
+      
+      .NoneResultBackground
+      {
+        background-color: rgb(105, 105, 105);
+        border-spacing:   0px;
+        padding:          0px;
+      }
+      
+      .InconclusiveResultBackground
+      {
+        background-color: rgb(255, 165, 0);
+        border-spacing:   0px;
+        padding:          0px;
+      }
+      
+      .ErrorResultBackground
+      {
+        background-color: rgb(205, 0, 0);
+        border-spacing:   0px;
+        padding:          0px;
+      }
+      
+      .TestGroupHeadingBackground
+      {
+        background-color: rgb(179, 179, 179);
+      }
+    
+      
+      .Indentation
+      {
+        margin-left:  20px;
+      }
+    </style>
+    <script type="text/javascript">
+      var EXPANDED = '[−]';
+      var COLLAPSED = '[+]';
+      var VISIBLE = 'Visible';
+      var HIDDEN = 'Hidden';
+      var NONE = 'none';
+      var BLOCK = '';
+      function getDivId(id) { return 'div_' + id; }
+      function getLinkId(id) { return 'lnk_' + id; }
+      function getTableId(id) { return 'tbl_' + id; }
+      function getTbl2Id(id) { return 'tbl_t' + id; }
+      
+      
+      function switchText(oldText) { return oldText == COLLAPSED ? EXPANDED : COLLAPSED ; }
+      function getStyleFromText(linkText) { return linkText == COLLAPSED ? HIDDEN : VISIBLE; }
+      
+      function getElements(tagName, elementId)
+      {
+        this.elements = [];
+        var index = 0;
+        var elm = document.getElementsByTagName(tagName);
+        var len = elm.length;
+        for (var i = 0; i < len; i++) 
+        {
+          var id = elm[i].id;
+          if (id && id.indexOf(elementId) == 0)
+          {
+            this.elements[index] = elm[i];
+            index++;
+          }
+        }
+        return this.elements;
+      }
+      function matchElements(tagName, matchId)
+      {
+        this.elements = [];
+        var index = 0;
+        var elm = document.getElementsByTagName(tagName);
+        for (var i = 0; i < elm.length; i++) 
+        {
+          var id = elm[i].id;
+          var tc = id.replace(/s[0-9]+\./, "");
+          if (tc && tc == matchId)
+          {
+            this.elements[index] = elm[i];
+            index++;
+          }
+        }
+        return this.elements;  
+      }
+      function onoff(elm, style)
+      {
+        if(elm.style.display == NONE)
+        {
+          if(style == null || style == VISIBLE)
+            elm.style.display = BLOCK;
+        }
+        else
+        {
+          if(style == null || style == HIDDEN)
+            elm.style.display = NONE;
+        }
+      }
+      function switchTagStyle(tag, id, style)
+      {
+        var divs = getElements(tag, id);
+        for(var i = 0; i < divs.length; i++)
+          onoff(divs[i], style);
+      }
+      function switchRowStyle(tbl, style)
+      {
+        var rows = tbl.rows.length;
+        for(var rowIndex=0; rowIndex < rows; rowIndex++)
+        {
+          var row = tbl.rows[rowIndex];
+          if (row.id != "on")
+            onoff(row, style);
+        }
+      }
+      function switchTableRowStyle(tableId, style)
+      {
+        var tables = getElements('table', tableId);
+        for(var i = 0; i < tables.length; i++)
+          switchRowStyle(tables[i], style);
+      }
+      function switchLinkText(linkId, newText)
+      {
+        var link = getElements('a', linkId);
+        var len = link.length;
+        for(var i = 0; i < len; i++)
+        {
+          var lnk = link[i];
+          if(newText == null)
+          {
+            var oldText = lnk.text;
+            newText = switchText(oldText)
+          }
+          lnk.text = newText;
+        }
+      }
+      function switchTag(tag, id, text)
+      {
+        var style = getStyleFromText(text);
+        switchTagStyle(tag, id, style);
+      }
+      function switchTable(id)
+      {
+        switchLinkText(getTableId(id));
+        switchTableRowStyle(getTableId(id));
+      }
+      function switchDiv(id, linkText)
+      {
+        var text = switchText(linkText);
+        switchLinkText(getLinkId(id), text);
+        switchTag('div', getDivId(id), text);
+      }      
+      function switchAll(id, linkText)
+      {
+        var text = switchText(linkText);
+        switchLinkText(getLinkId(id), text);
+        switchTag('div', getDivId(id), text);
+        var style = getStyleFromText(text);
+        switchTableRowStyle(getTbl2Id(id), style);
+      }
+      function showTable(id)
+      {
+        var tableId = getTableId(id);
+        switchLinkText(tableId, EXPANDED);
+        switchTableRowStyle(tableId, VISIBLE);
+      }
+      function hideTable(id)
+      {
+        var tableId = getTableId(id);
+        switchTableRowStyle(tableId, HIDDEN);
+        switchLinkText(tableId, COLLAPSED);
+      }
+      function showDiv(id)
+      {
+        switchLinkText(getLinkId(id), EXPANDED);
+        switchTag('div', getDivId(id), EXPANDED);
+      }
+      function showTC(id)
+      {
+        var divId = getDivId(id);
+        var elms = matchElements('div', divId); 
+        if(elms != null && elms.length > 0)
+        {
+          id = elms[0].id.replace(getDivId(''), '');
+          showDiv(id);
+        }
+      }
+      
+    </script>
+  </head>
+  <body>
+    <a name="TOP"></a>
+    <table class="HeadingTable">
+      <tr>
+        <td>
+          <big class="Heading1">Report: develop case test</big>
+        </td>
+      </tr>
+    </table>
+    <center>
+      <table class="OverallResultTable">
+        <tr>
+          <td class="NegativeResult">Test failed</td>
+        </tr>
+      </table>
+    </center>
+    <a name="GeneralTestInfo"></a>
+    <table class="SubHeadingTable">
+      <tr>
+        <td>
+          <div class="Heading2">General Test Information</div>
+        </td>
+      </tr>
+    </table>
+    <p>develop case test</p>
+    <div class="Indentation">
+      <div class="Heading4">System Under Test</div>
+      <div class="Indentation">
+        <table>
+          <tr>
+            <td class="CellNoColor">DUT Name: </td>
+            <td class="CellNoColor">G2SVS4_R7。1</td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4">Test Engineer</div>
+      <div class="Indentation">
+        <table>
+          <tr>
+            <td class="CellNoColor">Windows Login Name: </td>
+            <td class="CellNoColor">carl.wu</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Tester Name: </td>
+            <td class="CellNoColor">Carl Wu</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Company: </td>
+            <td class="CellNoColor">Veoneer, China</td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4">Test Setup</div>
+      <div class="Indentation">
+        <table>
+          <tr>
+            <td class="CellNoColor">Version: </td>
+            <td class="CellNoColor">CANoe.FlexRay 11.0.55 (SP2)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Configuration: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Configuration\GEEA_Main_CANoe_11.0_FLC2_can_dbc.cfg</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database SDB20010_DC1E_ADRedundancyCAN_200414_R7 on ADCAN Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Databases\can\SDB20010_DC1E_ADRedundancyCAN_200414_R7.dbc (2020-07-02 08:36:32)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Geea_Specific on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Databases\test\Geea_Specific.dbc (2019-11-08 14:03:57)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_CLIMATE on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\CLIMATE\Generic_env_CLIMATE.dbc (2020-03-10 16:29:52)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_CommandResponse on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Databases\test\Generic_env_CommandResponse.dbc (2020-03-10 16:28:52)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_GeneralCommandExecution on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\GCE\Generic_env_GeneralCommandExecution.dbc (2020-03-10 16:29:53)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_HilPlayer on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\VisionHilPlayer\Generic_env_HilPlayer.dbc (2018-12-13 15:40:22)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_POW on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\POW\Generic_env_POW.dbc (2020-03-10 16:29:54)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_Relay on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\RELAY\Generic_env_Relay.dbc (2019-11-21 09:30:36)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_SWVersions on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\SW_Version\Generic_env_SWVersions.dbc (2020-03-10 16:29:54)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_TestControl on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\Test\Generic_env_TestControl.dbc (2020-03-10 16:29:55)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_VARIANT on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\VARIANT\Generic_env_VARIANT.dbc (2020-03-10 16:29:56)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database Generic_env_XCP on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Generic\Nodes\XCP\Generic_env_XCP.dbc (2018-12-13 15:40:24)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database KeySight_Visa on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Nodes\LOC_POW\KeySight_Visa.dbc (2019-11-08 14:04:40)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database SDB20010_DC1E_PrivateSafetyADCAN_200414_R7 on PrivateCAN Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Databases\can\SDB20010_DC1E_PrivateSafetyADCAN_200414_R7.dbc (2020-07-02 08:36:32)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database SDB20016_DC1E_SafetyCANFD2_200807_R7.1 on CANFD Network: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Databases\can\SDB20016_DC1E_SafetyCANFD2_200807_R7.1.dbc (2020-09-02 11:14:15)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Database FLC_Flexray on FlexRay: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Databases\fr\SDB20016_FLC2_200807_AR-4.2.2_Unflattened_R7.1.arxml (2020-09-02 11:15:33)</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Test Module Name: </td>
+            <td class="CellNoColor">Development_CarlWu</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Test Module File: </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\TestModules\Development_CarlWu.xml</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Last modification of Test Module File: </td>
+            <td class="CellNoColor">2020-10-10, 15:03:32</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Test Module Library (CAPL): </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\TestModules\Development_CarlWu_FLC.can</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Test Module Library (CAPL): </td>
+            <td class="CellNoColor">C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\TestModules\Development_CarlWu_FLC_FLC2.can</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Windows Computer Name: </td>
+            <td class="CellNoColor">CN03-OF-WL0021</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Nodelayer Module CANoeILNLVector: </td>
+            <td class="CellNoColor">CANoe Interaction Layer NL (Vector) Version 3.16.47 (Jul  4 2017 16:10:44) , C:\Program Files\Vector CANoe 11.0\Exec32\CANoeILNLVector.dll</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Nodelayer Module J1939TestServiceLibraryNL: </td>
+            <td class="CellNoColor">J1939 Test Service Library for CANoe, Version 11.0.55.0, C:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Nodelayer Module ASRNM33: </td>
+            <td class="CellNoColor">AsrNM (Version 3.3.47), C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\DATABASES\DLL\ASRNM33.DLL</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Nodelayer Module FlexRayTPISO: </td>
+            <td class="CellNoColor">FlexRayTPISO (Version 1.5.81), C:\MKSProjects\Vision Test Environment\CANoe\Geely_GEEA2\Include\FlexRayTPISO.DLL</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Project Name: </td>
+            <td class="CellNoColor">GEELY_GEEA2</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Software: </td>
+            <td class="CellNoColor"></td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Software supplied by tester: </td>
+            <td class="CellNoColor">R7。1</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Hardware supplied by tester: </td>
+            <td class="CellNoColor">G2SVS4</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Programmable Power Supply: </td>
+            <td class="CellNoColor">Present</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Programmable Power Supply serial number: </td>
+            <td class="CellNoColor">EX355P 482380</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor">Break out Box number: </td>
+            <td class="CellNoColor">NA</td>
+          </tr>
+          <tr>
+            <td class="CellNoColor"> Development_CarlWu_FLC.can: </td>
+            <td class="CellNoColor">MKS ver 1.59  from  2020/10/10 17:33:19CST </td>
+          </tr>
+          <tr>
+            <td class="CellNoColor"> Development_CarlWu_FLC_FLC2.can: </td>
+            <td class="CellNoColor">MKS ver 1.18  from  2020/10/10 17:33:19CST </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4">Hardware</div>
+      <div class="Indentation">
+        <div class="Heading4">CAN Channel Interfaces</div>
+        <div class="Indentation">
+          <table>
+            <tr>
+              <th class="TableHeadingCell">Channel</th>
+              <th class="TableHeadingCell">Device</th>
+              <th class="TableHeadingCell">Serial number</th>
+              <th class="TableHeadingCell">Driver DLL version</th>
+              <th class="TableHeadingCell">Driver version</th>
+            </tr>
+            <tr>
+              <td class="NumberCell">1</td>
+              <td class="NumberCell">VN7640</td>
+              <td class="NumberCell">3029</td>
+              <td class="NumberCell">10.8.22</td>
+              <td class="NumberCell">10.8.20</td>
+            </tr>
+            <tr>
+              <td class="NumberCell">2</td>
+              <td class="NumberCell">VN7640</td>
+              <td class="NumberCell">3029</td>
+              <td class="NumberCell">10.8.22</td>
+              <td class="NumberCell">10.8.20</td>
+            </tr>
+            <tr>
+              <td class="NumberCell">3</td>
+              <td class="NumberCell">VN7640</td>
+              <td class="NumberCell">3029</td>
+              <td class="NumberCell">10.8.22</td>
+              <td class="NumberCell">10.8.20</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="Indentation">
+        <div class="Heading4">FlexRay Channel Interfaces</div>
+        <div class="Indentation">
+          <table>
+            <tr>
+              <th class="TableHeadingCell">Channel</th>
+              <th class="TableHeadingCell">Device</th>
+              <th class="TableHeadingCell">Serial number</th>
+              <th class="TableHeadingCell">Driver DLL version</th>
+              <th class="TableHeadingCell">Driver version</th>
+            </tr>
+            <tr>
+              <td class="NumberCell">1</td>
+              <td class="NumberCell">VN7640</td>
+              <td class="NumberCell">3029</td>
+              <td class="NumberCell">10.8.22</td>
+              <td class="NumberCell">10.8.20</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="Heading4">Logging Files</div>
+      <div class="Indentation">
+        <table>
+          <th class="TableHeadingCell">Start Time</th>
+          <th class="TableHeadingCell">End Time</th>
+          <th class="TableHeadingCell">Logging File</th>
+          <tr>
+            <td class="NumberCell"> 119.663979</td>
+            <td class="NumberCell">Active at test end</td>
+            <td class="NumberCell" style="text-align:left">..\ST_75719_carl.wu_carl.wu.blf</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <a name="TestOverview"></a>
+    <table class="SubHeadingTable">
+      <tr>
+        <td>
+          <div class="Heading2">Test Overview</div>
+        </td>
+      </tr>
+    </table>
+    <div class="Indentation">
+      <table class="DefaultTable">
+        <tr>
+          <td style="padding-right: 0.5em;" class="CellNoColor">Test begin: </td>
+          <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 09:32:22</td>
+          <td class="CellNoColor">(logging timestamp  119.343979)</td>
+        </tr>
+        <tr>
+          <td style="padding-right: 0.5em;" class="CellNoColor">Test end: </td>
+          <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 10:32:23</td>
+          <td class="CellNoColor" nowrap>(logging timestamp 3719.983979)</td>
+        </tr>
+      </table>
+      <div class="Heading4">Statistics</div>
+      <div class="Indentation">
+        <table class="OverviewTable">
+          <tr>
+            <td class="DefineCell">Overall number of test cases </td>
+            <td class="NumberCell" width="60">337</td>
+            <td class="DefaultCell"></td>
+          </tr>
+          <tr>
+            <td class="DefineCell">Executed test cases </td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">1% of all test cases</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">Not executed test cases </td>
+            <td class="NumberCell">336</td>
+            <td class="DefaultCell">99% of all test cases</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">Test cases passed </td>
+            <td class="NumberCell">0</td>
+            <td class="NumberCell">0% of executed test cases</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">Test cases failed </td>
+            <td class="NumberCellNegativeResult">1</td>
+            <td class="NumberCellNegativeResult">100% of executed test cases</td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4">Test Case Results</div>
+      <div class="Indentation">
+        <table class="OverviewTable">
+          <tr>
+            <td class="DefineCell">
+              <b>1</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell" colspan="2">
+              <a href="#i__1300072688_164">
+                <b>CASE IN FLC</b>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.1</b>
+            </td>
+            <td class="DefineCell">
+              <b>MI</b>
+            </td>
+            <td class="DefineCell">
+              <b>MI</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.2</b>
+            </td>
+            <td class="DefineCell">
+              <b>TJP_check</b>
+            </td>
+            <td class="DefineCell">
+              <b>TJP_check</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.3</b>
+            </td>
+            <td class="DefineCell">
+              <b>Counter</b>
+            </td>
+            <td class="DefineCell">
+              <b>Counter</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.4</b>
+            </td>
+            <td class="DefineCell">
+              <b>FUSE</b>
+            </td>
+            <td class="DefineCell">
+              <b>Fuse_FLC1_FLC2</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.5</b>
+            </td>
+            <td class="DefineCell">
+              <b>FUSE</b>
+            </td>
+            <td class="DefineCell">
+              <b>Fuse_FLC2</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.6</b>
+            </td>
+            <td class="DefineCell">
+              <b>VoltageRange</b>
+            </td>
+            <td class="DefineCell">
+              <b>VoltageRange</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7</b>
+            </td>
+            <td class="DefineCell">
+              <b>stability</b>
+            </td>
+            <td class="DefineCell" colspan="2">
+              <a href="#i__1300072688_1734">
+                <b>stability</b>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.1</b>
+            </td>
+            <td class="DefineCell">
+              <b>startup test</b>
+            </td>
+            <td class="DefineCell">
+              <b>startup test</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.2</b>
+            </td>
+            <td class="DefineCell">
+              <b>CalibrationTests</b>
+            </td>
+            <td class="DefineCell">
+              <b>CalibrationTests</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.3</b>
+            </td>
+            <td class="DefineCell">
+              <b>DiagnosticsTests</b>
+            </td>
+            <td class="DefineCell">
+              <b>DiagnosticsTests</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.4</b>
+            </td>
+            <td class="DefineCell">
+              <b>PerformanceTests</b>
+            </td>
+            <td class="DefineCell">
+              <b>PerformanceTests</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.5</b>
+            </td>
+            <td class="DefineCell">
+              <b>cycle time test</b>
+            </td>
+            <td class="DefineCell" colspan="2">
+              <a href="#i__1300072688_2086">
+                <b>cycle time test</b>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.5.1</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell">
+              <b>flexray cycle time_flc1_flc2</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.5.2</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell">
+              <b>flexray cycle time_flc2</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.7.5.3</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell" colspan="2">
+              <a href="#i__1300072688_2350">
+                <b>can cycle time</b>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="DefineCell">1.7.5.3.1</td>
+            <td class="DefaultCell">ST_75719</td>
+            <td class="DefaultCell">
+              <a href="#i__1300072688_2354">Verify message group FlcAdRedundancyFr01,FlcAdRedundancyFr02,FlcAdRedundancyFr03,FlcAdRedundancyFr05,FlcAdRedundancyFr06,FlcAdRedundancyFr07,FlcAdRedundancyFr08 cycle time</a>
+            </td>
+            <td class="NegativeResultCell">
+              <a href="#i__1300072688_2380" onclick="showTC('1.7.5.3.1')">fail</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="DefineCell"></td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">ST_75720</td>
+            <td class="DefaultCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.8</b>
+            </td>
+            <td class="DefineCell">
+              <b>EDR</b>
+            </td>
+            <td class="DefineCell">
+              <b>EDR</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell"></td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">ST_21992 - Verify Snapshot_20 - DTC_IMU2_MISSING_CALIBRATION_OR_FAIL  (ID D46054) (HEATER ON)</td>
+            <td class="DefaultCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell"></td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">ST_21994 - Verify Snapshot_21 - DTC_IMU2_MISSING_CALIBRATION_OR_FAIL  (ID D46054) (HEATER ON)</td>
+            <td class="DefaultCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.9</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell">
+              <b>NetworkManagementHistoryBuffer_Flexray</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.10</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell">
+              <b>NetworkManagementHistoryBuffer_ADRedundancyCAN</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.11</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell">
+              <b>NetworkManagementHistoryBuffer_CAN_FD</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>1.12</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell">
+              <b>DTC</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+          <tr>
+            <td class="DefineCell">
+              <b>2</b>
+            </td>
+            <td class="DefineCell">
+              <b></b>
+            </td>
+            <td class="DefineCell">
+              <b>CASE IN SWDL</b>
+            </td>
+            <td class="DefineCell">not executed</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <a name="TestModuleInfo"></a>
+    <table class="SubHeadingTable">
+      <tr>
+        <td class="LinkCell">
+          <a class="Undecorated" id="lnk_" href="javascript:switchAll('',document.all['lnk_'].text)">[−]</a>
+        </td>
+        <td>
+          <div class="Heading2">Test Module Information</div>
+        </td>
+      </tr>
+    </table>
+    <div id="div_p">
+      <table class="TestGroupHeadingBackground">
+        <tr>
+          <td>
+            <big class="Heading3">Preparation of Test Module</big>
+          </td>
+        </tr>
+      </table>
+      <div class="Indentation">
+        <table class="DefaultTable">
+          <tr>
+            <td style="padding-right: 0.5em;" class="CellNoColor">Preparation begin: </td>
+            <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 09:32:22</td>
+            <td class="CellNoColor">(logging timestamp  119.343979)</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 0.5em;" class="CellNoColor">Preparation end: </td>
+            <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 09:32:22</td>
+            <td class="CellNoColor" nowrap>(logging timestamp  119.663979)</td>
+          </tr>
+        </table>
+        <table class="ResultTable">
+          <tr>
+            <th class="TableHeadingCell" width="1px">Timestamp</th>
+            <th class="TableHeadingCell" width="1px">Test Step</th>
+            <th class="TableHeadingCell" width="auto">Description</th>
+            <th class="TableHeadingCell" width="1px">Result</th>
+          </tr>
+          <tr>
+            <td class="PatternSeparator" colspan="4"></td>
+          </tr>
+          <tr class="PositiveResultBackground">
+            <td style="text-indent: 20px;" class="ResultBlockHeading" colspan="4">
+              <big class="Heading4">1. Initialize test module: Passed</big>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell"> 119.343979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_TM_INIT': 1</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell"> 119.343979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_TEST_Report': 1</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell"> 119.343979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_TEST_ReportMksVer': 1</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell"> 119.343979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_WriteVersions2Report': 1</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell"> 119.343979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">Stimulation of the input parameters</td>
+            <td class="PositiveResultCell">pass</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell"> 119.663979</td>
+            <td class="NumberCell">2</td>
+            <td class="DefaultCell">Waited for 320 ms.</td>
+            <td class="PositiveResultCell">pass</td>
+          </tr>
+          <tr>
+            <td class="PatternSeparator" colspan="4"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="div_c">
+      <table class="TestGroupHeadingBackground">
+        <tr>
+          <td>
+            <big class="Heading3">Completion of Test Module</big>
+          </td>
+        </tr>
+      </table>
+      <div class="Indentation">
+        <table class="DefaultTable">
+          <tr>
+            <td style="padding-right: 0.5em;" class="CellNoColor">Completion begin: </td>
+            <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 10:32:22</td>
+            <td class="CellNoColor">(logging timestamp 3719.663979)</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 0.5em;" class="CellNoColor">Completion end: </td>
+            <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 10:32:23</td>
+            <td class="CellNoColor" nowrap>(logging timestamp 3719.983979)</td>
+          </tr>
+        </table>
+        <table class="ResultTable">
+          <tr>
+            <th class="TableHeadingCell" width="1px">Timestamp</th>
+            <th class="TableHeadingCell" width="1px">Test Step</th>
+            <th class="TableHeadingCell" width="auto">Description</th>
+            <th class="TableHeadingCell" width="1px">Result</th>
+          </tr>
+          <tr>
+            <td class="PatternSeparator" colspan="4"></td>
+          </tr>
+          <tr class="PositiveResultBackground">
+            <td style="text-indent: 20px;" class="ResultBlockHeading" colspan="4">
+              <big class="Heading4">1. Adding testreport info.: Passed</big>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell">3719.663979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_TM_INIT': 0</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell">3719.663979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_TEST_Report': 0</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell">3719.663979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_TEST_ReportMksVer': 0</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell">3719.663979</td>
+            <td class="DefaultCell"></td>
+            <td class="DefaultCell">Set specified value.<br>Environment variable 'env_WriteVersions2Report': 0</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell">3719.663979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">Stimulation of the input parameters</td>
+            <td class="PositiveResultCell">pass</td>
+          </tr>
+          <tr>
+            <td style="text-indent: 20px;" class="DefineCell">3719.983979</td>
+            <td class="NumberCell">2</td>
+            <td class="DefaultCell">Waited for 320 ms.</td>
+            <td class="PositiveResultCell">pass</td>
+          </tr>
+          <tr>
+            <td class="PatternSeparator" colspan="4"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <table class="SubHeadingTable">
+      <tr>
+        <td>
+          <big class="Heading2">Test Case Details</big>
+        </td>
+      </tr>
+    </table>
+    <table class="GroupHeadingTable">
+      <tr>
+        <td class="LinkCell">
+          <a class="Undecorated" id="lnk_1" href="javascript:switchAll('1',document.all['lnk_1'].text)">[−]</a>
+        </td>
+        <td>
+          <big class="Heading3">
+            <a name="i__1300072688_164">1 Test Group: CASE IN FLC</a>
+          </big>
+        </td>
+      </tr>
+    </table>
+    <div id="div_1">
+      <div class="Indentation"></div>
+    </div>
+    <table class="GroupHeadingTable">
+      <tr>
+        <td class="LinkCell">
+          <a class="Undecorated" id="lnk_1.7" href="javascript:switchAll('1.7',document.all['lnk_1.7'].text)">[−]</a>
+        </td>
+        <td>
+          <big class="Heading3">
+            <a name="i__1300072688_1734">1.7 Test Group stability: stability</a>
+          </big>
+        </td>
+      </tr>
+    </table>
+    <div id="div_1.7">
+      <div class="Indentation"></div>
+    </div>
+    <table class="GroupHeadingTable">
+      <tr>
+        <td class="LinkCell">
+          <a class="Undecorated" id="lnk_1.7.5" href="javascript:switchAll('1.7.5',document.all['lnk_1.7.5'].text)">[−]</a>
+        </td>
+        <td>
+          <big class="Heading3">
+            <a name="i__1300072688_2086">1.7.5 Test Group cycle time test: cycle time test</a>
+          </big>
+        </td>
+      </tr>
+    </table>
+    <div id="div_1.7.5">
+      <div class="Indentation"></div>
+    </div>
+    <table class="GroupHeadingTable">
+      <tr>
+        <td class="LinkCell">
+          <a class="Undecorated" id="lnk_1.7.5.3" href="javascript:switchAll('1.7.5.3',document.all['lnk_1.7.5.3'].text)">[−]</a>
+        </td>
+        <td>
+          <big class="Heading3">
+            <a name="i__1300072688_2350">1.7.5.3 Test Group: can cycle time</a>
+          </big>
+        </td>
+      </tr>
+    </table>
+    <div id="div_1.7.5.3">
+      <div class="Indentation"></div>
+    </div>
+    <table>
+      <tr>
+        <td class="LinkCell">
+          <a class="Undecorated" id="lnk_1.7.5.3.1" href="javascript:switchAll('1.7.5.3.1',document.all['lnk_1.7.5.3.1'].text)">[−]</a>
+        </td>
+        <td class="TestcaseHeadingNegativeResult">
+          <big class="Heading3">1.7.5.3.1 <a name="i__1300072688_2354">Test Case ST_75719: Verify message group FlcAdRedundancyFr01,FlcAdRedundancyFr02,FlcAdRedundancyFr03,FlcAdRedundancyFr05,FlcAdRedundancyFr06,FlcAdRedundancyFr07,FlcAdRedundancyFr08 cycle time</a>: Failed</big>
+        </td>
+      </tr>
+    </table>
+    <div class="Indentation" id="div_1.7.5.3.1">
+      <p>Verify message group FlcAdRedundancyFr01,FlcAdRedundancyFr02,FlcAdRedundancyFr03,FlcAdRedundancyFr05,FlcAdRedundancyFr06,FlcAdRedundancyFr07,FlcAdRedundancyFr08 cycle time</p>
+      <div class="Indentation">
+        <table class="DefaultTable">
+          <tr>
+            <td style="padding-right: 0.5em;" class="CellNoColor">Test case begin: </td>
+            <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 09:32:22</td>
+            <td class="CellNoColor">(logging timestamp  119.663979)</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 0.5em;" class="CellNoColor">Test case end: </td>
+            <td style="padding-right: 0.5em;" class="CellNoColor">2020-10-15 10:32:22</td>
+            <td class="CellNoColor" nowrap>(logging timestamp 3719.663979)</td>
+          </tr>
+        </table>
+        <div class="Heading4">Test Case Check Statistics</div>
+        <div class="Indentation">
+          <table class="NegativeResultBackground">
+            <tr>
+              <td>
+                <big class="Heading4">
+                  <a name="1_10001_1.7.5.3.1">Cycle Time Absolute</a> (1.7.5.3.1#1): Check failed</big>
+              </td>
+            </tr>
+          </table>
+          <div class="Indentation">
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Parameters</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Type of check</td>
+                <td class="DefaultCell">Cycle Time Absolute</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message</td>
+                <td class="DefaultCell">CAN message 'FlcAdRedundancyFr01' ID = 121 (0x79) on bus ADCAN Network</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MinTime</td>
+                <td class="DefaultCell">9 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MaxTime</td>
+                <td class="DefaultCell">11 ms</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Statistics</th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Runtime of the statistic</td>
+                <td class="DefaultCell">3600000 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of failures</td>
+                <td class="DefaultCell">17361</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of samples</td>
+                <td class="DefaultCell">359996</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message ID</td>
+                <td class="DefaultCell">121 (0x79)</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Minimal measured cycle time</td>
+                <td class="DefaultCell">6.080109 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Maximal measured cycle time</td>
+                <td class="DefaultCell">13.912875 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Average cycle time</td>
+                <td class="DefaultCell">10.000128 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Failure ratio (in %)</td>
+                <td class="DefaultCell">4.82257</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="22">Distribution of measured times</th>
+              </tr>
+              <tr>
+                <td class="DefineCell"> &lt;= 8 ms</td>
+                <td class="DefineCell">8 ms - 8.2 ms</td>
+                <td class="DefineCell">8.2 ms - 8.4 ms</td>
+                <td class="DefineCell">8.4 ms - 8.6 ms</td>
+                <td class="DefineCell">8.6 ms - 8.8 ms</td>
+                <td class="DefineCell">8.8 ms - 9 ms</td>
+                <td class="DefineCell">9 ms - 9.2 ms</td>
+                <td class="DefineCell">9.2 ms - 9.4 ms</td>
+                <td class="DefineCell">9.4 ms - 9.6 ms</td>
+                <td class="DefineCell">9.6 ms - 9.8 ms</td>
+                <td class="DefineCell">9.8 ms - 10 ms</td>
+                <td class="DefineCell">10 ms - 10.2 ms</td>
+                <td class="DefineCell">10.2 ms - 10.4 ms</td>
+                <td class="DefineCell">10.4 ms - 10.6 ms</td>
+                <td class="DefineCell">10.6 ms - 10.8 ms</td>
+                <td class="DefineCell">10.8 ms - 11 ms</td>
+                <td class="DefineCell">11 ms - 11.2 ms</td>
+                <td class="DefineCell">11.2 ms - 11.4 ms</td>
+                <td class="DefineCell">11.4 ms - 11.6 ms</td>
+                <td class="DefineCell">11.6 ms - 11.8 ms</td>
+                <td class="DefineCell">11.8 ms - 12 ms</td>
+                <td class="DefineCell"> &gt; 12 ms</td>
+              </tr>
+              <tr>
+                <td class="DefaultCell">2305</td>
+                <td class="DefaultCell">814</td>
+                <td class="DefaultCell">1255</td>
+                <td class="DefaultCell">1513</td>
+                <td class="DefaultCell">1709</td>
+                <td class="DefaultCell">1736</td>
+                <td class="DefaultCell">2892</td>
+                <td class="DefaultCell">4805</td>
+                <td class="DefaultCell">8258</td>
+                <td class="DefaultCell">11707</td>
+                <td class="DefaultCell">136807</td>
+                <td class="DefaultCell">145331</td>
+                <td class="DefaultCell">12638</td>
+                <td class="DefaultCell">9897</td>
+                <td class="DefaultCell">6398</td>
+                <td class="DefaultCell">3901</td>
+                <td class="DefaultCell">2068</td>
+                <td class="DefaultCell">1671</td>
+                <td class="DefaultCell">1353</td>
+                <td class="DefaultCell">976</td>
+                <td class="DefaultCell">611</td>
+                <td class="DefaultCell">1350</td>
+              </tr>
+            </table>
+            <table class="DefaultTable">
+              <tr>
+                <td class="PatternSeparator"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="Indentation">
+          <table class="NegativeResultBackground">
+            <tr>
+              <td>
+                <big class="Heading4">
+                  <a name="2_10002_1.7.5.3.1">Cycle Time Absolute</a> (1.7.5.3.1#2): Check failed</big>
+              </td>
+            </tr>
+          </table>
+          <div class="Indentation">
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Parameters</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Type of check</td>
+                <td class="DefaultCell">Cycle Time Absolute</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message</td>
+                <td class="DefaultCell">CAN message 'FlcAdRedundancyFr02' ID = 288 (0x120) on bus ADCAN Network</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MinTime</td>
+                <td class="DefaultCell">18 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MaxTime</td>
+                <td class="DefaultCell">22 ms</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Statistics</th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Runtime of the statistic</td>
+                <td class="DefaultCell">3600000 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of failures</td>
+                <td class="DefaultCell">3116</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of samples</td>
+                <td class="DefaultCell">179998</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message ID</td>
+                <td class="DefaultCell">288 (0x120)</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Minimal measured cycle time</td>
+                <td class="DefaultCell">16.474766 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Maximal measured cycle time</td>
+                <td class="DefaultCell">23.519265 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Average cycle time</td>
+                <td class="DefaultCell">20.000273 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Failure ratio (in %)</td>
+                <td class="DefaultCell">1.73114</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="22">Distribution of measured times</th>
+              </tr>
+              <tr>
+                <td class="DefineCell"> &lt;= 16 ms</td>
+                <td class="DefineCell">16 ms - 16.4 ms</td>
+                <td class="DefineCell">16.4 ms - 16.8 ms</td>
+                <td class="DefineCell">16.8 ms - 17.2 ms</td>
+                <td class="DefineCell">17.2 ms - 17.6 ms</td>
+                <td class="DefineCell">17.6 ms - 18 ms</td>
+                <td class="DefineCell">18 ms - 18.4 ms</td>
+                <td class="DefineCell">18.4 ms - 18.8 ms</td>
+                <td class="DefineCell">18.8 ms - 19.2 ms</td>
+                <td class="DefineCell">19.2 ms - 19.6 ms</td>
+                <td class="DefineCell">19.6 ms - 20 ms</td>
+                <td class="DefineCell">20 ms - 20.4 ms</td>
+                <td class="DefineCell">20.4 ms - 20.8 ms</td>
+                <td class="DefineCell">20.8 ms - 21.2 ms</td>
+                <td class="DefineCell">21.2 ms - 21.6 ms</td>
+                <td class="DefineCell">21.6 ms - 22 ms</td>
+                <td class="DefineCell">22 ms - 22.4 ms</td>
+                <td class="DefineCell">22.4 ms - 22.8 ms</td>
+                <td class="DefineCell">22.8 ms - 23.2 ms</td>
+                <td class="DefineCell">23.2 ms - 23.6 ms</td>
+                <td class="DefineCell">23.6 ms - 24 ms</td>
+                <td class="DefineCell"> &gt; 24 ms</td>
+              </tr>
+              <tr>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">1026</td>
+                <td class="DefaultCell">477</td>
+                <td class="DefaultCell">25</td>
+                <td class="DefaultCell">34</td>
+                <td class="DefaultCell">41</td>
+                <td class="DefaultCell">80</td>
+                <td class="DefaultCell">77</td>
+                <td class="DefaultCell">3078</td>
+                <td class="DefaultCell">81280</td>
+                <td class="DefaultCell">88925</td>
+                <td class="DefaultCell">3211</td>
+                <td class="DefaultCell">83</td>
+                <td class="DefaultCell">68</td>
+                <td class="DefaultCell">38</td>
+                <td class="DefaultCell">23</td>
+                <td class="DefaultCell">22</td>
+                <td class="DefaultCell">433</td>
+                <td class="DefaultCell">1076</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+              </tr>
+            </table>
+            <table class="DefaultTable">
+              <tr>
+                <td class="PatternSeparator"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="Indentation">
+          <table class="NegativeResultBackground">
+            <tr>
+              <td>
+                <big class="Heading4">
+                  <a name="3_10003_1.7.5.3.1">Cycle Time Absolute</a> (1.7.5.3.1#3): Check failed</big>
+              </td>
+            </tr>
+          </table>
+          <div class="Indentation">
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Parameters</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Type of check</td>
+                <td class="DefaultCell">Cycle Time Absolute</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message</td>
+                <td class="DefaultCell">CAN message 'FlcAdRedundancyFr03' ID = 295 (0x127) on bus ADCAN Network</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MinTime</td>
+                <td class="DefaultCell">18 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MaxTime</td>
+                <td class="DefaultCell">22 ms</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Statistics</th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Runtime of the statistic</td>
+                <td class="DefaultCell">3600000 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of failures</td>
+                <td class="DefaultCell">2623</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of samples</td>
+                <td class="DefaultCell">179998</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message ID</td>
+                <td class="DefaultCell">295 (0x127)</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Minimal measured cycle time</td>
+                <td class="DefaultCell">16.486782 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Maximal measured cycle time</td>
+                <td class="DefaultCell">23.505531 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Average cycle time</td>
+                <td class="DefaultCell">20.000273 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Failure ratio (in %)</td>
+                <td class="DefaultCell">1.45725</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="22">Distribution of measured times</th>
+              </tr>
+              <tr>
+                <td class="DefineCell"> &lt;= 16 ms</td>
+                <td class="DefineCell">16 ms - 16.4 ms</td>
+                <td class="DefineCell">16.4 ms - 16.8 ms</td>
+                <td class="DefineCell">16.8 ms - 17.2 ms</td>
+                <td class="DefineCell">17.2 ms - 17.6 ms</td>
+                <td class="DefineCell">17.6 ms - 18 ms</td>
+                <td class="DefineCell">18 ms - 18.4 ms</td>
+                <td class="DefineCell">18.4 ms - 18.8 ms</td>
+                <td class="DefineCell">18.8 ms - 19.2 ms</td>
+                <td class="DefineCell">19.2 ms - 19.6 ms</td>
+                <td class="DefineCell">19.6 ms - 20 ms</td>
+                <td class="DefineCell">20 ms - 20.4 ms</td>
+                <td class="DefineCell">20.4 ms - 20.8 ms</td>
+                <td class="DefineCell">20.8 ms - 21.2 ms</td>
+                <td class="DefineCell">21.2 ms - 21.6 ms</td>
+                <td class="DefineCell">21.6 ms - 22 ms</td>
+                <td class="DefineCell">22 ms - 22.4 ms</td>
+                <td class="DefineCell">22.4 ms - 22.8 ms</td>
+                <td class="DefineCell">22.8 ms - 23.2 ms</td>
+                <td class="DefineCell">23.2 ms - 23.6 ms</td>
+                <td class="DefineCell">23.6 ms - 24 ms</td>
+                <td class="DefineCell"> &gt; 24 ms</td>
+              </tr>
+              <tr>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">832</td>
+                <td class="DefaultCell">414</td>
+                <td class="DefaultCell">31</td>
+                <td class="DefaultCell">40</td>
+                <td class="DefaultCell">44</td>
+                <td class="DefaultCell">95</td>
+                <td class="DefaultCell">84</td>
+                <td class="DefaultCell">3367</td>
+                <td class="DefaultCell">81336</td>
+                <td class="DefaultCell">88746</td>
+                <td class="DefaultCell">3490</td>
+                <td class="DefaultCell">91</td>
+                <td class="DefaultCell">79</td>
+                <td class="DefaultCell">42</td>
+                <td class="DefaultCell">25</td>
+                <td class="DefaultCell">27</td>
+                <td class="DefaultCell">463</td>
+                <td class="DefaultCell">791</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+              </tr>
+            </table>
+            <table class="DefaultTable">
+              <tr>
+                <td class="PatternSeparator"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="Indentation">
+          <table class="NegativeResultBackground">
+            <tr>
+              <td>
+                <big class="Heading4">
+                  <a name="4_10004_1.7.5.3.1">Cycle Time Absolute</a> (1.7.5.3.1#4): Check failed</big>
+              </td>
+            </tr>
+          </table>
+          <div class="Indentation">
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Parameters</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Type of check</td>
+                <td class="DefaultCell">Cycle Time Absolute</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message</td>
+                <td class="DefaultCell">CAN message 'FlcAdRedundancyFr05' ID = 80 (0x50) on bus ADCAN Network</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MinTime</td>
+                <td class="DefaultCell">9 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MaxTime</td>
+                <td class="DefaultCell">11 ms</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Statistics</th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Runtime of the statistic</td>
+                <td class="DefaultCell">3600000 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of failures</td>
+                <td class="DefaultCell">530</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of samples</td>
+                <td class="DefaultCell">359996</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message ID</td>
+                <td class="DefaultCell">80 (0x50)</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Minimal measured cycle time</td>
+                <td class="DefaultCell">8.296875 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Maximal measured cycle time</td>
+                <td class="DefaultCell">11.636875 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Average cycle time</td>
+                <td class="DefaultCell">10.000127 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Failure ratio (in %)</td>
+                <td class="DefaultCell">0.147224</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="22">Distribution of measured times</th>
+              </tr>
+              <tr>
+                <td class="DefineCell"> &lt;= 8 ms</td>
+                <td class="DefineCell">8 ms - 8.2 ms</td>
+                <td class="DefineCell">8.2 ms - 8.4 ms</td>
+                <td class="DefineCell">8.4 ms - 8.6 ms</td>
+                <td class="DefineCell">8.6 ms - 8.8 ms</td>
+                <td class="DefineCell">8.8 ms - 9 ms</td>
+                <td class="DefineCell">9 ms - 9.2 ms</td>
+                <td class="DefineCell">9.2 ms - 9.4 ms</td>
+                <td class="DefineCell">9.4 ms - 9.6 ms</td>
+                <td class="DefineCell">9.6 ms - 9.8 ms</td>
+                <td class="DefineCell">9.8 ms - 10 ms</td>
+                <td class="DefineCell">10 ms - 10.2 ms</td>
+                <td class="DefineCell">10.2 ms - 10.4 ms</td>
+                <td class="DefineCell">10.4 ms - 10.6 ms</td>
+                <td class="DefineCell">10.6 ms - 10.8 ms</td>
+                <td class="DefineCell">10.8 ms - 11 ms</td>
+                <td class="DefineCell">11 ms - 11.2 ms</td>
+                <td class="DefineCell">11.2 ms - 11.4 ms</td>
+                <td class="DefineCell">11.4 ms - 11.6 ms</td>
+                <td class="DefineCell">11.6 ms - 11.8 ms</td>
+                <td class="DefineCell">11.8 ms - 12 ms</td>
+                <td class="DefineCell"> &gt; 12 ms</td>
+              </tr>
+              <tr>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">1</td>
+                <td class="DefaultCell">3</td>
+                <td class="DefaultCell">82</td>
+                <td class="DefaultCell">236</td>
+                <td class="DefaultCell">746</td>
+                <td class="DefaultCell">3239</td>
+                <td class="DefaultCell">11497</td>
+                <td class="DefaultCell">140284</td>
+                <td class="DefaultCell">24015</td>
+                <td class="DefaultCell">23591</td>
+                <td class="DefaultCell">139860</td>
+                <td class="DefaultCell">12204</td>
+                <td class="DefaultCell">3342</td>
+                <td class="DefaultCell">687</td>
+                <td class="DefaultCell">156</td>
+                <td class="DefaultCell">44</td>
+                <td class="DefaultCell">7</td>
+                <td class="DefaultCell">1</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+              </tr>
+            </table>
+            <table class="DefaultTable">
+              <tr>
+                <td class="PatternSeparator"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="Indentation">
+          <table class="NegativeResultBackground">
+            <tr>
+              <td>
+                <big class="Heading4">
+                  <a name="5_10005_1.7.5.3.1">Cycle Time Absolute</a> (1.7.5.3.1#5): Check failed</big>
+              </td>
+            </tr>
+          </table>
+          <div class="Indentation">
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Parameters</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Type of check</td>
+                <td class="DefaultCell">Cycle Time Absolute</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message</td>
+                <td class="DefaultCell">CAN message 'FlcAdRedundancyFr06' ID = 85 (0x55) on bus ADCAN Network</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MinTime</td>
+                <td class="DefaultCell">9 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MaxTime</td>
+                <td class="DefaultCell">11 ms</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Statistics</th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Runtime of the statistic</td>
+                <td class="DefaultCell">3600000 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of failures</td>
+                <td class="DefaultCell">1436</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of samples</td>
+                <td class="DefaultCell">359996</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message ID</td>
+                <td class="DefaultCell">85 (0x55)</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Minimal measured cycle time</td>
+                <td class="DefaultCell">8.052875 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Maximal measured cycle time</td>
+                <td class="DefaultCell">11.704375 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Average cycle time</td>
+                <td class="DefaultCell">10.000127 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Failure ratio (in %)</td>
+                <td class="DefaultCell">0.398894</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="22">Distribution of measured times</th>
+              </tr>
+              <tr>
+                <td class="DefineCell"> &lt;= 8 ms</td>
+                <td class="DefineCell">8 ms - 8.2 ms</td>
+                <td class="DefineCell">8.2 ms - 8.4 ms</td>
+                <td class="DefineCell">8.4 ms - 8.6 ms</td>
+                <td class="DefineCell">8.6 ms - 8.8 ms</td>
+                <td class="DefineCell">8.8 ms - 9 ms</td>
+                <td class="DefineCell">9 ms - 9.2 ms</td>
+                <td class="DefineCell">9.2 ms - 9.4 ms</td>
+                <td class="DefineCell">9.4 ms - 9.6 ms</td>
+                <td class="DefineCell">9.6 ms - 9.8 ms</td>
+                <td class="DefineCell">9.8 ms - 10 ms</td>
+                <td class="DefineCell">10 ms - 10.2 ms</td>
+                <td class="DefineCell">10.2 ms - 10.4 ms</td>
+                <td class="DefineCell">10.4 ms - 10.6 ms</td>
+                <td class="DefineCell">10.6 ms - 10.8 ms</td>
+                <td class="DefineCell">10.8 ms - 11 ms</td>
+                <td class="DefineCell">11 ms - 11.2 ms</td>
+                <td class="DefineCell">11.2 ms - 11.4 ms</td>
+                <td class="DefineCell">11.4 ms - 11.6 ms</td>
+                <td class="DefineCell">11.6 ms - 11.8 ms</td>
+                <td class="DefineCell">11.8 ms - 12 ms</td>
+                <td class="DefineCell"> &gt; 12 ms</td>
+              </tr>
+              <tr>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">1</td>
+                <td class="DefaultCell">3</td>
+                <td class="DefaultCell">50</td>
+                <td class="DefaultCell">240</td>
+                <td class="DefaultCell">545</td>
+                <td class="DefaultCell">1233</td>
+                <td class="DefaultCell">4304</td>
+                <td class="DefaultCell">12961</td>
+                <td class="DefaultCell">136379</td>
+                <td class="DefaultCell">24244</td>
+                <td class="DefaultCell">24181</td>
+                <td class="DefaultCell">135670</td>
+                <td class="DefaultCell">13923</td>
+                <td class="DefaultCell">4519</td>
+                <td class="DefaultCell">1145</td>
+                <td class="DefaultCell">407</td>
+                <td class="DefaultCell">164</td>
+                <td class="DefaultCell">20</td>
+                <td class="DefaultCell">6</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+              </tr>
+            </table>
+            <table class="DefaultTable">
+              <tr>
+                <td class="PatternSeparator"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="Indentation">
+          <table class="NegativeResultBackground">
+            <tr>
+              <td>
+                <big class="Heading4">
+                  <a name="6_10006_1.7.5.3.1">Cycle Time Absolute</a> (1.7.5.3.1#6): Check failed</big>
+              </td>
+            </tr>
+          </table>
+          <div class="Indentation">
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Parameters</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Type of check</td>
+                <td class="DefaultCell">Cycle Time Absolute</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message</td>
+                <td class="DefaultCell">CAN message 'FlcAdRedundancyFr07' ID = 112 (0x70) on bus ADCAN Network</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MinTime</td>
+                <td class="DefaultCell">22 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MaxTime</td>
+                <td class="DefaultCell">27 ms</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Statistics</th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Runtime of the statistic</td>
+                <td class="DefaultCell">3600000 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of failures</td>
+                <td class="DefaultCell">3624</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of samples</td>
+                <td class="DefaultCell">143998</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message ID</td>
+                <td class="DefaultCell">112 (0x70)</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Minimal measured cycle time</td>
+                <td class="DefaultCell">21.686079 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Maximal measured cycle time</td>
+                <td class="DefaultCell">28.332343 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Average cycle time</td>
+                <td class="DefaultCell">25.000329 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Failure ratio (in %)</td>
+                <td class="DefaultCell">2.51672</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="22">Distribution of measured times</th>
+              </tr>
+              <tr>
+                <td class="DefineCell"> &lt;= 19.5 ms</td>
+                <td class="DefineCell">19.5 ms - 20 ms</td>
+                <td class="DefineCell">20 ms - 20.5 ms</td>
+                <td class="DefineCell">20.5 ms - 21 ms</td>
+                <td class="DefineCell">21 ms - 21.5 ms</td>
+                <td class="DefineCell">21.5 ms - 22 ms</td>
+                <td class="DefineCell">22 ms - 22.5 ms</td>
+                <td class="DefineCell">22.5 ms - 23 ms</td>
+                <td class="DefineCell">23 ms - 23.5 ms</td>
+                <td class="DefineCell">23.5 ms - 24 ms</td>
+                <td class="DefineCell">24 ms - 24.5 ms</td>
+                <td class="DefineCell">24.5 ms - 25 ms</td>
+                <td class="DefineCell">25 ms - 25.5 ms</td>
+                <td class="DefineCell">25.5 ms - 26 ms</td>
+                <td class="DefineCell">26 ms - 26.5 ms</td>
+                <td class="DefineCell">26.5 ms - 27 ms</td>
+                <td class="DefineCell">27 ms - 27.5 ms</td>
+                <td class="DefineCell">27.5 ms - 28 ms</td>
+                <td class="DefineCell">28 ms - 28.5 ms</td>
+                <td class="DefineCell">28.5 ms - 29 ms</td>
+                <td class="DefineCell">29 ms - 29.5 ms</td>
+                <td class="DefineCell"> &gt; 29.5 ms</td>
+              </tr>
+              <tr>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">194</td>
+                <td class="DefaultCell">902</td>
+                <td class="DefaultCell">2307</td>
+                <td class="DefaultCell">4679</td>
+                <td class="DefaultCell">16215</td>
+                <td class="DefaultCell">34937</td>
+                <td class="DefaultCell">12788</td>
+                <td class="DefaultCell">12834</td>
+                <td class="DefaultCell">34627</td>
+                <td class="DefaultCell">16404</td>
+                <td class="DefaultCell">4680</td>
+                <td class="DefaultCell">2350</td>
+                <td class="DefaultCell">873</td>
+                <td class="DefaultCell">207</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+              </tr>
+            </table>
+            <table class="DefaultTable">
+              <tr>
+                <td class="PatternSeparator"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="Indentation">
+          <table class="PositiveResultBackground">
+            <tr>
+              <td>
+                <big class="Heading4">
+                  <a name="7_10007_1.7.5.3.1">Cycle Time Absolute</a> (1.7.5.3.1#7): Check passed</big>
+              </td>
+            </tr>
+          </table>
+          <div class="Indentation">
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Parameters</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Type of check</td>
+                <td class="DefaultCell">Cycle Time Absolute</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message</td>
+                <td class="DefaultCell">CAN message 'FlcAdRedundancyFr08' ID = 65 (0x41) on bus ADCAN Network</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MinTime</td>
+                <td class="DefaultCell">18 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">MaxTime</td>
+                <td class="DefaultCell">22 ms</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="2">Statistics</th>
+              </tr>
+              <tr>
+                <td class="DefineCell">Runtime of the statistic</td>
+                <td class="DefaultCell">3600000 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Number of samples</td>
+                <td class="DefaultCell">179998</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Message ID</td>
+                <td class="DefaultCell">65 (0x41)</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Minimal measured cycle time</td>
+                <td class="DefaultCell">19.0405 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Maximal measured cycle time</td>
+                <td class="DefaultCell">20.9595 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Average cycle time</td>
+                <td class="DefaultCell">20.000257 ms</td>
+              </tr>
+              <tr>
+                <td class="DefineCell">Failure ratio (in %)</td>
+                <td class="DefaultCell">0</td>
+              </tr>
+            </table>
+            <table class="CheckStatisticsTable">
+              <tr>
+                <th class="TableHeadingCell" colspan="22">Distribution of measured times</th>
+              </tr>
+              <tr>
+                <td class="DefineCell"> &lt;= 16 ms</td>
+                <td class="DefineCell">16 ms - 16.4 ms</td>
+                <td class="DefineCell">16.4 ms - 16.8 ms</td>
+                <td class="DefineCell">16.8 ms - 17.2 ms</td>
+                <td class="DefineCell">17.2 ms - 17.6 ms</td>
+                <td class="DefineCell">17.6 ms - 18 ms</td>
+                <td class="DefineCell">18 ms - 18.4 ms</td>
+                <td class="DefineCell">18.4 ms - 18.8 ms</td>
+                <td class="DefineCell">18.8 ms - 19.2 ms</td>
+                <td class="DefineCell">19.2 ms - 19.6 ms</td>
+                <td class="DefineCell">19.6 ms - 20 ms</td>
+                <td class="DefineCell">20 ms - 20.4 ms</td>
+                <td class="DefineCell">20.4 ms - 20.8 ms</td>
+                <td class="DefineCell">20.8 ms - 21.2 ms</td>
+                <td class="DefineCell">21.2 ms - 21.6 ms</td>
+                <td class="DefineCell">21.6 ms - 22 ms</td>
+                <td class="DefineCell">22 ms - 22.4 ms</td>
+                <td class="DefineCell">22.4 ms - 22.8 ms</td>
+                <td class="DefineCell">22.8 ms - 23.2 ms</td>
+                <td class="DefineCell">23.2 ms - 23.6 ms</td>
+                <td class="DefineCell">23.6 ms - 24 ms</td>
+                <td class="DefineCell"> &gt; 24 ms</td>
+              </tr>
+              <tr>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">8</td>
+                <td class="DefaultCell">1394</td>
+                <td class="DefaultCell">87065</td>
+                <td class="DefaultCell">89897</td>
+                <td class="DefaultCell">1629</td>
+                <td class="DefaultCell">4</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+                <td class="DefaultCell">0</td>
+              </tr>
+            </table>
+            <table class="DefaultTable">
+              <tr>
+                <td class="PatternSeparator"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="Indentation"></div>
+      <table class="TestGroupHeadingBackground">
+        <tr>
+          <td>
+            <big class="Heading3">Main Part of Test Case</big>
+          </td>
+        </tr>
+      </table>
+      <div class="Indentation">
+        <table class="ResultTable">
+          <tr>
+            <th class="TableHeadingCell" width="1px">Timestamp</th>
+            <th class="TableHeadingCell" width="1px">Test Step</th>
+            <th class="TableHeadingCell" width="auto">Description</th>
+            <th class="TableHeadingCell" width="1px">Result</th>
+          </tr>
+          <tr>
+            <td class="DefineCell"> 119.663979</td>
+            <td class="NumberCell">1.Action</td>
+            <td class="DefaultCell">TS1: Verify message group FlcAdRedundancyFr01,FlcAdRedundancyFr02,FlcAdRedundancyFr03,FlcAdRedundancyFr05,FlcAdRedundancyFr06,FlcAdRedundancyFr07,FlcAdRedundancyFr08 cycle time for 3600000 ms.</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr>
+            <td class="DefineCell"> 119.663979</td>
+            <td class="NumberCell">1.Expected</td>
+            <td class="DefaultCell">All frame cycle is right.</td>
+            <td class="DefaultCell">-</td>
+          </tr>
+          <tr id="i__1300072688_2380">
+            <td class="DefineCell"> 529.853421</td>
+            <td class="NegativeResultCell">Constraint violation</td>
+            <td class="NegativeResultCell">
+              <a href="#3_10003_1.7.5.3.1">Cycle Time Absolute (1.7.5.3.1#3)</a>: Maximum cycle time violation for CAN message 'FlcAdRedundancyFr03' ID = 295 (0x127) on bus ADCAN Network.</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2390">
+            <td class="DefineCell"> 564.253421</td>
+            <td class="NegativeResultCell">Constraint violation</td>
+            <td class="NegativeResultCell">
+              <a href="#2_10002_1.7.5.3.1">Cycle Time Absolute (1.7.5.3.1#2)</a>: Maximum cycle time violation for CAN message 'FlcAdRedundancyFr02' ID = 288 (0x120) on bus ADCAN Network.</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2400">
+            <td class="DefineCell"> 570.251527</td>
+            <td class="NegativeResultCell">Constraint violation</td>
+            <td class="NegativeResultCell">
+              <a href="#6_10006_1.7.5.3.1">Cycle Time Absolute (1.7.5.3.1#6)</a>: Maximum cycle time violation for CAN message 'FlcAdRedundancyFr07' ID = 112 (0x70) on bus ADCAN Network.</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2410">
+            <td class="DefineCell"> 590.831133</td>
+            <td class="NegativeResultCell">Constraint violation</td>
+            <td class="NegativeResultCell">
+              <a href="#5_10005_1.7.5.3.1">Cycle Time Absolute (1.7.5.3.1#5)</a>: Maximum cycle time violation for CAN message 'FlcAdRedundancyFr06' ID = 85 (0x55) on bus ADCAN Network.</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2420">
+            <td class="DefineCell"> 625.231371</td>
+            <td class="NegativeResultCell">Constraint violation</td>
+            <td class="NegativeResultCell">
+              <a href="#4_10004_1.7.5.3.1">Cycle Time Absolute (1.7.5.3.1#4)</a>: Maximum cycle time violation for CAN message 'FlcAdRedundancyFr05' ID = 80 (0x50) on bus ADCAN Network.</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2430">
+            <td class="DefineCell"> 676.934421</td>
+            <td class="NegativeResultCell">Constraint violation</td>
+            <td class="NegativeResultCell">
+              <a href="#1_10001_1.7.5.3.1">Cycle Time Absolute (1.7.5.3.1#1)</a>: Maximum cycle time violation for CAN message 'FlcAdRedundancyFr01' ID = 121 (0x79) on bus ADCAN Network.</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2440">
+            <td class="DefineCell">3719.663979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">frame ID: 121 cycle failed,c_flag:1</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2450">
+            <td class="DefineCell">3719.663979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">frame ID: 288 cycle failed,c_flag:1</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2460">
+            <td class="DefineCell">3719.663979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">frame ID: 295 cycle failed,c_flag:1</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2470">
+            <td class="DefineCell">3719.663979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">frame ID: 80 cycle failed,c_flag:1</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2480">
+            <td class="DefineCell">3719.663979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">frame ID: 85 cycle failed,c_flag:1</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+          <tr id="i__1300072688_2490">
+            <td class="DefineCell">3719.663979</td>
+            <td class="NumberCell">1</td>
+            <td class="DefaultCell">frame ID: 112 cycle failed,c_flag:1</td>
+            <td class="NegativeResultCell">fail</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <table class="GroupEndTable">
+      <tr>
+        <td>End of Test Group: can cycle time</td>
+      </tr>
+    </table>
+    <table class="GroupEndTable">
+      <tr>
+        <td>End of Test Group: cycle time test</td>
+      </tr>
+    </table>
+    <table class="GroupEndTable">
+      <tr>
+        <td>End of Test Group: stability</td>
+      </tr>
+    </table>
+    <table class="GroupEndTable">
+      <tr>
+        <td>End of Test Group: CASE IN FLC</td>
+      </tr>
+    </table>
+    <table class="SubHeadingTable">
+      <tr>
+        <td>
+          <div class="Heading2">End of Report</div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Control">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2" Children="Controls" ControlName="Group Box 2">
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text 2">
+        <Property Name="Name">StaticTextControl2</Property>
+        <Property Name="Size">74, 13</Property>
+        <Property Name="Location">57, 72</Property>
+        <Property Name="Text">Hazard Flasher</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text">
+        <Property Name="Name">StaticTextControl1</Property>
+        <Property Name="Size">54, 13</Property>
+        <Property Name="Location">57, 26</Property>
+        <Property Name="Text">Head Light</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl3" ControlName="Switch/Indicator 2">
+        <Property Name="Name">SwitchControl3</Property>
+        <Property Name="Size">27, 38</Property>
+        <Property Name="Location">25, 61</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="Activation">Left</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="ImageFile">Bitmaps\ControlHazard.bmp</Property>
+        <Property Name="SymbolConfiguration">5;16;Lights;;;HazardLightsSwitch;1;;;-1;;;</Property>
+        <Property Name="TabIndex">1</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl1" ControlName="Switch/Indicator">
+        <Property Name="Name">SwitchControl1</Property>
+        <Property Name="Size">28, 39</Property>
+        <Property Name="Location">25, 17</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="Activation">Left</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="ImageFile">Bitmaps\ControlHeadLight.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;bmw;Light;LightState;HeadLight;1;CAN;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl2</Property>
+      <Property Name="Size">165, 110</Property>
+      <Property Name="Location">248, 13</Property>
+      <Property Name="Text">Light</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+      <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl4" Children="Controls" ControlName="Group Box 4">
+        <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1" Children="Controls" ControlName="Track Bar">
+          <Property Name="Name">TrackBarControl1</Property>
+          <Property Name="Size">106, 47</Property>
+          <Property Name="Location">0, 24</Property>
+          <Property Name="Maximum">3500</Property>
+          <Property Name="TickFrequency">500</Property>
+          <Property Name="SmallChange">50</Property>
+          <Property Name="LargeChange">100</Property>
+          <Property Name="SmallChangeDouble">50</Property>
+          <Property Name="LargeChangeDouble">100</Property>
+          <Property Name="TickFrequencyDouble">500</Property>
+          <Property Name="MaximumDouble">3500</Property>
+          <Property Name="SymbolConfiguration">5;16;Engine;;;EngineSpeedEntry;2;;;-1;;;</Property>
+          <Property Name="TabIndex">0</Property>
+        </Object>
+        <Property Name="Name">GroupBoxControl4</Property>
+        <Property Name="Size">124, 76</Property>
+        <Property Name="Location">94, 17</Property>
+        <Property Name="Text">Speed</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3" Children="Controls" ControlName="Group Box 3">
+        <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl2" ControlName="Switch1">
+          <Property Name="Name">SwitchControl2</Property>
+          <Property Name="Size">38, 40</Property>
+          <Property Name="Location">14, 17</Property>
+          <Property Name="StateCnt">2</Property>
+          <Property Name="Activation">Left</Property>
+          <Property Name="SwitchValues">1;2;0;1</Property>
+          <Property Name="SwitchValuesRx">1;2;0;1</Property>
+          <Property Name="ImageFile">Bitmaps\ControlIgnition.bmp</Property>
+          <Property Name="SymbolConfiguration">5;16;Engine;;;EngineStateSwitch;1;;;-1;;;</Property>
+          <Property Name="TabIndex">2</Property>
+        </Object>
+        <Property Name="Name">GroupBoxControl3</Property>
+        <Property Name="Size">63, 76</Property>
+        <Property Name="Location">13, 17</Property>
+        <Property Name="Text">Ignition</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">223, 110</Property>
+      <Property Name="Location">10, 13</Property>
+      <Property Name="Text">Engine</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">442, 141</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Display">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2" Children="Controls" ControlName="Group Box 2">
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl4" ControlName="Switch/Indicator 4">
+        <Property Name="Name">SwitchControl4</Property>
+        <Property Name="Size">36, 91</Property>
+        <Property Name="Location">35, 118</Property>
+        <Property Name="StateCnt">8</Property>
+        <Property Name="SwitchValues">1;8;0;1;2;3;4;5;6;7</Property>
+        <Property Name="SwitchValuesRx">1;8;0;1;2;3;4;5;6;7</Property>
+        <Property Name="ImageFile">panel\Bitmaps\VCarFlashingLightRight.bmp</Property>
+        <Property Name="SymbolConfiguration">5;16;Lights;;;LightDisplay;1;;;-1;;;</Property>
+        <Property Name="TabIndex">3</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl3" ControlName="Switch/Indicator 3">
+        <Property Name="Name">SwitchControl3</Property>
+        <Property Name="Size">21, 30</Property>
+        <Property Name="Location">313, 90</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="SymbolConfiguration">
+        </Property>
+        <Property Name="TabIndex">2</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl2" ControlName="Switch/Indicator 2">
+        <Property Name="Name">SwitchControl2</Property>
+        <Property Name="Size">74, 63</Property>
+        <Property Name="Location">151, 145</Property>
+        <Property Name="StateCnt">8</Property>
+        <Property Name="SwitchValues">1;8;0;1;2;3;4;5;6;7</Property>
+        <Property Name="SwitchValuesRx">1;8;0;1;2;3;4;5;6;7</Property>
+        <Property Name="ImageFile">panel\Bitmaps\VCarFlashingLightLeft.bmp</Property>
+        <Property Name="SymbolConfiguration">5;16;Lights;;;LightDisplay;1;;;-1;;;</Property>
+        <Property Name="TabIndex">1</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.PictureBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="PictureBoxControl1" ControlName="Picture Box">
+        <Property Name="Name">PictureBoxControl1</Property>
+        <Property Name="Size">351, 288</Property>
+        <Property Name="Location">4, 0</Property>
+        <Property Name="ImageFile">panel\Bitmaps\VCar.bmp</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl2</Property>
+      <Property Name="Size">371, 300</Property>
+      <Property Name="Location">225, 13</Property>
+      <Property Name="Text">Light</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box">
+        <Property Name="Name">TextBoxControl1</Property>
+        <Property Name="Size">44, 22</Property>
+        <Property Name="Location">66, 260</Property>
+        <Property Name="AlarmUpperTextColor">WindowText</Property>
+        <Property Name="ValueDecimalPlaces">0</Property>
+        <Property Name="AlarmLowerBkgColor">Salmon</Property>
+        <Property Name="ValueDisplay">Decimal</Property>
+        <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+        <Property Name="AlarmLowerTextColor">WindowText</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">r.p.m</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;2;bmw;Engine;EngineState;EngineSpeed;1;CAN;;-1;;;</Property>
+        <Property Name="TabIndex">4</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.AnalogGaugeControl, Vector.CANalyzer.Panels.AnalogGauge, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="AnalogGaugeControl1" ControlName="Analog Gauge">
+        <Property Name="Name">AnalogGaugeControl1</Property>
+        <Property Name="Size">167, 149</Property>
+        <Property Name="Location">5, 145</Property>
+        <Property Name="BackgroundColor">White</Property>
+        <Property Name="CriticalProps" Member="AAEAAAD/////AQAAAAAAAAAEAQAAAC9TeXN0ZW0uUmVmbGVjdGlvbi5NZW1iZXJJbmZvU2VyaWFsaXphdGlvbkhvbGRlcgcAAAAETmFtZQxBc3NlbWJseU5hbWUJQ2xhc3NOYW1lCVNpZ25hdHVyZQpTaWduYXR1cmUyCk1lbWJlclR5cGUQR2VuZXJpY0FyZ3VtZW50cwEBAQEBAAMIDVN5c3RlbS5UeXBlW10GAgAAAAUuY3RvcgYDAAAAXFZlY3Rvci5DQU5hbHl6ZXIuUGFuZWxzLkFuYWxvZ0dhdWdlLCBWZXJzaW9uPTExLjAuNTUuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBgQAAAA2VmVjdG9yLkNBTmFseXplci5QYW5lbHMuRGVzaWduLkdhdWdlQ3JpdGljYWxQcm9wZXJ0aWVzBgUAAAAyVm9pZCAuY3RvcihEb3VibGUsIERvdWJsZSwgRG91YmxlLCBEb3VibGUsIERvdWJsZSkGBgAAAFAuY3RvcihTeXN0ZW0uRG91YmxlLCBTeXN0ZW0uRG91YmxlLCBTeXN0ZW0uRG91YmxlLCBTeXN0ZW0uRG91YmxlLCBTeXN0ZW0uRG91YmxlKQEAAAAKCw==">
+          <Argument>0</Argument>
+          <Argument>4</Argument>
+          <Argument>0</Argument>
+          <Argument>0</Argument>
+          <Argument>3.5</Argument>
+        </Property>
+        <Property Name="GaugeFont">Microsoft Sans Serif, 7.8pt</Property>
+        <Property Name="LegendText">
+        </Property>
+        <Property Name="ScaleAngle">240</Property>
+        <Property Name="SymbolConfiguration">5;16;Engine;;;EngineSpeedDspMeter;2;;;-1;;;</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl1" ControlName="Switch/Indicator">
+        <Property Name="Name">SwitchControl1</Property>
+        <Property Name="Size">74, 85</Property>
+        <Property Name="Location">52, 35</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="ImageFile">panel\Bitmaps\DisplayCar.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;bmw;Engine;EngineState;OnOff;1;CAN;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">194, 300</Property>
+      <Property Name="Location">20, 13</Property>
+      <Property Name="Text">Engine</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">616, 330</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

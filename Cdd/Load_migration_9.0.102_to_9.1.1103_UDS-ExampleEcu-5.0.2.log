@@ -1,0 +1,95 @@
+Encoding: iso-8859-1
+Detected dtd version 9.0.102
+VCANdelaPersistorImpl::GetFileVersion: DTD version '9.0.102' detected
+Loading 'C:\Users\Public\Documents\Vector\CANoe\Sample Configurations 11.0.55\CAN\Diagnostics\UDSBasic\Cdd\UDS-ExampleEcu-5.0.2.cdd'...
+  dtd version: file 9.0.102, program 9.1.1103
+Document supports the languages (en-US,de-DE)
+Document contains the uptodate languages (en-US,de-DE)
+Template: Qualifier : Door, SaveNo : 2, Label : --DDM_VALIDATE_BEGIN00281d7c-1e88-46b6-8add-59d7d2106c31DDM_VALIDATE_END
+  template data loaded
+  variant 'CommonDiagnostics' loaded
+  variant 'DevSample' loaded
+Start loading requirement data model
+End loading requirement data model
+Done loading.
+Checking consistency of document. This may take a while, please be patient...
+Warning: Qualifier detected in 'qpath://[ECUDEFATTR]Diagnostic_DoIP_ISO13400_2012.CP_DoIPSecondaryLogicalEcuResponseAddress' is too long.
+Warning:  The maximal allowed qualifier length is 64 characters. See Qualifier generation options dialog.
+Warning: Qualifier detected in 'qpath://[PROTOCOLSERVICE]_07_RequestEmissionRelatedDTCsDetectedDuringCurrentOrLastCompletedCycle' is too long.
+Warning:  The maximal allowed qualifier length is 64 characters. See Qualifier generation options dialog.
+Warning: Qualifier detected in 'qpath://[PROTOCOLSERVICE]_08_RequestControlOfOnBoardSystemTestOrComponent_ReadSupportedTIDs' is too long.
+Warning:  The maximal allowed qualifier length is 64 characters. See Qualifier generation options dialog.
+ComParamMan: Unidentified ComParam UudtCanIdType
+ComParamMan: Unidentified ComParam TesterPresentPhys
+ComParamMan: Unidentified ComParam TesterPresentFunc
+ComParamMan: Unidentified ComParam RC21Handling
+ComParamMan: Unidentified ComParam RC21RequestTime
+ComParamMan: Unidentified ComParam RC21CompletionTimeout
+ComParamMan: Unidentified ComParam RC78Handling
+ComParamMan: Unidentified ComParam RC78CompletionTimeout
+ComParamMan: Unidentified ComParam TransmissionTime
+ComParamMan: Setting COM parameter 'BusType' to value 'FlexRay' failed. Invalid value!
+ComParamMan: Unidentified ComParam CP_P2Max
+ComParamMan: Unidentified ComParam CP_P2Max_Ecu
+ComParamMan: Unidentified ComParam CP_P2Star
+ComParamMan: Unidentified ComParam CP_P2Star_Ecu
+ComParamMan: Unidentified ComParam CP_TesterPresentTime
+ComParamMan: Unidentified ComParam CP_TesterPresentTime_Ecu
+ComParamMan: Unidentified ComParam CP_P3Phys
+ComParamMan: Unidentified ComParam PDUListReqPhys
+ComParamMan: Unidentified ComParam PDUListRes
+ComParamMan: Unidentified ComParam FrFrameFillerByte
+ComParamMan: Unidentified ComParam AutoP2Handling
+ComParamMan: Unidentified ComParam RC21Handling
+ComParamMan: Unidentified ComParam RC21RequestTime
+ComParamMan: Unidentified ComParam RC21CompletionTimeout
+ComParamMan: Unidentified ComParam RC78Handling
+ComParamMan: Unidentified ComParam RC78CompletionTimeout
+ComParamMan: Setting COM parameter 'TransportProtocolType' to value 'ISO10681' failed. Invalid value!
+ComParamMan: Unidentified ComParam ConnectionModePhys
+ComParamMan: Unidentified ComParam BufferSize
+ComParamMan: Unidentified ComParam BandwidthControl
+ComParamMan: Setting COM parameter 'BusType' to value 'FlexRay' failed. Invalid value!
+ComParamMan: Unidentified ComParam CP_P2Max
+ComParamMan: Unidentified ComParam CP_P2Max_Ecu
+ComParamMan: Unidentified ComParam CP_P2Star
+ComParamMan: Unidentified ComParam CP_P2Star_Ecu
+ComParamMan: Unidentified ComParam CP_TesterPresentTime
+ComParamMan: Unidentified ComParam CP_TesterPresentTime_Ecu
+ComParamMan: Unidentified ComParam CP_P3Phys
+ComParamMan: Unidentified ComParam PDUListReqPhys
+ComParamMan: Unidentified ComParam PDUListRes
+ComParamMan: Unidentified ComParam FrFrameFillerByte
+ComParamMan: Unidentified ComParam AutoP2Handling
+ComParamMan: Unidentified ComParam RC21Handling
+ComParamMan: Unidentified ComParam RC21RequestTime
+ComParamMan: Unidentified ComParam RC21CompletionTimeout
+ComParamMan: Unidentified ComParam RC78Handling
+ComParamMan: Unidentified ComParam RC78CompletionTimeout
+ComParamMan: Setting COM parameter 'TransportProtocolType' to value 'Autosar2x' failed. Invalid value!
+ComParamMan: Unidentified ComParam ConnectionModePhys
+ComParamMan: Unidentified ComParam MessageLengthPhys
+ComParamMan: Unidentified ComParam AddressTypePhys
+ComParamMan: Setting COM parameter 'BusType' to value 'Ethernet' failed. Invalid value!
+ComParamMan: Unidentified ComParam CP_DoIPLogicalGatewayAddress
+ComParamMan: Unidentified ComParam CP_DoIPLogicalEcuAddress
+ComParamMan: Unidentified ComParam CP_DoIPLogicalTesterAddress
+ComParamMan: Unidentified ComParam CP_DoIPLogicalFunctionalAddress
+ComParamMan: Unidentified ComParam CP_DoIPSecondaryLogicalEcuResponseAddress
+ComParamMan: Unidentified ComParam CP_P6Max
+ComParamMan: Unidentified ComParam CP_P2Max_Ecu
+ComParamMan: Unidentified ComParam CP_P6Star
+ComParamMan: Unidentified ComParam CP_P2Star_Ecu
+ComParamMan: Unidentified ComParam CP_TesterPresentTime
+ComParamMan: Unidentified ComParam CP_TesterPresentTime_Ecu
+ComParamMan: Unidentified ComParam CP_P3Phys
+ComParamMan: Unidentified ComParam CP_P3Func
+ComParamMan: Unidentified ComParam CP_NetworkTransmissionTime
+ComParamMan: Unidentified ComParam CP_RC78Handling
+ComParamMan: Unidentified ComParam CP_RC78CompletionTimeout
+ComParamMan: Unidentified ComParam CP_RC21Handling
+ComParamMan: Unidentified ComParam CP_RC21RequestTime
+ComParamMan: Unidentified ComParam CP_RC21CompletionTimeout
+Checking service prefixes in base variant 'CommonDiagnostics' ... OK
+Checking service prefixes in extended variant 'DevSample' ... OK
+Document is consistent.

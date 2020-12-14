@@ -1,0 +1,46 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+variables
+{
+  word TestStepIndex=0;
+  word subTestStepIndex=0;
+  char TestStepText[200]; 
+  char tempText[200]; 
+}
+
+testcase read_EngineState()
+{
+  TestStepIndex = 1;
+  subTestStepIndex= 1;
+  snprintf(TestStepText, elcount(TestStepText), "%d.%d", TestStepIndex,subTestStepIndex );
+  TestStep(TestStepText, "Read Engine Speed.");  
+  snprintf(tempText, elcount(tempText), "Engine Speed is %.2f",getSignal(EngineSpeed) );
+  testStepPass(TestStepText, tempText); 
+}
+testcase read_LightState()
+{ 
+  TestStepIndex = 1;
+  subTestStepIndex= 1;
+  snprintf(TestStepText, elcount(TestStepText), "%d.%d", TestStepIndex,subTestStepIndex );
+  TestStep(TestStepText, "Read Flash Light Speed.");
+  snprintf(tempText, elcount(tempText), "Flash Light is %d",getSignal(FlashLight) );
+  testStepPass(TestStepText, tempText); 
+  
+  TestStepIndex = 2;
+  subTestStepIndex= 1;
+  snprintf(TestStepText, elcount(TestStepText), "%d.%d", TestStepIndex,subTestStepIndex );
+  TestStep(TestStepText, "Read Head Light Speed.");  
+  snprintf(tempText, elcount(tempText), "Head Light is %d",getSignal(HeadLight) );
+  testStepPass(TestStepText, tempText); 
+  
+}
+
+void MainTest ()
+{
+    read_EngineState();
+    read_LightState();
+}
+

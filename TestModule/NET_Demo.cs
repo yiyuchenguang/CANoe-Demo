@@ -9,8 +9,6 @@ using Vector.CANoe.TFS;
 using Vector.CANoe.VTS;
 using NetworkDB;
 
-
-
 public class NET_Demo : TestModule
 {
     public override void Main()

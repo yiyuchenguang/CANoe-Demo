@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2020-12-16 17:01:49" timestamp="   2.691156" verdicts="2_basic">
+  <testcase starttime="2020-12-16 17:01:49" timestamp="   2.691156">
+    <teststep timestamp="   2.691156" level="0" type="user" ident="1.1" result="na">Read Engine Speed.</teststep>
+    <teststep timestamp="   2.691156" level="0" type="user" ident="1.1" result="pass">Engine Speed is 0.00</teststep>
+    <verdict time="2020-12-16 17:01:49" timestamp="   2.691156" endtime="2020-12-16 17:01:49" endtimestamp="   2.691156" result="pass" />
+    <title>read_EngineState</title>
+  </testcase>
+  <testcase starttime="2020-12-16 17:01:49" timestamp="   2.691156">
+    <teststep timestamp="   2.691156" level="0" type="user" ident="1.1" result="na">Read Flash Light Speed.</teststep>
+    <teststep timestamp="   2.691156" level="0" type="user" ident="1.1" result="pass">Flash Light is 0</teststep>
+    <teststep timestamp="   2.691156" level="0" type="user" ident="2.1" result="na">Read Head Light Speed.</teststep>
+    <teststep timestamp="   2.691156" level="0" type="user" ident="2.1" result="pass">Head Light is 0</teststep>
+    <verdict time="2020-12-16 17:01:49" timestamp="   2.691156" endtime="2020-12-16 17:01:49" endtimestamp="   2.691156" result="pass" />
+    <title>read_LightState</title>
+  </testcase>
+  <verdict time="2020-12-16 17:01:49" timestamp="   2.691156" endtime="2020-12-16 17:01:49" endtimestamp="   2.691156" result="pass" />
+  <title>capl_test_node_test</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>carl.wu</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.FlexRay 11.0.55 (SP2)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>C:\Users\carl.wu\Desktop\BMW\bmw.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database bmw on CAN</name>
+      <description>C:\Users\carl.wu\Desktop\BMW\dbc\bmw.dbc (2020-11-24 13:46:40)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>capl_test_node_test</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>C:\Users\carl.wu\Desktop\BMW\TestModule\capl_test_node_test.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2020-12-09, 14:23:18</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>CN03-OF-WL0021</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.55.0, c:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLVECTOR</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.16.47 (Jul  4 2017 16:10:44) , c:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLVECTOR.DLL</description>
+    </xinfo>
+  </testsetup>
+  <hardware name="CAN Channel Interfaces" category="CategoryCANIF">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>1</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>Virtual CAN Bus</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>0</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>10.8.22</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>10.8.22</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+</testmodule>
+<!--footprint="2f224f9202c8ce1f1975022b676d1ec7" version="1"-->

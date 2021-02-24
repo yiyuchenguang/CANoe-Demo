@@ -29,7 +29,8 @@ testcase read_LightState()
   snprintf(tempText, elcount(tempText), "Flash Light is %d",getSignal(FlashLight) );
   testStepPass(TestStepText, tempText); 
   
-  TestStepIndex = 2;
+     
+  TestStepIndex =  getValue(en_bmw_test);
   subTestStepIndex= 1;
   snprintf(TestStepText, elcount(TestStepText), "%d.%d", TestStepIndex,subTestStepIndex );
   TestStep(TestStepText, "Read Head Light Speed.");  

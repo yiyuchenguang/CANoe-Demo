@@ -1,8 +1,8 @@
 Encoding: iso-8859-1
 Detected dtd version 9.0.102
 VCANdelaPersistorImpl::GetFileVersion: DTD version '9.0.102' detected
-Loading 'C:\Users\Public\Documents\Vector\CANoe\Sample Configurations 11.0.55\CAN\Diagnostics\UDSBasic\Cdd\UDS-ExampleEcu-5.0.2.cdd'...
-  dtd version: file 9.0.102, program 9.1.1103
+Loading 'C:\Users\carl.wu\Desktop\CANoe-Demo\Cdd\UDS-ExampleEcu-5.0.2.cdd'...
+  dtd version: file 9.0.102, program 10.0.106
 Document supports the languages (en-US,de-DE)
 Document contains the uptodate languages (en-US,de-DE)
 Template: Qualifier : Door, SaveNo : 2, Label : --DDM_VALIDATE_BEGIN00281d7c-1e88-46b6-8add-59d7d2106c31DDM_VALIDATE_END

@@ -1,0 +1,57 @@
+/*@!Encoding:1252*/
+
+variables
+{
+  const cAccessModeNumerical=0;
+  const cAccessModePhysical=1;
+  const cAccessModeCoded=2;
+}
+
+void SendRequestAndCheckReturnvalue(diagRequest * req)
+{
+  long ret;
+
+  ret=req.SendRequest();
+  if(ret>=0) {
+    write("Request was successfully added to the send queue.");
+  }
+  else {
+    write("ERROR: Could not start sending the request");
+  }
+}
+
+on key '1'
+{
+  DiagRequest Door.Variant_Coding_Write  req;
+  long ret1;
+  long ret2;
+
+  write("------ Setting the physical and symbolic representation of a parameter ------");
+  // Note that the diagnostics description encodes this value - intendedly for this example - in a quite complicated way
+  // using a formula and using a 4 byte float to show the difference between numerical, physical and coded representation.
+  
+  // set a physical value, here 20.0 km/h
+  ret1=req.SetParameter(cAccessModePhysical, "Codingstring.VehicleSpeedToLockDoor", 20.0);  
+  
+  // set a parameter symbolically, that means a text (here "Coupe") represents the number
+  ret2=req.SetParameter("Codingstring.VehicleType", "Coupe");  
+
+  if(ret1>=0 && ret2>=0) {
+    SendRequestAndCheckReturnvalue(req);
+  }
+  else {
+    write("ERROR: Could not set parameter");
+  }
+}
+
+  
+on diagResponse Door.Variant_Coding_Write
+{
+  if(this.IsPositiveResponse()) {
+    write("Coding string and VehicleSpeedToLockDoor successfully written");
+  }
+  else {
+    write("ERROR: Could not write Codingstring or VehicleSpeedToLockDoor, neg. response code: 0x%02X", this.GetResponseCode());
+  }
+}
+

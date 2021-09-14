@@ -119,7 +119,7 @@ class CANoe:
         time.sleep(1)
 
 app = CANoe() #定义CANoe为app
-app.open_cfg(r"C:/Users/carl.wu/Desktop/BMW/bmw2.cfg") #导入某个CANoe congif
+app.open_cfg(r"C:\Users\carl.wu\Desktop\CANoe-Demo/bmw2.cfg") #导入某个CANoe congif
 time.sleep(5)
 app.start_Measurement()
 

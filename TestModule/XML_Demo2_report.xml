@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2021-09-15 10:50:21" timestamp="   1.221829" verdicts="2_basic">
+  <testgroup>
+    <testcase starttime="2021-09-15 10:50:21" timestamp="   1.221829">
+      <teststep timestamp="   1.221829" level="0" type="user" ident="1.1" result="na">Set Engine Speed.</teststep>
+      <teststep timestamp="   1.221829" level="2" type="user" ident="Set signal value" result="na">Signal: &apos;Signal:CAN1/bmw/EngineState/EngineSpeed&apos;.  Value: 1000 </teststep>
+      <teststep timestamp="   1.221829" level="0" type="user" ident="1.1" result="pass">Set Engine Speed to 1000</teststep>
+      <verdict time="2021-09-15 10:50:21" timestamp="   1.221829" endtime="2021-09-15 10:50:21" endtimestamp="   1.221829" result="pass" />
+      <title>Set_EngineState</title>
+    </testcase>
+    <testcase starttime="2021-09-15 10:50:21" timestamp="   1.221829">
+      <teststep timestamp="   1.221829" level="0" type="user" ident="1.1" result="na">Set Flash Light..</teststep>
+      <teststep timestamp="   1.221829" level="2" type="user" ident="Set signal value" result="na">Signal: &apos;Signal:CAN1/bmw/LightState/FlashLight&apos;.  Value: 1 </teststep>
+      <teststep timestamp="   1.221829" level="0" type="user" ident="1.1" result="pass">Open Flash Light</teststep>
+      <teststep timestamp="   1.221829" level="0" type="user" ident="2.1" result="na">Set Head Light..</teststep>
+      <teststep timestamp="   1.221829" level="2" type="user" ident="Set signal value" result="na">Signal: &apos;Signal:CAN1/bmw/LightState/HeadLight&apos;.  Value: 1 </teststep>
+      <teststep timestamp="   1.221829" level="0" type="user" ident="2.1" result="pass">Open Head Light</teststep>
+      <teststep timestamp="   6.221829" level="1" type="auto" ident="Resume reason" result="na">Elapsed time=5000ms (max=5000ms)</teststep>
+      <verdict time="2021-09-15 10:50:26" timestamp="   6.221829" endtime="2021-09-15 10:50:26" endtimestamp="   6.221829" result="pass" />
+      <title>Set_LightState</title>
+    </testcase>
+    <title>bmw</title>
+  </testgroup>
+  <verdict time="2021-09-15 10:50:26" timestamp="   6.221829" endtime="2021-09-15 10:50:26" endtimestamp="   6.221829" result="pass" />
+  <title>bmw</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>carl.wu</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.FlexRay 11.0.81 (SP3)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>C:\Users\carl.wu\Desktop\CANoe-Demo\bmw2.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database bmw on CAN</name>
+      <description>C:\Users\carl.wu\Desktop\CANoe-Demo\dbc\bmw.dbc (2021-09-07 16:00:44)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>XML_Demo_2</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>C:\Users\carl.wu\Desktop\CANoe-Demo\TestModule\XML_Demo2.xml</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2021-09-07, 16:00:44</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Library (CAPL)</name>
+      <description>C:\Users\carl.wu\Desktop\CANoe-Demo\TestModule\XML_Demo2.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>CN03-OF-WL0073</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.81.0, C:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLVECTOR</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.17.64 (Sep 20 2018 17:36:23) , C:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLVECTOR.DLL</description>
+    </xinfo>
+  </testsetup>
+  <hardware name="CAN Channel Interfaces" category="CategoryCANIF">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>1</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VN7640</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3046</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>11.0.12</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>10.8.20</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>2</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VN7640</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3046</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>11.0.12</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>10.8.20</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+</testmodule>
+<!--footprint="27ea306f705f4af883235f52a0a8c582" version="1"-->

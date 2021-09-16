@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BMW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BMW.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe_3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/engine.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/engine.cbf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/light.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/light.cbf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/XML_Demo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TestModule/XML_Demo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/XML_Demo2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TestModule/XML_Demo2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/bmwTest_xml_2.tse" beforeDir="false" afterPath="$PROJECT_DIR$/TestModule/bmwTest_xml_2.tse" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/NET_Demo_report.carl.wu.settings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/NET_Demo_report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/NET_Demo_report.vtestreport" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/NET_Demo_report.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/XML_Demo_report - Copy.carl.wu.settings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/XML_Demo_report - Copy.vtestreport" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/XML_Demo_report.vtestreport" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/capl_test_node_test_report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/capl_test_node_test_report.html.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/capl_test_node_test_report.html.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/capl_test_node_test_report.vtestreport" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReport/capl_test_node_test_report.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bmw2.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw2.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bmw2.stcfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw2.stcfg" afterDir="false" />
     </list>
@@ -95,28 +105,7 @@
       <recent name="C:\Users\carl.wu\Desktop\CANoe-Demo\PythonScript" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Python_CANoe_2">
-    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="BMW" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PythonScript" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.Python_CANoe_3">
     <configuration name="Python_CANoe" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BMW" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,6 +148,48 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python_CANoe_3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BMW" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PythonScript" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/Python_CANoe_3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python_CANoe_4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BMW" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PythonScript" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/Python_CANoe_4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BMW" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,34 +211,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BMW" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\carl.wu\Desktop\CANoe-Demo\PythonScript\test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Python_CANoe_3" />
+        <item itemvalue="Python.Python_CANoe_4" />
         <item itemvalue="Python.Python_CANoe_2" />
         <item itemvalue="Python.Python_CANoe" />
         <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.1" />
       </list>
     </recent_temporary>
   </component>
@@ -260,6 +270,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/PythonScript/__init__.py">

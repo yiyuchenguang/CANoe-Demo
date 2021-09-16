@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
 <testmodule title="bmw" version="">
-		<testgroup title="bmw">		
+		<testgroup title="test_group_1">		
+				<capltestcase name="Set_EngineState"></capltestcase>
+				<capltestcase name="Set_LightState"></capltestcase>	
+		</testgroup>	
+		<testgroup title="test_group_2">		
 				<capltestcase name="Set_EngineState"></capltestcase>
 				<capltestcase name="Set_LightState"></capltestcase>	
 		</testgroup>			

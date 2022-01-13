@@ -1,0 +1,30 @@
+<RCC>
+  <qresource prefix="picture">
+    <file>picture/ace.ico</file>
+    <file>picture/blue.ico</file>
+    <file>picture/dictation.ico</file>
+    <file>picture/dolphin.ico</file>
+    <file>picture/Elephant.ico</file>
+    <file>picture/file_new.ico</file>
+    <file>picture/file_open.ico</file>
+    <file>picture/help.ico</file>
+    <file>picture/Jellyfish.ico</file>
+    <file>picture/k1.ico</file>
+    <file>picture/k10.ico</file>
+    <file>picture/k11.ico</file>
+    <file>picture/k12.ico</file>
+    <file>picture/k2.ico</file>
+    <file>picture/k3.ico</file>
+    <file>picture/k4.ico</file>
+    <file>picture/k5.ico</file>
+    <file>picture/k6.ico</file>
+    <file>picture/k7.ico</file>
+    <file>picture/k8.ico</file>
+    <file>picture/k9.ico</file>
+    <file>picture/lv.ico</file>
+    <file>picture/rabbit.ico</file>
+    <file>picture/Settings.ico</file>
+    <file>picture/snake.ico</file>
+    <file>picture/Turtle.ico</file>
+  </qresource>
+</RCC>

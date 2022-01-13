@@ -1,6 +1,4 @@
-# coding: utf-8
-"""API for setup/usage of Canoe COM Client interface.
-"""
+
 # --------------------------------------------------------------------------
 # Standard library imports
 import os
@@ -11,6 +9,7 @@ import msvcrt
 from win32com.client import *
 from win32com.client.connect import *
 
+
 # Vector Canoe Class
 class CANoe:
     def __init__(self):
@@ -18,9 +17,9 @@ class CANoe:
         self.application = DispatchEx("CANoe.Application")
         self.ver = self.application.Version
         print('Loaded CANoe version ',
-            self.ver.major, '.',
-            self.ver.minor, '.',
-            self.ver.Build, '...')#, sep,''
+              self.ver.major, '.',
+              self.ver.minor, '.',
+              self.ver.Build, '...')  # , sep,''
 
         self.Measurement = self.application.Measurement.Running
 
@@ -30,7 +29,7 @@ class CANoe:
             # check for valid file and it is *.cfg file
             if os.path.isfile(cfgname) and (os.path.splitext(cfgname)[1] == ".cfg"):
                 self.application.Open(cfgname)
-                print("opening..."+cfgname)
+                print("opening..." + cfgname)
             else:
                 raise RuntimeError("Can't find CANoe cfg file")
         else:
@@ -43,6 +42,7 @@ class CANoe:
             # self.stop_Measurement()
             self.application.Quit()
             self.application = None
+
     def start_Measurement(self):
         retry = 0
         retry_counter = 5
@@ -59,6 +59,7 @@ class CANoe:
             self.application.Measurement.Stop()
         else:
             pass
+
     def get_SigVal(self, channel_num, msg_name, sig_name, bus_type="CAN"):
         """
         @summary Get the value of a raw CAN signal on the CAN simulation bus
@@ -77,6 +78,7 @@ class CANoe:
             return result.Value
         else:
             raise RuntimeError("CANoe is not open,unable to GetVariable")
+
     def get_EnvVar(self, var):
         if (self.application != None):
             result = self.application.Environment.GetVariable(var)
@@ -114,19 +116,21 @@ class CANoe:
             sys_value.Value = var
         else:
             raise RuntimeError("CANoe is not open,unable to GetVariable")
+
     def DoEvents(self):
         pythoncom.PumpWaitingMessages()
         time.sleep(1)
 
-app = CANoe() #定义CANoe为app
-app.open_cfg(r"C:\Users\carl.wu\Desktop\CANoe-Demo/bmw2.cfg") #导入某个CANoe congif
+
+app = CANoe()  # 定义CANoe为app
+app.open_cfg(r"D:\CANoe-Demo/bmw2.cfg")  # 导入某个CANoe congif
 time.sleep(5)
 app.start_Measurement()
 
 while not msvcrt.kbhit():
-    EngineSpeedDspMeter = app.get_SysVar("Engine","EngineSpeedDspMeter")
+    EngineSpeedDspMeter = app.get_SysVar("Engine", "EngineSpeedDspMeter")
     print(EngineSpeedDspMeter)
-    if(EngineSpeedDspMeter==2):
-        app.set_SysVar("Engine","EngineSpeedDspMeter",3)
+    if (EngineSpeedDspMeter == 2):
+        app.set_SysVar("Engine", "EngineSpeedDspMeter", 3.0)
     app.DoEvents()
 

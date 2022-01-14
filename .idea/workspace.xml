@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/callCAN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BMW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BMW.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/engine.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/engine.cbf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/light.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/light.cbf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestModule/XML_Demo_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TestModule/XML_Demo_report.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmw2.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw2.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmw2.stcfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw2.stcfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonScript/py_canoe/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/py_canoe/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonScript/py_canoe/callCAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/py_canoe/PYCAN.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +117,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="PYCAN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BMW" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PythonScript/py_canoe" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\CANoe-Demo\PythonScript\py_canoe\PYCAN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python_CANoe" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BMW" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -137,27 +151,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/Python_CANoe.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="callCAN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BMW" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PythonScript/py_canoe" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/py_canoe/callCAN.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -211,7 +204,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main" />
-        <item itemvalue="Python.callCAN" />
+        <item itemvalue="Python.PYCAN" />
         <item itemvalue="Python.yyy" />
         <item itemvalue="Python.tttt" />
         <item itemvalue="Python.Python_CANoe" />

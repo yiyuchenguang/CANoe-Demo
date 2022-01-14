@@ -130,7 +130,12 @@ app.start_Measurement()
 while not msvcrt.kbhit():
     EngineSpeedDspMeter = app.get_SysVar("Engine", "EngineSpeedDspMeter")
     print(EngineSpeedDspMeter)
+<<<<<<< HEAD
     if (EngineSpeedDspMeter == 2):
         app.set_SysVar("Engine", "EngineSpeedDspMeter", 3.0)
+=======
+    if(EngineSpeedDspMeter==2):
+        app.set_SysVar("Engine","EngineSpeedDspMeter",3.0)
+>>>>>>> beed72609c0d06b71498fdfd6cb3a5488cddf4f2
     app.DoEvents()
 

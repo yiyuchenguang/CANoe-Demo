@@ -17,7 +17,7 @@ from PyQt5.QtCore import QObject, pyqtSignal
 from PyQt5.QtGui import QTextCursor
 from StaticResource import photo
 from ReadConf import Conf
-from callCAN import *
+from PYCAN import *
 
 temp = sys.stdout
 class Stream(QObject):

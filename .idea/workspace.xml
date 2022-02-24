@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0001.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0001.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0002.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0002.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/py_canoe/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/py_canoe/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/py_canoe/callCAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/py_canoe/PYCAN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonScript/py_canoe/document/bmw_py_test_1.stcfg" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/bmw_py_test_1.stcfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,0 +1,56 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+testcase vh6501_test_01()
+{
+  CanDisturbanceSequence      sequence; //Object of sequence
+  dword                       deviceID; //Device Id of disturbance interface
+  char                        buffer[1024]; //text buffer for ToString method
+  int result;
+
+deviceID = 1;
+
+//clear the sequence
+  if(sequence.SegmentCount > 0)
+{
+sequence.Clear();
+}
+//configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot bit on the bus. A FPGA tick is 6.25 ns long, which leads to a bit time of 2 ¦Ìs
+result = sequence.AppendToSequence(320, 'd');
+
+//Configure the frame trigger and the sequence to the CAN Disturbance Device
+if(result == 1)
+{
+  //Send the sequence immediately on the bus
+  result = canDisturbanceTriggerNow(deviceID, sequence);
+
+  if(result == 1)
+  {
+    result = sequence.ToString(buffer, 1024);
+    write("Sequence %s was send with length %d", buffer, result);
+    //Output:
+    //Sequence ddddddd¡­ddddd was send with length 320
+  }
+  else
+  {
+    write("Error by sequence sending Result =%d", result);
+  }
+}
+testWaitForTimeout(1000);
+
+}
+
+
+void MainTest ()
+{
+  vh6501_test_01();
+}
+

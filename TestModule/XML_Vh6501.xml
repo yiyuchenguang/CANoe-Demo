@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<testmodule title="bmw" version="">
+		<testgroup title="Sequences类的应用">		
+				<capltestcase name="TC_01" title="CanDisturbanceSequence类 触发一个自定义长度和电平的序列"></capltestcase>
+				<capltestcase name="TC_02" title="CanDisturbanceFrameSequence类 触发一个自定义的报文"></capltestcase>
+		</testgroup>
+		
+		<testgroup title="Trigger Configuration类的应用">		
+				<capltestcase name="TC_03" title="CanDisturbanceFrameTrigger 类 干扰触发的条件设置"></capltestcase>
+		</testgroup>	
+		
+		<testgroup title="Repetitions类的应用">		
+				<capltestcase name="TC_04" title="CanDisturbanceTriggerRepetitions类 干扰触发的次数"></capltestcase>
+		</testgroup>
+		<testgroup title="对RX报文实施干扰">		
+				<capltestcase name="TC_05" title="对RX报文实施干扰"></capltestcase>
+		</testgroup>			
+		<testgroup title="模拟触发">		
+				<capltestcase name="TC_06" title="CANH和CANL 短接">
+					<caplparam type="string" name="AnalogType">CanHCanL</caplparam>	
+				</capltestcase>
+				<capltestcase name="TC_06" title="CANH和地短接">
+					<caplparam type="string" name="AnalogType">CanHGND</caplparam>	
+				</capltestcase>
+				<capltestcase name="TC_06" title="CANL和地短接">
+					<caplparam type="string" name="AnalogType">CanLGND</caplparam>	
+				</capltestcase>
+				<capltestcase name="TC_06" title="CANH和电源短接">
+					<caplparam type="string" name="AnalogType">CanHVBat</caplparam>	
+				</capltestcase>
+				<capltestcase name="TC_06" title="CANL和电源短接">
+					<caplparam type="string" name="AnalogType">CanLVBat</caplparam>	
+				</capltestcase>
+		</testgroup>
+		<testgroup title="Bus off">		
+				<capltestcase name="TC_07" title="干扰31次 ，没有进入Bus OFF">
+					<caplparam type="int" name="DisturbanceNum">31</caplparam>	
+				</capltestcase>
+				<capltestcase name="TC_07" title="干扰32次 ，进入快恢复">
+					<caplparam type="int" name="DisturbanceNum">32</caplparam>	
+				</capltestcase>
+				<capltestcase name="TC_07" title="干扰32*5次 ，5次快恢复之后进入慢恢复">
+					<caplparam type="int" name="DisturbanceNum">192</caplparam>	
+				</capltestcase>
+		</testgroup>		
+</testmodule>

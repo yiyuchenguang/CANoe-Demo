@@ -1,0 +1,402 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+
+}
+
+testcase TC_01()
+{
+    CanDisturbanceSequence      sequence; //Object of sequence
+    dword                       deviceID; //Device Id of disturbance interface
+    char                        buffer[1024]; //text buffer for ToString method
+    int result;
+    char temp[100];
+    deviceID = 1;
+
+  //clear the sequence
+    if(sequence.SegmentCount > 0)
+  {
+  sequence.Clear();
+  }
+  //configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot bit on the bus. A FPGA tick is 6.25 ns long, which leads to a bit time of 2 μs
+  result = sequence.AppendToSequence(320, 'd');
+  //Configure the frame trigger and the sequence to the CAN Disturbance Device
+  if(result == 1)
+  {
+    //Send the sequence immediately on the bus
+    result = canDisturbanceTriggerNow(deviceID, sequence);
+    snprintf(temp, elcount(temp), "时间戳：%f ;结果：%d ", timeNow()/100000.0,result);
+    testCaseComment(temp);
+  }
+}
+
+testcase TC_02()
+{
+    canDisturbanceFrameSequence frameSequence;
+    message 0x100               msgFrameSeq;
+    dword                       deviceID; //Device Id of disturbance interface
+    long                        result;
+    char temp[100];
+    deviceID = 1;
+    msgFrameSeq.dlc = 4;
+    //set message to sequence
+    frameSequence.SetMessage(deviceID, msgFrameSeq); 
+    result = canDisturbanceTriggerNow(deviceID, frameSequence); //output the sequence once
+    snprintf(temp, elcount(temp), "时间戳：%f ;结果：%d ", timeNow()/100000.0,result);
+    testCaseComment(temp);
+}
+
+testcase TC_03()
+{
+    CanDisturbanceFrameTrigger frameTrigger;
+    CanDisturbanceSequence     sequence;
+    dword                       deviceID; 
+    long                       valditiyMask;
+    message 0x100              triggerMessage;
+    long                       validityMask;
+    long                        result;
+    
+    //clear the sequence
+    sequence.Clear();
+    deviceID = 1;
+    //configure the message should be triggered
+    
+    //ID must standard ID and a CAN message must on the bus
+    validityMask = @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDBase  
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDE 
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::FDF ;
+    //validityMask = 0;
+    frameTrigger.SetMessage(triggerMessage, deviceID, validityMask);
+    //trigger position is the CRC delimiter
+    frameTrigger.TriggerFieldType =   
+            @sysvar::CanDisturbance::Enums::FieldType::CRCDel;
+    frameTrigger.TriggerFieldOffset = 0;
+    
+    //configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot
+    //bit on the bus. 
+    result = sequence.AppendToSequence(320, 'R');
+    
+    //Configure the frame trigger and the sequence to the CANstress device
+    if(result == 1)
+    {
+      result = canDisturbanceTriggerEnable(deviceID, frameTrigger, sequence);
+      if(result == 1)
+      {
+        write("Trigger is enabled");
+      }
+      else
+      {
+        write("Enable trigger error Result =%d", result);
+      }
+    }
+}
+
+testcase TC_04()
+{
+    CanDisturbanceFrameTrigger frameTrigger;
+    CanDisturbanceSequence     sequence;
+     CanDisturbanceTriggerRepetitions repetitions;
+    dword                       deviceID; 
+    long                       valditiyMask;
+    message 0x100              triggerMessage;
+    long                       validityMask;
+    long                        result;
+    
+    //clear the sequence
+    sequence.Clear();
+    deviceID = 1;
+    //configure the message should be triggered
+    
+    //ID must standard ID and a CAN message must on the bus
+    validityMask = @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDBase  
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDE 
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::FDF ;
+    //validityMask = 0;
+    frameTrigger.SetMessage(triggerMessage, deviceID, validityMask);
+    //trigger position is the CRC delimiter
+    frameTrigger.TriggerFieldType =   
+            @sysvar::CanDisturbance::Enums::FieldType::CRCDel;
+    frameTrigger.TriggerFieldOffset = 0;
+    
+    //configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot
+    //bit on the bus. 
+    result = sequence.AppendToSequence(320, 'R');
+  
+    //Define 33 repetitions and one cycle with a 1 ms hold off time 
+    repetitions.Cycles = 1;
+    repetitions.HoldOffCycles = 1;//100ms
+    repetitions.HoldOffRepetitions = 1;
+    repetitions.Repetitions = 33;
+//          
+//    repetitions.Cycles = 2;
+//    repetitions.HoldOffCycles = 100;//100ms
+//    repetitions.HoldOffRepetitions = 1;
+//    repetitions.Repetitions = 10;
+    //Configure the frame trigger and the sequence to the CANstress device
+    if(result == 1)
+    {
+      result = canDisturbanceTriggerEnable(deviceID, frameTrigger, sequence,repetitions);
+      if(result == 1)
+      {
+        write("Trigger is enabled");
+      }
+      else
+      {
+        write("Enable trigger error Result =%d", result);
+      }
+    }
+}
+
+
+// 对RX的 0x305 （CAN-FD）报文进行干扰
+testcase TC_05()
+{
+    CanDisturbanceFrameTrigger frameTrigger;
+    CanDisturbanceSequence     sequence;
+    CanDisturbanceTriggerRepetitions repetitions;
+    dword                       deviceID; 
+    long                       valditiyMask;
+    message 0x305              triggerMessage; //0x305 是RX
+    long                       validityMask;
+    long                        result;
+    int RX_Direc = 0x20;
+    int TX_Direc = 0x40;
+    
+     triggerMessage.FDF = 1;//因为我这里演示的用的CAN-FD协议，所以要设置FDF位
+  
+    //clear the sequence
+    sequence.Clear();
+    deviceID = 1;
+    //configure the message should be triggered
+    
+    //ID must standard ID and a CAN message must on the bus
+    validityMask = @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDBase  
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDE 
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::FDF ;
+    //validityMask = 0;
+    frameTrigger.SetMessage(triggerMessage, deviceID, validityMask);
+    //trigger position is the CRC delimiter
+    frameTrigger.TriggerFieldType =   
+            @sysvar::CanDisturbance::Enums::FieldType::CRCDel;
+    frameTrigger.TriggerFieldOffset = 0;
+    
+    //configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot
+    //bit on the bus. 
+    result = sequence.AppendToSequence(320, 'R');
+  
+    //Define 33 repetitions and one cycle with a 1 ms hold off time 
+    repetitions.Cycles = 1;
+    repetitions.HoldOffCycles = 1;//100ms
+    repetitions.HoldOffRepetitions = 1;
+    repetitions.Repetitions = 33;
+
+    if(result == 1)
+    {
+      result = canDisturbanceTriggerEnable(deviceID, frameTrigger, sequence,repetitions,RX_Direc);//这里要指定干扰RX，否则干扰失败
+      if(result == 1)
+      {
+        write("Trigger is enabled");
+      }
+      else
+      {
+        write("Enable trigger error Result =%d", result);
+      }
+    }
+}
+
+
+testcase TC_06(char AnalogType[])
+{ 
+ 
+   testWaitForTimeout(1000);
+
+    if(( strncmp(AnalogType, "CanHCanL", elcount(AnalogType)) == 0 ))
+    {
+      @sysvar::CANDisturbanceInterface1::Resistors::CANh_CANl::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_CANl::Value::_0Ohm;
+      // @sysvar::CANDisturbanceInterface1::Resistors::CANh_CANl::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_CANl::Value::Off; //结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanHGND", elcount(AnalogType)) == 0 ))
+    {
+      @sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Mode = sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Mode::GND;
+      @sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value::_0Ohm;
+     // @sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value::Off;//结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanLGND", elcount(AnalogType)) == 0 ))
+    {
+      @sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Mode =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Mode::GND;
+      @sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value::_0Ohm;
+      //@sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value::Off;//结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanHVBat", elcount(AnalogType)) == 0 ))
+    {
+      @sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Mode =  sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Mode::VBat;
+      @sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value::_0Ohm;
+      //@sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value::Off;//结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanLVBat", elcount(AnalogType)) == 0 ))
+    {
+      @sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Mode =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Mode::VBat;
+      @sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value::_0Ohm;
+     // @sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value::Off;//结束干扰
+    }
+  
+    
+     testWaitForTimeout(3000); //等待一段时间后结束干扰
+    
+    
+      if(( strncmp(AnalogType, "CanHCanL", elcount(AnalogType)) == 0 ))
+    {
+       @sysvar::CANDisturbanceInterface1::Resistors::CANh_CANl::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_CANl::Value::Off; //结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanHGND", elcount(AnalogType)) == 0 ))
+    {
+       @sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value::Off;//结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanLGND", elcount(AnalogType)) == 0 ))
+    {
+      @sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value::Off;//结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanHVBat", elcount(AnalogType)) == 0 ))
+    {
+        @sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANh_S::Value::Off;//结束干扰
+    }
+    else if(( strncmp(AnalogType, "CanLVBat", elcount(AnalogType)) == 0 ))
+    {
+      @sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value =  sysvar::CANDisturbanceInterface1::Resistors::CANl_S::Value::Off;//结束干扰
+    }
+  
+}
+
+
+testcase TC_07(int DisturbanceNum)
+{
+    CanDisturbanceFrameTrigger frameTrigger;
+    CanDisturbanceSequence     sequence;
+    CanDisturbanceTriggerRepetitions repetitions;
+    dword                       deviceID; 
+    long                       valditiyMask;
+    message 0x305              triggerMessage; //0x305 是RX
+    long                       validityMask;
+    long                        result;
+    int RX_Direc = 0x20;
+    int TX_Direc = 0x40;
+    
+     triggerMessage.FDF = 1;//因为我这里演示的用的CAN-FD协议，所以要设置FDF位
+  
+    //clear the sequence
+    sequence.Clear();
+    deviceID = 1;
+    //configure the message should be triggered
+    
+    //ID must standard ID and a CAN message must on the bus
+    validityMask = @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDBase  
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDE 
+                   | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::FDF ;
+  
+    //validityMask = 0; // 任意RX报文都能被干扰
+    frameTrigger.SetMessage(triggerMessage, deviceID, validityMask);
+    //trigger position is the CRC delimiter
+    frameTrigger.TriggerFieldType =   
+            @sysvar::CanDisturbance::Enums::FieldType::AckDelimiter;
+    frameTrigger.TriggerFieldOffset = 0;
+    
+    //configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot
+    //bit on the bus. 
+    result = sequence.AppendToSequence(320, 'd');
+  
+    //Define 33 repetitions and one cycle with a 1 ms hold off time 
+    repetitions.Cycles = 1;
+    repetitions.HoldOffCycles = 1;//
+    repetitions.HoldOffRepetitions = 0; //没有间隔，连续干扰
+    repetitions.Repetitions = DisturbanceNum;
+
+    if(result == 1)
+    {
+      result = canDisturbanceTriggerEnable(deviceID, frameTrigger, sequence,repetitions,RX_Direc);//这里要指定干扰RX，否则干扰失败
+      if(result == 1)
+      {
+        write("Trigger is enabled");
+      }
+      else
+      {
+        write("Enable trigger error Result =%d", result);
+      }
+    }
+}
+
+
+
+
+testcase TC_xxxx()
+{
+    CanDisturbanceSequence            sequence;
+    CanDisturbanceTriggerRepetitions  repetitions;
+    long                              result;
+    dword                       deviceID = 1; //Device Id of disturbance interface
+    char temp[100];
+    //Clear sequence 
+    sequence.Clear();
+    
+    //configure a sequence one bit long and send a dominant bit
+    result = sequence.AppendToSequence(320, 'd');
+    
+    if(result == 1)
+    {
+      //Define two repetitions and one cycle with a 1 ms hold off time 
+      repetitions.Cycles = 1;
+      repetitions.HoldOffCycles = 1;
+      
+      repetitions.HoldOffRepetitions = 1;
+      repetitions.Repetitions = 32;//连续触发32帧格式错误报文
+      
+      result= canDisturbanceTriggerNow(deviceID, sequence, repetitions);
+      snprintf(temp, elcount(temp), "时间戳：%f ;结果：%d ", timeNow()/100000.0,result);
+      testCaseComment(temp);
+    }
+}
+
+testcase TC_xxx()
+{
+  canDisturbanceFrameSequence frameSequence; //Define a empty frame sequence
+  CanDisturbanceBitSequence bitSequence;
+  int deviceId = 1; //Unique id of the Disturbance interface
+  message 0x100 msg; //Configuration object for the frame sequence
+  int i;
+  word length;
+  byte value;
+  //Configure message object for the frame sequence
+  //msg.dlc = 4;
+ 
+  //Configure frame sequence object with message object
+  frameSequence.SetMessage(deviceId, msg);
+    frameSequence.DLC.BitSequence[1].SegmentValue[0] = 'r';
+  //Access to the bit sequence which represent the ID28 bit
+  //bitSequence = frameSequence.IDBase.BitSequence[10];
+canDisturbanceTriggerNow(deviceId, frameSequence); 
+   write("frameSequence.IDBase.BitSequence[10].SegmentCount:%d",frameSequence.IDBase.BitSequence[10].SegmentCount);
+  //Get length and value of first segment of the sequences of ID28
+  for(i=0;i<11;i++)
+  {
+  If(frameSequence.IDBase.BitSequence[i].SegmentCount > 0)
+  {
+    length = frameSequence.IDBase.BitSequence[i].SegmentLength[0]; //length is equals 320
+    value = frameSequence.IDBase.BitSequence[i].SegmentValue[0]; //value is ‘d’
+    write("%d ;length:%d;value:%c",i,length,value);
+  }
+  }
+    for(i=0;i<4;i++)
+  {
+
+    length = frameSequence.DLC.BitSequence[0].SegmentValue[0]; //length is equals 320
+    value = frameSequence.DLC.BitSequence[0].SegmentValue[0]; //value is ‘d’
+    write("DLC  %d ;length:%d;value:%c",i,length,value);
+
+  }
+
+}
+

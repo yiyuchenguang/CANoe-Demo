@@ -1,0 +1,80 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+variables
+{
+    CanDisturbanceFrameTrigger frameTrigger;
+    CanDisturbanceFrameSequence frameSequence;
+    CanDisturbanceSequence sequence;
+    CanDisturbanceTriggerRepetitions repetitions;
+
+    //Number of disturbance repetitions in a cycle
+    long result;
+    long validityMask;
+    long cycleFlag;
+    message 0x100 triggerMessage = {FDF = 1}; //The triggermessage.(ID is not important.)
+    message 0x0 spTestMsg = {FDF = 1}; //The disturbance frame sequence which CRC DEL need to be shorten.
+    char spTestDone[33] = "SPDone";
+    int init_bit_length ,last_bit_length ;
+}
+
+on errorFrame
+{
+    if(this.msgChannel == @sysvar::CANDisturbanceInterface1::ChannelNo)
+    {
+     last_bit_length =  frameSequence.CRCDelimiter.BitSequence[0].segmentLength[0];
+     write("Last CRC Delimiter Bit Length = %d",last_bit_length);
+     testSupplyTextEvent(spTestDone);
+    }
+}
+
+
+on sysvar sysvar::CANDisturbanceInterface1::Trigger::State
+{
+    //6501 is Idle after repetition_times_in_one_cycle finish
+    if(@this == sysvar::CANDisturbanceInterface1::Trigger::State::Idle) // Idle:0 ;Active:1;Triggered:2 
+    {
+       // 如果测试CAN-FD的高速数据段的采样点，请使用 frmSequence.CRC 数据
+        --frameSequence.CRCDelimiter.BitSequence[0].segmentLength[0];
+        ++frameSequence.AckSlot.BitSequence[0].segmentLength[0];
+        result = canDisturbanceTriggerEnable(@sysvar::CANDisturbanceInterface1::DeviceNo,frameTrigger, frameSequence, repetitions);
+        if(result == 1)
+        {
+            write("Trigger is enabled,frameSequence.CRCDelimiter.BitSequence[0].segmentLength[0] = %d",frameSequence.CRCDelimiter.BitSequence[0].segmentLength[0]);
+        }
+        else
+        {
+            write("Enable trigger error Result = %d", result);
+        }         
+    }
+}
+testcase SamplePointTest_forVH6501()
+{
+    frameSequence.SetMessage(@sysvar::CANDisturbanceInterface1::DeviceNo,spTestMsg);
+    validityMask = 0; //trigger on any CAN messages
+    frameTrigger.SetMessage(triggerMessage,@sysvar::CANDisturbanceInterface1::DeviceNo, validityMask);
+    frameTrigger.TriggerFieldType = @sysvar::CanDisturbance::Enums::FieldType::EndOfFrame;
+    frameTrigger.TriggerFieldOffset = 9; //Trigger position is the third bit of IFS.
+    init_bit_length = frameSequence.CRCDelimiter.BitSequence[0].segmentLength[0] ;
+    write("Init CRC Delimiter Bit Length = %d",init_bit_length);
+    repetitions.Cycles = 1;
+    repetitions.HoldOffCycles = 0;
+    repetitions.HoldOffRepetitions = 0;
+    repetitions.Repetitions = 1;
+    result = canDisturbanceTriggerEnable(@sysvar::CANDisturbanceInterface1::DeviceNo,frameTrigger,frameSequence,repetitions);
+    if(result == 1)
+    {
+        write("Trigger is enabled.");
+    }
+    else
+    {
+        write("Enable trigger error Result = %d", result);
+    }
+    result = testWaitForTextEvent(spTestDone, 10000);
+    if(result == 1)
+    {
+        write("sample point lies in %f", (double)last_bit_length / init_bit_length*100);
+    }
+}

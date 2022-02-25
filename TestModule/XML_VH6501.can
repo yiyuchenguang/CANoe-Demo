@@ -3,11 +3,10 @@ includes
 {
   
 }
-
 variables
 {
-
 }
+
 
 testcase TC_01()
 {
@@ -65,7 +64,7 @@ testcase TC_03()
     sequence.Clear();
     deviceID = 1;
     //configure the message should be triggered
-    
+ // | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDExtended
     //ID must standard ID and a CAN message must on the bus
     validityMask = @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDBase  
                    | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::IDE 
@@ -118,26 +117,24 @@ testcase TC_04()
                    | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::FDF ;
     //validityMask = 0;
     frameTrigger.SetMessage(triggerMessage, deviceID, validityMask);
-    //trigger position is the CRC delimiter
+
     frameTrigger.TriggerFieldType =   
-            @sysvar::CanDisturbance::Enums::FieldType::CRCDel;
+            @sysvar::CanDisturbance::Enums::FieldType::AckDelimiter;
     frameTrigger.TriggerFieldOffset = 0;
     
     //configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot
     //bit on the bus. 
-    result = sequence.AppendToSequence(320, 'R');
+    result = sequence.AppendToSequence(320, 'd');
   
     //Define 33 repetitions and one cycle with a 1 ms hold off time 
     repetitions.Cycles = 1;
     repetitions.HoldOffCycles = 1;//100ms
-    repetitions.HoldOffRepetitions = 1;
-    repetitions.Repetitions = 33;
-//          
+    repetitions.HoldOffRepetitions = 0;
+    repetitions.Repetitions = 31;
 //    repetitions.Cycles = 2;
-//    repetitions.HoldOffCycles = 100;//100ms
-//    repetitions.HoldOffRepetitions = 1;
-//    repetitions.Repetitions = 10;
-    //Configure the frame trigger and the sequence to the CANstress device
+//    repetitions.HoldOffCycles = 1000;//1000ms
+//    repetitions.HoldOffRepetitions = 100;
+//    repetitions.Repetitions = 5;
     if(result == 1)
     {
       result = canDisturbanceTriggerEnable(deviceID, frameTrigger, sequence,repetitions);
@@ -180,20 +177,19 @@ testcase TC_05()
                    | @sysvar::CanDisturbance::Enums::ValidityMaskFlags::FDF ;
     //validityMask = 0;
     frameTrigger.SetMessage(triggerMessage, deviceID, validityMask);
-    //trigger position is the CRC delimiter
     frameTrigger.TriggerFieldType =   
-            @sysvar::CanDisturbance::Enums::FieldType::CRCDel;
+            @sysvar::CanDisturbance::Enums::FieldType::AckDelimiter;
     frameTrigger.TriggerFieldOffset = 0;
     
     //configure a sequence 320 FPGA ticks long and send a recessive bit at the Ack slot
     //bit on the bus. 
-    result = sequence.AppendToSequence(320, 'R');
+    result = sequence.AppendToSequence(320, 'd');
   
     //Define 33 repetitions and one cycle with a 1 ms hold off time 
     repetitions.Cycles = 1;
     repetitions.HoldOffCycles = 1;//100ms
-    repetitions.HoldOffRepetitions = 1;
-    repetitions.Repetitions = 33;
+    repetitions.HoldOffRepetitions = 0;
+    repetitions.Repetitions = 31;
 
     if(result == 1)
     {
@@ -399,4 +395,8 @@ canDisturbanceTriggerNow(deviceId, frameSequence);
   }
 
 }
+
+
+
+
 

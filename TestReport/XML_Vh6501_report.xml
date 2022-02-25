@@ -1,64 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<testmodule starttime="2022-02-24 16:22:46" timestamp="   0.833825" verdicts="2_basic">
+<testmodule starttime="2022-02-25 16:35:52" timestamp="   3.482917" verdicts="2_basic">
   <testgroup>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CanDisturbanceSequence类 触发一个自定义长度和电平的序列</title>
     </skipped>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CanDisturbanceFrameSequence类 触发一个自定义的报文</title>
     </skipped>
     <title>Sequences类的应用</title>
   </testgroup>
   <testgroup>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CanDisturbanceFrameTrigger 类 干扰触发的条件设置</title>
     </skipped>
     <title>Trigger Configuration类的应用</title>
   </testgroup>
   <testgroup>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CanDisturbanceTriggerRepetitions类 干扰触发的次数</title>
     </skipped>
     <title>Repetitions类的应用</title>
   </testgroup>
   <testgroup>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>对RX报文实施干扰</title>
     </skipped>
     <title>对RX报文实施干扰</title>
   </testgroup>
   <testgroup>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CANH和CANL 短接</title>
     </skipped>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CANH和地短接</title>
     </skipped>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CANL和地短接</title>
     </skipped>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CANH和电源短接</title>
     </skipped>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>CANL和电源短接</title>
     </skipped>
     <title>模拟触发</title>
   </testgroup>
   <testgroup>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>干扰31次 ，没有进入Bus OFF</title>
     </skipped>
-    <skipped starttime="2022-02-24 16:22:46" timestamp="   0.833825">
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>干扰32次 ，进入快恢复</title>
     </skipped>
-    <testcase starttime="2022-02-24 16:22:46" timestamp="   0.833825">
-      <verdict time="2022-02-24 16:22:46" timestamp="   0.833825" endtime="2022-02-24 16:22:46" endtimestamp="   0.833825" result="pass" />
+    <skipped starttime="2022-02-25 16:35:52" timestamp="   3.482917">
       <title>干扰32*5次 ，5次快恢复之后进入慢恢复</title>
-    </testcase>
+    </skipped>
     <title>Bus off</title>
   </testgroup>
-  <verdict time="2022-02-24 16:22:46" timestamp="   0.833825" endtime="2022-02-24 16:22:46" endtimestamp="   0.833825" result="pass" />
+  <testgroup>
+    <testcase starttime="2022-02-25 16:35:52" timestamp="   3.482917">
+      <verdict time="2022-02-25 16:35:52" timestamp="   3.836763" endtime="2022-02-25 16:35:52" endtimestamp="   3.836763" result="pass" />
+      <title>采样点测试</title>
+    </testcase>
+    <title>采样点测试</title>
+  </testgroup>
+  <verdict time="2022-02-25 16:35:52" timestamp="   3.836763" endtime="2022-02-25 16:35:52" endtimestamp="   3.836763" result="pass" />
   <title>bmw</title>
   <testlogfiles>
   </testlogfiles>
@@ -91,7 +97,11 @@
     </xinfo>
     <xinfo>
       <name>Last modification of Test Module File</name>
-      <description>2022-02-24, 15:59:15</description>
+      <description>2022-02-25, 15:33:34</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Library (CAPL)</name>
+      <description>D:\CANoe-Demo\TestModule\XML_VH6501_SamplePointTest.can</description>
     </xinfo>
     <xinfo>
       <name>Test Module Library (CAPL)</name>
@@ -133,4 +143,4 @@
     </xinfoset>
   </hardware>
 </testmodule>
-<!--footprint="f714e50df64fd74dc0cb8582e3cdf7b9" version="1"-->
+<!--footprint="85bf96f64d620c30d28bf876f798f0d4" version="1"-->

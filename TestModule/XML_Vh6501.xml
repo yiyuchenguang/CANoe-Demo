@@ -42,5 +42,9 @@
 				<capltestcase name="TC_07" title="干扰32*5次 ，5次快恢复之后进入慢恢复">
 					<caplparam type="int" name="DisturbanceNum">192</caplparam>	
 				</capltestcase>
-		</testgroup>		
+		</testgroup>
+
+		<testgroup title="采样点测试">		
+				<capltestcase name="SamplePointTest_forVH6501" title="采样点测试"></capltestcase>
+		</testgroup>			
 </testmodule>

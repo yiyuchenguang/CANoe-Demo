@@ -1,0 +1,147 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+  
+     char csv_data_path[100] = ".//TestModule//signals.csv";
+  
+    struct csv_Data // record csv data
+  {
+    int  SignalNum;
+    char DataName[50];
+    int DwordIndex;        
+    int StartBit;   
+    int BitLen;   
+    int Value1;   
+    int Value2;   
+    int Value3;   
+    int Value4;   
+    int Value5;    
+  };
+   struct csv_Data csv_Data_array[10];
+}
+
+on key 'u'
+{
+  write("*****press u***********");
+  ReadDataFromCsv(csv_data_path,csv_Data_array);
+}
+
+int ReadDataFromCsv(char FilePath[], struct csv_Data Temp_csv_Data_array[])
+{ 
+
+  char p_data[100][100];
+  char buffer_ascii[100];
+  long retSize;
+  int i,j,glbHandle;
+  byte debug = 1 ;
+
+
+  glbHandle = OpenFileRead (FilePath,1);
+  
+  if (glbHandle!=0 )
+  {   
+    write("Read file :%s passed.",FilePath);
+    j = -1;
+    while(fileGetStringSZ(buffer_ascii,elcount(buffer_ascii),glbHandle)!=0)   
+    {
+      
+      if (j!=-1) //把表头去掉
+      {
+        write ("*********lineNum:%d data:%s*********",j,buffer_ascii);
+        spilt_string(buffer_ascii,p_data,","); 
+
+        snprintf(Temp_csv_Data_array[j].DataName, elcount(p_data[0]), "%s", p_data[0]); 
+        Temp_csv_Data_array[j].DwordIndex = atol(p_data[1]);//string to long
+        Temp_csv_Data_array[j].StartBit = atol(p_data[2]);
+        Temp_csv_Data_array[j].BitLen = atol(p_data[3]);
+        Temp_csv_Data_array[j].Value1 = atol(p_data[4]);
+        Temp_csv_Data_array[j].Value2 = atol(p_data[5]);
+        Temp_csv_Data_array[j].Value3 = atol(p_data[6]);
+        Temp_csv_Data_array[j].Value4 = atol(p_data[7]);
+        Temp_csv_Data_array[j].Value5 = atol(p_data[8]);         
+      }
+      
+      j++;  // index ++ 
+    }
+    fileClose (glbHandle);     
+    Temp_csv_Data_array[j].SignalNum = j ;  // 最后统计多少行数据
+          
+    if(debug) //debug check values
+    {  
+      write ("************************Debug first line data******************************");
+      write("Temp_csv_Data_array[0].DataName:%s",Temp_csv_Data_array[0].DataName);
+      write("Temp_csv_Data_array[0].DwordIndex:%d",Temp_csv_Data_array[0].DwordIndex);
+      write("Temp_csv_Data_array[0].StartBit:%d",Temp_csv_Data_array[0].StartBit);
+      write("Temp_csv_Data_array[0].Value1:0x%x",Temp_csv_Data_array[0].Value1);
+      write("Temp_csv_Data_array[0].Value2:0x%x",Temp_csv_Data_array[0].Value2);
+      write("Temp_csv_Data_array[0].Value3:0x%x",Temp_csv_Data_array[0].Value3);
+      write("Temp_csv_Data_array[0].Value4:0x%x",Temp_csv_Data_array[0].Value4);
+      write("Temp_csv_Data_array[0].Value5:0x%x",Temp_csv_Data_array[0].Value5);
+
+    }  
+  }  
+  else
+  {
+    write("Read file :%s failed.",FilePath);
+    return 0; //failed    
+  }
+  return 1; //passed
+
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+
+根据指定分隔符 分割字符串类似于python split 函数
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+
+
+int spilt_string(char input_string[],char out_string_arrary[][],char sign[]) 
+{
+  
+  /*spilt string a,b,c,d to arrary {a,b,c,d}*/
+    int i ;
+    int debug;
+    int StartIndexPos;
+    char p_index[20];
+    int  out_arrary_length ;
+   
+
+    debug = 0;
+
+    StartIndexPos = -1;
+    out_arrary_length = 1;
+    p_index[0] = -1;
+
+    do{   
+         StartIndexPos =   strstr_off(input_string,StartIndexPos+1,sign);     
+         p_index[out_arrary_length] = StartIndexPos;    
+         if (StartIndexPos!=-1)
+             out_arrary_length ++;
+    
+    } while(StartIndexPos!=-1);
+       
+     p_index[out_arrary_length] = strlen(input_string)-1; 
+    
+      for(i=0;i<out_arrary_length;i++)
+    {       
+       substr_cpy(out_string_arrary[i], input_string, p_index[i]+1 ,  p_index[i+1] -  p_index[i] -1, elcount(out_string_arrary[i]));     
+      if (debug)
+      {
+       //write("serched postion:%d", p_index[i]);
+       write("out_string_arrary[%d]:%s", i,out_string_arrary[i]);
+      }      
+    } 
+       
+  return out_arrary_length;
+}

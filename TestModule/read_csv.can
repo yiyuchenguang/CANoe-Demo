@@ -1,14 +1,8 @@
 /*@!Encoding:936*/
-includes
-{
-  
-}
 
 variables
-{
-  
-     char csv_data_path[100] = ".//TestModule//signals.csv";
-  
+{  
+    char csv_data_path[100] = ".//TestModule//signals.csv";  
     struct csv_Data // record csv data
   {
     int  SignalNum;
@@ -40,7 +34,6 @@ int ReadDataFromCsv(char FilePath[], struct csv_Data Temp_csv_Data_array[])
   int i,j,glbHandle;
   byte debug = 1 ;
 
-
   glbHandle = OpenFileRead (FilePath,1);
   
   if (glbHandle!=0 )
@@ -53,7 +46,7 @@ int ReadDataFromCsv(char FilePath[], struct csv_Data Temp_csv_Data_array[])
       if (j!=-1) //把表头去掉
       {
         write ("*********lineNum:%d data:%s*********",j,buffer_ascii);
-        spilt_string(buffer_ascii,p_data,","); 
+        spilt_string(buffer_ascii,p_data,",");  //核心函数，分割字符串
 
         snprintf(Temp_csv_Data_array[j].DataName, elcount(p_data[0]), "%s", p_data[0]); 
         Temp_csv_Data_array[j].DwordIndex = atol(p_data[1]);//string to long
@@ -82,7 +75,6 @@ int ReadDataFromCsv(char FilePath[], struct csv_Data Temp_csv_Data_array[])
       write("Temp_csv_Data_array[0].Value3:0x%x",Temp_csv_Data_array[0].Value3);
       write("Temp_csv_Data_array[0].Value4:0x%x",Temp_csv_Data_array[0].Value4);
       write("Temp_csv_Data_array[0].Value5:0x%x",Temp_csv_Data_array[0].Value5);
-
     }  
   }  
   else
@@ -93,7 +85,6 @@ int ReadDataFromCsv(char FilePath[], struct csv_Data Temp_csv_Data_array[])
   return 1; //passed
 
 }
-
 
 /***************************************************************************************************
 ----------------------------------------------------------------------------------------------------

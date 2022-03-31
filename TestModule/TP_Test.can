@@ -1,0 +1,88 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+  const long sysTxIdentifier = 0x72E;
+  const long sysRxIdentifier = 0x73E;
+  char gECU[20] = "%NODE_NAME%";
+  
+  enum AddressModes { kNormal = 0,
+                    kExtendedBased = 1,
+                    kNormalFixed = 2,
+                    kMixed = 3,
+                    kMixed11Bit = 4,
+                    kExtendedFree = 5
+                  }k,0
+  
+}
+r
+
+on start
+{
+  long dbHandle;
+  BYTE gbCANFDactive = 0;
+  dbHandle = CanTpGetDBConnection();
+  write("**************dbHandle:%d**************",dbHandle);
+  if (dbHandle > 0) {
+    CanTpCloseConnection(dbHandle);
+  }
+
+  InitConn1();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+InitConn1()
+{
+  long connHandle;
+  long addressingMode;
+  long extIdFlag;
+
+  extIdFlag = 0;
+
+  if (gHandleConn1 > 0) 
+  {
+    CanTpCloseConnection(gHandleConn1);
+  }
+  
+  gHandleConn1 = CanTpCreateConnection(kNormal); // Normal mode
+
+  write("**************gHandleConn1:%d**************",gHandleConn1);
+ 
+  CanTpSetTxIdentifier(gHandleConn1, sysTxIdentifier);
+  CanTpSetRxIdentifier(gHandleConn1, sysRxIdentifier);
+  CanTpSetMaxCANFDFrameLength( gHandleConn1,8);
+
+  CanTpSetBitRateSwitch( gHandleConn1,0);
+
+}
+
+on key 'a'
+  
+{
+  byte txDataBuffer[2]={0X19,0X0A};
+  write("**************press key a**************");
+  CanTpSendData(gHandleConn1, txDataBuffer, 2);
+  
+}
+
+CanTp_ErrorInd(long connHandle, long error)
+{
+  byte connId;
+  write("**************connHandle:%d******error:%d********",connHandle,error);
+}

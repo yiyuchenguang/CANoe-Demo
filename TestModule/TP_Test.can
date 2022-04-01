@@ -6,83 +6,114 @@ includes
 
 variables
 {
-  const long sysTxIdentifier = 0x72E;
-  const long sysRxIdentifier = 0x73E;
-  char gECU[20] = "%NODE_NAME%";
-  
-  enum AddressModes { kNormal = 0,
-                    kExtendedBased = 1,
-                    kNormalFixed = 2,
-                    kMixed = 3,
-                    kMixed11Bit = 4,
-                    kExtendedFree = 5
-                  }k,0
-  
+  const long sysTxIdentifier = 0x72E; //Tester的物理地址ID
+  const long sysRxIdentifier = 0x73E; //真实ECU的物理地址ID
+  long gHandleConn1;
+  long dbHandle;
 }
-r
+
 
 on start
 {
-  long dbHandle;
-  BYTE gbCANFDactive = 0;
-  dbHandle = CanTpGetDBConnection();
-  write("**************dbHandle:%d**************",dbHandle);
-  if (dbHandle > 0) {
-    CanTpCloseConnection(dbHandle);
-  }
-
-  InitConn1();
-
+  InitConn();
 }
 
 
+InitConn()
+{  
 
-
-
-
-
-
-
-
-
-
-
-InitConn1()
-{
-  long connHandle;
-  long addressingMode;
-  long extIdFlag;
-
-  extIdFlag = 0;
-
-  if (gHandleConn1 > 0) 
-  {
-    CanTpCloseConnection(gHandleConn1);
-  }
+  //连个ID 建立连接
+  dbHandle = CanTpGetDBConnection();
+  write("**************dbHandle:%d**************",dbHandle);
   
-  gHandleConn1 = CanTpCreateConnection(kNormal); // Normal mode
-
+  if (dbHandle > 0) 
+  {
+    CanTpCloseConnection(dbHandle);
+  }
+  gHandleConn1 = CanTpCreateConnection(0); // Normal mode
   write("**************gHandleConn1:%d**************",gHandleConn1);
- 
+  
   CanTpSetTxIdentifier(gHandleConn1, sysTxIdentifier);
   CanTpSetRxIdentifier(gHandleConn1, sysRxIdentifier);
   CanTpSetMaxCANFDFrameLength( gHandleConn1,8);
-
-  CanTpSetBitRateSwitch( gHandleConn1,0);
-
+  //CanTpSetBitRateSwitch( gHandleConn1,0);
 }
 
-on key 'a'
-  
+on key 'a' 
 {
-  byte txDataBuffer[2]={0X19,0X0A};
+  byte txDataBuffer[2]={0x19,0x0A};
   write("**************press key a**************");
-  CanTpSendData(gHandleConn1, txDataBuffer, 2);
-  
+  CanTpSendData(gHandleConn1, txDataBuffer, 2); 
+}
+on key 'c' 
+{
+  byte txDataBuffer[100]={0x2e,0x2};
+  write("**************press key a**************");
+  CanTpSendData(gHandleConn1, txDataBuffer, elCount(txDataBuffer)); 
 }
 
-CanTp_ErrorInd(long connHandle, long error)
+
+
+
+on key 'b' 
 {
-  byte connId;
-  write("**************connHandle:%d******error:%d********",connHandle,error);
+   //设置流控帧参数的函数
+    CanTpSetPadding(gHandleConn1, 0xff);
+    write( "Padding value = 0x%x", CanTpGetPadding(gHandleConn1));
+
+    CanTpSetBlockSize(gHandleConn1, 0x00);
+    write( "Block size = 0x%x", CanTpGetBlockSize(gHandleConn1));
+
+    CanTpSetSTmin(gHandleConn1, 20);
+    write( "ST min = %d", CanTpGetSTmin(gHandleConn1));
+
+}
+on key 'd' 
+{
+    //设置流控帧参数的函数
+    CanTpUseFlowControlFrames(gHandleConn1,0);//是否使用流控帧参数进行传输，1是使用
+    write("Use flow control = %d",CanTpIsUseFlowControlFrames(gHandleConn1));
+
+    CanTpSetSTmin(gHandleConn1, 20);
+    write( "ST min = %d", CanTpGetSTmin(gHandleConn1));
+
+    CanTpUseFlowControlSTmin( gHandleConn1, 0);
+    write("Use FSTmin = %d", CanTpIsUseFlowControlSTmin(gHandleConn1));
+
+   //设置填充
+    CanTpSetPadding(gHandleConn1, 0xff);
+    write( "Padding value = 0x%x", CanTpGetPadding(gHandleConn1));
+}
+
+on key 'e' 
+{
+    //CanTpSetTimeoutAr(gHandleConn1,1000);
+    write( "Ar_ms value = %d", CanTpGetTimeoutAr(gHandleConn1));
+    write( "As_ms value = %d", CanTpGetTimeoutAs(gHandleConn1));
+    write( "Br_ms value = %d", CanTpGetTimeBr(gHandleConn1));
+    write( "Bs_ms value = %d", CanTpGetTimeoutBs(gHandleConn1));
+    write( "Br_ms value = %d", CanTpGetTimeBr(gHandleConn1));
+    write( "Cr_ms value = %d", CanTpGetTimeoutCr(gHandleConn1));
+}
+
+//以下4个都是回调函数
+void CanTp_SendCon( long connHandle, dword count) //发送成功后会调起此函数
+{
+  write( "Transmission of %d byte on connection %d successful"
+  , count, connHandle);
+}
+void CanTp_FirstFrameInd( long connHandle, dword length)//发送成功后会调起此函数
+{
+  write("Peer has started transfer of %d byte on connection %d"
+  , length, connHandle);
+} 
+void CanTp_ReceptionInd( long connHandle, byte data[])//接收到报文会调起此函数
+{
+  write( "Received %d byte on connection %d: [%02x] ..." 
+  , elcount( data), connHandle, data[0]);
+}
+
+void CanTp_ErrorInd( long connHandle, long error) //连接过程中报错会调起此函数
+{
+  write( "Error %d for connection %d", error, connHandle);
 }

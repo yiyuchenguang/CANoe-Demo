@@ -10,12 +10,23 @@ variables
   const long sysRxIdentifier = 0x73E; //真实ECU的物理地址ID
   long gHandleConn1;
   long dbHandle;
+  long mNewPage; // Sink identifier
 }
 
+
+on preStart
+{
+  mNewPage= writeCreate("New Page");
+  //Configure the page so that its content is logged
+  writeConfigure(mNewPage, 20, 1, "c:\\temp\\writelog.TXT");
+  //Clear content of CAPL page
+  writeclear(1);
+}
 
 on start
 {
   InitConn();
+
 }
 
 
@@ -116,4 +127,18 @@ void CanTp_ReceptionInd( long connHandle, byte data[])//接收到报文会调起此函数
 void CanTp_ErrorInd( long connHandle, long error) //连接过程中报错会调起此函数
 {
   write( "Error %d for connection %d", error, connHandle);
+}
+
+
+on message 0x73E
+{
+  //Show the description of the program
+  writeLineEx(mNewPage,1,"*****************0x%x************",this.byte(0));
+ 
+}
+
+on stopMeasurement
+{
+//destroy the new created Page
+writeDestroy(mNewPage);
 }

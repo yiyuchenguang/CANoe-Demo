@@ -1,0 +1,657 @@
+/*@!Encoding:1252*/
+variables
+{
+    // addressing type
+    const byte gcPhys = 0;
+    const byte gcRaw  = 1;
+  
+    const byte gcEqual              = 0;
+    const byte gcNotEqual           = 1;
+    const byte gcGreaterThen        = 2;
+    const byte gcLessThen           = 3;
+    const byte gcEqualTo            = 4;   
+    const byte gcGreaterEqual       = 5;
+    const byte gcLessEqual          = 6;
+    const byte gcTrue               = 1;
+    const byte gcFalse              = 0;
+    const byte gcOk                 = 1;
+    const byte gcNok                = 0;
+}
+
+testcase SignalFunctionTest(char TestType[])
+{ 
+  int TStep_i ;
+  char Tstep[10];
+  long wait_time = 100;//unit :ms
+   
+	TStep_i  = 1;
+	snprintf(Tstep, elcount(Tstep), "%d", TStep_i);
+   
+  if (strncmp(TestType,"get_signal",elCount(TestType)) == 0)
+  {
+    TestStep_GetSignal(Tstep,EngineSpeed_Float,gcPhys);
+  }
+  else if (strncmp(TestType,"get_signal_raw",elCount(TestType)) == 0)
+  {
+    TestStep_GetSignal(Tstep,EngineSpeed_Float,gcRaw);
+  }
+    else if (strncmp(TestType,"get_signal_and_compare",elCount(TestType)) == 0)
+  {
+    TestStep_GetAndCompareSignal(Tstep,EngineSpeed_Float,100.0,wait_time,gcPhys,gcEqual);
+  }
+    else if (strncmp(TestType,"get_signal_and_compare_raw",elCount(TestType)) == 0)
+  {
+    TestStep_GetAndCompareSignal(Tstep,EngineSpeed_Float,1600,wait_time,gcRaw,gcEqual);
+  }
+  else  if (strncmp(TestType,"set_signal",elCount(TestType)) == 0)
+  {
+    TestStep_SetSignal(Tstep,EngineSpeed_Float,200,wait_time,gcPhys);
+  }
+  else if (strncmp(TestType,"set_signal_raw",elCount(TestType)) == 0)
+  {
+    TestStep_SetSignal(Tstep,EngineSpeed_Float,4800,wait_time, gcRaw);
+  }
+  
+   // string type
+  
+   else if (strncmp(TestType,"get_signal_str",elCount(TestType)) == 0)
+  {
+    TestStep_GetSignal(Tstep,"EngineSpeed_Float",gcPhys);
+  }
+  else if (strncmp(TestType,"get_signal_str_raw",elCount(TestType)) == 0)
+  {
+    TestStep_GetSignal(Tstep,"EngineSpeed_Float",gcRaw);
+  }
+    else if (strncmp(TestType,"get_signal_and_compare_str",elCount(TestType)) == 0)
+  {
+    TestStep_GetAndCompareSignal(Tstep,"EngineSpeed_Float",100.0,wait_time,gcPhys,gcEqual);
+  }
+    else if (strncmp(TestType,"get_signal_and_compare_str_raw",elCount(TestType)) == 0)
+  {
+    TestStep_GetAndCompareSignal(Tstep,"EngineSpeed_Float",1600,wait_time,gcRaw,gcEqual);
+  }
+  else  if (strncmp(TestType,"set_signal_str",elCount(TestType)) == 0)
+  {
+    TestStep_SetSignal(Tstep,"EngineSpeed_Float",200,wait_time,gcPhys);
+  }
+  else if (strncmp(TestType,"set_signal_str_raw",elCount(TestType)) == 0)
+  {
+    TestStep_SetSignal(Tstep,"EngineSpeed_Float",4800,wait_time, gcRaw);
+  }
+  else{
+    
+  }
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_GetSignal
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:      Tstep  -                                  
+                 aSignal -
+                 physRaw -
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+float TestStep_GetSignal (char Tstep[],  signal *aSignal,byte physRaw)
+{
+    byte subStepId;
+    char tempText[255];
+    char signalName[100];
+    float retVal;     
+  
+    snprintf(signalName,elcount(signalName),"%s", aSignal.name);       
+    snprintf(tempText,elcount(tempText),"Except Get value for signal %s.", signalName);
+
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+    
+    retVal = -1;//Initialize variable for pass/fail verdict
+    if(physRaw == gcPhys)
+    {
+      retVal = getSignal(aSignal);
+    }
+ 
+    else
+    {
+      retVal =  GetRawSignal(aSignal);
+    }        
+    
+    if(retVal != -1)
+    {
+        snprintf(tempText,elcount(tempText),"Signal value was getted. %s = %10.5f.", signalName, retVal);
+        testStepPass(Tstep, tempText); 
+    }
+    else
+    {
+       snprintf(tempText,elcount(tempText),"Value for signal %s was not getted.", signalName);
+       testStepFail(Tstep, tempText);
+    }
+   
+   return retVal;
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_GetSignal
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:      Tstep  -                                  
+                 aSignal -
+                 physRaw -
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+float TestStep_GetSignal(char Tstep[], char aSignal[],byte physRaw)
+{
+    byte subStepId;
+    char tempText[255];
+    char signalName[100];
+    float retVal;     
+  
+    snprintf(signalName,elcount(signalName),"%s",aSignal);       
+    snprintf(tempText,elcount(tempText),"Except Get value for signal %s.", signalName);
+
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+    
+    retVal = -1;//Initialize variable for pass/fail verdict
+    if(physRaw == gcPhys)
+    {
+      retVal = getSignal(aSignal);
+    }
+ 
+    else
+    {
+      retVal =  GetRawSignal(aSignal);
+    }        
+    
+    if(retVal != -1)
+    {
+        snprintf(tempText,elcount(tempText),"Signal value was getted. %s = %10.5f.", signalName, retVal);
+        testStepPass(Tstep, tempText); 
+    }
+    else
+    {
+       snprintf(tempText,elcount(tempText),"Value for signal %s was not getted.", signalName);
+       testStepFail(Tstep, tempText);
+    }  
+   return retVal;
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_GetAndCompareSignal
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:      Tstep  -                                  
+                 aSignal -
+                 physRaw -
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+byte TestStep_GetAndCompareSignal(char Tstep[],  signal *aSignal, double compareValue, long timeOut, byte physRaw , byte compareMode)
+{
+    byte subStepId;
+ 
+    char signalName[200];
+    char tempInfo[255]; 
+    char tempText[255];
+    double signalVal;
+    byte conditionFulfilled;
+    dword startTime;
+    dword time2wait = 3;
+
+    
+    snprintf(signalName,elcount(signalName),"%s", aSignal.name);     
+  
+    
+    switch(compareMode)
+    {
+        case(gcEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s equal to %g", signalName, compareValue);
+            break;
+        case(gcNotEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s not equal to %g", signalName, compareValue);
+            break;
+        case(gcGreaterThen) :
+            snprintf(tempText,elcount(tempText),"Except %s greater then %g", signalName, compareValue);
+            break;
+        case(gcLessThen) :
+            snprintf(tempText,elcount(tempText),"Except %s less then %g", signalName, compareValue);
+            break;
+        case(gcGreaterEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s greater or equal to %g", signalName, compareValue);
+            break;
+        case(gcLessEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s less or equal to %g", signalName, compareValue);
+            break;
+        default :
+            snprintf(tempText,elcount(tempText),"ERROR TestStep_GetAndCompareSignal: Invalid compare mode: %d", compareValue);
+    }
+    
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+    
+
+    conditionFulfilled = gcFalse;
+    startTime = timeNow();   //current time
+    
+    while((timeNow() - startTime) < timeOut * 100.0 && conditionFulfilled == gcFalse || timeOut == 0)
+    {
+      
+      if(physRaw == gcPhys)
+      {
+        signalVal = getSignal(aSignal);
+      }
+   
+      else
+      {
+        signalVal =  GetRawSignal(aSignal);
+      }
+
+        switch(compareMode)
+        {
+            case(gcEqual) :
+                if(signalVal == compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+				        }
+                break;
+            case(gcNotEqual) :
+                if(signalVal != compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "different than");
+				        }
+                break;
+            case(gcGreaterThen) :
+                if(signalVal > compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "greater than");
+				        }
+                break;
+            case(gcLessThen) :
+                if(signalVal < compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "less than");
+				        }
+                break;
+            case(gcGreaterEqual) :
+                if(signalVal >= compareValue)
+				        {
+                    conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "greather than or equal to");
+				        }
+                break;
+            case(gcLessEqual) :
+                if(signalVal <= compareValue)
+				        {
+                    conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "less than or equal to");
+				        }
+                break;
+            default :
+                conditionFulfilled = gcFalse;
+        }
+        
+        if(timeOut != 0)
+        {
+            testWaitForTimeout(time2wait);
+        }
+        else
+        {
+            break;
+        }
+    }
+    
+    //pass or fail
+    if(conditionFulfilled == gcTrue)
+    {
+		  snprintf(tempText,elcount(tempText),"%s = %g.", signalName, signalVal);
+      testStepPass(Tstep, tempText); 
+      return gcOk;
+    }
+    else
+    {
+		if(timeOut == 0)
+			snprintf(tempText,elcount(tempText),"%s = %g. Expected to be %s %g.", signalName, signalVal, tempInfo, compareValue);
+		else
+			snprintf(tempText,elcount(tempText),"%s = %g. Expected to be %s %g. Verification time: %5.1f s.", signalName, signalVal, tempInfo, compareValue, (double)(timeNow() - startTime)/100.0);
+		
+    testStepFail(Tstep, tempText); 
+    return gcNok;
+    }
+
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_GetAndCompareSignal
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:      Tstep  -                                  
+                 aSignal -
+                 physRaw -
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+byte TestStep_GetAndCompareSignal(char Tstep[],  char aSignal[], double compareValue, long timeOut, byte physRaw , byte compareMode)
+{
+    byte subStepId;
+ 
+    char signalName[200];
+    char tempInfo[255]; 
+    char tempText[255];
+    double signalVal;
+    byte conditionFulfilled;
+    dword startTime;
+    dword time2wait = 3;
+
+    
+    snprintf(signalName,elcount(signalName),"%s", aSignal);     
+  
+    
+    switch(compareMode)
+    {
+        case(gcEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s equal to %g", signalName, compareValue);
+            break;
+        case(gcNotEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s not equal to %g", signalName, compareValue);
+            break;
+        case(gcGreaterThen) :
+            snprintf(tempText,elcount(tempText),"Except %s greater then %g", signalName, compareValue);
+            break;
+        case(gcLessThen) :
+            snprintf(tempText,elcount(tempText),"Except %s less then %g", signalName, compareValue);
+            break;
+        case(gcGreaterEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s greater or equal to %g", signalName, compareValue);
+            break;
+        case(gcLessEqual) :
+            snprintf(tempText,elcount(tempText),"Except %s less or equal to %g", signalName, compareValue);
+            break;
+        default :
+            snprintf(tempText,elcount(tempText),"ERROR TestStep_GetAndCompareSignal: Invalid compare mode: %d", compareValue);
+    }
+    
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+    
+
+    conditionFulfilled = gcFalse;
+    startTime = timeNow();   //current time
+    
+    while((timeNow() - startTime) < timeOut * 100.0 && conditionFulfilled == gcFalse || timeOut == 0)
+    {
+      
+      if(physRaw == gcPhys)
+      {
+        signalVal = getSignal(aSignal);
+      }
+   
+      else
+      {
+        signalVal =  GetRawSignal(aSignal);
+      }
+
+        switch(compareMode)
+        {
+            case(gcEqual) :
+                if(signalVal == compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+				        }
+                break;
+            case(gcNotEqual) :
+                if(signalVal != compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "different than");
+				        }
+                break;
+            case(gcGreaterThen) :
+                if(signalVal > compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "greater than");
+				        }
+                break;
+            case(gcLessThen) :
+                if(signalVal < compareValue)
+                {
+					          conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "less than");
+				        }
+                break;
+            case(gcGreaterEqual) :
+                if(signalVal >= compareValue)
+				        {
+                    conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "greather than or equal to");
+				        }
+                break;
+            case(gcLessEqual) :
+                if(signalVal <= compareValue)
+				        {
+                    conditionFulfilled = gcTrue;
+					          snprintf(tempInfo, elcount(tempInfo), "less than or equal to");
+				        }
+                break;
+            default :
+                conditionFulfilled = gcFalse;
+        }
+        
+        if(timeOut != 0)
+        {
+            testWaitForTimeout(time2wait);
+        }
+        else
+        {
+            break;
+        }
+    }
+    
+    //pass or fail
+    if(conditionFulfilled == gcTrue)
+    {
+		  snprintf(tempText,elcount(tempText),"%s = %g.", signalName, signalVal);
+      testStepPass(Tstep, tempText); 
+      return gcOk;
+    }
+    else
+    {
+		if(timeOut == 0)
+			snprintf(tempText,elcount(tempText),"%s = %g. Expected to be %s %g.", signalName, signalVal, tempInfo, compareValue);
+		else
+			snprintf(tempText,elcount(tempText),"%s = %g. Expected to be %s %g. Verification time: %5.1f s.", signalName, signalVal, tempInfo, compareValue, (double)(timeNow() - startTime)/100.0);
+		
+    testStepFail(Tstep, tempText); 
+    return gcNok;
+    }
+
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_SetSignal
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:      Tstep  -                                  
+                 aSignal -
+                 physRaw -
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+TestStep_SetSignal (char Tstep[], signal *aSignal, double value2Set,long timeOut, byte physRaw)
+{
+    byte subStepId;
+    char signalName[100];
+    char tempSubStep[255]; 
+    char tempText[1024];
+    long retVal;
+    int64 retVal_raw;
+    dword time2wait = 3;
+    double startTime  ;
+  
+    snprintf(signalName,elcount(signalName),"%s", aSignal.name);  
+    if(physRaw == gcRaw)
+      snprintf(tempText,elcount(tempText),"Except Set signal %s to %f(phy value).", signalName,value2Set);
+    else
+      snprintf(tempText,elcount(tempText),"Except Set signal %s to %f(Raw value).", signalName,value2Set);
+        
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+
+    if(physRaw == gcPhys)
+    {
+      setSignal(aSignal,value2Set);
+      retVal = TestWaitForSignalMatch(aSignal,value2Set,timeOut);
+    }
+ 
+    else
+    {
+       setRawSignal(aSignal,value2Set);
+       startTime  =timeNow();
+        do
+      {
+        retVal_raw = GetRawSignal(aSignal);
+        testWaitForTimeout(time2wait);
+      }
+      while((retVal_raw != value2Set) && ((timeNow() - startTime)/100.0 < timeOut));
+      if(retVal_raw == value2Set)
+      {
+        retVal = 1 ;
+      }
+   }      
+    //pass or fail
+    if(retVal == 1)
+    {
+       snprintf(tempText,elcount(tempText),"%s is set to %g.", signalName, value2Set);
+       testStepPass(Tstep, tempText);
+    }
+    else
+    {
+        snprintf(tempText,elcount(tempText),"%s was not set.", signalName, value2Set);
+       testStepFail(Tstep, tempText);
+    }
+}
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_SetSignal
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:      Tstep  -                                  
+                 aSignal -
+                 physRaw -
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+TestStep_SetSignal (char Tstep[], char aSignal[], double value2Set,long timeOut, byte physRaw)
+{
+    byte subStepId;
+    char signalName[100];
+    char tempSubStep[255]; 
+    char tempText[1024];
+    long retVal;
+    double retVal_Phy;
+    int64 retVal_raw;
+    dword time2wait = 3;
+    double startTime  ;
+  
+    snprintf(signalName,elcount(signalName),"%s", aSignal);  
+    if(physRaw == gcRaw)
+      snprintf(tempText,elcount(tempText),"Except Set signal %s to %f(phy value).", signalName,value2Set);
+    else
+      snprintf(tempText,elcount(tempText),"Except Set signal %s to %f(Raw value).", signalName,value2Set);
+        
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+
+    if(physRaw == gcPhys)
+    {
+      setSignal(aSignal,value2Set);
+      startTime  =timeNow();
+        do
+      {
+        retVal_Phy = GetSignal(aSignal);
+        testWaitForTimeout(10);
+      }
+      while((abs(retVal_Phy -value2Set) > 0.01) && ((timeNow() - startTime)/100.0 < timeOut));
+      if(abs(retVal_Phy -value2Set) < 0.01)
+      {
+        retVal = 1 ;
+      }
+    }
+    else
+    {
+       setRawSignal(aSignal,value2Set);
+       startTime  =timeNow();
+        do
+      {
+        retVal_raw = GetRawSignal(aSignal);
+        testWaitForTimeout(time2wait);
+      }
+      while((retVal_raw != value2Set) && ((timeNow() - startTime)/100.0 < timeOut));
+      if(retVal_raw == value2Set)
+      {
+        retVal = 1 ;
+      }
+   }      
+    //pass or fail
+    if(retVal == 1)
+    {
+       snprintf(tempText,elcount(tempText),"%s is set to %g.", signalName, value2Set);
+       testStepPass(Tstep, tempText);
+    }
+    else
+    {
+        snprintf(tempText,elcount(tempText),"%s was not set.", signalName, value2Set);
+       testStepFail(Tstep, tempText);
+    }
+}
+

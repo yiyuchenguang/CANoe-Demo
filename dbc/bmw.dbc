@@ -40,7 +40,8 @@ BO_ 801 LightState: 1 Light
  SG_ HeadLight : 2|1@1+ (1,0) [0|1] ""  Display
  SG_ FlashLight : 0|1@1+ (1,0) [0|1] ""  Display
 
-BO_ 291 EngineState: 2 Engine
+BO_ 291 EngineState: 8 Engine
+ SG_ EngineSpeed_Float : 16|32@1- (0.0625,0) [0|0] "" Vector__XXX
  SG_ OnOff : 0|1@1+ (1,0) [0|1] ""  Display
  SG_ EngineSpeed : 1|15@1- (1,0) [0|0] ""  Display
 
@@ -87,9 +88,11 @@ BA_DEF_DEF_  "CANoeJitterMin" 0;
 BA_DEF_DEF_  "CANoeDrift" 0;
 BA_DEF_DEF_  "CANoeStartDelay" 0;
 BA_ "NodeLayerModules" BU_ Engine "";
-BA_ "GenMsgSendType" BO_ 801 0;
 BA_ "GenMsgCycleTime" BO_ 801 100;
-BA_ "GenMsgSendType" BO_ 291 0;
+BA_ "GenMsgSendType" BO_ 801 0;
 BA_ "GenMsgCycleTime" BO_ 291 100;
+BA_ "GenMsgSendType" BO_ 291 0;
+BA_ "GenSigStartValue" SG_ 291 EngineSpeed_Float 1600;
 BA_ "GenSigStartValue" SG_ 291 EngineSpeed 0;
+SIG_VALTYPE_ 291 EngineSpeed_Float : 1;
 

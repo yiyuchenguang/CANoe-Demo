@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<testmodule title="bmw" version="">
+		<testgroup title="signal functions test ">		
+				<capltestcase name="SignalFunctionTest" title = "get_signal(signal type)">
+					<caplparam type = "string" name = "TestType">get_signal</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "get_signal(signal type raw value)">
+					<caplparam type = "string" name = "TestType">get_signal_raw</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "get_signal_and_compare(signal type)">
+					<caplparam type = "string" name = "TestType">get_signal_and_compare</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "get_signal_and_compare(signal type raw value)">
+					<caplparam type = "string" name = "TestType">get_signal_and_compare_raw</caplparam>
+				</capltestcase>	
+				<capltestcase name="SignalFunctionTest" title = "set_signal(signal type)">
+					<caplparam type = "string" name = "TestType">set_signal</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "set_signal(signal type raw value)">
+					<caplparam type = "string" name = "TestType">set_signal_raw</caplparam>
+				</capltestcase>	
+
+				<capltestcase name="SignalFunctionTest" title = "get_signal(string type)">
+					<caplparam type = "string" name = "TestType">get_signal_str</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "get_signal(string type raw value)">
+					<caplparam type = "string" name = "TestType">get_signal_str_raw</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "get_signal_and_compare(string type)">
+					<caplparam type = "string" name = "TestType">get_signal_and_compare_str</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "get_signal_and_compare(string type raw value)">
+					<caplparam type = "string" name = "TestType">get_signal_and_compare_raw</caplparam>
+				</capltestcase>	
+				<capltestcase name="SignalFunctionTest" title = "set_signal(signal type)">
+					<caplparam type = "string" name = "TestType">set_signal_str</caplparam>
+				</capltestcase>
+				<capltestcase name="SignalFunctionTest" title = "set_signal(string)">
+					<caplparam type = "string" name = "TestType">set_signal_str_raw</caplparam>
+				</capltestcase>							
+		</testgroup>				
+</testmodule>

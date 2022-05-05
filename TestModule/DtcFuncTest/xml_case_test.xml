@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<testmodule title="DTC_Func_Test" version="">
+		<testgroup title="DTC Signal">
+			<capltestcase name="ReadDTC_Test" title = "Ckeck Only DTC 0xD43581 In And Status is 0x2B">
+				<caplparam type = "string" name = "TestType">OnlyDTC</caplparam>
+			</capltestcase>
+			<capltestcase name="ReadDTC_Test" title = "Ckeck Only DTC 0xD43581 In And Not Care Status">
+				<caplparam type = "string" name = "TestType">OnlyDTC_NoStatus</caplparam>
+			</capltestcase>	
+			<capltestcase name="ReadDTC_Test" title = "Ckeck DTC 0xD43581 In And Status is 0x2B">
+				<caplparam type = "string" name = "TestType">IncludeDTC</caplparam>
+			</capltestcase>
+			<capltestcase name="ReadDTC_Test" title = "Ckeck DTC 0xD43581 In And Not Care Status">
+				<caplparam type = "string" name = "TestType">IncludeDTC_NoStatus</caplparam>
+			</capltestcase>											
+		</testgroup>
+
+		<testgroup title="DTC Arrary">
+			<capltestcase name="ReadDTC_Arrary_Test" title = "Ckeck Only DTC [0xD43581 ,0x540F00] In And Status is 0x2B">
+				<caplparam type = "string" name = "TestType">OnlyDTC</caplparam>
+			</capltestcase>
+			<capltestcase name="ReadDTC_Arrary_Test" title = "Ckeck Only DTC [0xD43581 ,0x540F00] In And Not Care Status">
+				<caplparam type = "string" name = "TestType">OnlyDTC_NoStatus</caplparam>
+			</capltestcase>	
+			<capltestcase name="ReadDTC_Arrary_Test" title = "Ckeck DTC [0xD43581 ,0x540F00] In And Status is 0x2B">
+				<caplparam type = "string" name = "TestType">IncludeDTC</caplparam>
+			</capltestcase>
+			<capltestcase name="ReadDTC_Arrary_Test" title = "Ckeck DTC [0xD43581 ,0x540F00] In And Not Care Status">
+				<caplparam type = "string" name = "TestType">IncludeDTC_NoStatus</caplparam>
+			</capltestcase>	
+			<capltestcase name="ReadDTC_Arrary_Test" title = "Ckeck DTC [0xD43581 ,0x540F00] In And Status is 0x2B And In Order">
+				<caplparam type = "string" name = "TestType">OnlyDTC_InOrder</caplparam>
+			</capltestcase>					
+		</testgroup>		
+</testmodule>

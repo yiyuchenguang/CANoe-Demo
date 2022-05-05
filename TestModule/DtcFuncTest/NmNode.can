@@ -1,0 +1,244 @@
+/*@!Encoding:936*/
+
+On key 'a'
+{
+  if(0)
+  {   // for SeachValueInArrary test
+      byte source[10]={1,2,3,4,5,6,7,8,9,10};
+      byte target = 5;
+      int retVal;
+      
+      retVal = SeachValueInArrary(target,source);
+      write("SeachValueInArrary return value:%d",retVal);
+  }
+  
+  if(0)
+  {   // for SeachMultiValueInArrary test
+      byte source[10]={1,2,3,4,5,6,7,8,9,10};
+      byte target[3] = {2,3,11};
+      int retVal;
+      
+      retVal = SeachMultiValueInArrary(target,source);
+      write("SeachMultiValueInArrary return value:%d",retVal);
+  }
+  
+  if(0)
+  {   // for SeachSubArraryInArrary test
+      byte source[10]={1,2,3,4,5,6,7,8,9,10};
+      byte target[3] = {2,3,4};
+      byte target_Nok[3] = {2,3,5};
+      int retVal;
+      
+      retVal = SeachSubArraryInArrary(target,source);
+      write("SeachSubArraryInArrary return value:%d",retVal);
+      
+      retVal = SeachSubArraryInArrary(target_Nok,source);
+      write("SeachSubArraryInArrary return value:%d",retVal);
+  }
+  
+    if(1)
+  {   // for SeachValueInArrary test
+      byte source[10]={1,2,3,4,5,6,7,8,9,10};
+      byte target[10] = {1,2,3,4,5,6,7,8,9,10};
+      int retVal;
+      
+      retVal = CompareTwoArrary(target,source);
+      write("CompareTwoArrary return value:%d",retVal);
+  }
+  
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   SeachValueInArrary
+
+在指定数组中查找指定值
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int SeachValueInArrary(byte target ,byte source[])
+{
+  
+  int i ;
+  
+  for(i= 0;i<elcount(source);i++)
+  {
+    if(source[i] == target)
+    {
+      write("Seached value %d in the arrary and the index is %d",target,i);
+      return i;
+    }
+  } 
+  return -1 ;
+}
+int SeachValueInArrary(dword target ,dword source[])
+{
+  
+  int i ;
+  
+  for(i= 0;i<elcount(source);i++)
+  {
+    if(source[i] == target)
+    {
+      write("Seached value 0x%x in the arrary and the index is %d",target,i);
+      return i;
+    }
+  } 
+  return -1 ;
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   SeachMultiValueInArrary
+
+在指定数组中查找一些值
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int SeachMultiValueInArrary(byte target[] ,byte source[])
+{
+  
+  int i ;
+  int retVal;
+  
+  for(i= 0;i<elcount(target);i++)
+  {
+    
+    retVal = SeachValueInArrary(target[i],source);
+    if(retVal == -1)
+    {
+      write("target[%d] = %d not Seached in the arrary",i,target[i]);
+      return -1 ;
+    }
+  } 
+ return 0;
+}
+
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+Function name:   SeachSubArraryInArrary
+在指定数组中查找受否有指定的子数组，和SeachMultiValueInArrary函数不同的是，这个要求输入数组的顺序。
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int SeachSubArraryInArrary(byte target[] ,byte source[])
+{
+  
+  int i ,j;
+  int retVal;
+  byte forcompare[255];
+  int tarlen ,sourlen;
+  
+  tarlen = elCount(target);
+  sourlen =  elCount(source);
+  if(tarlen >= sourlen )
+  {
+    write("target arrary length is smaller than source array.");
+    return -1;
+  }
+  
+  
+  
+  for(i= 0;i< sourlen - tarlen +1 ;i++)
+  { 
+    for(j= 0;j< tarlen ;j++)
+    {
+      if(source[i+j] != target[j])
+      {
+        break;
+      }
+    }
+    if(j==tarlen)
+    {
+      return 0 ; //find it
+    }
+  } 
+ return -1; //not find
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+Function name:   CompareTwoArrary
+比较两个输入数组是否相同
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int CompareTwoArrary(byte target[] ,byte source[])
+{
+  
+  int i ;
+  int retVal;
+  
+  for(i= 0;i<elcount(target);i++)
+  {
+    if(target[i] != source[i])
+    {
+      return -1 ;
+    }
+  } 
+ return 0;
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+Function name:   CompareTwoArraryHaveSameItems
+比较两个输入数组是否相同
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int CompareTwoArraryHaveSameItems(dword target[] ,dword source[])
+{
+  
+  int i ;
+  int retVal;
+  
+  for(i= 0;i<elcount(target);i++)
+  {
+    if(target[i] != source[i])
+    {
+      return -1 ;
+    }
+  } 
+ return 0;
+}
+

@@ -1,0 +1,798 @@
+/*@!Encoding:936*/
+
+
+
+variables
+{
+  const byte gcNot_Unique    = 1;
+  const byte gcUnique        = 0;
+  const byte gcTrue          = 1;
+  const byte gcFalse         = 0;
+  const byte gcNok           =-1;
+  const byte gcOk            = 0;
+  
+  const long WaitForResopnse =3000;//unit ms
+  const byte dtc_mask        =0x2B; // DTC Mask
+  const byte NotCareStatus   = 0;
+}
+
+
+/// <arraryFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   SeachValueInArrary
+
+在指定数组中查找指定值
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int SeachValueInArrary(byte target ,byte source[])
+{
+  
+  int i ;
+  
+  for(i= 0;i<elcount(source);i++)
+  {
+    if(source[i] == target)
+    {
+      write("Seached value %d in the arrary and the index is %d",target,i);
+      return i;
+    }
+  } 
+  return gcNok ;
+}
+
+/// <arraryFunc>
+int SeachValueInArrary(dword target ,dword source[])
+{
+  
+  int i ;
+  
+  for(i= 0;i<elcount(source);i++)
+  {
+    if(source[i] == target)
+    {
+      write("Seached value 0x%x in the arrary and the index is 0x%x",target,i);
+      return i;
+    }
+  } 
+  return gcNok ;
+}
+
+/// <arraryFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   SeachMultiValueInArrary
+
+在指定数组中查找一些值
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int SeachMultiValueInArrary(byte target[] ,byte source[])
+{
+  
+  int i ;
+  int retVal;
+  
+  for(i= 0;i<elcount(target);i++)
+  {
+    
+    retVal = SeachValueInArrary(target[i],source);
+    if(retVal == gcNok)
+    {
+      write("target[%d] = %d not Seached in the arrary",i,target[i]);
+      return gcNok ;
+    }
+  } 
+ return gcOk;
+}
+
+/// <arraryFunc>
+int SeachMultiValueInArrary(dword target[] ,dword source[])
+{
+  
+  int i ;
+  int retVal;
+  
+  for(i= 0;i<elcount(target);i++)
+  {
+    
+    retVal = SeachValueInArrary(target[i],source);
+    if(retVal == gcNok)
+    {
+      write("target[%d] = 0x%x not Seached in the arrary",i,target[i]);
+      return gcNok ;
+    }
+  } 
+ return gcOk;
+}
+
+
+/// <arraryFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+Function name:   SeachSubArraryInArrary
+在指定数组中查找受否有指定的子数组，和SeachMultiValueInArrary函数不同的是，这个要求输入数组的顺序。
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int SeachSubArraryInArrary(byte target[] ,byte source[])
+{
+  
+  int i ,j;
+  int retVal;
+  byte forcompare[255];
+  int tarlen ,sourlen;
+  
+  tarlen = elCount(target);
+  sourlen =  elCount(source);
+  if(tarlen > sourlen )
+  {
+    write("target arrary length is smaller than source array.");
+    return gcNok;
+  }
+  
+  
+  
+  for(i= 0;i< sourlen - tarlen +1 ;i++)
+  { 
+    for(j= 0;j< tarlen ;j++)
+    {
+      if(source[i+j] != target[j])
+      {
+        break;
+      }
+    }
+    if(j==tarlen)
+    {
+      //return gcOk;
+      return i ; //find it and return the first fined value index
+    }
+  } 
+ return gcNok; //not find
+}
+
+/// <arraryFunc>
+int SeachSubArraryInArrary(dword target[] ,dword source[])
+{
+  
+  int i ,j;
+  int retVal;
+  byte forcompare[255];
+  int tarlen ,sourlen;
+  
+  tarlen = elCount(target);
+  sourlen =  elCount(source);
+  if(tarlen > sourlen )
+  {
+    write("target arrary length is smaller than source array.");
+    return gcNok;
+  }
+  
+  
+  
+  for(i= 0;i< sourlen - tarlen +1 ;i++)
+  { 
+    for(j= 0;j< tarlen ;j++)
+    {
+      if(source[i+j] != target[j])
+      {
+        break;
+      }
+    }
+    if(j==tarlen)
+    {
+      //return gcOk ; //find it
+      return i ; //find it and return the first fined value index
+    }
+  } 
+ return gcNok; //not find
+}
+
+
+/// <arraryFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+Function name:   SeachMultiValueNotInArrary
+期望两数组为互斥。
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+int SeachMultiValueNotInArrary(dword target[] ,dword source[])
+{
+  
+  int i ;
+  int retVal;
+  
+  for(i= 0;i<elcount(target);i++)
+  {
+    
+    retVal = SeachValueInArrary(target[i],source);
+    if(retVal != gcNok)
+    {
+      write("target[%d] = 0x%x Seached in the arrary,But Expcetd Not Search.",i,target[i]);
+      return gcNok ;
+    }
+  } 
+ return gcOk;
+}
+/// <arraryFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+Function name:   CompareTwoArrary
+比较两个输入数组是否相同
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int CompareTwoArrary(byte target[] ,byte source[],int offset ,int length )
+{
+  
+  int i ;
+  int retVal;
+  
+  if((elcount(target)> length) || (elcount(target) > elcount(source)) )
+  {
+    write("arrary length is wrong!");
+    return gcNok ;
+  }
+  
+  for(i= offset;i< length ;i++)
+  {
+    if(target[i -offset] != source[i])
+    {
+      return gcNok ;
+    }
+  } 
+ return gcOk;
+}
+
+/// <arraryFunc>
+int CompareTwoArrary(dword target[] ,dword source[],int offset ,int length )
+{
+  
+  int i ;
+  int retVal;
+  
+  if((elcount(target)> length) || (elcount(target) > elcount(source)) )
+  {
+    write("arrary length is wrong!");
+    return gcNok ;
+  }
+  
+  for(i= offset;i< length ;i++)
+  {
+    if(target[i -offset] != source[i])
+    {
+      return gcNok ;
+    }
+  } 
+ return gcOk;
+}
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+Function name:   InitArray
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:       
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+/// <arraryFunc>
+InitArray(byte source[])
+{
+  int i;
+  for(i = 0; i < elcount(source); i++)
+  {
+    source[i] = 0; 
+  }
+
+}
+
+/// <arraryFunc>
+InitArray(dword source[])
+{
+  int i;
+  for(i = 0; i < elcount(source); i++)
+  {
+    source[i] = 0; 
+  }
+
+}
+
+
+/// <ReadDTCFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_ReadDTC_Only
+
+检测是否有且仅有指定的DTC出现在Response中
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:      
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+int TestStep_ReadDTC(char Tstep[],dword expDTC,byte expStatus,byte isExpected, byte unique)
+{
+    byte subStepId;
+    char tempText[255];
+    char signalName[100];
+    int retVal;    
+    long DTC_Num;
+    int i ;
+    dword ResDTC[100];
+    byte ResDTC_Status[100];
+
+  
+    // 初始化数组为0
+    InitArray(ResDTC);
+    InitArray(ResDTC_Status);
+  
+    if (isExpected == gcTrue)
+    {   
+      if(unique == gcUnique)
+        snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except Only DTC 0x%X finded In Response", dtc_mask,expDTC);
+      else
+        snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except DTC 0x%X finded In Response", dtc_mask,expDTC);
+      
+      if (expStatus != 0x00)
+        snprintf(tempText,elcount(tempText),"%s And Status Is 0x%X.", tempText,expStatus);
+      else
+        snprintf(tempText,elcount(tempText),"%s And Status Not Care.", tempText);   
+    }
+    
+    else
+    {     
+       snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except DTC 0x%X Not finded In Response.", dtc_mask,expDTC);
+    }
+            
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+    
+    // 发送诊断读取DTC
+    retVal = SendReadDTCDiagnostic(ResDTC, ResDTC_Status,DTC_Num ,WaitForResopnse);
+      
+    if(retVal != gcOk)
+    {
+      snprintf(tempText,elcount(tempText),"Response Code is %d,Not Expected.", retVal);
+      testStepFail(Tstep, tempText);
+      return gcNok;
+    }
+    
+    /********************期望DTC存在***************************/  
+    if (isExpected == gcTrue) 
+    {         
+      retVal = SeachValueInArrary(expDTC,ResDTC);      
+      if(retVal != gcNok)// Find value
+      {   
+        snprintf(tempText,elcount(tempText),"DTC 0x%X Finded In Response,It is Excepted.", expDTC);
+        /********************是否需要检查status******************************/ 
+        if (expStatus != 0x00)  //需要检查status ，00为不需要检查status
+        {
+            if(expStatus == ResDTC_Status[retVal])
+          {
+            snprintf(tempText,elcount(tempText),"%s\n And Status is 0x%X,It is Excepted.", tempText ,expStatus);
+            testStepPass(Tstep, tempText);
+             write("*******************%s",tempText);
+          }
+          else
+          {
+            snprintf(tempText,elcount(tempText),"%s\n And Status is 0x%X,But Expect It's 0x%X.",tempText,ResDTC_Status[retVal], expStatus);
+            testStepFail(Tstep, tempText);
+            return gcNok;
+          }           
+        }
+        else 
+        {
+           testStepPass(Tstep, tempText);
+        }
+        // 是否期望唯一性
+         if(unique == gcUnique)
+        {
+          if(DTC_Num != 1)
+          {
+             snprintf(tempText,elcount(tempText),"DTC 0x%X In Response,But It's Not Unique.", expDTC);
+             testStepFail(Tstep, tempText);
+             return gcNok;
+          }
+        }
+      }
+      else
+      { 
+        snprintf(tempText,elcount(tempText),"DTC 0x%X Not Finded In Response,It is Unexcepted.", expDTC);
+        testStepFail(Tstep, tempText);
+        return gcNok;          
+      }
+    }
+
+    /********************不期望DTC存在******************************/
+    else   
+    {     
+      retVal = SeachValueInArrary(expDTC,ResDTC);
+      if(retVal == gcNok)//Not Find
+      {
+        snprintf(tempText,elcount(tempText),"DTC 0x%X Not In Response,It is Excepted.", expDTC);
+        testStepPass(Tstep, tempText);
+      }
+      else
+      {
+        snprintf(tempText,elcount(tempText),"Excepted DTC 0x%X Not In Response,But Actual In.", expDTC);
+        testStepFail(Tstep, tempText);
+        return gcNok;
+      }
+    }    
+   return gcOk;
+}
+
+/// <ReadDTCFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_Read_Multi_DTC
+检测某些DTC是否在Response中
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:     
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+int TestStep_Read_Multi_DTC (char Tstep[],dword expDTC[],byte expStatus[],byte isExpected, byte unique)
+{
+    byte subStepId;
+    char tempText[255];
+    char tempDTCStr[255],tempStatusStr[255];
+    char signalName[100];
+    int retVal,result;    
+    long DTC_Num;
+    int i ,j;
+    dword ResDTC[100];
+    byte ResDTC_Status[100];
+  
+    
+  
+    // 初始化数组为0
+    InitArray(ResDTC);
+    InitArray(ResDTC_Status);
+  
+    snprintf(tempDTCStr,elcount(tempDTCStr),"");
+    for(i=0;i<elcount(expDTC);i++)
+       snprintf(tempDTCStr,elcount(tempDTCStr),"%s,0x%X", tempDTCStr,expDTC[i]);
+     
+    snprintf(tempStatusStr,elcount(tempStatusStr),"");
+    for(i=0;i<elcount(expDTC);i++)
+       snprintf(tempStatusStr,elcount(tempStatusStr),"%s 0x%X", tempStatusStr,expStatus[i]);
+  
+  
+    if (isExpected == gcTrue)
+    {   
+      if(unique == gcUnique)
+         snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except Only DTC %s In Response\n And Status are %s.", dtc_mask,tempDTCStr,tempStatusStr);      
+      else
+         snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except DTC %s In Response\n And Status are %s.", dtc_mask,tempDTCStr,tempStatusStr); 
+    }
+    // 不期望DTC
+    else
+    {     
+       snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except DTC %s Not In Response.", dtc_mask,tempDTCStr);
+    }
+            
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+    
+    // 发送诊断读取DTC
+    retVal = SendReadDTCDiagnostic(ResDTC, ResDTC_Status,DTC_Num ,WaitForResopnse);
+      
+    if(retVal != gcOk)
+    {
+      snprintf(tempText,elcount(tempText),"Response Code is %d,Not Expected.", retVal);
+      testStepFail(Tstep, tempText);
+      return gcNok;
+    }
+         
+         
+     if(isExpected == gcTrue) 
+      {  
+        /********************循环检测DTC*****************************/         
+        for(i=0;i< elCount(expDTC);i++)          
+        {      
+          retVal = SeachValueInArrary(expDTC[i],ResDTC);
+          /********************期望DTC存在***************************/        
+          if(retVal != gcNok)// Find value
+          {
+            snprintf(tempText,elcount(tempText),"DTC 0x%X Finded In Response", expDTC[i]);                           
+            if (expStatus[i] != 0x00)
+            {
+              if(expStatus[i]== ResDTC_Status[i])    
+              {
+                snprintf(tempText,elcount(tempText),"%s\n And Status is 0x%X,It is Excepted.",tempText, ResDTC_Status[i]);
+                testStepPass(Tstep, tempText);   
+              }
+              else
+              {
+                snprintf(tempText,elcount(tempText),"%s\n And Status is 0x%X,But Expected Status is 0x%X.",tempText, ResDTC_Status[i],expStatus[i]);
+                testStepFail(Tstep, tempText); 
+              }
+            }
+            else 
+            {
+               testStepPass(Tstep, tempText);
+            }
+          }
+          else
+          { 
+            snprintf(tempText,elcount(tempText),"DTC 0x%X Not Finded In Response,It is Not Excepted.", expDTC[i]);
+            testStepFail(Tstep, tempText); 
+          }
+        } 
+      
+        /********************是否期望只有某些DTC存在******************************/ 
+         if(unique == gcUnique) 
+        {
+          if(DTC_Num != elCount(expDTC))
+          {
+             snprintf(tempText,elcount(tempText),"Expected DTC Num(%d),But Actual DTC Num(%d).", elCount(expDTC), DTC_Num);
+             testStepFail(Tstep, tempText);
+             return gcNok;
+          }
+        }
+      }
+            
+    else /********************期望DTC不存在***************************/  
+    {            
+       retVal =  SeachMultiValueNotInArrary(expDTC,ResDTC);
+       if(retVal == gcOk)//Not Find
+      {
+        snprintf(tempText,elcount(tempText),"All DTC Not In Response,It is Excepted.");
+        testStepPass(Tstep, tempText);
+      }
+      else
+      {
+        snprintf(tempText,elcount(tempText),"DTC Finded In Response,It is Unexcepted.");
+        testStepFail(Tstep, tempText);
+        return gcNok;
+      }
+    }
+   return gcOk;
+}
+
+/// <ReadDTCFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   TestStep_Read_Multi_DTC_InOrder
+检测某些DTC是否在Response中且 排序正确
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:     
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+
+int TestStep_Read_Multi_DTC_InOrder (char Tstep[],dword expDTC[],byte expStatus[],byte isExpected, byte unique)
+{
+    byte subStepId;
+    char tempText[255];
+    char tempDTCStr[255],tempStatusStr[255];
+    char signalName[100];
+    int retVal,result;    
+    long DTC_Num;
+    int i ,j;
+    dword ResDTC[100];
+    byte ResDTC_Status[100];
+ 
+    
+  
+    // 初始化数组为0
+    InitArray(ResDTC);
+    InitArray(ResDTC_Status);
+  
+    snprintf(tempDTCStr,elcount(tempDTCStr),"");
+    for(i=0;i<elcount(expDTC);i++)
+       snprintf(tempDTCStr,elcount(tempDTCStr),"%s 0x%X", tempDTCStr,expDTC[i]);
+     
+    snprintf(tempStatusStr,elcount(tempStatusStr),"");
+    for(i=0;i<elcount(expDTC);i++)
+       snprintf(tempStatusStr,elcount(tempStatusStr),"%s 0x%X", tempStatusStr,expStatus[i]);
+  
+  
+    if (isExpected == gcTrue)
+    {   
+      if(unique == gcUnique)
+         snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except Only DTC %s In Response And In order\n And Status are %s.", dtc_mask,tempDTCStr,tempStatusStr);      
+      else
+         snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except DTC %s In Response And In order\n And Status are %s.", dtc_mask,tempDTCStr,tempStatusStr); 
+    }
+    // 不期望DTC
+    else
+    {     
+       snprintf(tempText,elcount(tempText),"Send $19 02 %X ,Except DTC %s Not In Response.", dtc_mask,tempDTCStr);
+    }
+            
+    subStepId = 0;
+    snprintf(Tstep,elcount(Tstep),"%s.%d",Tstep,subStepId);
+    TestStep(Tstep, tempText);
+    
+    // 发送诊断读取DTC
+    retVal = SendReadDTCDiagnostic(ResDTC, ResDTC_Status,DTC_Num ,WaitForResopnse);
+      
+    if(retVal != gcOk)
+    {
+      snprintf(tempText,elcount(tempText),"Response Code is %d,Not Expected.", retVal);
+      testStepFail(Tstep, tempText);
+      return gcNok;
+    }
+             
+      
+    /********************期望DTC存在***************************/  
+      if(isExpected == gcTrue) 
+      {  
+        retVal = SeachSubArraryInArrary(expDTC,ResDTC);
+        if(retVal != gcNok)// Find value ,retVal is index
+        {
+          snprintf(tempText,elcount(tempText),"All DTC Finded In Response And In Order"); 
+          testStepPass(Tstep, tempText);
+          
+          retVal =  CompareTwoArrary(expStatus, ResDTC_Status, retVal, elCount(expStatus));
+          if(retVal != gcNok)//  
+          {
+            snprintf(tempText,elcount(tempText),"DTC Status are all right");
+            testStepPass(Tstep, tempText);
+            if(unique == gcUnique)
+            {
+              if(DTC_Num != elCount(expDTC))
+              {
+                 snprintf(tempText,elcount(tempText),"Expected DTC Num(%d),But Actual DTC Num(%d).", elCount(expDTC), DTC_Num);
+                 testStepFail(Tstep, tempText);
+                 return gcNok;
+              }
+            }
+          }
+          else
+          {
+            snprintf(tempText,elcount(tempText),"Some DTC Status are not right.");
+            testStepFail(Tstep, tempText);
+            return gcNok;           
+          }
+      }
+      else
+      {
+        snprintf(tempText,elcount(tempText),"All DTC Not Finded In Response Or Finded But Not In Order."); 
+        testStepFail(Tstep, tempText);
+        return gcNok;   
+      }
+    }         
+      
+    else /********************期望DTC不存在***************************/  
+    {            
+       retVal =  SeachMultiValueNotInArrary(expDTC,ResDTC);
+       if(retVal == gcOk)//Not Find
+      {
+        snprintf(tempText,elcount(tempText),"All DTC Not In Response,It is Excepted.");
+        testStepPass(Tstep, tempText);
+      }
+      else
+      {
+        snprintf(tempText,elcount(tempText),"DTC Finded In Response,It is Unexcepted.");
+        testStepFail(Tstep, tempText);
+        return gcNok;
+      }
+    }
+   return gcOk;
+}
+
+
+/// <ReadDTCFunc>
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Function name:   SendReadDTCDiagnostic
+----------------------------------------------------------------------------------------------------                                                                                                 
+ Parameters:     
+----------------------------------------------------------------------------------------------------                                                                                                 
+Author:   
+  CSDN - MaYiXiaoBing
+  https://blog.csdn.net/qq_34414530?type=blog 
+ ----------------------------------------------------------------------------------------------------                                                                                                  
+Date: 2022/05/01            
+----------------------------------------------------------------------------------------------------                                                                                                  
+***************************************************************************************************/
+int SendReadDTCDiagnostic(dword ResDTC[], byte ResDTC_Status[],long &DTC_Num ,long diag_ForResopnse)
+{
+
+    int retVal,i;    
+    long retSize ;
+    dword Byte_H,Byte_M,Byte_L;
+    diagRequest  *diagReq;
+    
+  
+  
+    // 这样些可以不依赖dbc文件的定义，方便平台共用，也可以使用dbc中定义的诊断名称
+    diagResize(diagReq,3);
+    DiagSetPrimitiveByte(diagReq,0,0x19);
+    DiagSetPrimitiveByte(diagReq,1,0x02);
+    DiagSetPrimitiveByte(diagReq,2,dtc_mask); //dtc_mask: golble variable
+    
+    //send and wait response
+    TestReportWriteDiagObject(diagReq);    
+    DiagSendRequest(diagReq);
+	  TestWaitForDiagRequestSent(diagReq, 150);    
+    retVal = TestWaitForDiagResponse(diagReq, diag_ForResopnse);    //Get last response
+    TestReportWriteDiagResponse(diagReq);   // write response to report
+    //write("***************retVal:%d",retVal);
+    
+    if(retVal != 1)
+    {
+      write("Response Code is %d,Not Expected.", retVal);
+      return gcNok;
+    }
+      
+        
+    retSize = DiagGetRespPrimitiveSize(diagReq);
+    DTC_Num = (retSize -3 )/4; // -3 is 19 02 ff
+   // write("Response DTC Num %d",DTC_Num); ////for debug
+    
+    for(i = 0;i< DTC_Num ; i ++) 
+    {      
+       Byte_H = (dword)diagGetRespPrimitiveByte(diagReq,i*4 + 3 + 0);
+       Byte_M = (dword)diagGetRespPrimitiveByte(diagReq,i*4 + 3 + 1);
+       Byte_L = (dword)diagGetRespPrimitiveByte(diagReq,i*4 + 3 + 2);
+       ResDTC[i] = Byte_H<<16 | Byte_M<<8 | Byte_L ;     
+       ResDTC_Status[i] = diagGetRespPrimitiveByte(diagReq,i*4 + 3 + 3);     
+      // write("Added DTC To ResDTC Arrary:0x%X,Status is 0x%X",ResDTC[i],ResDTC_Status[i]); //for debug
+    }
+  return gcOk;
+}

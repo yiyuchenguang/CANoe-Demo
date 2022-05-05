@@ -1,0 +1,130 @@
+/*@!Encoding:936*/
+includes
+{
+ 
+  #include "ArrayFuncTest.cin"
+}
+
+
+testcase ReadDTC_Test(char TestType[])  
+{  
+  int TStep_i ;
+  char Tstep[10];
+  long wait_time = 100;//unit :ms
+  diagRequest FaultMemory_Clear FaultMemory_Clear;
+  diagSetTarget("FCM"); // should set your diagnostic target first 
+  
+  DiagSendRequest(FaultMemory_Clear);
+	testWaitForTimeout(2000);
+  
+  setRawSignal(RLCR_3_Le1ObjBoxLen ,0x1F5); //trigger dct 0xD43581  
+  setRawSignal(RLCR_1_SysSt ,0x03);//trigger dct 0x540F00
+  testWaitForTimeout(2000);
+  
+  TStep_i  = 1;
+	snprintf(Tstep, elcount(Tstep), "%d", TStep_i);
+   
+  if (strncmp(TestType,"OnlyDTC",elCount(TestType)) == 0)
+  {
+    TestStep_ReadDTC(Tstep,0xD43581,0x2B,gcTrue,gcUnique);
+  }
+  else if(strncmp(TestType,"OnlyDTC_NoStatus",elCount(TestType)) == 0)
+  {
+     TestStep_ReadDTC(Tstep,0xD43581,NotCareStatus,gcTrue,gcUnique);
+  }
+   else if(strncmp(TestType,"IncludeDTC",elCount(TestType)) == 0)
+  {
+     TestStep_ReadDTC(Tstep,0xD43581,0x2B,gcTrue,gcNot_Unique);
+  }
+    else if(strncmp(TestType,"IncludeDTC_NoStatus",elCount(TestType)) == 0)
+  {
+     TestStep_ReadDTC(Tstep,0xD43581,NotCareStatus,gcTrue,gcNot_Unique);
+  }
+  
+  setRawSignal(RLCR_3_Le1ObjBoxLen ,0x1F4); //untrigger dct 0xD43581  
+  setRawSignal(RLCR_1_SysSt ,0x01);//untrigger dct 0x540F00
+  testWaitForTimeout(2000);
+}
+
+testcase ReadDTC_Arrary_Test(char TestType[])  
+{  
+  int TStep_i ;
+  char Tstep[10];
+  long wait_time = 100;//unit :ms
+  dword expDTC[2] = {0xD43581, 0x540F00};
+  BYTE expDTC_Status[2] = {0x2B, 0x2B};
+  
+  diagRequest FaultMemory_Clear FaultMemory_Clear;
+  diagSetTarget("FCM"); // should set your diagnostic target first 
+  
+  DiagSendRequest(FaultMemory_Clear);
+	testWaitForTimeout(4000);
+  
+  setRawSignal(RLCR_3_Le1ObjBoxLen ,0x1F5); //trigger dct 0xD43581  
+  setRawSignal(RLCR_1_SysSt ,0x03);//trigger dct 0x540F00
+  //setRawSignal(RRCR_2_Ri1HdTo ,0xE12);//trigger dct 0xD43681
+  testWaitForTimeout(2000);
+  
+  TStep_i  = 1;
+	snprintf(Tstep, elcount(Tstep), "%d", TStep_i);
+   
+  if (strncmp(TestType,"OnlyDTC",elCount(TestType)) == 0)
+  {
+    TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcTrue,gcUnique);
+  }
+  else if(strncmp(TestType,"OnlyDTC_NoStatus",elCount(TestType)) == 0)
+  {
+     expDTC_Status[1] = NotCareStatus;
+     TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcTrue,gcUnique);
+  }
+   else if(strncmp(TestType,"IncludeDTC",elCount(TestType)) == 0)
+  {
+     TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcTrue,gcNot_Unique);
+  }
+    else if(strncmp(TestType,"IncludeDTC_NoStatus",elCount(TestType)) == 0)
+  {
+    expDTC_Status[1] = NotCareStatus;
+    TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcTrue,gcNot_Unique);
+  }
+     else if(strncmp(TestType,"OnlyDTC_InOrder",elCount(TestType)) == 0)
+  {
+    TestStep_Read_Multi_DTC_InOrder(Tstep,expDTC,expDTC_Status,gcTrue,gcNot_Unique);
+  } 
+  
+  setRawSignal(RLCR_3_Le1ObjBoxLen ,0x1F4); //untrigger dct 0xD43581  
+  setRawSignal(RLCR_1_SysSt ,0x01);//untrigger dct 0x540F00
+  setRawSignal(RRCR_2_Ri1HdTo ,0);//trigger dct 0xD43681
+  testWaitForTimeout(2000);
+  
+//untrigger check  
+//  TStep_i  ++ ;
+//	snprintf(Tstep, elcount(Tstep), "%d", TStep_i);
+//  
+//  DiagSendRequest(FaultMemory_Clear);
+//	testWaitForTimeout(4000);
+//  
+//    if (strncmp(TestType,"OnlyDTC",elCount(TestType)) == 0)
+//  {
+//    TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcFalse,gcUnique);
+//  }
+//  else if(strncmp(TestType,"OnlyDTC_NoStatus",elCount(TestType)) == 0)
+//  {
+//     expDTC_Status[1] = NotCareStatus;
+//     TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcFalse,gcUnique);
+//  }
+//   else if(strncmp(TestType,"IncludeDTC",elCount(TestType)) == 0)
+//  {
+//     TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcFalse,gcNot_Unique);
+//  }
+//    else if(strncmp(TestType,"IncludeDTC_NoStatus",elCount(TestType)) == 0)
+//  {
+//    expDTC_Status[1] = NotCareStatus;
+//    TestStep_Read_Multi_DTC(Tstep,expDTC,expDTC_Status,gcFalse,gcNot_Unique);
+//  }
+//       else if(strncmp(TestType,"OnlyDTC_InOrder",elCount(TestType)) == 0)
+//  {
+//    TestStep_Read_Multi_DTC_InOrder(Tstep,expDTC,expDTC_Status,gcFalse,gcUnique);
+//  } 
+}
+
+

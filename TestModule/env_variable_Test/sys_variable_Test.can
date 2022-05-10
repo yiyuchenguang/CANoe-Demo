@@ -1,0 +1,136 @@
+/*@!Encoding:936*/
+
+on key 'z'    
+{
+  //当变量的类型为int或者float时 ，可以直接使用@读取和写入
+ 
+  @SysVariableTest::type_32_signed = -2;
+  write("type_32_signed is :%d",@SysVariableTest::type_32_signed);
+  
+  @SysVariableTest::type_IntegerArray[0] = 1;//int 或者 flaot 数据可以根据索引操作，因为我们创建这个变量时数组长度是1，所以这里只用0测试
+  write("@SysVariableTest::type_IntegerArray[0] :%d",@SysVariableTest::type_IntegerArray[0]);
+ 
+}
+
+on key 'x'    
+{
+
+  //sysSetVariableInt() 和 sysGetVariableInt()  form 1
+  sysSetVariableInt(sysvar::SysVariableTest::type_32_signed,-2);
+  write("type_32_signed is :%d",sysGetVariableInt(sysvar::SysVariableTest::type_32_signed));
+
+  //sysSetVariableInt() 和 sysGetVariableInt()  form 2
+  sysSetVariableInt("SysVariableTest","type_32_signed",-3);
+  write("type_32_signed is :%d",sysGetVariableInt("SysVariableTest","type_32_signed"));
+  
+  
+}
+
+
+on key 'c'    
+{
+
+  //sysSetVariableInt() 和 sysGetVariableInt()  32bit signed  
+  sysSetVariableInt(sysvar::SysVariableTest::type_32_signed,-2);
+  write("type_32_signed is :%d",sysGetVariableInt(sysvar::SysVariableTest::type_32_signed));
+
+  //sysSetVariableDWord() 和 sysGetVariableDWord()  32bit unsigned 
+  sysSetVariableDWord(sysvar::SysVariableTest::type_32_unsigned,1);
+  write("type_32_unsigned is :%d",sysGetVariableDWord(sysvar::SysVariableTest::type_32_unsigned));
+
+  //sysSetVariableLongLong() 和 sysGetVariableLongLong()  64bit signed  
+  sysSetVariableLongLong(sysvar::SysVariableTest::type_64_signed,-2);
+  write("type_64_signed is :%I64d",sysGetVariableLongLong(sysvar::SysVariableTest::type_64_signed));
+
+  //sysSetVariableLongLong() 和 sysGetVariableLongLong()  64bit signed  
+  sysSetVariableQWord(sysvar::SysVariableTest::type_64_unsigned,2);
+  write("type_64_unsigned is :%I64u",sysGetVariableQWord(sysvar::SysVariableTest::type_64_unsigned));
+  
+  
+  //sysSetVariableFloat() 和 sysGetVariableFloat()  64bit Double  
+  sysSetVariableFloat(sysvar::SysVariableTest::type_64_double,1.52);
+  write("type_64_signed is :%f",sysGetVariableFloat(sysvar::SysVariableTest::type_64_double));
+
+
+
+  //sysSetVariableString() 和 sysGetVariableString()  string  
+  {
+    char setString[100]="hello Canoe!";
+    char getString[100];
+    sysSetVariableString(sysvar::SysVariableTest::type_string,setString);
+    sysGetVariableString(sysvar::SysVariableTest::type_string,getString,elCount(getString));
+    write("type_string is :%s",getString);  
+  }
+  
+    //sysSetVariableData() 和 sysSetVariableData()  data  
+  {
+    byte putData[2]={0x03,0x04};
+    byte getData[2];
+    long copiedBytes;
+    sysSetVariableData(sysvar::SysVariableTest::type_data,putData,elCount(putData));
+    sysGetVariableData(sysvar::SysVariableTest::type_data,getData,copiedBytes);
+    write("type_data type_data[0] = 0x%x", getData[0]);  
+  }
+  
+  //sysSetVariableLongArray() 和 sysGetVariableLongArray ()  32 bit intArrary  
+  {
+    long putData[2]={0x04}; //这里注意数组大小要严格和系统变量定义的大小相同
+    long getData[2];
+
+    sysSetVariableLongArray(sysvar::SysVariableTest::type_IntegerArray,putData,elCount(putData));
+    sysGetVariableLongArray(sysvar::SysVariableTest::type_IntegerArray,getData,elCount(getData));
+    write("type_IntegerArray [0] = 0x%x ", getData[0]);  
+  }
+  
+   //sysSetVariableFloatArray() 和 sysGetVariableFloatArray ()  32 bit intArrary  
+  {
+    double putData[1]={1.58};
+    double getData[1];
+
+    sysSetVariableFloatArray (sysvar::SysVariableTest::type_DoubleArray,putData,elCount(putData));
+    sysGetVariableFloatArray (sysvar::SysVariableTest::type_DoubleArray,getData,elCount(getData));
+    write("type_DoubleArray [0] = %f",getData[0]);  
+  }
+   
+  
+}
+
+
+on key 'v'
+{
+ 
+  @SysVariableTest::type_32_signed = sysvar::SysVariableTest::type_32_signed::green;
+  write("type_32_signed is :%d",@SysVariableTest::type_32_signed);
+  
+}
+on key 'b'
+{
+    char setString[100]="你好，同学";
+    char getString[100];
+    sysSetVariableString(sysVar::SysVariableTest::type_string,setString);
+    sysGetVariableString(sysVar::SysVariableTest::type_string,getString,elCount(getString));
+    write("type_string is :%s",getString);  
+
+}
+
+on key 'n'
+{
+  int i;
+  
+  write("begin change type_32_signed value for 9 times"); 
+  for (i=0;i<10;i++)
+  {
+    @SysVariableTest::type_32_signed = i;
+  }
+  
+  
+
+}
+
+
+on sysvar SysVariableTest::type_32_signed
+{
+  write("type_32_signed value changed :%d",@this);
+  
+}
+

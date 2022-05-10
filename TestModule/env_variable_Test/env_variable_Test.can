@@ -1,0 +1,91 @@
+/*@!Encoding:936*/
+
+on key 'a'    
+{
+  //当变量的类型为int或者float时 ，可以直接使用@读取和写入
+  byte putData[4]={0x01,0x02,0x03,0x04};
+  char putString[10] = "good luck";
+  
+  @env_Speed = 65.5;
+  @env_Year = 2022 ;
+  
+  write("env_Speed is :%f",@env_Speed);
+  write("env_Year is :%d",@env_Year);
+  
+//当变量的类型为 string 和 data ，@不可用
+//  @env_Text = putString;
+//  @env_Data = putData ;
+  
+}
+on key 'b'    
+{
+
+  char putData[4]={0x01,0x02,0x03,0x04};
+  
+
+  putValue(env_Year,2022); //Function Form 1
+  write("env_Year is :%d",getValue(env_Year));
+
+//  env_hour 没在DBC中定义报错  
+//  putValue(env_hour,12);//Function Form 6
+//  write("env_hour is :%d",getValue(env_hour));
+//  
+  putValue("env_Year",2023);//Function Form 6
+  write("env_Year is :%.0f",getValue("env_Year")); //虽然 env_Year是int型，但是如果采用Form 6打印就要用%f
+  
+  putValue("env_hour",12);//Function Form 6  // “env_hour”虽然没定义，但是编译不报错，执行报提示信息
+  write("env_hour is :%d",getValue("env_hour"));
+    
+}
+
+on key 'c'    
+{
+  
+  byte putData[4]={0x01,0x02,0x03,0x04};
+  byte getData[4];
+  char putString[10] = "good luck";
+  char getString[10];
+  long retVal;
+  long i ;
+
+  putValue(env_Text,putString); //Function Form 3  
+  retVal =  getValue(env_Text,getString);
+  write("env_Text is :%s And It's size is %d",getString,retVal);
+  
+  
+  putValue(env_Data,putData); //Function Form 4  
+  retVal =  getValue(env_Data,getData);
+  write("env_Data is :0x%x,0x%x,0x%x,0x%x  And It's size is %d",getData[0],getData[1],getData[2],getData[3],retVal);
+
+  for(i=0;i<4;i++)
+    getData[i]=0;
+  
+  putValue(env_Data,putData,2); //Function Form 5 ，指定赋值env_Data 2个字节
+  retVal =  getValue(env_Data,getData); 
+  write("env_Data is :0x%x,0x%x,0x%x,0x%x  And It's size is %d",getData[0],getData[1],getData[2],getData[3],retVal);
+  
+}
+on key 'd'    
+{
+
+  @env_EngineStatus = env_EngineStatus::orange;
+  write("env_EngineStatus is :%d",@env_EngineStatus); 
+}
+on key 'e'    
+{
+
+  @env_EngineStatus = 4;
+  write("env_EngineStatus is :%d",@env_EngineStatus); 
+}
+
+on key 'f'    
+{
+
+  byte putData[4]={0x01,0x02,0x03,0x04};
+  byte getData[4];
+  long retVal;
+  putValue(env_Data,putData); //Function Form 4  
+  retVal =  getValue(env_Data,getData);
+  write("env_Data is :0x%x,0x%x,0x%x,0x%x  And It's size is %d",getData[0],getData[1],getData[2],getData[3],retVal);
+}
+

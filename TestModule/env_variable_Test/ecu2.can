@@ -1,0 +1,24 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+//on key 'd'    
+//{
+//
+// 
+//  @env_Year = 2023;
+// 
+//  write("env_Year is :%d",@env_Year);
+//
+//    @env_Speed = 60.5; 
+//  write("env_Year is :%f",@env_Speed);
+//
+//  
+//}

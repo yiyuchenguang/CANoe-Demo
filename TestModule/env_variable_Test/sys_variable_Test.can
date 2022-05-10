@@ -117,14 +117,11 @@ on key 'n'
 {
   int i;
   
-  write("begin change type_32_signed value for 9 times"); 
+  write("begin change type_32_signed value for 9 times  "); 
   for (i=0;i<10;i++)
   {
     @SysVariableTest::type_32_signed = i;
   }
-  
-  
-
 }
 
 
@@ -134,3 +131,32 @@ on sysvar SysVariableTest::type_32_signed
   
 }
 
+
+on key 'm'
+{
+  long retVal;
+  char capl_namespace[100] = "SysVariableTest_capl";
+  char capl_IntVariable[100] = "capl_IntVariable";
+  
+  //新建命名空间
+  retVal =  sysDefineNamespace(capl_namespace);
+  write("create namespace :%d ",retVal);
+
+  //新建32bit 整型变量
+  retVal = sysDefineVariableInt(capl_namespace, capl_IntVariable, 100); // form 1
+  write("create int type variable :%d ",retVal);
+  
+
+ 
+}
+
+on key 'l' 
+{
+  //之所以分两个 onkey去测试验证，为了说明，系统变量不是局部变量，在CANoe运行期间，是可以在任何文件中进行访问的
+  //读取系统变量 
+  write("get int type variable :%d",sysGetVariableInt("SysVariableTest_capl","capl_IntVariable"));
+  
+//  //删除命名空间和变量
+  sysUndefineNamespace("SysVariableTest_capl");
+  sysUndefineVariable("SysVariableTest_capl","capl_IntVariable");
+}

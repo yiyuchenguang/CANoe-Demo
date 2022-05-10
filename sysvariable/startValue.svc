@@ -1,0 +1,6 @@
+0,1,Start values signal group,[%C]-[%C]
+0,1,Signal::CAN::env_Variable_Test::ECU1::New_Message_1::New_Signal_1,2,[%C]-[%C]
+3,1,Start values systemVariable group,[%C]-[%C]
+3,1,SysVar::SysVariableTest::type_64_unsigned,100,[%C]-[%C]
+5,1,Start values envrimentVariable group,[%C]-[%C]
+5,1,EnvVar::env_Variable_Test::env_Speed,2022,[%C]-[%C]

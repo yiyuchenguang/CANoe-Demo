@@ -41,7 +41,7 @@ BO_ 2 New_Message_2: 8 ECU2
  SG_ New_Signal_2 : 0|8@1- (1,0) [0|0] ""  ECU1
 
 BO_ 1 New_Message_1: 8 ECU1
- SG_ New_Signal_1 : 0|8@1- (1,0) [0|0] ""  ECU2
+ SG_ New_Signal_1 : 0|8@1- (10,0) [0|100] ""  ECU2
 
 
 
@@ -57,6 +57,18 @@ EV_ env_Year: 0 [0|8272] "" 0 5 DUMMY_NODE_VECTOR0  ECU1;
 ENVVAR_DATA_ env_Data: 2;
 
 CM_ EV_ env_EngineStatus "this variable descriabled the engine status";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ SG_  "GenSigStartValue" FLOAT 0 100000000000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition";
+BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 999999;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 1 1000;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 2 50000;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","not_used","not_used","not_used","not_used","Cyclic","not_used","IfActive";
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 2 100000;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BU_  "ILUsed" ENUM  "Yes","No";
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ BU_  "NodeLayerModules" STRING ;
 BA_DEF_ BU_  "ECU" STRING ;
@@ -64,6 +76,18 @@ BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
 BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
 BA_DEF_ BU_  "CANoeDrift" INT 0 0;
 BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 1;
+BA_DEF_DEF_  "GenMsgCycleTime" 2;
+BA_DEF_DEF_  "GenMsgSendType" "not_used";
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 100;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "ILUsed" "Yes";
 BA_DEF_DEF_  "BusType" "";
 BA_DEF_DEF_  "NodeLayerModules" "";
 BA_DEF_DEF_  "ECU" "";
@@ -71,6 +95,8 @@ BA_DEF_DEF_  "CANoeJitterMax" 0;
 BA_DEF_DEF_  "CANoeJitterMin" 0;
 BA_DEF_DEF_  "CANoeDrift" 0;
 BA_DEF_DEF_  "CANoeStartDelay" 0;
-BA_ "BusType" "Unspecified";
+BA_ "GenMsgCycleTime" BO_ 2 100;
+BA_ "GenMsgCycleTime" BO_ 1 100;
+BA_ "GenSigStartValue" SG_ 1 New_Signal_1 5;
 VAL_ env_EngineStatus 2 "green" 1 "orange" 0 "red" ;
 

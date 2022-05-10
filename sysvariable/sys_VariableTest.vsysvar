@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<systemvariables version="4">
+  <namespace name="" comment="" interface="">
+    <namespace name="SysVariableTest" comment="" interface="">
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="km/h" name="type_32_signed" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="1" minValue="0" minValuePhys="0" maxValue="2" maxValuePhys="2">
+        <valuetable name="color" definesMinMax="true">
+          <valuetableentry value="0" lowerBound="0" upperBound="0" description="green" displayString="green" />
+          <valuetableentry value="1" lowerBound="1" upperBound="1" description="orange" displayString="orange" />
+          <valuetableentry value="2" lowerBound="2" upperBound="2" description="red" displayString="red" />
+        </valuetable>
+      </variable>
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_32_unsigned" comment="" bitcount="32" isSigned="false" encoding="65001" type="int" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_64_double" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_64_signed" comment="" bitcount="64" isSigned="true" encoding="65001" type="longlong" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_64_unsigned" comment="" bitcount="64" isSigned="false" encoding="65001" type="longlong" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_data" comment="" bitcount="80" isSigned="false" encoding="65001" type="data" arrayLength="4" startValue="AQLN" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_DoubleArray" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_IntegerArray" comment="" bitcount="32" isSigned="true" encoding="65001" type="intarray" arrayLength="2" startValue="10;16" minValue="1" minValuePhys="1" maxValue="20" maxValuePhys="20" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="type_string" comment="" bitcount="88" isSigned="true" encoding="65001" type="string" startValue="我是初始值" />
+    </namespace>
+    <namespace name="SysVariableTest_2" comment="" interface="">
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="test_2_1" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+    </namespace>
+    <namespace name="SysVariableTest_Strcut" comment="" interface="">
+      <struct name="type_struct" isUnion="False" definedBinaryLayout="True" comment="">
+        <structMember relativeOffset="0" byteOrder="0" isOptional="False" isHidden="False" name="struct_unsigned" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <structMember relativeOffset="0" byteOrder="0" isOptional="False" isHidden="False" name="struct_double" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" />
+        <structMember relativeOffset="0" byteOrder="0" isOptional="False" isHidden="False" name="strcut_intArray" comment="" bitcount="32" isSigned="true" encoding="65001" type="intarray" arrayLength="1" />
+        <structMember relativeOffset="0" byteOrder="0" isOptional="False" isHidden="False" name="strcut_string" comment="" bitcount="88" isSigned="false" encoding="65001" type="string" />
+        <structMember relativeOffset="0" byteOrder="0" isOptional="False" isHidden="False" name="strcut_data" comment="" bitcount="32" isSigned="false" encoding="65001" type="data" arrayLength="0" />
+      </struct>
+    </namespace>
+  </namespace>
+</systemvariables>

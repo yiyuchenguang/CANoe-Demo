@@ -23,8 +23,10 @@ class CANoe:
 
         self.Measurement = self.application.Measurement.Running
 
+
     def open_cfg(self, cfgname):
         # open CANoe simulation
+        cfgname = os.path.abspath(cfgname)
         if (self.application != None):
             # check for valid file and it is *.cfg file
             if os.path.isfile(cfgname) and (os.path.splitext(cfgname)[1] == ".cfg"):
@@ -123,19 +125,16 @@ class CANoe:
 
 
 app = CANoe()  # 定义CANoe为app
-app.open_cfg(r"D:\CANoe-Demo/bmw2.cfg")  # 导入某个CANoe congif
+app.open_cfg(r"../bmw2.cfg")  # 导入某个CANoe congif
 time.sleep(5)
 app.start_Measurement()
 
 while not msvcrt.kbhit():
     EngineSpeedDspMeter = app.get_SysVar("Engine", "EngineSpeedDspMeter")
     print(EngineSpeedDspMeter)
-<<<<<<< HEAD
     if (EngineSpeedDspMeter == 2):
         app.set_SysVar("Engine", "EngineSpeedDspMeter", 3.0)
-=======
     if(EngineSpeedDspMeter==2):
         app.set_SysVar("Engine","EngineSpeedDspMeter",3.0)
->>>>>>> beed72609c0d06b71498fdfd6cb3a5488cddf4f2
     app.DoEvents()
 

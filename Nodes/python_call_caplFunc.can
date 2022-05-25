@@ -1,0 +1,33 @@
+/*@!Encoding:936*/
+
+
+
+void pyCallCaplFunc_1()
+{
+  write("***********No parameter: pyCallCaplFunc_1 have been called.************");
+  
+}
+
+int pyCallCaplFunc_2()
+{
+  int retVal = 20 ;
+  write("***********have return: pyCallCaplFunc_2 have been called.return %d************",retVal);  
+  return retVal;
+}
+
+int pyCallCaplFunc_3(long para1)
+{
+  int retVal = 30 ;
+  write("***********have parameters: pyCallCaplFunc_3 been called.return %d************",retVal);
+  write("***********para1:%d ************",para1);
+  return retVal;
+}
+
+int pyCallCaplFunc_4(long para1,dword para2, double  para3)
+{
+  int retVal = 40 ;
+  write("***********have parameters: pyCallCaplFunc_3 been called.return %d************",retVal);
+  write("***********para1:%d ;para2:0x%x ;para3:%f************",para1,para2,para3);
+  return retVal;
+}
+

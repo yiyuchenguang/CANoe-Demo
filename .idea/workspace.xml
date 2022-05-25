@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0001.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0001.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0002.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/TestReport/XML_Demo_report0002.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/py_canoe/document/bmw_py_test_1.stcfg" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/py_canoe/document/bmw_py_test_1.stcfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data.mdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FaultMemoryLog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes/engine.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/engine.cbf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes/light.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/light.cbf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmw2.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw2.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +98,7 @@
       <recent name="C:\Users\carl.wu\Desktop\CANoe-Demo\PythonScript" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Main">
+  <component name="RunManager" selected="Python.Python_CANoe_CallCaplFunc">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BMW" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -140,7 +141,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python_CANoe" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Python_CANoe_CallCaplFunc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BMW" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -152,7 +153,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/Python_CANoe.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/Python_CANoe_CallCaplFunc.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -205,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Python_CANoe_CallCaplFunc" />
         <item itemvalue="Python.Main" />
         <item itemvalue="Python.PYCAN" />
         <item itemvalue="Python.yyy" />
         <item itemvalue="Python.tttt" />
-        <item itemvalue="Python.Python_CANoe" />
       </list>
     </recent_temporary>
   </component>

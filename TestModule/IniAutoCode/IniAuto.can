@@ -1,0 +1,95 @@
+/*@!Encoding:936*/
+includes
+{
+  #include "IniAuto.cin"
+
+}
+
+on key 'u'
+{
+
+  write("*****press u***********");
+  getKeyValueFromINI(Ini_data_path,var_Ini_Data);
+  
+  if(1) //debug check values
+  {
+    int i ;
+    write ("************************Debug data******************************");
+    for(i = 0 ;i < var_Ini_Data.items ;i++)
+    {
+      write ("*******section:%s*******",var_Ini_Data.section[i]);
+      write ("*******index:%d***keys:%s*******",i,var_Ini_Data.keys[i]);
+      write ("*******index:%d***values:%s*******",i,var_Ini_Data.values[i]);
+    }   
+  } 
+}
+
+on key 'm'
+{
+
+  write("*****press %c***********",this); 
+  SetKeyValueToINI(Ini_data_path_out,var_Ini_Data);
+}
+
+
+on key 'i' //改写key
+{
+
+  write("*****press %c***********",this);
+  updateINIItem(0,"Tester ","Runer","",var_Ini_Data,Ini_data_path_out); // 改写第一个键值对的key，索引值是0，把Tester改成Runer
+  
+}
+
+on key 'p' //改写value
+{
+
+  write("*****press %c***********",this);
+  updateINIItem(0,"Tester","Tester","https://blog.csdn.net/qq_34414530",var_Ini_Data,Ini_data_path_out); // 改写第一个键值对的value，索引值是0，
+  
+}
+
+on key 'k' //改写value
+{
+
+  write("*****press %c***********",this);
+  updateINIItem(0,"Tester","Runer","https://blog.csdn.net/qq_34414530",var_Ini_Data,Ini_data_path_out); // 对key和value同时操做
+  
+}
+
+
+on key 'h' //删除键值对
+{
+
+  write("*****press %c***********",this);
+  deleteINIItem(3,var_Ini_Data,Ini_data_path_out); // 删除Peed = 20.5
+}
+
+on key 'j' //增加键值对
+{
+
+  write("*****press %c***********",this);
+  appendINIItem("Number","place","shanghai",var_Ini_Data,Ini_data_path_out); // 在[Number] 下增加一个place = shanghai，
+}
+
+on key 'g' //增加键值对,新的section
+{
+
+  write("*****press %c***********",this);
+  appendINIItem("Position","place","shanghai",var_Ini_Data,Ini_data_path_out); // 在[Position] 下增加一个place = shanghai，
+}
+
+on key 'f' //新建ini文件
+{
+
+  write("*****press %c***********",this);
+  var_Ini_Data.items = 2;
+  strncpy (var_Ini_Data.section[0],"test"  ,elcount(var_Ini_Data.section[0]));
+  strncpy (var_Ini_Data.keys[0]   ,"para1" ,elcount(var_Ini_Data.keys[0]));
+  strncpy (var_Ini_Data.values[0] ,"1234"  ,elcount(var_Ini_Data.values[0]));
+  
+  strncpy (var_Ini_Data.section[1],"test"  ,elcount(var_Ini_Data.section[0]));
+  strncpy (var_Ini_Data.keys[1]   ,"para2" ,elcount(var_Ini_Data.keys[0]));
+  strncpy (var_Ini_Data.values[1] ,"4567"  ,elcount(var_Ini_Data.values[0]));
+  
+  SetKeyValueToINI(Ini_data_path_out,var_Ini_Data); 
+}

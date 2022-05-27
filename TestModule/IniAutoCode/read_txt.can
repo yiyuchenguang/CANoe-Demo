@@ -1,0 +1,168 @@
+/*@!Encoding:936*/
+variables
+{
+  dword glbHandle,glbHandle1 = 0; 
+  long mNewPage; // Sink identifier
+  char file_path[100] = ".//TestModule//IniAutoCode//Data.txt";  
+}
+
+on start
+{
+//Create a new page at the Write Window
+mNewPage= writeCreate("New Page");
+//Configure the page so that its content is logged
+writeConfigure(mNewPage, 20, 1, "c:\\temp\\writelog.TXT");
+//Clear content of CAPL page
+writeclear(1);
+writeLineEx(mNewPage,4,"\nKeyboard sequence: ");
+}
+
+On key 'w'
+{ 
+  byte buffer_bin[10];
+  long retSize;
+  int i;
+  // Opens the file in binary mode for read access.
+  glbHandle = OpenFileRead (file_path,1);
+     
+  if ( glbHandle!=0 )
+  {
+    do{
+      retSize = fileGetBinaryBlock(buffer_bin,elcount(buffer_bin),glbHandle);
+      writeLineEx(mNewPage,1,"retSize:%d",retSize);
+      for(i=0;i< retSize;i++)
+         writeLineEx (mNewPage,1,"buffer_bin[%d]: %d.",i,buffer_bin[i]);
+    }while(retSize > 0);   
+    fileClose (glbHandle);      
+  }
+ } 
+
+
+
+
+On key 'q'
+{ 
+  char buffer_ascii[10];
+  long retSize;
+  int i,j;
+  glbHandle = OpenFileRead (file_path,0);
+  if ( glbHandle!=0 )
+  {   j=0;
+    while(fileGetString (buffer_ascii,elcount(buffer_ascii),glbHandle)!=0)   
+    {
+    // %s 打印
+      writeLineEx (mNewPage,1,"lineNum:%d string: %s.",j,buffer_ascii);
+      j++;
+//      for(i=0;i< 6;i++)
+//          writeLineEx (mNewPage,1,"buffer_bin[%d]: %d.",i,buffer_ascii [i]);
+    }
+    fileClose (glbHandle);         
+  } }
+
+
+
+On key 'd'
+{
+  char buffer_ascii[10];
+  long retSize;
+  int i,j;
+  glbHandle = OpenFileRead (file_path,0);
+  if ( glbHandle!=0 )
+  {
+    j=0;
+    while(fileGetStringSZ (buffer_ascii,elcount(buffer_ascii),glbHandle)!=0)   
+    {
+      writeLineEx (mNewPage,1,"lineNum:%d string: %s.",j,buffer_ascii);
+      j++;
+//      for(i=0;i< 6;i++)
+//          writeLineEx (mNewPage,1,"buffer_bin[%d]: %d.",i,buffer_ascii [i]);
+    }
+    fileClose (glbHandle);         
+  } 
+}
+
+
+On key 'z'
+{
+ 
+    byte buffer_bin[10];
+    byte buffer_write[10]={'y','o','u','s','e','l','f'};
+    long ret,retSize;
+    int i,j=0;
+   //写入
+    setFilePath(".//TestModule//IniAutoCode", 2);//不可以直接设置C根目录，2表明可以对这个目录下的文件可读可写
+    glbHandle = openFileWrite ("Data_out.txt",1); //1 ,表明是二进制方式打开文件写
+    
+    if ( glbHandle!=0 )
+  {
+    retSize = fileWriteBinaryBlock (buffer_write, elcount(buffer_write), glbHandle);
+    writeLineEx(mNewPage,1,"retSize:%d",retSize);  
+    fileClose (glbHandle);
+  }
+  
+  //读取验证
+  glbHandle1 = OpenFileRead ("Data.txt",1); //1 ,表明是二进制方式打开文件，这里写入的路径必须是相对路径了，不可以是"C:\\Temp\\Data.txt"，因为程序开始已经设置过操作的文件夹了
+  if ( glbHandle1!=0 )
+  {    
+    do{
+        retSize = fileGetBinaryBlock(buffer_bin,elcount(buffer_bin),glbHandle1);
+        writeLineEx(mNewPage,1,"retSize:%d",retSize);
+        for(i=0;i< retSize;i++)
+            writeLineEx (mNewPage,1,"buffer_bin[%d]: %d.",i,buffer_bin[i]);
+    }while(retSize > 0);
+    fileClose (glbHandle1);        
+  } 
+ }
+
+On key 'x'
+{
+    char buffer_write[20]="yi xi wang yue";
+    long ret;
+    int i,j=0;
+    setFilePath(".//TestModule//IniAutoCode", 2);//不可以直接设置C根目录，2表明可以对这个目录下的文件可读可写
+    glbHandle = openFileWrite ("Data_out.txt",0); //以ASCII打开，并且覆盖文件原有内容
+    if ( glbHandle!=0 )
+  {
+    ret = filePutString  (buffer_write, strlen(buffer_write), glbHandle);    
+    if(ret)
+    {
+      writeLineEx (mNewPage,1,"write ok.");
+      fileClose (glbHandle);
+    }
+    else
+    {
+       writeLineEx (mNewPage,1,"write error.");
+    }   
+  } 
+}
+
+On key 'c'
+{
+    char buffer_write_1[20]="yi xi wang yue";
+    char buffer_write_2[20]="yue wang xi yi";
+    long ret;
+    int i,j=0;
+    setFilePath(".//TestModule//IniAutoCode", 2);//不可以直接设置C根目录，2表明可以对这个目录下的文件可读可写
+    glbHandle = openFileWrite ("Data_out.txt",0); //以ASCII打开，并且覆盖文件原有内容
+    if ( glbHandle!=0 )
+  {
+    ret = filePutString  (buffer_write_1, strlen(buffer_write_1), glbHandle);  
+    fileRewind(glbHandle); 
+    ret = filePutString  (buffer_write_2, strlen(buffer_write_2), glbHandle);  
+    if(ret)
+    {
+      writeLineEx (mNewPage,1,"write ok.");
+      fileClose (glbHandle);
+    }
+    else
+    {
+       writeLineEx (mNewPage,1,"write error.");
+    }   
+  } 
+}
+
+  on StopMeasurement
+{
+  writeDestroy(mNewPage);
+  fileClose (glbHandle);
+}

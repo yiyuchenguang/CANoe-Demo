@@ -2,7 +2,7 @@
 
 variables
 {  
-    char csv_data_path[100] = ".//TestModule//signals.csv";  
+    char csv_data_path[100] = ".//TestModule//read_csv//signals.csv";  
     struct csv_Data // record csv data
   {
     int  SignalNum;

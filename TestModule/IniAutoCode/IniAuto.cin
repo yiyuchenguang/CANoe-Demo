@@ -1,0 +1,361 @@
+/*@!Encoding:936*/
+variables
+{  
+    char Ini_data_path[100] = ".//TestModule//IniAutoCode//test.ini";  
+    char Ini_data_path_out[100] = ".//TestModule//IniAutoCode//test_out.ini";  
+    const int max_items = 200 ;     //允许读取INI文件中的最多键值对数量
+    const int max_keys_size = 50 ;  //允许INI文件中key的字符串的length
+    const int max_values_size = 300 ;//允许INI文件中value的字符串的length
+  
+    struct Ini_Data // record Ini data
+  {
+    int  items;
+    char section[max_items][max_keys_size];
+    char keys   [max_items][max_keys_size];
+    char values [max_items][max_values_size];
+ 
+  };
+   struct Ini_Data var_Ini_Data;
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+批量读INI
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+int getKeyValueFromINI(char FilePath[], struct Ini_Data Temp_var_Ini_Data)
+{ 
+  int i,j,glbHandle;
+  char buffer[max_values_size];
+  long section_find, key_find;
+  char section_temp[max_keys_size];
+  char keys_temp_1[max_keys_size]    ,keys_temp_2[max_keys_size];
+  char values_temp_1[max_values_size],values_temp_2[max_values_size];
+  
+  glbHandle = OpenFileRead (FilePath,0);
+  
+  if (glbHandle!=0 )
+  {   
+    write("Open file :%s passed.",FilePath);
+    j = 0;
+    
+    while(fileGetStringSZ(buffer,elcount(buffer),glbHandle)!=0)   
+    {     
+      section_find = strstr_regex(buffer, "\\[.*?\\]"); //用正则表达式匹配 []
+      if(section_find != -1)
+       {
+        ClearCharArray(section_temp);
+        substr_cpy (section_temp,buffer,1,strlen(buffer)-2,  elcount(buffer));//掐头去尾,去掉[]
+        continue ; 
+       }
+      
+      key_find = strstr(buffer, "=");     
+      
+      if(key_find != -1)
+      {
+        ClearCharArray(keys_temp_1);ClearCharArray(keys_temp_2); //临时字符串使用之前要初始化
+        substr_cpy (keys_temp_1,buffer,0,key_find,  elcount(buffer));// = 前的key
+        remove_space(keys_temp_1,keys_temp_2);                 //清除字符传中的空格
+       
+        ClearCharArray(values_temp_1);ClearCharArray(values_temp_2); 
+        substr_cpy (values_temp_1,buffer,key_find+1,strlen(buffer) - key_find, elcount(buffer));//= 后的value
+        remove_space(values_temp_1,values_temp_2);
+
+        strncpy (Temp_var_Ini_Data.section[j],section_temp  ,elcount(Temp_var_Ini_Data.section[j]));
+        strncpy (Temp_var_Ini_Data.keys[j]   ,keys_temp_2   ,elcount(Temp_var_Ini_Data.keys[j]));
+        strncpy (Temp_var_Ini_Data.values[j] ,values_temp_2 ,elcount(Temp_var_Ini_Data.values[j]));
+        j++;  // index ++   
+      }           
+    }  
+    Temp_var_Ini_Data.items = j ;  // 最后统计多少行数据
+    fileClose (glbHandle);  
+  }  
+  else
+  {
+    write("Read file :%s failed.",FilePath);
+    return 0; //failed    
+  }
+  return 1; //passed
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+批量写入Key/value 到INI
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+int SetKeyValueToINI(char FilePath[], struct Ini_Data Temp_var_Ini_Data)
+{ 
+  long retVal;
+  int i,j,glbHandle;
+  char buffer[max_values_size];
+  char section_temp[max_items][max_keys_size];
+  char tempText[max_values_size];
+
+  
+  ClearCharArray(section_temp);
+  glbHandle = OpenFileWrite(FilePath,0); // 写入文件，以覆盖源文件的形式
+  
+  if (glbHandle!=0 )
+  {   
+    write("Open file :%s passed.",FilePath);
+    j = 0 ;
+    for(i=0;i< Temp_var_Ini_Data.items ; i++)
+    {
+                  
+      if((strncmp(Temp_var_Ini_Data.section[i],"",strlen(Temp_var_Ini_Data.section[i])) !=0)&&
+         (strncmp(Temp_var_Ini_Data.keys[i],   "",strlen(Temp_var_Ini_Data.keys[i]))    !=0)) //section、key 值不为空，写入
+        
+      {
+        /* section_temp是一个临时字符串数组，用来存储已经写过的section,
+        每次执行写入前会先检查下是否已经写过了，如果没写过，就添加到这个素组中，如果在这个数组中找到了，就不再写入Ini了
+        */
+        retVal = SeachValueInArrary(Temp_var_Ini_Data.section[i],section_temp );
+        
+        if (retVal== -1)
+        {       
+          snprintf(tempText, elcount(tempText), "\n[%s]\n", Temp_var_Ini_Data.section[i]);
+          filePutString (tempText, elcount(tempText),glbHandle);       
+          strncpy (section_temp[j],Temp_var_Ini_Data.section[i]  ,elcount(section_temp[j]));
+          j++ ;
+        }
+
+        snprintf(tempText, elcount(tempText), "%s = %s\n", Temp_var_Ini_Data.keys[i],Temp_var_Ini_Data.values[i]); //写入键值对
+        filePutString (tempText, elcount(tempText),glbHandle); 
+      }
+    }      
+      
+    fileClose (glbHandle);  
+  }  
+  else
+  {
+    write("Write file :%s failed.",FilePath);
+    return 0; //failed    
+  }
+  return 1; //passed
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+更改键值对，不完善，异常捕捉代码需完善
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+
+void updateINIItem(long index ,char section[],char keys[],char values[],struct Ini_Data Temp_var_Ini_Data,char FilePath[])
+{     
+  if(index < Temp_var_Ini_Data.items)
+  {
+    if(strncmp(section,"",strlen(section)) !=0)// 不等于空，就写入
+    {
+      strncpy (Temp_var_Ini_Data.section[index],section  ,elcount(Temp_var_Ini_Data.section[index]));
+    }
+    if(strncmp(keys,"",strlen(keys)) !=0)// 不等于空，就写入
+    {
+      strncpy (Temp_var_Ini_Data.keys[index]   ,keys     ,elcount(Temp_var_Ini_Data.keys[index]));
+    }
+    if(strncmp(values,"",strlen(values)) !=0)// 不等于空，就写入
+    {
+      strncpy (Temp_var_Ini_Data.values[index] ,values   ,elcount(Temp_var_Ini_Data.values[index]));
+    }
+     
+        
+     SetKeyValueToINI(FilePath, Temp_var_Ini_Data); //保存
+  }
+  else
+  {
+    write("index out of range.");
+  }
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+删除键值对，这里根据索引去删除，也可以再重载函数根据key值或者value值去删除
+当然也可以重载函数，传入索引数组，去批量删除，
+后期有时间再继续完善
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+
+void deleteINIItem(long index ,struct Ini_Data Temp_var_Ini_Data,char FilePath[])
+{     
+  if(index < Temp_var_Ini_Data.items)
+  {
+    strncpy (Temp_var_Ini_Data.section[index],""  ,elcount(Temp_var_Ini_Data.section[index]));  
+    strncpy (Temp_var_Ini_Data.keys[index]   ,""  ,elcount(Temp_var_Ini_Data.keys[index]));
+    strncpy (Temp_var_Ini_Data.values[index] ,""  ,elcount(Temp_var_Ini_Data.values[index]));
+        
+    SetKeyValueToINI(FilePath, Temp_var_Ini_Data); //保存
+  }
+  else
+  {
+    write("index out of range.");
+  }
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+增加键值对，下面的代码支持加入新的section，如果要在已有的section
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+
+void appendINIItem(char section[],char keys[],char values[],struct Ini_Data Temp_var_Ini_Data,char FilePath[])
+{    
+  long retIndex ;
+  long items;
+  long i ;
+                    
+  if((strncmp(section,"",strlen(section)) !=0)&&
+     (strncmp(keys   ,"",strlen(keys))    !=0)) //section、key 值不为空，写入      
+  {
+      
+    items = Temp_var_Ini_Data.items ;  
+    
+    retIndex = SeachValueInArrary(section,Temp_var_Ini_Data.section);    
+    
+    if (retIndex == -1)//如果是新的section，直接尾处追加
+    {            
+      strncpy (Temp_var_Ini_Data.section[items],section  ,elcount(Temp_var_Ini_Data.section[items]));
+      strncpy (Temp_var_Ini_Data.keys[items]   ,keys     ,elcount(Temp_var_Ini_Data.keys[items]));
+      strncpy (Temp_var_Ini_Data.values[items] ,values   ,elcount(Temp_var_Ini_Data.values[items]));  
+
+    }
+    else //如果是已有section,从索引处，向后顺移
+    {
+      for(i= items;i > retIndex ;i--)
+      {
+        strncpy (Temp_var_Ini_Data.section[i],Temp_var_Ini_Data.section[i-1]  ,elcount(Temp_var_Ini_Data.section[i]));
+        strncpy (Temp_var_Ini_Data.keys[i]   ,Temp_var_Ini_Data.keys[i-1]     ,elcount(Temp_var_Ini_Data.keys[i]));
+        strncpy (Temp_var_Ini_Data.values[i] ,Temp_var_Ini_Data.values[i-1]   ,elcount(Temp_var_Ini_Data.values[i]));       
+      } 
+      strncpy (Temp_var_Ini_Data.section[retIndex],section  ,elcount(Temp_var_Ini_Data.section[retIndex]));
+      strncpy (Temp_var_Ini_Data.keys[retIndex]   ,keys     ,elcount(Temp_var_Ini_Data.keys[retIndex]));
+      strncpy (Temp_var_Ini_Data.values[retIndex] ,values   ,elcount(Temp_var_Ini_Data.values[retIndex]));  
+    }
+    
+            
+    Temp_var_Ini_Data.items = items + 1;    
+    SetKeyValueToINI(FilePath, Temp_var_Ini_Data); //保存
+  }
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+在一个中查找指定值
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+long SeachValueInArrary(char target[] ,char source[][])
+{
+  
+  int i ;
+  
+  for(i= 0;i<elcount(source);i++)
+  {
+    if(strncmp(target,source[i],strlen(target)) ==0 )
+    {
+      //write("Seached value %s in the arrary and the index is %d",target,i);
+      return i;
+    }
+  } 
+  return -1 ;
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+去除字符串的空格
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+void remove_space(char input_c[],char out_c[]) 
+{
+  
+  int i,j ;
+  j=0;
+  
+  for(i = 0; i< strlen(input_c);i++)
+  {
+    if (input_c[i] != ' ')
+    {
+      out_c[j] = input_c[i];
+      j++;
+    }
+  } 
+}
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+字符串初始化
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+void ClearCharArray(char arrIn[])
+{
+	int i, length;
+  length = strlen(arrIn);
+  for(i=length;i>=0;i--){
+   arrIn[i]=0x00; 
+  }
+}
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+字符串数组初始化
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+void ClearCharArray(char arrChar[][])
+{
+	int i, length;
+  for(i=0;i<elcount(arrChar);i++)
+  {
+    strncpy(arrChar[i],"",elCount(arrChar[i]));
+  }
+}
+
+
+
+
+/***************************************************************************************************
+----------------------------------------------------------------------------------------------------
+Revision history:
+Date   2022-2-18
+Author mayixiaobing
+读取/设置单个key/value
+----------------------------------------------------------------------------------------------------
+***************************************************************************************************/
+int getINIValue(char section[], char keys[],char values[])
+{ 
+  //读取单个key/value ,暂时觉得意义不大，直接用原始函数也行
+  return 1;
+}
+
+int setINIValue(char section[], char keys[],char values[])
+{ 
+  //设置单个key/value，如果已经存在key，则该值，没有则新加，暂时没需求，后期真有需求再完善
+  return 1;
+}
+

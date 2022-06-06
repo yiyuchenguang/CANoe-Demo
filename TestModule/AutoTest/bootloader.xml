@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<testmodule title="bootloader" version="">
+	
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_1"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_2"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_3"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_4"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_5"></capltestcase>
+	<preparation>
+		<initialize title="wait " wait="2000"></initialize>
+	</preparation>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_6"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_7"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_8"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_9"></capltestcase>
+	<capltestcase name="Set_EngineState" title = "bootloader_TC_10"></capltestcase>	
+</testmodule>

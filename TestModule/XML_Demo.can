@@ -34,6 +34,24 @@ testcase Set_LightState()
   setSignal(HeadLight,1);
   testStepPass(TestStepText, "Open Head Light");   
 }
+
+testcase casedemo()
+{ 
+  long timeout;
+  char str[200];
+  timeout = random(1000)+ 1000;
+  testWaitForTimeout(timeout);
+  snprintf(str,elCount(str),"waited %d ms",timeout);
+
+  if(timeout%2 == 0)
+  {
+    testStepPass("1.1", str);   
+  }
+  else
+  {
+    testStepFail("1.1", str); 
+  }
+}
 //
 //void MainTest ()
 //{

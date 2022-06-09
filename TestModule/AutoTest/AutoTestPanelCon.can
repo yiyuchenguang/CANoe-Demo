@@ -1,0 +1,54 @@
+/*@!Encoding:936*/
+
+
+
+//auto_test 绑定了开始测试按钮
+on sysvar AutoTestModule::auto_test
+{
+  if(@this)
+    SequenceTest();
+}
+
+// 每个Test Module测试完毕后会触发这些对应的系统变量，测试完毕后调用SequenceTest函数虚招下一个测试项
+on sysvar (AutoTestModule::flash_test_status | AutoTestModule::nm_test_status | AutoTestModule::edr_test_status | AutoTestModule::diagnstic_test_status | AutoTestModule::busoff_test_status)
+{
+  if((@this == @sysvar::AutoTestModule::auto_test_status::FinishedPassed)||(@this == @sysvar::AutoTestModule::auto_test_status::FinishedFailed))
+  {
+   SequenceTest();
+  }
+}
+
+//寻找测试项
+void SequenceTest()
+{
+  //要按照Test Module的顺序写，这样测试才能按照顺序测试
+  //如果panel中勾选某个test module ，而且当前状态是Idle状态，才能进行测试
+  byte testModuleStatus ;
+  testModuleStatus = sysvar::AutoTestModule::auto_test_status::Idle;
+  
+  
+  if((@sysvar::AutoTestModule::flash_test == 1) && (@sysvar::AutoTestModule::flash_test_status == testModuleStatus ))
+  {
+    sysSetVariableInt(sysvar::AutoTestModule::flash_call,1);
+  }
+  else if((@sysvar::AutoTestModule::nm_test == 1) && (@sysvar::AutoTestModule::nm_test_status== testModuleStatus ))
+  {
+    sysSetVariableInt(sysvar::AutoTestModule::nm_call,1);
+  }
+  else if((@sysvar::AutoTestModule::edr_test == 1) && (@sysvar::AutoTestModule::edr_test_status== testModuleStatus ))
+  {
+    sysSetVariableInt(sysvar::AutoTestModule::edr_call,1);
+  }
+    else if((@sysvar::AutoTestModule::diagnstic_test == 1) && (@sysvar::AutoTestModule::diagnstic_test_status == testModuleStatus ))
+  {
+    sysSetVariableInt(sysvar::AutoTestModule::diagnstic_call,1);
+  }
+    else if((@sysvar::AutoTestModule::busoff_test == 1) && (@sysvar::AutoTestModule::busoff_test_status== testModuleStatus ))
+  {
+    sysSetVariableInt(sysvar::AutoTestModule::busoff_call,1);
+  }
+  else
+  {
+    write("not defined!");
+  }
+}

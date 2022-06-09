@@ -1,0 +1,104 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+On key 'a'
+{
+  sysExecCmd("", "" );
+}
+
+on key 'b'
+  
+{
+  char cmd[255];
+  char basePath[1024] = "D:\\CANoe-Demo\\TestModule\\callCMD";
+  snprintf(cmd,elCount(cmd),"cd %s",basePath);
+  sysExecCmd(cmd, "" );
+}
+
+on key 'c'  
+{
+  sysExecCmd("dir", "" );
+}
+on key 'd'  
+{
+  sysExecCmd("dir", "/w" );
+}
+
+on key 'e'  
+{
+  sysExecCmd("dir /w", "" );
+}
+
+
+on key 'f'  
+{
+  sysExecCmd("echo hello world", "" );
+}
+on key 'g'  
+{
+  char basePath[1024] = "D:\\CANoe-Demo\\TestModule\\callCMD";
+  sysExecCmd("dir /w", "",basePath );
+}
+
+on key 'h'  
+{
+  char basePath[1024] = "D:\\CANoe-Demo\\TestModule\\callCMD";
+  sysExecCmd("echo hello > a.txt & exit", "",basePath );
+}
+
+on key 'j'  
+{
+  char basePath[1024] = "D:\\CANoe-Demo\\TestModule\\callCMD";
+  sysExecCmd("callBat.bat", "",basePath );
+}
+on key 'k'  
+{
+  char basePath[1024] = "D:\\CANoe-Demo\\TestModule\\callCMD";
+  sysExecCmd("python callPython.py", "100 200 300", basePath);
+}
+
+on key 'l'  
+{
+  sysExecCmd("calc & exit", "");
+}
+
+on key 'z'  
+{
+  sysExec("calc", "");
+}
+on key 'x'  
+{
+
+  sysExec("main2.exe", "","C:\\MKSProjects\\CHT_Vision_System_Test\\Tools\\Test Spec Check" );
+}
+on key 'v'  
+{
+  long retVal;
+  char basePath[1024] = "D:\\CANoe-Demo\\TestModule\\callCMD";
+  retVal = sysExec("callBat2.bat", "",basePath );
+  write("retVal:%d",retVal);
+}
+
+on key 'n'  
+{
+  long retVal;
+  char basePath[1024] = "D:\\CANoe-Demo\\TestModule\\callCMD";
+  retVal = sysExec("D:\\CANoe-Demo\\TestModule\\callCMD\\callBat2.bat", "" );
+  write("retVal:%d",retVal);
+}
+
+on key 'm'  
+{
+  long retVal;
+  retVal = sysExec(".\\TestModule\\callCMD\\callBat2.bat", "" );
+  write("retVal:%d",retVal);
+}
+

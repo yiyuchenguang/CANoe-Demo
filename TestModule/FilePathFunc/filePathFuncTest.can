@@ -1,0 +1,99 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+on key 'e'
+  
+{
+  char absPath[256];
+  long retVal;
+  retVal =  getAbsFilePath("userFilesTest.txt", absPath, 256);
+  write ("absPath: %s ", absPath);
+  write ("retVal: %d ", retVal);
+}
+on key 'f'
+  
+{
+  char absPath[256];
+  long retVal;
+  retVal =  getAbsFilePath("TestModule\\FilePathFunc\\userFilesTest.txt", absPath, 256);
+  write ("absPath: %s ", absPath);
+  write ("retVal: %d ", retVal);
+}
+
+on key 'g'
+  
+{
+  long retVal;
+  //写入INI文件 函数
+  retVal = writeProfileInt ("setting", "parameter_1", 8, "test.ini");
+  write ("retVal: %d ", retVal);
+}
+
+on key 'h'
+  
+{
+  long retVal;
+  //写入INI文件 函数  
+  // 直接写入绝对路径？
+  retVal = writeProfileInt ("setting", "parameter_1", 8, "D:\\CANoe-Demo\\TestModule\\FilePathFunc\\test.ini");
+  write ("retVal: %d ", retVal);
+}
+on key 'j' 
+{
+  long retVal;
+  //写入INI文件 函数  
+  // 如果没有提前设置文件操作路径，必须用相对路径
+  retVal = writeProfileInt ("setting", "parameter_1", 8, "TestModule/FilePathFunc/test.ini");
+  write ("retVal: %d ", retVal);
+}
+
+on key 'k' 
+{
+  long retVal;
+  setFilePath("E:\\FilePathFunc", 1);
+  retVal = writeProfileInt ("setting", "parameter_1", 8, "test.ini");
+  write ("retVal: %d ", retVal);
+}
+
+on key 'l' 
+{
+  long retVal;
+  retVal = writeProfileInt ("setting", "parameter_1", 8, "test.ini");
+  write ("retVal: %d ", retVal);
+}
+
+on key 'z'
+  
+{
+  char absPath[256];
+  long retVal;
+  retVal =  getUserFilePath("test.ini", absPath, 256);
+  write ("getUserFilePath absPath: %s ", absPath);
+  write ("getUserFilePath retVal: %d ", retVal);
+  
+  
+  retVal =  getAbsFilePath("test.ini", absPath, 256);
+  write ("getAbsFilePath absPath: %s ", absPath);
+  write ("getAbsFilePath retVal: %d ", retVal);
+}
+
+on key 'x'
+  
+{
+  char absPath[256];
+  long retVal;
+  retVal =  RegisterUserFile("E:\\FilePathFunc\\test2.ini",0);
+  write ("getUserFilePath retVal: %d ", retVal);
+  
+  retVal =  getUserFilePath("test2.ini", absPath, 256);
+  write ("getUserFilePath absPath: %s ", absPath);
+  write ("getUserFilePath retVal: %d ", retVal);
+}

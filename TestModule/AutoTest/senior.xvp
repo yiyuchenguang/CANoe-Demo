@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="senior">
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="Button">
+      <Property Name="Name">ButtonControl1</Property>
+      <Property Name="Size">82, 37</Property>
+      <Property Name="Location">26, 249</Property>
+      <Property Name="Text">Start Test</Property>
+      <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;auto_test;1;;;-1;;;</Property>
+      <Property Name="TabIndex">78</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl9" Children="Controls" ControlName="Group Box 5">
+      <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl14" Children="Controls" ControlName="Check Box">
+        <Property Name="Name">CheckBoxControl14</Property>
+        <Property Name="Size">64, 16</Property>
+        <Property Name="Location">13, 32</Property>
+        <Property Name="Text">flash_test</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;flash_test;1;;;-1;;;</Property>
+        <Property Name="TabIndex">61</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl4" Children="Controls" ControlName="Combo Box">
+        <Property Name="Name">ComboBoxControl4</Property>
+        <Property Name="Size">100, 24</Property>
+        <Property Name="Location">211, 162</Property>
+        <Property Name="DropDownWidth">100</Property>
+        <Property Name="BackColor">Window</Property>
+        <Property Name="ForeColor">WindowText</Property>
+        <Property Name="TextBackColor">LightSteelBlue</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">busoff_test_status:</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;busoff_test_status;1;;;-1;;;</Property>
+        <Property Name="TabIndex">73</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl4" Children="Controls" ControlName="Check Box">
+        <Property Name="Name">CheckBoxControl4</Property>
+        <Property Name="Size">70, 16</Property>
+        <Property Name="Location">13, 164</Property>
+        <Property Name="Text">busoff_test</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;busoff_test;1;;;-1;;;</Property>
+        <Property Name="TabIndex">66</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl8" Children="Controls" ControlName="Check Box">
+        <Property Name="Name">CheckBoxControl8</Property>
+        <Property Name="Size">83, 16</Property>
+        <Property Name="Location">13, 131</Property>
+        <Property Name="Text">diagnstic_test</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;diagnstic_test;1;;;-1;;;</Property>
+        <Property Name="TabIndex">65</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl7" Children="Controls" ControlName="Combo Box">
+        <Property Name="Name">ComboBoxControl7</Property>
+        <Property Name="Size">100, 24</Property>
+        <Property Name="Location">211, 129</Property>
+        <Property Name="DropDownWidth">100</Property>
+        <Property Name="BackColor">Window</Property>
+        <Property Name="ForeColor">WindowText</Property>
+        <Property Name="TextBackColor">LightSteelBlue</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">diagnstic_test_status:</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;diagnstic_test_status;1;;;-1;;;</Property>
+        <Property Name="TabIndex">72</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl12" Children="Controls" ControlName="Combo Box">
+        <Property Name="Name">ComboBoxControl12</Property>
+        <Property Name="Size">100, 24</Property>
+        <Property Name="Location">211, 31</Property>
+        <Property Name="DropDownWidth">100</Property>
+        <Property Name="BackColor">Window</Property>
+        <Property Name="ForeColor">WindowText</Property>
+        <Property Name="TextBackColor">LightSteelBlue</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">flash_test_status:</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;flash_test_status;1;;;-1;;;</Property>
+        <Property Name="TabIndex">69</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl10" Children="Controls" ControlName="Check Box">
+        <Property Name="Name">CheckBoxControl10</Property>
+        <Property Name="Size">58, 16</Property>
+        <Property Name="Location">13, 98</Property>
+        <Property Name="Text">edr_test</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;edr_test;1;;;-1;;;</Property>
+        <Property Name="TabIndex">64</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl9" Children="Controls" ControlName="Combo Box">
+        <Property Name="Name">ComboBoxControl9</Property>
+        <Property Name="Size">100, 24</Property>
+        <Property Name="Location">211, 96</Property>
+        <Property Name="DropDownWidth">100</Property>
+        <Property Name="BackColor">Window</Property>
+        <Property Name="ForeColor">WindowText</Property>
+        <Property Name="TextBackColor">LightSteelBlue</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">edr_test_status:</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;edr_test_status;1;;;-1;;;</Property>
+        <Property Name="TabIndex">71</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl11" Children="Controls" ControlName="Combo Box">
+        <Property Name="Name">ComboBoxControl11</Property>
+        <Property Name="Size">100, 24</Property>
+        <Property Name="Location">211, 64</Property>
+        <Property Name="DropDownWidth">100</Property>
+        <Property Name="BackColor">Window</Property>
+        <Property Name="ForeColor">WindowText</Property>
+        <Property Name="TextBackColor">LightSteelBlue</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">nm_test_status:</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;nm_test_status;1;;;-1;;;</Property>
+        <Property Name="TabIndex">70</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl13" Children="Controls" ControlName="Check Box">
+        <Property Name="Name">CheckBoxControl13</Property>
+        <Property Name="Size">56, 16</Property>
+        <Property Name="Location">13, 65</Property>
+        <Property Name="Text">nm_test</Property>
+        <Property Name="SymbolConfiguration">5;16;AutoTestModule;;;nm_test;1;;;-1;;;</Property>
+        <Property Name="TabIndex">62</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl9</Property>
+      <Property Name="Size">324, 205</Property>
+      <Property Name="Location">26, 22</Property>
+      <Property Name="Text">AutoTest</Property>
+      <Property Name="TabIndex">76</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">388, 304</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

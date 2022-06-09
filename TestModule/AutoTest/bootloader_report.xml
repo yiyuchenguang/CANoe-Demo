@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2022-06-09 18:41:24" timestamp="  37.470866" verdicts="2_basic">
+  <testcase starttime="2022-06-09 18:41:24" timestamp="  37.470866">
+    <teststep timestamp="  39.277866" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=1807ms (max=1807ms)</teststep>
+    <teststep timestamp="  39.277866" level="0" type="user" ident="1.1" result="fail">waited 1807 ms</teststep>
+    <verdict time="2022-06-09 18:41:26" timestamp="  39.277866" endtime="2022-06-09 18:41:26" endtimestamp="  39.277866" result="fail" />
+    <title>TC_1</title>
+  </testcase>
+  <testcase starttime="2022-06-09 18:41:26" timestamp="  39.277866">
+    <teststep timestamp="  41.022866" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=1745ms (max=1745ms)</teststep>
+    <teststep timestamp="  41.022866" level="0" type="user" ident="1.1" result="fail">waited 1745 ms</teststep>
+    <verdict time="2022-06-09 18:41:28" timestamp="  41.022866" endtime="2022-06-09 18:41:28" endtimestamp="  41.022866" result="fail" />
+    <title>TC_2</title>
+  </testcase>
+  <testcase starttime="2022-06-09 18:41:28" timestamp="  41.022866">
+    <!-- Measurement stop forced. Test is incomplete! -->
+    <verdict time="2022-06-09 18:41:28" timestamp="  41.764073" endtime="2022-06-09 18:41:28" endtimestamp="  41.764073" result="fail" />
+    <title>TC_3</title>
+    <extendedinfo type="html"><![CDATA[<b>Measurement stop forced. Test is incomplete!</b>]]></extendedinfo>
+  </testcase>
+  <verdict time="2022-06-09 18:41:26" timestamp="  39.277866" endtime="2022-06-09 18:41:28" endtimestamp="  41.764073" result="fail" />
+  <title>casedemo</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>carl.wu</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.FlexRay 11.0.55 (SP2)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>D:\CANoe-Demo\bmw_AutoTestModule_Senior.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database bmw on CAN</name>
+      <description>D:\CANoe-Demo\dbc\bmw.dbc (2022-05-25 19:57:36)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>edr</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>D:\CANoe-Demo\TestModule\AutoTest\bootloader.xml</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2022-06-09, 15:14:39</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Library (CAPL)</name>
+      <description>D:\CANoe-Demo\TestModule\XML_Demo.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>CN03-OF-WL0051</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.55.0, c:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLVECTOR</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.16.47 (Jul  4 2017 16:10:44) , c:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLVECTOR.DLL</description>
+    </xinfo>
+  </testsetup>
+  <hardware name="CAN Channel Interfaces" category="CategoryCANIF">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>1</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VN7640</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3046</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>21.10.20</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>10.8.20</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+  <extendedinfo type="html"><![CDATA[<b>Measurement stop forced. Test is incomplete!</b>]]></extendedinfo>
+</testmodule>
+<!--footprint="406a7a90d1259eb8b1c215e0db32da2d" version="1"-->

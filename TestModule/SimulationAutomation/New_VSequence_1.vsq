@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualSequence version="1">
+  <Settings>
+    <NumberOfRepetitions>1</NumberOfRepetitions>
+    <StartOnMeasurementStart>False</StartOnMeasurementStart>
+    <RunUntilMeasurementStop>False</RunUntilMeasurementStop>
+    <DebugMode>False</DebugMode>
+    <ShowCommentColumn>False</ShowCommentColumn>
+    <LogToWrite>True</LogToWrite>
+    <LogToFile>False</LogToFile>
+    <LogFile>New_VSequence.csv</LogFile>
+    <CSVColumnSeparator>,</CSVColumnSeparator>
+    <CSVDecimalSymbol>.</CSVDecimalSymbol>
+    <CSVDecimalPlaces>6</CSVDecimalPlaces>
+    <LogTimeStamp>False</LogTimeStamp>
+    <SymbolNameDisplay>eQualificationStep1</SymbolNameDisplay>
+    <WaitForKeyKey>t</WaitForKeyKey>
+    <CheckOutputFailedOnly>False</CheckOutputFailedOnly>
+    <UseSignalLayer>False</UseSignalLayer>
+    <ExecMode>Standard</ExecMode>
+  </Settings>
+</VisualSequence>
+1,Wait For Key,,,,0,,False,False,False
+1,Write Text,key t have been pressed,,,0,,False,False,False

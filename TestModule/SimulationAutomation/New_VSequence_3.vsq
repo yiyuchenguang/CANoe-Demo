@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualSequence version="1">
+  <Settings>
+    <NumberOfRepetitions>1</NumberOfRepetitions>
+    <StartOnMeasurementStart>False</StartOnMeasurementStart>
+    <RunUntilMeasurementStop>False</RunUntilMeasurementStop>
+    <DebugMode>True</DebugMode>
+    <ShowCommentColumn>False</ShowCommentColumn>
+    <LogToWrite>True</LogToWrite>
+    <LogToFile>False</LogToFile>
+    <LogFile>New_VSequence_3.csv</LogFile>
+    <CSVColumnSeparator>,</CSVColumnSeparator>
+    <CSVDecimalSymbol>.</CSVDecimalSymbol>
+    <CSVDecimalPlaces>6</CSVDecimalPlaces>
+    <LogTimeStamp>False</LogTimeStamp>
+    <SymbolNameDisplay>eQualificationStep1</SymbolNameDisplay>
+    <WaitForKeyKey />
+    <CheckOutputFailedOnly>False</CheckOutputFailedOnly>
+    <UseSignalLayer>False</UseSignalLayer>
+    <ExecMode>Standard</ExecMode>
+  </Settings>
+</VisualSequence>
+1,Set CAN Raw Frame,CAN1::0x20,=,11 22 33 44 55 66 77 88,0,,False,False,False
+1,Set CAN Cyclic Raw Frame,CAN1::0x20,cycle time (ms),1000,0,,True,True,False
+1,Wait,2000,ms,,0,,False,False,False
+1,Set CAN Raw Frame,CAN1::0x20.byte0,=,255,0,,False,False,False
+1,Wait,3000,ms,,0,,False,False,False
+1,Set CAN Cyclic Raw Frame,CAN1::0x20,stop,,0,,True,True,False

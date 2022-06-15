@@ -12,9 +12,10 @@ from win32com.client.connect import *
 
 # Vector Canoe Class
 class CANoe:
-    def __init__(self):
+    def __init__(self, visible=True):
         self.application = None
         self.application = DispatchEx("CANoe.Application")
+        #self.application.Versible = visible
         self.ver = self.application.Version
         print('Loaded CANoe version ',
               self.ver.major, '.',

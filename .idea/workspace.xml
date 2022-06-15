@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data.mdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FaultMemoryLog.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/engine.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/engine.cbf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/light.cbf" beforeDir="false" afterPath="$PROJECT_DIR$/Nodes/light.cbf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmw2.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw2.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

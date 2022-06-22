@@ -1,0 +1,46 @@
+/*@!Encoding:936*/
+includes
+{
+  #pragma library("autoSerialPort.dll") 
+}
+
+
+int connectSerialPort(char  SpecialComDescribtion[])
+{
+ 	char comList[50][200];	
+	long serialPortsNum;
+  long retCom;
+  int i ,RetVal;
+  
+  retCom =  dllGetSeriesPorts(comList,SpecialComDescribtion,serialPortsNum);
+    
+  write("Return COM Port:%d",retCom);
+  
+  write("Total COM Ports Number:%d",serialPortsNum);
+  
+  for ( i = 0; i < serialPortsNum; i++)
+	{
+		write("%d: %s", i,comList[i]);
+	}
+  RetVal = RS232Open(retCom);
+  
+  if (RetVal == 1 )
+    write("Open port %d Ok.",retCom);
+  else
+    write("Open port %d failed.",retCom);
+  
+  RetVal = RS232Configure(retCom,9600,8,1,0 ); 
+
+    if (RetVal == 1 )
+    write("Configure port %d Ok.",retCom);
+  else
+    write("Configure port %d failed.",retCom);
+  
+ return RetVal;
+}
+
+on key 'k'
+{
+  connectSerialPort("USB Serial Device");
+}
+

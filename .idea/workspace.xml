@@ -3,7 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/Python_CANoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes/Engine.cbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nodes/Light.cbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/TP_Test.can" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/XML_Demo2.cbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/XML_VH6501.can" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/XML_VH6501_SamplePointTest.can" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestModule/XML_Vh6501.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmw_TP.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw_TP.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmw_vh6501.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw_vh6501.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +54,9 @@
     <option name="height" value="1050" />
   </component>
   <component name="ProjectId" id="1y4e6WrllfhLUK9yRW1vsX6VNcJ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -76,6 +86,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -93,7 +104,7 @@
       <recent name="C:\Users\carl.wu\Desktop\CANoe-Demo\PythonScript" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Python_CANoe_CallCaplFunc">
+  <component name="RunManager" selected="Python.rs232_auto">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BMW" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -157,7 +168,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tttt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="rs232_auto" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BMW" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,11 +176,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PythonScript/py_canoe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PythonScript/serialPortAuto" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/py_canoe/tttt.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PythonScript/serialPortAuto/rs232_auto.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -201,11 +212,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.rs232_auto" />
         <item itemvalue="Python.Python_CANoe_CallCaplFunc" />
         <item itemvalue="Python.Main" />
         <item itemvalue="Python.PYCAN" />
         <item itemvalue="Python.yyy" />
-        <item itemvalue="Python.tttt" />
       </list>
     </recent_temporary>
   </component>
@@ -259,6 +270,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/PythonScript/__init__.py">

@@ -1,0 +1,83 @@
+/*@!Encoding:936*/
+
+variables
+{
+  char replayName[32] = "ReplayBlock 1";
+  char loggingName[32] = "Logging";
+  msTimer ReplayState ;
+}
+
+
+
+on timer ReplayState
+{  
+  if(replayState(replayName) == 0)//replay结束
+  {
+      stopLogging(loggingName);//停止logging
+  } 
+  else
+  {
+      setTimer(ReplayState,100); //100ms
+  }
+}
+
+
+on key 'h'
+{
+  replayStart( replayName);  //开始回放
+  setTimer(ReplayState,100); //100ms
+  startLogging(loggingName); //开始录制
+}
+
+
+
+
+
+
+
+on key 'b'
+{
+replayStart( replayName);
+writeReplayState( replayName);
+}
+
+on key 'e'
+{
+replayStop( replayName);
+writeReplayState( replayName);
+}
+
+on key 's'
+{
+replaySuspend( replayName);
+writeReplayState( replayName);
+}
+
+on key 'r'
+{
+replayResume( replayName);
+writeReplayState( replayName);
+}
+
+
+
+
+
+void writeReplayState( char name[])
+{
+switch ( replayState( name))
+{
+case 0:
+   write( "Replay Block %s is stopped", replayName);
+   break;
+case 1:
+   write( "Replay Block %s is running", replayName);
+   break;
+case 2:
+   write( "Replay Block %s is suspended", replayName);
+   break;
+default:
+write( "Error: Replay Block %s has an unknown state!", replayName);
+   break;
+};
+}

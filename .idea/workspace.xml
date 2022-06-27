@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/Engine.cbf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nodes/Light.cbf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestModule/TP_Test.can" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestModule/XML_Demo2.cbf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestModule/XML_VH6501.can" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestModule/XML_VH6501_SamplePointTest.can" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestModule/XML_Vh6501.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmw_TP.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw_TP.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmw_vh6501.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/bmw_vh6501.cfg" afterDir="false" />
-    </list>
+    <list default="true" id="0c1285cc-8675-4909-a972-063744d04cc7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

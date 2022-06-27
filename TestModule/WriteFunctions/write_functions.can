@@ -1,0 +1,77 @@
+/*@!Encoding:936*/
+
+
+variables
+{
+  
+  const long  TraceWindow   = -3 ;
+  const long  LoggingFile   = -2 ;
+  const long  SystemWindow  = 0 ;
+  const long  CAPLWindow    = 1 ;
+  const long  TestWindow    = 4 ;
+    
+  const dword  Success = 0 ;
+  const dword  Information = 1 ;
+  const dword  Warning = 2 ;
+  const dword  Error = 3 ;
+
+}
+
+on key 'a'
+{
+  write ("pressed key %c",this);
+}
+
+on key 'b'
+{
+  writeEx (TraceWindow,Information,"pressed key %c",this);
+  
+}
+
+on key 'c'
+{
+ 
+  writeEx (SystemWindow,Information,"pressed key %c",this);
+  writeEx (SystemWindow,Warning,"pressed key %c",this);
+}
+
+on key 'd'
+{
+ 
+  writeLineEx (SystemWindow,Information,"pressed key %c",this);
+  writeLineEx (SystemWindow,Warning,"pressed key %c",this);
+}
+
+on key 'e'
+{
+  writeConfigure(SystemWindow, 20, 1, "c:\\temp\\writelog.TXT");
+  writeclear(SystemWindow);//清除System 窗口日志
+  writeToLogEx  ("pressed key %c",this);
+  writeToLogEx  ("pressed key %c",this);
+}
+
+On key 'f' 
+{
+    char timeBuffer[64];
+    getLocalTimeString(timeBuffer);
+    write("pressed key %d",this);
+  
+    setLogFileName("logging", "test.asc");
+
+    startLogging("logging",100);
+    writeToLog("%s *************writeToLog*************",timeBuffer);
+    writeToLogEx("%s: *************writeToLogEx*************",timeBuffer);
+  
+    stopLogging("logging",100);
+}
+
+On key 'g' 
+{
+
+  setWriteDbgLevel(7);
+  writeDbgLevel (4, "This is shown:");
+   // Output: This is shown
+  writeDbgLevel (9, "This is not shown");
+   // No output
+}
+

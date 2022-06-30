@@ -1,0 +1,1 @@
+python D:\CANoe-Demo\delete_cbf\delete_cbf.py -d D:\CANoe-Demo

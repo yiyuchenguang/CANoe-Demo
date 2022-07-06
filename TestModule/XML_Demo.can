@@ -37,20 +37,25 @@ testcase Set_LightState()
 
 testcase casedemo()
 { 
-  long timeout;
-  char str[200];
-  timeout = random(1000)+ 1000;
-  testWaitForTimeout(timeout);
-  snprintf(str,elCount(str),"waited %d ms",timeout);
+//  long timeout;
+//  char str[200];
+//  timeout = random(1000)+ 1000;
+//  testWaitForTimeout(timeout);
+//  snprintf(str,elCount(str),"waited %d ms",timeout);
+//
+//  if(timeout%2 == 0)
+//  {
+//    testStepPass("1.1", str);   
+//  }
+//  else
+//  {
+//    testStepFail("1.1", str); 
+//  }
+    char title[100];
 
-  if(timeout%2 == 0)
-  {
-    testStepPass("1.1", str);   
-  }
-  else
-  {
-    testStepFail("1.1", str); 
-  }
+  testCaseComment("Test Case:");
+  testGetCurrentTestCaseTitle(title, elcount(title));
+  testCasecomment(title);
 }
 //
 //void MainTest ()

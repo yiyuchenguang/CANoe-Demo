@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2022-07-04 17:03:08" timestamp="   1.040683" verdicts="2_basic">
+  <testgroup>
+    <testcase starttime="2022-07-04 17:03:08" timestamp="   1.040683">
+      <teststep timestamp="   1.040683" level="0" type="user" ident="1" result="pass">First Step</teststep>
+      <teststep timestamp="   1.040683" level="0" type="user" ident="2" result="na">
+        <tabularinfo expand="true">
+          <description>User Structured Data</description>
+          <heading>
+            <cell>Left part</cell>
+            <cell>Operation</cell>
+            <cell>Right part</cell>
+            <cell>Result</cell>
+          </heading>
+          <row level="0">
+            <cell>*****</cell>
+            <cell>Frequency</cell>
+            <cell>&lt;</cell>
+            <cell>50</cell>
+            <cell></cell>
+          </row>
+          <row level="0">
+            <cell>Temperature</cell>
+            <cell>in range</cell>
+            <cell>90-100</cell>
+            <cell></cell>
+          </row>
+          <heading level="1">
+            <cell colspan="4">Additional conditions</cell>
+          </heading>
+          <row level="1">
+            <cell colspan="2">Test Duration</cell>
+            <cell>60s</cell>
+            <cell></cell>
+          </row>
+        </tabularinfo>
+      </teststep>
+      <verdict time="2022-07-04 17:03:08" timestamp="   1.040683" endtime="2022-07-04 17:03:08" endtimestamp="   1.040683" result="pass" />
+      <title>casedemo</title>
+      <description>Shows how to display a user-defined info table.</description>
+      <externalref type="url" title="Requirement">https://www.google.com/</externalref>
+    </testcase>
+    <title>test_group_1</title>
+  </testgroup>
+  <verdict time="2022-07-04 17:03:08" timestamp="   1.040683" endtime="2022-07-04 17:03:08" endtimestamp="   1.040683" result="pass" />
+  <title>bmw</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>carl.wu</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.FlexRay 11.0.55 (SP2)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>D:\CANoe-Demo\bmw_TestReport.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database bmw on CAN</name>
+      <description>D:\CANoe-Demo\dbc\bmw.dbc (2022-05-25 19:57:36)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>TestReport</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>D:\CANoe-Demo\TestModule\TestReport\TestReport.xml</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2022-07-04, 15:26:48</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Library (CAPL)</name>
+      <description>D:\CANoe-Demo\TestModule\TestReport\TestReport.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>CN03-OF-WL0051</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.55.0, C:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLVECTOR</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.16.47 (Jul  4 2017 16:10:44) , C:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLVECTOR.DLL</description>
+    </xinfo>
+  </testsetup>
+  <hardware name="CAN Channel Interfaces" category="CategoryCANIF">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>1</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VN7640</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3046</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>21.10.20</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>10.8.20</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+</testmodule>
+<!--footprint="ccffda45af4680230408f375265d0305" version="1"-->

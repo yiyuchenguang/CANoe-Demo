@@ -1,0 +1,71 @@
+/*@!Encoding:936*/
+includes
+{
+  #pragma library("capldll.dll") 
+
+}
+
+variables
+{
+    long i;
+    long tm[9];//存储时间数组
+    message can1.8 msg1 = {dlc = 1,byte(0) = 1};
+    message can1.9 msg2 = {dlc = 1,byte(0) = 2};
+    msTimer  timerTest;
+}
+
+on timer timerTest
+{ 
+   getLocalTime(tm);
+   writeLineEx(1,1,"end set time:%d ms",tm[0]);
+   setSignal(EngineSpeed,2);
+}
+
+
+on key 'a'  
+{ 
+   getLocalTime(tm);
+   writeLineEx(1,1,"start set time:%d ms",tm[0]);
+   setSignal(EngineSpeed,1);
+   setTimer(timerTest,5000);
+}
+
+
+//on key 'b'
+//  
+//{ 
+//  setSignal(EngineSpeed,1);
+//  TestWaitForTimeout(100);
+//  setSignal(EngineSpeed,2);
+//}
+
+//on key 'n'
+//  
+//{
+//  float t0,t1;
+//  t0 = timeNow(); 
+//  do
+//  {
+//    t1 = timeNow();
+//  }
+//  while((t1-t0)/100.0 < 10);//unit：10ms
+//}
+
+on key 'k'
+  
+{
+
+  writeLineEx(1,1,"key %c was pressed.",this);
+
+  getLocalTime(tm);
+  writeLineEx(1,1,"start set time:%d",tm[0]);
+  setSignal(EngineSpeed,1);
+  output(msg1); // 发送第一个报文 8
+
+  dll_delay(3000);//等待3s
+ 
+  getLocalTime(tm);// 发送第二个报文 9
+  writeLineEx(1,1,"end set time:%d",tm[0]);
+  setSignal(EngineSpeed,2);
+  output(msg2);
+}

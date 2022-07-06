@@ -2,7 +2,9 @@
 includes
 {
   #pragma library("autoSerialPort.dll") 
+
 }
+
 
 
 int connectSerialPort(char  SpecialComDescribtion[])
@@ -43,4 +45,5 @@ on key 'k'
 {
   connectSerialPort("USB Serial Device");
 }
+
 

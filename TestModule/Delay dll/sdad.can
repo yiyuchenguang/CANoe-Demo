@@ -1,0 +1,11 @@
+/*@!Encoding:936*/
+includes
+{
+    #pragma library("capldll.dll") 
+}
+
+variables
+{
+  
+}
+

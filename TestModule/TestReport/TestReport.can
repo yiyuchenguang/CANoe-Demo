@@ -1,0 +1,115 @@
+/*@!Encoding:1252*/
+includes
+{  
+}
+variables
+{
+  word TestStepIndex=0;
+  word subTestStepIndex=0;
+  char TestStepText[200]; 
+  char tempText[200]; 
+}
+testcase Set_EngineState()
+{
+  TestStepIndex = 1;
+  subTestStepIndex= 1;
+  snprintf(TestStepText, elcount(TestStepText), "%d.%d", TestStepIndex,subTestStepIndex );
+  TestStep(TestStepText, "Set Engine Speed.");  
+  setSignal(EngineSpeed,1000);
+  testStepPass(TestStepText, "Set Engine Speed to 1000"); 
+}
+testcase Set_LightState()
+{ 
+  TestStepIndex = 1;
+  subTestStepIndex= 1;
+  snprintf(TestStepText, elcount(TestStepText), "%d.%d", TestStepIndex,subTestStepIndex );
+  TestStep(TestStepText, "Set Flash Light..");
+  setSignal(FlashLight,1);
+  testStepPass(TestStepText, "Open Flash Light"); 
+  
+  TestStepIndex = 2;
+  subTestStepIndex= 1;
+  snprintf(TestStepText, elcount(TestStepText), "%d.%d", TestStepIndex,subTestStepIndex );
+  TestStep(TestStepText, "Set Head Light..");
+  setSignal(HeadLight,1);
+  testStepPass(TestStepText, "Open Head Light");   
+}
+
+testcase casedemo()
+{ 
+//  long timeout;
+//  char str[200];
+//  timeout = random(1000)+ 1000;
+//  testWaitForTimeout(timeout);
+//  snprintf(str,elCount(str),"waited %d ms",timeout);
+//
+//  if(timeout%2 == 0)
+//  {
+//    testStepPass("1.1", str);   
+//  }
+//  else
+//  {
+//    testStepFail("1.1", str); 
+//  }
+   char title[100];
+  long table = 0;
+
+//  testCaseComment("Test Case:");
+//  testGetCurrentTestCaseTitle(title, elcount(title));
+//  testCasecomment(title);
+//  
+//
+//TestReportFileName("DynamicName");
+//  TestModuleTitle("Sample Tests"); // change test module title and add description
+//
+//TestModuleDescription("This test module calls some test cases to demonstrate ");
+
+  TestCaseDescription("Shows how to display a user-defined info table.");
+  TestStepPass(0, "1", "First Step");
+     // begin table
+  table = TestInfoTable("User Structured Data");
+TestReportAddExternalRef("url", "Requirement","https://www.google.com/"); 
+
+  // header
+  TestInfoHeadingBegin(table, 0);
+  TestInfoCell(table, "Left part");
+  TestInfoCell(table, "Operation");
+  TestInfoCell(table, "Right part");
+  TestInfoCell(table, "Result");
+  TestInfoHeadingEnd(table);
+
+  // row 1
+  TestInfoRow(table, 0);
+  TestInfoCell(table, "Frequency");
+  TestInfoCell(table, "<");
+  TestInfoCell(table, "50");
+  TestInfoCell(table, "");
+
+  // row 2
+  TestInfoRow(table, 0);
+  TestInfoCell(table, "Temperature");
+  TestInfoCell(table, "in range");
+  TestInfoCell(table, "90-100");
+  TestInfoCell(table, "");
+
+  // intermediate header
+  TestInfoHeadingBegin(table, 1);
+  TestInfoCell(table, "Additional conditions", 4);
+  TestInfoHeadingEnd(table);
+
+  // row 4
+  TestInfoRow(table, 1);
+  TestInfoCell(table, "Test Duration", 2);
+  TestInfoCell(table, "60s");
+  TestInfoCell(table, "");
+
+ // output table
+  TestStep (0, "2", table);
+}
+//
+//void MainTest ()
+//{
+//    read_EngineState();
+//    read_LightState();
+//}
+

@@ -82,6 +82,14 @@ class CANoe:
         else:
             raise RuntimeError("CANoe is not open,unable to GetVariable")
 
+    def set_SigVal(self, channel_num, msg_name, sig_name, bus_type, setValue):
+        if (self.application != None):
+            result = self.application.GetBus(bus_type).GetSignal(channel_num, msg_name, sig_name)
+            result.Value = setValue
+        else:
+            raise RuntimeError("CANoe is not open,unable to GetVariable")
+
+
     def get_EnvVar(self, var):
         if (self.application != None):
             result = self.application.Environment.GetVariable(var)
@@ -131,11 +139,23 @@ time.sleep(5)
 app.start_Measurement()
 
 while not msvcrt.kbhit():
+    '''
+    # 系统变量测试
     EngineSpeedDspMeter = app.get_SysVar("Engine", "EngineSpeedDspMeter")
     print(EngineSpeedDspMeter)
     if (EngineSpeedDspMeter == 2):
         app.set_SysVar("Engine", "EngineSpeedDspMeter", 3.0)
     if(EngineSpeedDspMeter==2):
-        app.set_SysVar("Engine","EngineSpeedDspMeter",3.0)
+    '''
+    # 信号测试
+    app.get_SigVal(1,"EngineState", "EngineSpeed","CAN")
+    EngineSpeed = app.get_SigVal(1,"EngineState", "EngineSpeed","CAN")
+    print(EngineSpeed)
+    if (EngineSpeed == 2):
+        app.set_SigVal(1,"EngineState", "EngineSpeed","CAN",3.0)
+    if(EngineSpeed==3):
+        app.set_SigVal(1,"EngineState", "EngineSpeed","CAN",10)
+
+
     app.DoEvents()
 

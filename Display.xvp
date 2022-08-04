@@ -13,17 +13,6 @@
         <Property Name="SymbolConfiguration">5;16;Lights;;;LightDisplay;1;;;-1;;;</Property>
         <Property Name="TabIndex">3</Property>
       </Object>
-      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl3" ControlName="Switch/Indicator 3">
-        <Property Name="Name">SwitchControl3</Property>
-        <Property Name="Size">21, 30</Property>
-        <Property Name="Location">313, 90</Property>
-        <Property Name="StateCnt">2</Property>
-        <Property Name="SwitchValues">1;2;0;1</Property>
-        <Property Name="SwitchValuesRx">1;2;0;1</Property>
-        <Property Name="SymbolConfiguration">
-        </Property>
-        <Property Name="TabIndex">2</Property>
-      </Object>
       <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl2" ControlName="Switch/Indicator 2">
         <Property Name="Name">SwitchControl2</Property>
         <Property Name="Size">74, 63</Property>
@@ -38,12 +27,12 @@
       <Object Type="Vector.CANalyzer.Panels.Design.PictureBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="PictureBoxControl1" ControlName="Picture Box">
         <Property Name="Name">PictureBoxControl1</Property>
         <Property Name="Size">351, 288</Property>
-        <Property Name="Location">4, 0</Property>
+        <Property Name="Location">4, 5</Property>
         <Property Name="ImageFile">panel\Bitmaps\VCar.bmp</Property>
       </Object>
       <Property Name="Name">GroupBoxControl2</Property>
-      <Property Name="Size">371, 300</Property>
-      <Property Name="Location">225, 13</Property>
+      <Property Name="Size">358, 300</Property>
+      <Property Name="Location">223, 13</Property>
       <Property Name="Text">Light</Property>
       <Property Name="TabIndex">1</Property>
     </Object>
@@ -101,7 +90,7 @@
       <Property Name="TabIndex">0</Property>
     </Object>
     <Property Name="Name">Panel</Property>
-    <Property Name="Size">616, 330</Property>
+    <Property Name="Size">598, 330</Property>
     <Property Name="BackColor">White</Property>
   </Object>
 </Panel>

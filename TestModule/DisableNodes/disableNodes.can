@@ -1,0 +1,124 @@
+/*@!Encoding:936*/
+
+testcase DisableNode(char node[])
+{
+     dword chkId;
+     dword stmId;
+    testSetEcuOffline(node); // 启动用 testSetEcuOnline
+    // checks that after 100 ms no transmission are available
+    chkId = ChkStart_NodeBabbling  (node,100);
+    TestAddCondition(chkId);
+    // sequence of different actions and waiting conditions
+    TestWaitForTimeout(1000);
+    TestRemoveCondition(chkId);
+
+}
+
+testcase EnableNode(char node[])
+{
+     dword chkId;
+     dword stmId;
+    testSetEcuOnline(node); // 启动用 testSetEcuOnline
+   // checks that at least one message of the node is sent in each 100 ms
+    chkId = ChkStart_NodeDead (node,100);
+    TestAddCondition(chkId);
+    // sequence of different actions and waiting conditions
+    TestWaitForTimeout(1000);
+    TestRemoveCondition(chkId);
+}
+
+testcase DisableMessage(dword can_ID,char Bus[])
+{
+  dword BusFlag;
+  long  ret;
+  BusFlag = getBusNameContext(Bus);///多路总线需要设置
+  setBusContext(BusFlag);
+  TestDisableMsg(can_ID);
+  TestWaitForTimeout(1000);
+  
+  ret = TestWaitForMessage (can_ID ,3000);
+  if (ret == 0)
+    testStepPass("", "xxxx passed");
+  else
+     TestStepFail("", "xxxx failed"); 
+}
+
+testcase EnbleMessage(dword can_ID,char Bus[])
+{
+  dword BusFlag;
+  long  ret;
+  dword startTime;
+  long checktime = 2000;
+  long maxWaitTime = 2000;
+  
+  BusFlag = getBusNameContext(Bus);///多路总线需要设置
+  setBusContext(BusFlag);
+  TestEnableMsg(can_ID);
+  TestWaitForTimeout(1000);
+  
+  startTime = timeNow() / 100;
+  do
+  {
+    ret = testWaitForMessage(can_ID, checktime/10); //防止过度等待，但是保证checktime/10 > 报文周期
+  }
+  while(timeNow() / 100 - startTime < maxWaitTime && ret == 1);
+
+      
+  if (ret == 1)
+    testStepPass("", "xxxx passed");       
+  else
+      TestStepFail("", "xxxx failed,Not received xx message in xx ms");
+}
+testcase DisableChannel(long channel, long silent,char Bus[])
+{
+   dword chkId;
+   dword BusFlag;
+  
+   BusFlag = getBusNameContext(Bus);///多路总线需要设置
+   setBusContext(BusFlag);
+
+   canSetChannelOutput(channel,silent);
+   Write("silent set to %d",silent);
+  
+  // checks that after 300 ms no transmission are available
+  chkId = ChkStart_AllNodesBabbling(300);
+  TestAddCondition(chkId);
+  // sequence of different actions and waiting conditions
+  TestWaitForTimeout(1000);
+  TestRemoveCondition(chkId);
+}
+
+testcase EnbleChannel(long channel, long silent,char Bus[])
+{
+   dword chkId;
+   dword BusFlag;
+    long  ret;
+   BusFlag = getBusNameContext(Bus);///多路总线需要设置
+   setBusContext(BusFlag);
+  
+   canSetChannelOutput(channel,silent);
+  
+   ret = testWaitForMessage(1000);
+  
+  if (ret == 1)
+    testStepPass("", "xxxx passed");       
+  else
+      TestStepFail("", "xxxx failed,Not received xx message in xx ms");
+}
+
+void MainTest ()
+{
+//  DisableNode("Engine");
+//  testWaitForTimeout(2000);
+//  EnableNode("Engine");
+   
+//  DisableMessage(0x123,"CAN"); 
+//  testWaitForTimeout(2000);
+//  EnbleMessage(0x123,"CAN"); 
+  
+  DisableChannel(1,0,"CAN");
+  testWaitForTimeout(2000);
+  EnbleChannel(1,1,"CAN");
+}
+
+

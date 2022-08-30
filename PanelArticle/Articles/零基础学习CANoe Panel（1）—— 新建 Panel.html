@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（1）—— 新建 Panel</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green" size="3">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue" size="3">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen" size="3">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_8"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>🍅   <font color="gray">  很多语言都有<code>UI</code>设计，<code>CANoe</code> 作为一个总线测试工具，自然也要和<code>tester</code>交互的，所以<code>CANoe</code>集成的<code>UI</code>设计工具就是<code>Panel</code>；本节重点简单介绍Panel，创建<code>Panel</code>以及在<code>CANoe</code>中配置<code>Panel</code>等基本操作</font></li>
+<li>🍅 <font color="gray">演示软硬件环境 <code>Win11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_8">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororangePanel__22">📙 &lt;font color=orange&gt;Panel 简介：</a></li><li><a href="#_font_colororange_51">📙 &lt;font color=orange&gt;控件分类：</a></li><ul><li><a href="#_font_color_YellowGreen_Display_Elements_53">🍅 &lt;font color= YellowGreen &gt;显示类（Display Elements）</a></li><li><a href="#_font_color_YellowGreen_Control_Elements_57">🍅 &lt;font color= YellowGreen &gt;控制类（Control Elements）</a></li><li><a href="#_font_color_YellowGreen_Static_Element_60">🍅 &lt;font color= YellowGreen &gt;静态类（Static Element）</a></li><li><a href="#_font_color_YellowGreen__64">🍅 &lt;font color= YellowGreen &gt;特殊类</a></li></ul><li><a href="#_font_colororange_Symbols__71">📙 &lt;font color=orange&gt; Symbols 理解：</a></li><li><a href="#_font_colororangePanel_92">📙 &lt;font color=orange&gt;新建和保存Panel</a></li><ul><li><a href="#_font_color_YellowGreen___Panel_94">🍅 &lt;font color= YellowGreen &gt;  新建Panel</a></li><li><a href="#_font_color_YellowGreen___Panel_100">🍅 &lt;font color= YellowGreen &gt;  保存Panel</a></li><li><a href="#_font_color_YellowGreen__Panel_108">🍅 &lt;font color= YellowGreen &gt; 编辑Panel</a></li></ul><li><a href="#_font_colororange_CANoePanel_118">📙 &lt;font color=orange&gt; CANoe中添加和删除Panel</a></li><ul><li><a href="#_font_color_YellowGreen__11__119">🍅 &lt;font color= YellowGreen &gt; 1.1 添加</a></li><li><a href="#_font_color_YellowGreen__12__128">🍅 &lt;font color= YellowGreen &gt; 1.2 删除</a></li></ul><li><a href="#_font_colororange_CAPLPanel__146">📙 &lt;font color=orange&gt; CAPL脚本和Panel 交互</a></li><li><a href="#font_colororange_159">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<h1><a id="_font_colororangePanel__22"></a>📙 <font color="orange">Panel 简介：</font></h1>
+<ul>
+<li>在<code>CANoe</code> 环境<code>UI</code>设计的工具叫：<code>Panel Designer</code>，依托<code>Panel Designer</code>我们设计交互界面来完成一些测试任务。</li>
+</ul>
+<p><font size="4">1️⃣ </font>  Panel 在CANoe 入口位置</p>
+<p><img src="https://img-blog.csdnimg.cn/74c96093c9a5447aa7226f2cdab7d938.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>  Panel 开发界面预览</p>
+<p><img src="https://img-blog.csdnimg.cn/673330ce445f4d308e778e413d3ebecd.png" alt="在这里插入图片描述"></p>
+ <hr> 
+<p><font size="4">3️⃣ </font>  Panel 的<code>ToolBox</code> ，可用的控件，在接下来的<code>lesson</code>中，会逐个讲解</p>
+<p><img src="https://img-blog.csdnimg.cn/d5a82c6b544342329145b46f445ec6fb.png" alt="在这里插入图片描述"></p>
+<p><br></p><hr><br><p></p>
+<h1><a id="_font_colororange_51"></a>📙 <font color="orange">控件分类：</font></h1>
+<h2><a id="_font_color_YellowGreen_Display_Elements_53"></a>🍅 <font color="YellowGreen">显示类（Display Elements）</font></h2>
+<ul>
+<li>
+<p>有些控件是既可以作为输出也可以作为输入的，暂时都归类到显示类中，比如<code>Hex/Text Editor</code> ； <code>Input/Output Box</code> ；<code>The Switch/Indicator</code> 等</p>
+</li>
+<li>
+<p>这类控件的特点是：可以通过控件更改和显示信号或变量的值。</p>
+</li>
+</ul>
+<h2><a id="_font_color_YellowGreen_Control_Elements_57"></a>🍅 <font color="YellowGreen">控制类（Control Elements）</font></h2>
+<ul>
+<li>比如 <code>LED Control ，Clock Control</code>等控件，也需要绑定<code>Symbols</code>，但是和<code>Display Elements</code>明显不同的是你无法通过panel更改信号或变量的值，你只能更改信号或变量的值从而让panel发生变化</li>
+</ul>
+<h2><a id="_font_color_YellowGreen_Static_Element_60"></a>🍅 <font color="YellowGreen">静态类（Static Element）</font></h2>
+<ul>
+<li>有一些控件是为结构，布局服务或者解释说明的，无需绑定symbol，比如<code>Static Text ，Picture Box ，Group Box</code>  等控件。</li>
+</ul>
+<h2><a id="_font_color_YellowGreen__64"></a>🍅 <font color="YellowGreen">特殊类</font></h2>
+<ul>
+<li>使用特殊元素可以执行预定义的操作。 它们没有绑定symbol ，比如<code>File Button ，Start Stop Control</code></li>
+</ul>
+ <hr>
+<h1><a id="_font_colororange_Symbols__71"></a>📙 <font color="orange"> Symbols 理解：</font></h1>
+<p><font size="4">1️⃣ </font>  CANoe 环境中，大家也会看到Symbols,纯英文就是符号的意思了，在CANoe大环境中，定义如下：</p>
+<ul>
+<li>
+<p><font color="blue" size="3"> In CANoe/CANalyzer symbols are system variables, environment variables, signals  and diagnostics parameter. With symbols values can be displayed or actions can  be triggered.</font></p>
+</li>
+<li>
+<p>所有的显示类控件都需要绑定<code>symbol</code> 来完成<code>UI</code>和数据的传递，交互。</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/d0c38d38ad3141bea850da4724538e7d.png" alt="在这里插入图片描述"></p>
+ <hr>
+<p><font size="4">2️⃣</font>  关于symbol ，在CAPL浏览器中也会与视图：</p>
+<p><img src="https://img-blog.csdnimg.cn/a094b9151953455ca4311da79ea8895f.png" alt="在这里插入图片描述"></p>
+ <hr>
+<h1><a id="_font_colororangePanel_92"></a>📙 <font color="orange">新建和保存Panel</font></h1>
+<h2><a id="_font_color_YellowGreen___Panel_94"></a>🍅 <font color="YellowGreen">  新建Panel</font></h2>
+<ul>
+<li>如下图，可通过CANoe 工程中的<code>Home</code>-&gt;<code>Panel</code> -&gt; <code>New Panel</code>创建一个新的Panel</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/5ac5b757752f45ba8a9bfc05b250c2ba.png" alt="在这里插入图片描述"></p>
+ <hr>
+<h2><a id="_font_color_YellowGreen___Panel_100"></a>🍅 <font color="YellowGreen">  保存Panel</font></h2>
+<p>直接<code>Ctor + s</code>  保存<code>Panel</code> ,下面两个选项最好都勾选上</p>
+<ul>
+<li>文件的名字和Panel的名字保持一致</li>
+<li>如果CANoe工程需要这个Panel ，那就勾选，不需要就不勾选，后面再从CANoe工程中加入也行</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/de4e213c007047dd93414992e33fd443.png" alt="在这里插入图片描述"> </p><hr><p></p>
+<h2><a id="_font_color_YellowGreen__Panel_108"></a>🍅 <font color="YellowGreen"> 编辑Panel</font></h2>
+<ul>
+<li>在CANoe 工程中，在需要编辑的Panel 中，右键，选择Edit 可以打开Panel 编辑器，进行修改Panel.</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/ad0c0d6cf9d64288b18ea0c262af7d4a.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororange_CANoePanel_118"></a>📙 <font color="orange"> CANoe中添加和删除Panel</font></h1>
+<h2><a id="_font_color_YellowGreen__11__119"></a>🍅 <font color="YellowGreen"> 1.1 添加</font></h2>
+<ul>
+<li>点击<code>Add Panel</code> 就可以了，且支持多选。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/bee18ba60ffd401ca58612824b443f0c.png" alt="在这里插入图片描述"></p>
+<hr>
+<h2><a id="_font_color_YellowGreen__12__128"></a>🍅 <font color="YellowGreen"> 1.2 删除</font></h2>
+<ul>
+<li>如下图，点击Panel Configuration ，即可打开Panel 配置面板，可以在其中添加或者删除Panel</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/c606af6d54a44e8189a0b4aa63bec472.png" alt="在这里插入图片描述"></p>
+<hr>
+<p>选中，点击<code>Remove</code> ,再点击OK即可】</p>
+<p><img src="https://img-blog.csdnimg.cn/6ce2096688314bf0bb56d77a07e7405c.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororange_CAPLPanel__146"></a>📙 <font color="orange"> CAPL脚本和Panel 交互</font></h1>
+<ul>
+<li>
+<p>CANoe 提供共一些内置函数，可以让我们来控制Panel ,比如<code>openPanel</code> ；<code>enableControl</code>等打开使能<code>panel</code> ；也有一些<code>SetControlColors</code> 等可以动态设置控件属性等；细节部分，后面章节会讲述。</p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+</li>
+</ul>
+<h1><a id="font_colororange_159"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font size="3" color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font size="3" color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

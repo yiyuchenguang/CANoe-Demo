@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（4）——按钮(Button )</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green" size="3">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue" size="3">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen" size="3">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>🍅   <font color="gray"> 本节讲解 基础但是最常用的控件——按钮(<code>Button</code> )</font></li>
+<li>🍅 <font color="gray">演示软硬件环境 Win11 x64 ； CANoe 11 SP2 x64<br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororangeButton__23">📙 &lt;font color=orange&gt;按钮(Button )</a></li><li><a href="#_font_colororangeButton__35">📙 &lt;font color=orange&gt;Button 控件的电平信号</a></li><li><a href="#_font_colororange_name___text__73">📙 &lt;font color=orange&gt; name  和 text 属性的区别</a></li><li><a href="#_font_colororange_button__87">📙 &lt;font color=orange&gt; button 怎么设计的花里胡哨</a></li><li><a href="#font_colororange_117">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"><br>
+<br></p>
+<h1><a id="_font_colororangeButton__23"></a>📙 <font color="orange">按钮(Button )</font></h1>
+<ul>
+<li><font size="4">1️⃣ </font>  Button是一个可以触发指定动作的控件.</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/8903c13f01104b75ae35dad2fbfd02c7.png" alt="在这里插入图片描述"></p>
+<p><br></p><hr><br><p></p>
+<h1><a id="_font_colororangeButton__35"></a>📙 <font color="orange">Button 控件的电平信号</font></h1>
+<p><font size="4">1️⃣ </font>如下图，新建个<code>panel</code> ,命名<code>ToolBox_button</code> ,且设置了关联symbol 系统变量 Test_3，</p>
+<p><img src="https://img-blog.csdnimg.cn/12ddc2887911450b9123b61c17703d97.png" alt="在这里插入图片描述"></p>
+ <hr>
+<p><font size="4">2️⃣</font>  Run CANoe ,点击一下Button  系统变量Test_3 值就设置成1，只要不放手，值不变，然后放开手，Test_3的值就设置成0</p>
+<ul>
+<li><font color="red"> <strong>所以说Button 控件时自恢复的</strong></font></li>
+<li><font color="red"> <strong>所以在我们CAPL 脚本响应Button 的代码要注意加上非零判断，否则就会重复触发</strong></font></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/4dd2379c86454088b4b3e485affe7b8a.png" alt="在这里插入图片描述"></p>
+<hr>
+<pre><code class="prism language-c">on sysvar Panel<span class="token operator">::</span>Test_3
+<span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>@this<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment">//do somethng</span>
+  <span class="token punctuation">}</span>
+  
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h1><a id="_font_colororange_name___text__73"></a>📙 <font color="orange"> name  和 text 属性的区别</font></h1>
+<p><font size="4">1️⃣ </font></p>
+<ul>
+<li>
+<p>name ：是控件的标识ID，是CAPL脚本控制控件时识别的参数</p>
+</li>
+<li>
+<p>text：对控件的描述信息，交互时的显示信息,Font属性的设置时针对Text的</p>
+</li>
+<li>
+<p>后面所有控件将不再对此做任何解释说明</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/d84c495139e242dea433ecbd070d35ec.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororange_button__87"></a>📙 <font color="orange"> button 怎么设计的花里胡哨</font></h1>
+<p><font size="4">1️⃣ </font> 默认情况下 <code>Use Windows Style</code> 选项是<code>True</code> ,  <code>Background Color</code> 属性是灰色不可选的,这样的button 不太好看哈</p>
+<p><img src="https://img-blog.csdnimg.cn/687ecaa23817453a84ce264359d484d2.png" alt="在这里插入图片描述"></p>
+   <hr>
+<p><font size="4">2️⃣</font> 将 <code>Use Windows Style</code> 选项设置成False,  <code>Background Colo</code>r 属性就可以用了</p>
+<p><img src="https://img-blog.csdnimg.cn/6ef3256613ca42de940f28a71f8a4038.png" alt="在这里插入图片描述"></p>
+<hr>
+<p><font size="4">3️⃣ </font> 大家注意,默认 <code>Button Style</code> 的属性是<code>Standard</code>的,仍然有很多属性数灰色不可选择的,所以我们可以把<code>Button Style</code>  选择 <code>CostomFlat</code> 模式,这样我们就可以设置下button 的 <code>边框颜色(Border Color)</code>和 <code>鼠标悬浮颜色(Hover Color)</code> 了.</p>
+<p><img src="https://img-blog.csdnimg.cn/31de5101f48a4b35af7204fccd5644c5.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>鼠标悬浮就改变颜色了</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/52d911d2389348c48ff4f1dd78c4d077.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+<h1><a id="font_colororange_117"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font size="3" color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font size="3" color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

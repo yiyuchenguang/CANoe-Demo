@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（9）—— 数据/文本编辑控件(Hex/Text Editor )</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>🍅   <font color="gray">相比<code>Input/Output Box</code>， <code>Hex/Text Editor</code>  可以用来显示更多的数据，主要用来显示<code>byte/int</code> 数组类型，也可以用来显示<code>string</code></font></li>
+<li>🍅 <font color="gray">演示软硬件环境 <code>Windows11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororangeHexText_Editor___26">📙 &lt;font color=orange&gt;数据/文本编辑控件(Hex/Text Editor  )</a></li><li><a href="#_font_colororangeEditor_Layout__33">📙 &lt;font color=orange&gt;控件显示布局（Editor Layout ）</a></li><ul><li><a href="#_font_color_YellowGreen__symbolDatabyte_arrary_34">🍅 &lt;font color= YellowGreen &gt; symbol类型是Data（byte arrary）</a></li><li><a href="#_font_color_YellowGreen___symbolInt_arrary_77">🍅 &lt;font color= YellowGreen &gt;  symbol类型是Int arrary</a></li><li><a href="#_font_color_YellowGreen___symbolstring_110">🍅 &lt;font color= YellowGreen &gt;  symbol类型是string</a></li></ul><li><a href="#font_colororange_162">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<hr>
+<h1><a id="_font_colororangeHexText_Editor___26"></a>📙 <font color="orange">数据/文本编辑控件(Hex/Text Editor  )</font></h1>
+<ul>
+<li>Hex/Text Editor  控件支持的数据类型有string 和数组。<br>
+<img src="https://img-blog.csdnimg.cn/0fdd2317e66843c891551af44cded5ab.png" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/09d866ff294d4868bb54137f825fe645.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr>
+<h1><a id="_font_colororangeEditor_Layout__33"></a>📙 <font color="orange">控件显示布局（Editor Layout ）</font></h1>
+<h2><a id="_font_color_YellowGreen__symbolDatabyte_arrary_34"></a>🍅 <font color="YellowGreen"> symbol类型是Data（byte arrary）</font></h2>
+<p><font size="4">1️⃣ </font> 如果Editor 绑定的symbol类型是Data，则<code>Editor Layout</code>属性我们可以只选择<code>only Hex Field</code></p>
+<ul>
+<li>而且设置的时候，我们还应该根据我们每行想要显示的字节数来设置（<code>Columns/Letter per Line</code> ），比如标准CAN报文 我们可以设置为8，正好可以显示一整条报文</li>
+<li>两个字节之间自动通过<code>空格间隔</code></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/bcf26ebfa56b487cbaaf670f8b8014fc.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>   我们简单模拟下<code>实时刷新</code>某条报文</p>
+<pre><code class="prism language-c"><span class="token comment">/*@!Encoding:936*/</span>
+variables
+<span class="token punctuation">{</span>
+  byte ByteData<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> i <span class="token punctuation">;</span>
+  msTimer timer_demo<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+on key <span class="token char">'a'</span>
+  
+<span class="token punctuation">{</span>
+  <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_demo<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+on timer timer_demo
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token function">elcount</span><span class="token punctuation">(</span>ByteData<span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        ByteData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sysSetVariableData</span> <span class="token punctuation">(</span>sysvar<span class="token operator">::</span>Panel<span class="token operator">::</span>Editor_ByteArrary<span class="token punctuation">,</span>ByteData<span class="token punctuation">,</span><span class="token function">elcount</span><span class="token punctuation">(</span>ByteData<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_demo<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+<hr> 
+<p><font size="4">3️⃣</font>   运行CANoe ,按下按键‘a’,panel 周期刷新数据。</p>
+<p><img src="https://img-blog.csdnimg.cn/e18d8c5dbb394b1d9d900aa649901ce0.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen___symbolInt_arrary_77"></a>🍅 <font color="YellowGreen">  symbol类型是Int arrary</font></h2>
+<p><font size="4">1️⃣ </font> 如果绑定的symbol的数据类型是Int Arrary</p>
+<ul>
+<li>则Editor 控件每行只能显示一个 整形数（占4个字节,且通过空格隔开），且是16进制显示的。</li>
+<li><code>Columns/Letter per Line</code> 属性这个时候就不能在设置了，固定死了</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/19c3691026444327b63dc75cc8dab212.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>   下图代码是系统变量Editor_IntArrary赋值，</p>
+<ul>
+<li><font size="4" color="blue"> 重点，代码中定义的临时<code>变量IntArrary</code>数组的大小一定和<code>系统变量Editor_IntArrary</code>定义的数组大小一致，否则设置不成功的。</font></li>
+</ul>
+<pre><code class="prism language-c"><span class="token comment">/*@!Encoding:936*/</span>
+on key <span class="token char">'b'</span>
+<span class="token punctuation">{</span>
+  IntArrary<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token number">0x11111111</span><span class="token punctuation">;</span>
+  IntArrary<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token number">0x22222222</span><span class="token punctuation">;</span>
+  IntArrary<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token number">0x33333333</span><span class="token punctuation">;</span>
+  IntArrary<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token number">0x44444444</span><span class="token punctuation">;</span>
+  <span class="token function">sysSetVariableLongArray</span> <span class="token punctuation">(</span>sysvar<span class="token operator">::</span>Panel<span class="token operator">::</span>Editor_IntArrary<span class="token punctuation">,</span>IntArrary<span class="token punctuation">,</span><span class="token function">elcount</span><span class="token punctuation">(</span>IntArrary<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<hr> 
+<p><font size="4">3️⃣</font>   运行CANoe 按下按键‘b’,显示结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/d06ec62fbe5e415986656f54fdd49170.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen___symbolstring_110"></a>🍅 <font color="YellowGreen">  symbol类型是string</font></h2>
+<p><font size="4">1️⃣ </font> 如果绑定的symbol的数据类型是<code>string</code>,则<code>Editor Layout</code>属性可以只选择<code>Only Text Filed</code></p>
+<ul>
+<li>我们可以用Editor  控件来实时显示我们的测试过程的log信息，下面我们把读取到的DTC 信息显示在Panel中。</li>
+<li>注意这个控件只支持英文输出，且不会自动换行，需要指定每行多少个字节（<code>Columns/Letter per Line</code> ）<br>
+<img src="https://img-blog.csdnimg.cn/2139b82ac71548f8b834adeb9d32890b.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<p><font size="4">2️⃣</font>   一段小代码演示下 <code>symbol</code>类型是<code>string</code>，<code>editor</code>控件的显示效果</p>
+<ul>
+<li>需要严格按照（<code>Columns/Letter per Lin</code>e ）设置的每行字节数来格式输出。否则无法像图中的那样有格式</li>
+</ul>
+<pre><code class="prism language-c"><span class="token comment">/*@!Encoding:936*/</span>
+on key <span class="token char">'c'</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">char</span>  tempText<span class="token punctuation">[</span><span class="token number">0x500</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> i<span class="token punctuation">;</span>  
+  dword DTC<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0xD08998</span><span class="token punctuation">,</span><span class="token number">0xD01123</span><span class="token punctuation">,</span><span class="token number">0xD05695</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span>  Descriable<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"Power High"</span><span class="token punctuation">,</span><span class="token string">"Power Lower"</span><span class="token punctuation">,</span><span class="token string">"Crc Error"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  byte Status<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0x09</span><span class="token punctuation">,</span><span class="token number">0x2B</span><span class="token punctuation">,</span><span class="token number">0x2F</span><span class="token punctuation">}</span><span class="token punctuation">;</span> 
+  
+    <span class="token comment">// 类似于表格头</span>
+  <span class="token function">snprintf</span><span class="token punctuation">(</span>tempText<span class="token punctuation">,</span><span class="token function">elCount</span><span class="token punctuation">(</span>tempText<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"%8s%16s%12s"</span><span class="token punctuation">,</span><span class="token string">"DTC"</span><span class="token punctuation">,</span><span class="token string">"Descriable"</span><span class="token punctuation">,</span><span class="token string">"Status"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">snprintf</span><span class="token punctuation">(</span>tempText<span class="token punctuation">,</span><span class="token function">elCount</span><span class="token punctuation">(</span>tempText<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"%s%8X%16s%12X"</span><span class="token punctuation">,</span>tempText<span class="token punctuation">,</span>DTC<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>Descriable<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>Status<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span>
+
+<span class="token function">sysSetVariableString</span> <span class="token punctuation">(</span>sysvar<span class="token operator">::</span>Panel<span class="token operator">::</span>Editor_String<span class="token punctuation">,</span>tempText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<hr> 
+<p><font size="4">3️⃣</font>   运行CANoe 按下按键‘b’,显示结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/b1abe8e3cf6c479191b490313b31c4e4.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+<h1><a id="font_colororange_162"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+/*@!Encoding:936*/
+
+
+variables
+{
+  byte ByteData[16];
+  long IntArrary[4];
+  int i ;
+  msTimer timer_demo;
+
+}
+on key 'a'
+  
+{
+  setTimer(timer_demo,1000);
+}
+
+
+on timer timer_demo
+{
+    for(i=0;i<elcount(ByteData);i++)
+        ByteData[i]= random(0xFF);
+    sysSetVariableData (sysvar::Panel::Editor_ByteArrary,ByteData,elcount(ByteData));
+    setTimer(timer_demo,1000);  
+}
+
+on key 'b'
+{
+  long retVal;
+  
+  IntArrary[0]= 0x11111111;
+  IntArrary[1]= 0x22222222;
+  IntArrary[2]= 0x33333333;
+  IntArrary[3]= 0x44444444;
+  retVal =  sysSetVariableLongArray (sysvar::Panel::Editor_IntArrary,IntArrary,elcount(IntArrary));
+  write("****retVal:%d*****",retVal);
+}
+
+on key 'c'
+{
+  char  tempText[0x500];
+  int i;  
+  dword DTC[3] = {0xD08998,0xD01123,0xD05695};
+  char  Descriable[3][20]={"Power High","Power Lower","Crc Error"};
+  byte Status[3] = {0x09,0x2B,0x2F}; 
+  
+    // 类似于表格头
+  snprintf(tempText,elCount(tempText),"%8s%16s%12s","DTC","Descriable","Status");
+  for(i=0;i<3;i++)
+  {
+    snprintf(tempText,elCount(tempText),"%s%8X%16s%12X",tempText,DTC[i],Descriable[i],Status[i]); 
+  }
+
+sysSetVariableString (sysvar::Panel::Editor_String,tempText);
+
+}
+/*以上代码时Editor控件演示代码*/
+
+

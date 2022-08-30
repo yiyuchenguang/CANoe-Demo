@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_ProgressBar">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+      <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="Button">
+        <Property Name="Name">ButtonControl1</Property>
+        <Property Name="Size">318, 32</Property>
+        <Property Name="Location">24, 123</Property>
+        <Property Name="FlatStyle">CustomFlat</Property>
+        <Property Name="Font">Microsoft Sans Serif, 7.8pt, style=Bold</Property>
+        <Property Name="BackColor">Black</Property>
+        <Property Name="Text">Start</Property>
+        <Property Name="ForeColor">White</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;ProgressBar_Start;1;;;-1;;;</Property>
+        <Property Name="TabIndex">6</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ProgressBarControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ProgressBarControl1" Children="Controls" ControlName="Progress Bar">
+        <Property Name="Name">ProgressBarControl1</Property>
+        <Property Name="Size">324, 46</Property>
+        <Property Name="Location">24, 26</Property>
+        <Property Name="OriginValue">0</Property>
+        <Property Name="ValueFont">Microsoft Sans Serif, 11.8pt, style=Bold</Property>
+        <Property Name="UseWindowsStyle">False</Property>
+        <Property Name="BarBackColor">LightYellow</Property>
+        <Property Name="BarForeColor">Yellow</Property>
+        <Property Name="DecimalPlaces">3</Property>
+        <Property Name="MaximumLineColor">Red</Property>
+        <Property Name="ValueSize">324, 20</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;ProgressBar_Self;2;;;-1;;;</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box">
+        <Property Name="Name">TextBoxControl1</Property>
+        <Property Name="Size">318, 20</Property>
+        <Property Name="Location">24, 91</Property>
+        <Property Name="AlarmUpperTextColor">WindowText</Property>
+        <Property Name="BoxForeColor">255, 192, 0</Property>
+        <Property Name="ValueDecimalPlaces">0</Property>
+        <Property Name="AlarmLowerBkgColor">Salmon</Property>
+        <Property Name="ValueDisplay">Text</Property>
+        <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+        <Property Name="AlarmLowerTextColor">WindowText</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 10.2pt, style=Italic</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 10.2pt, style=Italic</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 10.2pt, style=Italic</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="TextFont">Microsoft Sans Serif, 14.8pt</Property>
+        <Property Name="DescriptionText">ProgressBar_Log:</Property>
+        <Property Name="BoxBorderStyle">None</Property>
+        <Property Name="TextForeColor">Brown</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;ProgressBar_Log;4;;;-1;;;</Property>
+        <Property Name="TabIndex">4</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">402, 162</Property>
+      <Property Name="Location">78, 46</Property>
+      <Property Name="Text">下载服务</Property>
+      <Property Name="TabIndex">5</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">580, 270</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

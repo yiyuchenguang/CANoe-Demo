@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_InputOutputBox">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl4" Children="Controls" ControlName="Input/Output Box 2">
+      <Property Name="Name">TextBoxControl4</Property>
+      <Property Name="Size">268, 22</Property>
+      <Property Name="Location">92, 193</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Center</Property>
+      <Property Name="ValueDisplay">Text</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">InputOutputBox_Text:</Property>
+      <Property Name="DescriptionSize">101, 18</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;InputOutputBox_Text;4;;;-1;;;</Property>
+      <Property Name="TabIndex">2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3" Children="Controls" ControlName="Input/Output Box 2">
+      <Property Name="Name">TextBoxControl3</Property>
+      <Property Name="Size">268, 22</Property>
+      <Property Name="Location">92, 99</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">4</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">InputOutputBox_Double:</Property>
+      <Property Name="DescriptionSize">113, 18</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;InputOutputBox_Double;2;;;-1;;;</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2" Children="Controls" ControlName="Input/Output Box 2">
+      <Property Name="Name">TextBoxControl2</Property>
+      <Property Name="Size">268, 22</Property>
+      <Property Name="Location">92, 146</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Symbolic</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">InputOutputBox_Symbol:</Property>
+      <Property Name="DescriptionSize">116, 18</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;InputOutputBox_Symbol;1;;;-1;;;</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControl1</Property>
+      <Property Name="Size">268, 22</Property>
+      <Property Name="Location">92, 52</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">255, 192, 0</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">240, 0, 0</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;1;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">InputOutputBox_Int:</Property>
+      <Property Name="DescriptionSize">93, 18</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;InputOutputBox_Int;1;;;-1;;;</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">580, 270</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

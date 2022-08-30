@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（8）—— 开关/显示控件(Input/Output Box )</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>
+<p>🍅   <font color="gray"> <code>Input/Output Box</code> 控件也是一个常用控件，用来作为<code>单行</code>输入和输出显示，<code>整形</code>，<code>浮点</code>和<code>字符串</code>都可以，着取决于绑定<code>symbol</code>的数据类型</font></p>
+</li>
+<li>
+<p>🍅 <font color="gray">演示软硬件环境 <code>Windows11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></p>
+</li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororange_28">📙 &lt;font color=orange&gt;显示类型属性设置</a></li><ul><li><a href="#_font_color_YellowGreen__symbol_34">🍅 &lt;font color= YellowGreen &gt; symbol是整形</a></li><li><a href="#_font_color_YellowGreen__symbol_46">🍅 &lt;font color= YellowGreen &gt; symbol是浮点型</a></li><li><a href="#_font_color_YellowGreen__symbol_54">🍅 &lt;font color= YellowGreen &gt; symbol字符串</a></li><li><a href="#_font_color_YellowGreen__symbolvalue_table_61">🍅 &lt;font color= YellowGreen &gt; symbol是整形且配置了（value table）</a></li></ul><li><a href="#_font_colororange_79">📙 &lt;font color=orange&gt;报警属性设置</a></li><li><a href="#_font_colororange_105">📙 &lt;font color=orange&gt;字体段落格式设置</a></li><li><a href="#font_colororange_121">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<hr>
+<h1><a id="_font_colororange_28"></a>📙 <font color="orange">显示类型属性设置</font></h1>
+<ul>
+<li>拖过来几个控件，用来测试下面四种<code>symbol</code>类型的情况<br>
+<img src="https://img-blog.csdnimg.cn/4b55759ffddc4e678ba5bbcd8d272b79.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen__symbol_34"></a>🍅 <font color="YellowGreen"> symbol是整形</font></h2>
+<p><font size="4">1️⃣ </font> 如果 symbol是整形，则 可以设置 二进制，十六进制或者十进制显示，下图以是16进制显示</p>
+<p><img src="https://img-blog.csdnimg.cn/b38583b0861a4e0fbf3c78a66c5a3aa2.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen__symbol_46"></a>🍅 <font color="YellowGreen"> symbol是浮点型</font></h2>
+<p><font size="4">1️⃣ </font> 如果 symbol是浮点型，则可选属性有：显示的小数位（Decimal Place）:</p>
+<ul>
+<li>下图设置的显示的小数位为4</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/8b90929a204144e2badcca2b0dc6f5c4.png" alt="在这里插入图片描述"></p>
+  <hr> 
+<h2><a id="_font_color_YellowGreen__symbol_54"></a>🍅 <font color="YellowGreen"> symbol字符串</font></h2>
+<p><font size="4">1️⃣ </font> 如果 symbol是字符串，如下图</p>
+<ul>
+<li>
+<p>注意字符串只能单行显示，无法换行的。<br>
+<img src="https://img-blog.csdnimg.cn/3d40d55c29604e468874b048885e9cd5.png" alt="在这里插入图片描述"></p>
+<hr> 
+</li>
+</ul>
+<h2><a id="_font_color_YellowGreen__symbolvalue_table_61"></a>🍅 <font color="YellowGreen"> symbol是整形且配置了（value table）</font></h2>
+<p><font size="4">1️⃣ </font> 如果绑定的symbol 有value table ，则显示的是value table中对应的描述</p>
+<ul>
+<li>
+<p>下图的系统变量<code>InputOutputBox_Symbol</code>，配置了Value Table</p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/qq_34414530/article/details/124630144">对系统变量不熟的可以先了解下系统变量的创建</a><br>
+<img src="https://img-blog.csdnimg.cn/b762145dd9984ff59ffa5d4473979052.png" alt="在这里插入图片描述"></p>
+<hr> 
+<ul>
+<li>
+<p>Panel中选择<code>Symbol</code><br>
+<img src="https://img-blog.csdnimg.cn/b9185791fa824b9c8ab39f4931635f03.png" alt="在这里插入图片描述"></p>
+<hr> 
+</li>
+<li>
+<p>CANoe环境中，看下结果，显示的是Value Table中定义的描述。</p>
+</li>
+<li>
+<p><img src="https://img-blog.csdnimg.cn/d5ce9621247e4c18a299f94ad1f2a38a.png" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1><a id="_font_colororange_79"></a>📙 <font color="orange">报警属性设置</font></h1>
+<ul>
+<li>
+<p><font size="4">1️⃣ </font> 所谓报警属性，就是你给这个控件设置一个取值范围，当超过定义的取值范围，控件背景色就会改成响应的颜色，作为警告，</p>
+</li>
+<li>
+<p>这里以symbol 自有属性 为例，简单说明，如果绑定的symbol 是信号，可以选择 Database Values；</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/727b4cd1d77044c79a805aaaeadbd775.png" alt="在这里插入图片描述"></p>
+<hr>
+<ul>
+<li><font size="4">2️⃣ </font>下面以整形系统变量为例 ，我们在定义变量的可以定义好最大值和最小值</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/9df0bc630dc24c05a833548831523d50.png" alt="在这里插入图片描述"></p>
+<hr>
+<ul>
+<li><font size="4">3️⃣ </font>我们设置超过最小值显示黄色，超过最大值显示红色</li>
+<li><img src="https://img-blog.csdnimg.cn/e4bc6d49c7714991aeb8a208f2bc89d8.png" alt="在这里插入图片描述"></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/19e6d0eb2498438d8d09e74f99357775.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororange_105"></a>📙 <font color="orange">字体段落格式设置</font></h1>
+<ul>
+<li><font size="4">1️⃣ </font>前面一个是Text的属性设置，后一个是框框里的属性设置</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/1bbac4813ede45d887dd530d11ee1ecd.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+<h1><a id="font_colororange_121"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_PathDiaglog">
+    <Object Type="Vector.CANalyzer.Panels.Design.PathControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="PathControl1" Children="Controls" ControlName="Path Dialog">
+      <Property Name="Name">PathControl1</Property>
+      <Property Name="Size">276, 29</Property>
+      <Property Name="Location">42, 46</Property>
+      <Property Name="DlgType">SaveFile</Property>
+      <Property Name="FileDlgFilter">Excel Files|*.XLSX|Txt Files|*.txt*</Property>
+      <Property Name="Font">Microsoft Sans Serif, 10.8pt, style=Italic</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;PathDiaglog;4;;;-1;;;</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">432, 161</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

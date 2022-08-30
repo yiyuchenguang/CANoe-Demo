@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（10）—— 组合框（ComboBox）</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>🍅   <font color="gray"> 组合框（<code>ComboBox</code>）用来显示一组可选值，比如串口通讯中的Port口，波特率，都可以通过组合框来实现从已知的多个选项中选择其中一个</font></li>
+<li>🍅 <font color="gray">演示软硬件环境 <code>Windows11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororangeComboBox_26">📙 &lt;font color=orange&gt;组合框（ComboBox）</a></li><li><a href="#_font_colororange_47">📙 &lt;font color=orange&gt;主要属性设置</a></li><ul><li><a href="#_font_color_YellowGreen__49">🍅 &lt;font color= YellowGreen &gt;下拉列表样式</a></li><li><a href="#_font_color_YellowGreen__55">🍅 &lt;font color= YellowGreen &gt;文本位置</a></li><li><a href="#_font_color_YellowGreen__64">🍅 &lt;font color= YellowGreen &gt;展开时，可见选项数量</a></li><li><a href="#_font_color_YellowGreen__72">🍅 &lt;font color= YellowGreen &gt;组合框内字体和颜色设置</a></li></ul><li><a href="#font_colororange_85">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<hr>
+<h1><a id="_font_colororangeComboBox_26"></a>📙 <font color="orange">组合框（ComboBox）</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/2d5f0cbda35e430f9c3a4cc1abf5c216.png" alt="在这里插入图片描述"></p>
+<p><font size="4">1️⃣ </font> 组合框（<code>ComboBox</code>）需要先绑定<code>symbol</code> 才能设置其它属性，而且需要symbol 设置了<code>value table</code>才行，因为 组合框（ComboBox）本身是无法输入的，只能显示并通过下拉来选择。</p>
+<p><img src="https://img-blog.csdnimg.cn/f42d1b08e41740b794b9ac22c57fcd5a.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>  创建的系统变量<code>Port</code> 属性配置<code>Value Table</code><br>
+<img src="https://img-blog.csdnimg.cn/6d42681d825641a68a51e37e95184257.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">3️⃣</font>绑定了symbol之后，我们在canoe 环境中，就能看到设置的值了。<br>
+<img src="https://img-blog.csdnimg.cn/d8f2cb584cac4585b3b0697cf51ea836.png" alt="在这里插入图片描述"></p>
+ <hr> 
+<h1><a id="_font_colororange_47"></a>📙 <font color="orange">主要属性设置</font></h1>
+<h2><a id="_font_color_YellowGreen__49"></a>🍅 <font color="YellowGreen">下拉列表样式</font></h2>
+<ul>
+<li>有三种选择：<code>Drop Down List</code>  ，<code>Simple list</code> ，<code>Flat Drop Down List</code>  选择默认的<code>Drop Down List</code> 就好了，其它两种不好看<br>
+<img src="https://img-blog.csdnimg.cn/3cd191b654dd4a77b7784cfa3392427d.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen__55"></a>🍅 <font color="YellowGreen">文本位置</font></h2>
+<ul>
+<li>
+<p>文本相对控件的位置，就没什么好说的，主要说下<code>Hide Text,</code></p>
+</li>
+<li>
+<p>有时候多个组合框，我们想要更好的对其，我们可以把组合框自身的Text 给hide掉，然后用static text 控件</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/09f25dd9409840d096abc44cb6fbeaed.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen__64"></a>🍅 <font color="YellowGreen">展开时，可见选项数量</font></h2>
+<ul>
+<li>设置成 8 ，则只能显示8个，默认全部显示</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/ba38bd54c430479abba918cea1793e66.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen__72"></a>🍅 <font color="YellowGreen">组合框内字体和颜色设置</font></h2>
+<ul>
+<li>
+<p>如下图，左边是设置文本字体和颜色的；右边才是设置<code>ComboBox</code>控件的<br>
+<img src="https://img-blog.csdnimg.cn/5822dfdb2c2e41bfa24793f5bb5e0917.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+</li>
+</ul>
+<h1><a id="font_colororange_85"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

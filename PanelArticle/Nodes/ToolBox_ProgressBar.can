@@ -1,0 +1,44 @@
+/*@!Encoding:936*/
+
+
+variables
+{
+  msTimer timer_demo;
+  char  tempText[0x500];
+  int step_counter;
+
+}
+
+on timer timer_demo
+{
+    step_counter = step_counter +1 ;
+
+    snprintf(tempText,elCount(tempText),"Downloading %.2f%%......",(double)step_counter);
+    sysSetVariableString (sysvar::Panel::ProgressBar_Log,tempText);
+    sysSetVariableFloat(sysvar::Panel::ProgressBar_Self,(double)step_counter);
+ 
+    if (step_counter < 100)
+        setTimer(timer_demo,100);
+
+}
+
+on sysvar Panel::ProgressBar_Start
+{
+  if(@this)
+  {
+    snprintf(tempText,elCount(tempText),"Satrt Downloading......");
+    sysSetVariableString (sysvar::Panel::ProgressBar_Log,tempText);
+    StartDownload();
+  }
+}
+
+
+void StartDownload()
+{
+   step_counter = 0;
+   setTimer(timer_demo,1000);  
+}
+
+/*以上代码时Editor控件演示代码*/
+
+

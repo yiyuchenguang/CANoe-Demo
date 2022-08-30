@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Panel_BMP">
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl2" ControlName="Switch/Indicator">
+      <Property Name="Name">SwitchControl2</Property>
+      <Property Name="Size">38, 41</Property>
+      <Property Name="Location">190, 53</Property>
+      <Property Name="StateCnt">5</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;5;0;1;2;3;4</Property>
+      <Property Name="SwitchValuesRx">1;5;0;1;2;3;4</Property>
+      <Property Name="ImageFile">..\Bitmaps\Test4.bmp</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;Test_2;1;;;-1;;;</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl1" ControlName="Switch/Indicator">
+      <Property Name="Name">SwitchControl1</Property>
+      <Property Name="Size">38, 41</Property>
+      <Property Name="Location">56, 53</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="SwitchValuesRx">1;2;0;1</Property>
+      <Property Name="ImageFile">..\Bitmaps\Test.bmp</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;Test_1;1;;;-1;;;</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">358, 191</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

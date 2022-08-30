@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="PanelCAPL_Fucntions">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+      <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl2" Children="Controls" ControlName="Check Box 2">
+        <Property Name="Name">CheckBoxControl2</Property>
+        <Property Name="Size">42, 16</Property>
+        <Property Name="Location">144, 110</Property>
+        <Property Name="CheckAlign">MiddleRight</Property>
+        <Property Name="Text">write</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;Test_3;1;;;-1;;;</Property>
+        <Property Name="TabIndex">4</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1" Children="Controls" ControlName="Check Box 1">
+        <Property Name="Name">CheckBoxControl1</Property>
+        <Property Name="Size">43, 16</Property>
+        <Property Name="Location">24, 110</Property>
+        <Property Name="CheckAlign">MiddleRight</Property>
+        <Property Name="Text">read</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;Test_2;1;;;-1;;;</Property>
+        <Property Name="TabIndex">3</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.CAPLOutputViewControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CAPLOutputViewControl1" Children="Controls" ControlName="CAPL Output View">
+        <Property Name="Name">CAPLOutputViewControl1</Property>
+        <Property Name="Size">264, 98</Property>
+        <Property Name="Location">12, 150</Property>
+        <Property Name="BoxBackgroundColor">White</Property>
+        <Property Name="TabIndex">2</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl1" ControlName="LED Control">
+        <Property Name="Name">LEDControl1</Property>
+        <Property Name="Size">36, 39</Property>
+        <Property Name="Location">168, 32</Property>
+        <Property Name="UsedLEDColorOff">Gray</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;LED_1;1;;;-1;;;</Property>
+        <Property Name="TabIndex">1</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="Button">
+        <Property Name="Name">ButtonControl1</Property>
+        <Property Name="Size">102, 39</Property>
+        <Property Name="Location">18, 32</Property>
+        <Property Name="FlatStyle">CustomFlat</Property>
+        <Property Name="BackColor">White</Property>
+        <Property Name="Text">Button</Property>
+        <Property Name="BorderColor">64, 64, 64</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;Test_1;1;;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">294, 273</Property>
+      <Property Name="Location">60, 39</Property>
+      <Property Name="Text">Description</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">408, 351</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

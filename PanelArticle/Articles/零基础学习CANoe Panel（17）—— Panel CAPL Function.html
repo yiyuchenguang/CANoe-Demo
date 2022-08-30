@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（17）—— Panel CAPL Function</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>
+<p>🍅   <font color="gray">Panel的属性基本上在创建的时候就定义完毕了； CANoe 内置了几个CAPL Function，允许我们在CAPL运行时动态的更改Panel 控件的属性，比如打开某个panel ,禁用某个控件，更改控件颜色等。</font></p>
+</li>
+<li>
+<p>🍅 <font color="gray">演示软硬件环境 <code>Windows11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></p>
+</li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororangePanel_26">📙 &lt;font color=orange&gt;打开关闭Panel</a></li><li><a href="#_font_colororangePanel_55">📙 &lt;font color=orange&gt;设置Panel控件的可见性</a></li><ul><li><a href="#_font_color_YellowGreen___62">🍅 &lt;font color= YellowGreen &gt; 隐藏一个控件</a></li><li><a href="#_font_color_YellowGreen___75">🍅 &lt;font color= YellowGreen &gt; 隐藏全部控件</a></li><li><a href="#_font_color_YellowGreen__Panel_88">🍅 &lt;font color= YellowGreen &gt; 隐藏全部Panel的全部控件</a></li><li><a href="#_font_color_YellowGreen__Panel_99">🍅 &lt;font color= YellowGreen &gt; 隐藏全部Panel的指定控件</a></li></ul><li><a href="#_font_colororangePanel_111">📙 &lt;font color=orange&gt;设置Panel的可操作性</a></li><li><a href="#_font_colororange_132">📙 &lt;font color=orange&gt;控件的颜色和背景色</a></li><ul><li><a href="#_font_color_YellowGreen__SetControlForeColor__146">🍅 &lt;font color= YellowGreen &gt; 控件字体颜色（SetControlForeColor ）</a></li><li><a href="#_font_color_YellowGreen__SetControlBackColor___162">🍅 &lt;font color= YellowGreen &gt; 控件背景色（SetControlBackColor  ）</a></li><li><a href="#_font_color_YellowGreen__SetControlColors__182">🍅 &lt;font color= YellowGreen &gt; 控件字体颜色和背景色（SetControlColors ）</a></li><li><a href="#_font_color_YellowGreen__SetDefaultControlColors__201">🍅 &lt;font color= YellowGreen &gt; 控件默认配色（SetDefaultControlColors ）</a></li></ul><li><a href="#font_colororange_216">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<hr>
+<h1><a id="_font_colororangePanel_26"></a>📙 <font color="orange">打开关闭Panel</font></h1>
+<ul>
+<li>如下图，在这个系列课程中，我演示创建了那么多Panel ，且都是Closed Windows，CANoe环境中没打开一个Panel<br>
+<img src="https://img-blog.csdnimg.cn/5a6b15d091914d03897c5b2c053315df.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<p><font size="4">1️⃣</font>   通过<code>openPanel</code>和<code>closePanel</code>可以打开/关闭一个Panel</p>
+<ul>
+<li>在一些测试场景中，测试到某一步骤，必须要Panel输入的情况，可以调出Panel</li>
+<li><font color="red">Panel的名字必须是已经被被Added进入CANoe环境中的,直接填入Panel名字就ok</font></li>
+</ul>
+<pre><code class="prism language-c"> on key <span class="token char">'b'</span> 
+<span class="token punctuation">{</span> 
+  <span class="token function">openPanel</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+ on key <span class="token char">'c'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">closePanel</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<p><font size="4">2️⃣</font>  按下按键‘b’ 就调出了<code>PanelCAPL_Fucntions</code>控件<br>
+<img src="https://img-blog.csdnimg.cn/0b105ecbba384562b40433b00d0b0ce8.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororangePanel_55"></a>📙 <font color="orange">设置Panel控件的可见性</font></h1>
+<ul>
+<li>SetControlVisibility可以设置Panel 控件的可见性，可以用来隐藏某些控件<br>
+<img src="https://img-blog.csdnimg.cn/a74acad88893428482c9f33467fe7c95.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen___62"></a>🍅 <font color="YellowGreen"> 隐藏一个控件</font></h2>
+<ul>
+<li>隐藏一个Button控件</li>
+</ul>
+<pre><code class="prism language-cpp"> on key <span class="token char">'d'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">SetControlVisibility</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">,</span><span class="token string">"Button"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/acbdcf81960f4ecf875fc769972211f1.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen___75"></a>🍅 <font color="YellowGreen"> 隐藏全部控件</font></h2>
+<ul>
+<li>只要第二个参数指定为“”,就可以隐藏全部控件</li>
+</ul>
+<pre><code class="prism language-cpp"> on key <span class="token char">'d'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">SetControlVisibility</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/7adb52a61ed74d94a4ebe3e4011bf6db.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen__Panel_88"></a>🍅 <font color="YellowGreen"> 隐藏全部Panel的全部控件</font></h2>
+<ul>
+<li>第一个和第二个的参数都为空，则隐藏全部打开的Panel的全部控件</li>
+</ul>
+<pre><code class="prism language-cpp"> on key <span class="token char">'d'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">SetControlVisibility</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr> 
+<h2><a id="_font_color_YellowGreen__Panel_99"></a>🍅 <font color="YellowGreen"> 隐藏全部Panel的指定控件</font></h2>
+<ul>
+<li>第一个为空，第二个参数不为空，如下，则隐藏所有打开的Panel中的所有名字为Button的控件</li>
+</ul>
+<pre><code class="prism language-cpp"> on key <span class="token char">'d'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">SetControlVisibility</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">"Button"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/40cb65db21cd452f80e8a0c26829a4ce.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororangePanel_111"></a>📙 <font color="orange">设置Panel的可操作性</font></h1>
+<ul>
+<li>enableControl 函数可以设置控件是否允许操作</li>
+<li>第三个参数为0，不可操作；1，可操作</li>
+<li>第一个参数和第二个参数为空的情况，和上面的描述相同，都是作用于所有。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/6874c121561240ab864f2bf8048600a3.png" alt="在这里插入图片描述"></p>
+<hr>
+<pre><code class="prism language-cpp"> on key <span class="token char">'e'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">enableControl</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">,</span><span class="token string">"Button"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/2c0897783613404e9c6caf6a64b95f9a.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororange_132"></a>📙 <font color="orange">控件的颜色和背景色</font></h1>
+<ul>
+<li>
+<p>主要有这4个函数SetControlForeColor ；SetControlBackColor ；SetControlColors ；SetDefaultControlColors</p>
+</li>
+<li>
+<p>这里作用的是控件的颜色，不是控件描述标签的颜色</p>
+</li>
+<li>
+<p>第三个颜色通过MakeRGB(255,0,0）函数 计算得到。</p>
+</li>
+<li>
+<p>可以得到RGB三个值，可以通过下图的方式，或者网络上的色值表</p>
+</li>
+<li></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/874b1c9bb4a84b718e65752aa1e3e8db.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/9dd3ebe176fb49298b62189b722d6bf5.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen__SetControlForeColor__146"></a>🍅 <font color="YellowGreen"> 控件字体颜色（SetControlForeColor ）</font></h2>
+<ul>
+<li>函数原型： <code>void SetControlForeColor(char[] panel, char[] control, long color)</code>;</li>
+</ul>
+<pre><code class="prism language-cpp"> on key <span class="token char">'f'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">SetControlForeColor</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">,</span> <span class="token string">"Button"</span><span class="token punctuation">,</span> <span class="token function">MakeRGB</span><span class="token punctuation">(</span><span class="token number">252</span><span class="token punctuation">,</span><span class="token number">64</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+</code></pre>
+<hr> 
+<ul>
+<li>按下’f’键，看到button被设置成红色了。<br>
+<img src="https://img-blog.csdnimg.cn/e99cf4c6d3f44746b0dfa1a174e4705b.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen__SetControlBackColor___162"></a>🍅 <font color="YellowGreen"> 控件背景色（SetControlBackColor  ）</font></h2>
+<ul>
+<li>函数原型： <code>void SetControlBackColor (char[] panel, char[] control, long color)</code>;</li>
+<li><font color="red"> 注意，这个Button控件的 Button Style属性要设置成 <strong>非 Standard</strong> 类型</font></li>
+<li><font color="red"> 针对任何控件，如果背景色在Panel Edior中不可选，则CAPL函数也无法设置，所以，如果你设置不成功，注意检查下。</font></li>
+</ul>
+<pre><code class="prism language-cpp">on key <span class="token char">'g'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">SetControlBackColor</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">,</span> <span class="token string">"Button"</span><span class="token punctuation">,</span> <span class="token function">MakeRGB</span><span class="token punctuation">(</span><span class="token number">48</span><span class="token punctuation">,</span><span class="token number">242</span><span class="token punctuation">,</span><span class="token number">41</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//绿色</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr> 
+<ul>
+<li>按下’f’键和’g’键，看到button被设置成红色了,背景色也设置成绿色了。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/0ae5888ad8c84fc6aaebc81734b8175a.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen__SetControlColors__182"></a>🍅 <font color="YellowGreen"> 控件字体颜色和背景色（SetControlColors ）</font></h2>
+<ul>
+<li>函数原型： <code>void SetControlColors(char[] panel, char[] control, long backcolor, long textcolor)</code>;</li>
+<li>是上面两个函数的功能集合，可以同时设置字体颜色和背景色</li>
+<li>下面设置成黑纸白字</li>
+</ul>
+<pre><code class="prism language-cpp">on key <span class="token char">'h'</span> 
+<span class="token punctuation">{</span>  
+  <span class="token function">SetControlColors</span><span class="token punctuation">(</span><span class="token string">"PanelCAPL_Fucntions"</span><span class="token punctuation">,</span> <span class="token string">"Button"</span><span class="token punctuation">,</span> <span class="token function">MakeRGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">MakeRGB</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr> 
+<ul>
+<li>按下’h键，<br>
+<img src="https://img-blog.csdnimg.cn/ecfd7b28744745799be79fbd036293ad.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen__SetDefaultControlColors__201"></a>🍅 <font color="YellowGreen"> 控件默认配色（SetDefaultControlColors ）</font></h2>
+<ul>
+<li>
+<p>函数原型：<code>void SetDefaultControlColors(char[] panel, char[] control)</code>;</p>
+</li>
+<li>
+<p>恢复控件的默认色。</p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+</li>
+</ul>
+<h1><a id="font_colororange_216"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

@@ -45,7 +45,7 @@ class CanoeSync(object):
 
     def Load(self, cfgPath):
         # current dir must point to the script file
-        cfg = os.path.join(os.curdir, cfgPath)
+        cfg = os.path.join(os.path.dirname(os.path.abspath(__file__)), cfgPath)
         cfg = os.path.abspath(cfg)
         print('Opening: ', cfg)
         self.ConfigPath = os.path.dirname(cfg)

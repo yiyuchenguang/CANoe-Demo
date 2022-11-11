@@ -18,6 +18,7 @@ from PyQt5.QtGui import QTextCursor
 from StaticResource import photo
 from ReadConf import Conf
 from PYCAN import *
+import  traceback
 
 temp = sys.stdout
 class Stream(QObject):
@@ -66,30 +67,33 @@ class MainUi(QMainWindow,Ui_Mainform):
             self.listWidget_2.takeItem(self.listWidget_2.currentRow())#删除指定索引号的项目
 
     def StartRun(self):
+        try:
+            cfg_checked = self.comboBox.currentText()
+            print("当前选择的cfg为：",cfg_checked)
+            count = self.listWidget_2.count()
+            tse_checked = [self.listWidget_2.item(i).text() for i in range(count)]
+            print("当前选择的tse为：")
+            for i in tse_checked:
+                print(i)
 
-        cfg_checked = self.comboBox.currentText()
-        print("当前选择的cfg为：",cfg_checked)
-        count = self.listWidget_2.count()
-        tse_checked = [self.listWidget_2.item(i).text() for i in range(count)]
-        print("当前选择的tse为：")
-        for i in tse_checked:
-            print(i)
+            if cfg_checked and tse_checked :
+                Tester = CanoeSync()
+                Tester.Load(self.comboBox.currentText())
+                for i in range(count):
+                    Tester.LoadTestSetup(tse_checked[i])
+                    print("正在测试tse：",tse_checked[i])
+                    Tester.SetTestModulesPath(os.path.join(Tester.ConfigPath, r"TestReport"))
+                    # # Tester.SetLogging()
+                    Tester.Start()
+                    Tester.RunTestModules()
+                    Tester.Stop()
 
-        if cfg_checked and tse_checked :
-            Tester = CanoeSync()
-            Tester.Load(os.path.abspath(self.comboBox.currentText()))
-            for i in range(count):
-                Tester.LoadTestSetup(tse_checked[i])
-                print("正在测试tse：",tse_checked[i])
-                Tester.SetTestModulesPath(os.path.join(Tester.ConfigPath, r"TestReport"))
-                # # Tester.SetLogging()
-                Tester.Start()
-                Tester.RunTestModules()
-                Tester.Stop()
+            else:
 
-        else:
-            print("请先选择测试的tse和cfg")
-
+                print("请先选择测试的tse和cfg")
+        except Exception as e:
+            print(traceback.print_exc())
+            print(e)
     '''关闭app事件响应'''
     def closeEvent(self, event):
         """Shuts down application on close."""

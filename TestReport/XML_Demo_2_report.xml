@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2022-11-10 15:35:22" timestamp="   0.990000" verdicts="2_basic">
+  <violation timestamp="   0.990000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+  <testgroup>
+    <testcase starttime="2022-11-10 15:35:23" timestamp="   0.990000">
+      <violation timestamp="   0.990000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="   0.990000" level="0" type="user" ident="1.1" result="na">Set Engine Speed.</teststep>
+      <teststep timestamp="   0.990000" level="2" type="user" ident="Set signal value" result="na">Signal: &apos;Signal:CAN1/bmw/EngineState/EngineSpeed&apos;.  Value: 1000 </teststep>
+      <teststep timestamp="   0.990000" level="0" type="user" ident="1.1" result="pass">Set Engine Speed to 1000</teststep>
+      <verdict time="2022-11-10 15:35:23" timestamp="   0.990000" endtime="2022-11-10 15:35:23" endtimestamp="   0.990000" result="pass" />
+      <title>Set_EngineState</title>
+    </testcase>
+    <testcase starttime="2022-11-10 15:35:23" timestamp="   0.990000">
+      <violation timestamp="   0.990000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="   0.990000" level="0" type="user" ident="1.1" result="na">Set Flash Light..</teststep>
+      <teststep timestamp="   0.990000" level="2" type="user" ident="Set signal value" result="na">Signal: &apos;Signal:CAN1/bmw/LightState/FlashLight&apos;.  Value: 1 </teststep>
+      <teststep timestamp="   0.990000" level="0" type="user" ident="1.1" result="pass">Open Flash Light</teststep>
+      <teststep timestamp="   0.990000" level="0" type="user" ident="2.1" result="na">Set Head Light..</teststep>
+      <teststep timestamp="   0.990000" level="2" type="user" ident="Set signal value" result="na">Signal: &apos;Signal:CAN1/bmw/LightState/HeadLight&apos;.  Value: 1 </teststep>
+      <teststep timestamp="   0.990000" level="0" type="user" ident="2.1" result="pass">Open Head Light</teststep>
+      <teststep timestamp="   5.990000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=5000ms (max=5000ms)</teststep>
+      <verdict time="2022-11-10 15:35:28" timestamp="   5.990000" endtime="2022-11-10 15:35:28" endtimestamp="   5.990000" result="pass" />
+      <title>Set_LightState</title>
+    </testcase>
+    <title>stateTest2</title>
+  </testgroup>
+  <verdict time="2022-11-10 15:35:28" timestamp="   5.990000" endtime="2022-11-10 15:35:28" endtimestamp="   5.990000" result="pass" />
+  <title>bmw</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>carl.wu</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.FlexRay 11.0.55 (SP2)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>C:\document\CANoe-Demo\bmw2.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database bmw on CAN</name>
+      <description>C:\document\CANoe-Demo\dbc\bmw.dbc (2022-08-08 19:22:22)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>XML_Demo_2</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>C:\document\CANoe-Demo\TestModule\XML_Demo2.xml</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2022-08-08, 19:22:22</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Library (CAPL)</name>
+      <description>C:\document\CANoe-Demo\TestModule\XML_Demo2.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>CN03-OF-WL0073</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.55.0, C:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLVECTOR</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.16.47 (Jul  4 2017 16:10:44) , C:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLVECTOR.DLL</description>
+    </xinfo>
+  </testsetup>
+</testmodule>
+<!--footprint="3f0e89d21a8e286d6f1280e26b081d4b" version="1"-->

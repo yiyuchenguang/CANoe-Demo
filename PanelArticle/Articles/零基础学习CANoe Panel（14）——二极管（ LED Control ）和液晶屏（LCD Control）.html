@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（14）——二极管（ LED Control ）和液晶屏（LCD Control）</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>
+<p>🍅   <font color="gray">本节通过一个简易版的电源操作面板，来一起演示下液晶屏（LCD Control）控件和二极管（ LED Control ）控件</font></p>
+</li>
+<li>
+<p>🍅 <font color="gray">演示软硬件环境 <code>Windows11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></p>
+</li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororangeLCD_Control_28">📙 &lt;font color=orange&gt;液晶屏（LCD Control）</a></li><ul><li><a href="#_font_color_YellowGreen___36">🍅 &lt;font color= YellowGreen &gt; 设置数码管数量</a></li><li><a href="#_font_color_YellowGreen___45">🍅 &lt;font color= YellowGreen &gt; 数码管配色设置</a></li><li><a href="#_font_color_YellowGreen__52">🍅 &lt;font color= YellowGreen &gt;电源连接和电压读取模板代码</a></li><li><a href="#_font_color_YellowGreen__154">🍅 &lt;font color= YellowGreen &gt;实际测试结果</a></li></ul><li><a href="#_font_colororangeLED_Control_160">📙 &lt;font color=orange&gt;液晶屏（LED Control）</a></li><ul><li><a href="#_font_color_YellowGreen_On_Off__167">🍅 &lt;font color= YellowGreen &gt;On Off 值和颜色属性设置</a></li><li><a href="#_font_color_YellowGreen__174">🍅 &lt;font color= YellowGreen &gt;形状属性设置</a></li></ul><li><a href="#font_colororange_187">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<hr>
+<h1><a id="_font_colororangeLCD_Control_28"></a>📙 <font color="orange">液晶屏（LCD Control）</font></h1>
+<ul>
+<li>放置两个LCD Control取来实时显示电源电压电流</li>
+<li>放置一个 LED Control 用来显示电源连接状态</li>
+<li>放置两个Input/Out 控件，串口连接的配置<br>
+<img src="https://img-blog.csdnimg.cn/06b7ac43731b41eb9ef3fceff02fd825.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen___36"></a>🍅 <font color="YellowGreen"> 设置数码管数量</font></h2>
+<ul>
+<li>一个数字就是一个数码管，以小数位为界，可以设置整数位和小数位的显示位数</li>
+<li><code>Decimal Places</code>:整数位设置为2个</li>
+<li><code>Number Of Digits</code>：小数位设置2个</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/56ca74287a494d4798667f02c3b1181a.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen___45"></a>🍅 <font color="YellowGreen"> 数码管配色设置</font></h2>
+<ul>
+<li>默认配置就是点亮段时<strong>红色</strong>，背景色和没有被点亮的段时<strong>黑色</strong></li>
+<li>下面我们简单设置下数码管的颜色<br>
+<img src="https://img-blog.csdnimg.cn/52aaa1d55f314e7f84931515ca92fb57.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen__52"></a>🍅 <font color="YellowGreen">电源连接和电压读取模板代码</font></h2>
+<ul>
+<li>下面代码，可以作为一个标准电源连接和电压读取的模板把，实际使用时，再根据具体情况加工下</li>
+</ul>
+<pre><code class="prism language-cpp"><span class="token comment">/*@!Encoding:936*/</span>
+variables
+<span class="token punctuation">{</span>
+  msTimer timer_V<span class="token punctuation">;</span>
+  msTimer timer_C<span class="token punctuation">;</span>
+  <span class="token keyword">char</span>  tempText<span class="token punctuation">[</span><span class="token number">0x500</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> Port<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> BaudRate<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> res<span class="token punctuation">;</span>
+
+  byte GetCurrentCommand <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token char">'I'</span><span class="token punctuation">,</span><span class="token char">'O'</span><span class="token punctuation">,</span><span class="token char">'U'</span><span class="token punctuation">,</span><span class="token char">'T'</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment">//13 CR ; 10 LF</span>
+  byte GetVoltageCommand <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token char">'I'</span><span class="token punctuation">,</span><span class="token char">'O'</span><span class="token punctuation">,</span><span class="token char">'U'</span><span class="token punctuation">,</span><span class="token char">'T'</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment">//13 CR ; 10 LF</span>
+<span class="token punctuation">}</span>
+
+on timer timer_V
+<span class="token punctuation">{</span>
+  <span class="token comment">//RS232Send(Port, GetCurrentCommand, elCount(GetCurrentCommand));</span>
+  <span class="token comment">//模拟随机值,真实硬件情况下，把RS232Send打开，然后在RS232OnReceive解析返回值</span>
+  <span class="token function">sysSetVariableFloat</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>LCD_Voltage<span class="token punctuation">,</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10.0</span><span class="token operator">+</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_V<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+on timer timer_C
+<span class="token punctuation">{</span>
+  <span class="token comment">//RS232Send(Port, GetCurrentCommand, elCount(GetCurrentCommand));</span>
+  <span class="token comment">//模拟随机值,真实硬件情况下，把RS232Send打开，然后在RS232OnReceive解析返回值</span>
+  <span class="token function">sysSetVariableFloat</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>LCD_Current<span class="token punctuation">,</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_C<span class="token punctuation">,</span><span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+on sysvar Panel<span class="token double-colon punctuation">::</span>Port
+<span class="token punctuation">{</span>
+  <span class="token function">InitPower</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+on sysvar Panel<span class="token double-colon punctuation">::</span>BaudRate
+<span class="token punctuation">{</span>
+  <span class="token function">InitPower</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token function">RS232OnReceive</span><span class="token punctuation">(</span>dword port<span class="token punctuation">,</span> byte buffer<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dword number<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>buffer<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span><span class="token char">'V'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">sysSetVariableFloat</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>LCD_Voltage<span class="token punctuation">,</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token operator">+</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//模拟随机值</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>buffer<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span><span class="token char">'C'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">sysSetVariableFloat</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>LCD_Current<span class="token punctuation">,</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//模拟随机值</span>
+  <span class="token punctuation">}</span>
+  
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">InitPower</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+
+  Port <span class="token operator">=</span> <span class="token function">sysGetVariableInt</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>Port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  BaudRate <span class="token operator">=</span> <span class="token function">sysGetVariableInt</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>BaudRate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"Port:%d ;BaudRate:%d "</span><span class="token punctuation">,</span>Port<span class="token punctuation">,</span>BaudRate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  res <span class="token operator">=</span> <span class="token function">RS232Open</span><span class="token punctuation">(</span>Port<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"Open COM %d Failed!"</span><span class="token punctuation">,</span>Port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+   res <span class="token operator">=</span> <span class="token function">RS232Configure</span><span class="token punctuation">(</span>Port<span class="token punctuation">,</span>BaudRate<span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+   <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"Configure COM %d Failed! :%d"</span><span class="token punctuation">,</span>Port<span class="token punctuation">,</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+   res <span class="token operator">=</span> <span class="token function">RS232SetHandshake</span><span class="token punctuation">(</span>Port<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+   <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">write</span><span class="token punctuation">(</span><span class="token string">" Configure handshaking COM %d Failed!"</span><span class="token punctuation">,</span>Port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+    <span class="token comment">//配置成功</span>
+    <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_V<span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_C<span class="token punctuation">,</span><span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token function">sysSetVariableInt</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>LED_1<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"Configure COM %d Ok!"</span><span class="token punctuation">,</span>Port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+on stopMeasurement
+<span class="token punctuation">{</span>
+  <span class="token function">rs232Close</span><span class="token punctuation">(</span>Port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<hr> 
+<h2><a id="_font_color_YellowGreen__154"></a>🍅 <font color="YellowGreen">实际测试结果</font></h2>
+<p><img src="https://img-blog.csdnimg.cn/f31203eee48d4fd98dc5effa0411c846.png" alt="在这里插入图片描述"></p>
+<hr>
+<h1><a id="_font_colororangeLED_Control_160"></a>📙 <font color="orange">液晶屏（LED Control）</font></h1>
+<ul>
+<li>LED Control 作为一个状态显示控件,比较简单</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/8dce486953854c6e873ab23b0473d9ca.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen_On_Off__167"></a>🍅 <font color="YellowGreen">On Off 值和颜色属性设置</font></h2>
+<ul>
+<li>LED Control  只有On和Off两种状态，默认 On 是1 ，OFF是0，颜色也可选</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/f44cf196f3a946e19d8c3f6fed8ed4ec.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen__174"></a>🍅 <font color="YellowGreen">形状属性设置</font></h2>
+<ul>
+<li>panel提供了6种可选形状</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/1f4f15cf4f7f4ccebfa821d68023399f.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+<h1><a id="font_colororange_187"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

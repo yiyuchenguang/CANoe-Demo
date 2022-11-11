@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Panel_Basic">
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl2" Children="Controls" ControlName="Button">
+      <Property Name="Name">ButtonControl2</Property>
+      <Property Name="Size">90, 39</Property>
+      <Property Name="Location">0, 52</Property>
+      <Property Name="Text">Button2</Property>
+      <Property Name="SymbolConfiguration">
+      </Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="Button">
+      <Property Name="Name">ButtonControl1</Property>
+      <Property Name="Size">90, 39</Property>
+      <Property Name="Location">0, 13</Property>
+      <Property Name="Text">Button</Property>
+      <Property Name="SymbolConfiguration">
+      </Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl4" Children="Controls" ControlName="Button">
+      <Property Name="Name">ButtonControl4</Property>
+      <Property Name="Size">90, 39</Property>
+      <Property Name="Location">0, 130</Property>
+      <Property Name="Text">Button4</Property>
+      <Property Name="SymbolConfiguration">
+      </Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl3" Children="Controls" ControlName="Button">
+      <Property Name="Name">ButtonControl3</Property>
+      <Property Name="Size">90, 39</Property>
+      <Property Name="Location">0, 91</Property>
+      <Property Name="Text">Button3</Property>
+      <Property Name="SymbolConfiguration">
+      </Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">600, 322</Property>
+    <Property Name="BackColor">255, 255, 255</Property>
+    <Property Name="ImageFileName">..\Bitmaps\OIP72.png</Property>
+    <Property Name="IsProportional">True</Property>
+  </Object>
+</Panel>

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（13）—— 滑条（TrackBar ）</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>
+<p>🍅   <font color="gray"> 滑条（TrackBar ）可以滑动滑块来设置值，比如设置车速等</font></p>
+</li>
+<li>
+<p>🍅 <font color="gray">演示软硬件环境 <code>Windows11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></p>
+</li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororange__28">📙 &lt;font color=orange&gt; 属性设置</a></li><ul><li><a href="#_font_color_YellowGreen___38">🍅 &lt;font color= YellowGreen &gt; 取值范围</a></li><li><a href="#_font_color_YellowGreen___45">🍅 &lt;font color= YellowGreen &gt; 垂直滑条还是水平滑条</a></li><li><a href="#_font_color_YellowGreen___51">🍅 &lt;font color= YellowGreen &gt; 是否显示取值范围</a></li><li><a href="#_font_color_YellowGreen__Ticks__59">🍅 &lt;font color= YellowGreen &gt; 刻度线（Ticks ）</a></li><li><a href="#_font_color_YellowGreen___83">🍅 &lt;font color= YellowGreen &gt; 是否显示滑块的值</a></li><li><a href="#_font_color_YellowGreen__symbol_88">🍅 &lt;font color= YellowGreen &gt; 滑块绑定的symbol值是否实时更新</a></li></ul><li><a href="#font_colororange_104">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<hr>
+<h1><a id="_font_colororange__28"></a>📙 <font color="orange"> 属性设置</font></h1>
+<ul>
+<li>放一个 <code>TrackBar</code> 和 <code>Numeric Up/Down</code> 控件， <code>Numeric Up/Down</code> 控件用来显示<code>TrackBar</code> 控件的值<br>
+<img src="https://img-blog.csdnimg.cn/8bd63a6f47184845a7a00b40b012ac42.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen___38"></a>🍅 <font color="YellowGreen"> 取值范围</font></h2>
+<ul>
+<li>可以设置滑条的最大值和最小值</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/5758d9a1792b4273bb85e7043970fae8.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen___45"></a>🍅 <font color="YellowGreen"> 垂直滑条还是水平滑条</font></h2>
+<ul>
+<li></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/9b2f13a23f394e46acf138f303f0e700.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h2><a id="_font_color_YellowGreen___51"></a>🍅 <font color="YellowGreen"> 是否显示取值范围</font></h2>
+<ul>
+<li>是否把滑条（TrackBar ）的取值范围给显示出来<br>
+<img src="https://img-blog.csdnimg.cn/28e645946fe140fbbbd84f6ed042a3a4.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen__Ticks__59"></a>🍅 <font color="YellowGreen"> 刻度线（Ticks ）</font></h2>
+<p><font size="4">1️⃣ </font> 刻度线是否显示，以及显示位置</p>
+<ul>
+<li>10------------100 的虚线就是刻度线，我们选择<code>Ticks Top</code>可以把刻度线默认在滑条下方的改成上方</li>
+<li>也可以选择<code>No Ticks</code> 就去掉刻度线了</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/15ade5a9d6db4d64a71583d418973eaa.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>刻度线的最小单位</p>
+<ul>
+<li>上面的虚线是不是密密麻麻看不清，那是因为默认的最小单位(<code>Tick Frequency</code>)是1，我们设置成10</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/e8eddec9f2784436966c165b0a9f0840.png" alt="在这里插入图片描述"></p>
+<hr>  <font size="4">3️⃣</font>  最小移动单位（`Small change` ）
+<ul>
+<li>我们可以拖动滑块移动设置值，也可以通过键盘的左右键来加减，则按一下键盘的加减数就是最小移动单位，且刻度线的最小单位(<code>Tick Frequency</code>)要是最小移动单位（<code>Small change</code> ）的整数倍</li>
+</ul>
+<hr> <font size="4">4️⃣</font>  最大移动量（Large change ）
+<ul>
+<li>我们即不用鼠标拖动滑条，也不用键盘的左右按键，我们就在滑块的左边或者右边，点一下鼠标左键，这个时候，滑块增减的数就是最大移动量（<code>Large change</code> ）</li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen___83"></a>🍅 <font color="YellowGreen"> 是否显示滑块的值</font></h2>
+<ul>
+<li><code>Show Value Tooltip</code> ： 当你移动滑块的时候，显示滑块的值。<br>
+<img src="https://img-blog.csdnimg.cn/9b4bd9074f9445f68611bfe095168b8f.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr> 
+<h2><a id="_font_color_YellowGreen__symbol_88"></a>🍅 <font color="YellowGreen"> 滑块绑定的symbol值是否实时更新</font></h2>
+<ul>
+<li>
+<p><code>All value:</code> 当你拖动滑块设置值的时候，滑块没动一下，相应的symbol的值就会跟着变化以下</p>
+</li>
+<li>
+<p><code>Only Last Value:</code> 只有当你鼠标released的时候，相应的symbol的值才会变化。<br>
+<img src="https://img-blog.csdnimg.cn/2221af9edcf341a688050ebed0b7e180.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+</li>
+</ul>
+<h1><a id="font_colororange_104"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_PanelControl">
+    <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControl2" Children="Controls" ControlName="Panel Control Button">
+      <Property Name="Name">PanelButtonControl2</Property>
+      <Property Name="Size">126, 42</Property>
+      <Property Name="Location">54, 169</Property>
+      <Property Name="PanelList">1;1;ToolBox_LCDControl.xvp</Property>
+      <Property Name="NodeList">1;0</Property>
+      <Property Name="NetworkList">1;0</Property>
+      <Property Name="Text">打开 LCD Panel</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.PanelButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="PanelButtonControl1" Children="Controls" ControlName="Panel Control Button">
+      <Property Name="Name">PanelButtonControl1</Property>
+      <Property Name="Size">126, 42</Property>
+      <Property Name="Location">54, 91</Property>
+      <Property Name="PanelList">1;1;ToolBox_LED_Control.xvp</Property>
+      <Property Name="NodeList">1;0</Property>
+      <Property Name="NetworkList">1;0</Property>
+      <Property Name="Text">打开LED Panel</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">264, 263</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

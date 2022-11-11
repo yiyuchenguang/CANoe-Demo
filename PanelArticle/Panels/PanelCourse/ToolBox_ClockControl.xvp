@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Clock Control">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+      <Object Type="Vector.CANalyzer.Panels.Design.ClockControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ClockControl1" ControlName="Clock Control">
+        <Property Name="Name">ClockControl1</Property>
+        <Property Name="Size">138, 32</Property>
+        <Property Name="Location">162, 13</Property>
+        <Property Name="BackColor">White</Property>
+        <Property Name="ColorOn">Fuchsia</Property>
+        <Property Name="ColorOff">White</Property>
+        <Property Name="SymbolConfiguration">
+        </Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">318, 214</Property>
+      <Property Name="Location">12, 13</Property>
+      <Property Name="Text">
+      </Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">360, 249</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

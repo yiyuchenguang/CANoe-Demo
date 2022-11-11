@@ -1,0 +1,121 @@
+/*@!Encoding:936*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+testcase TestWaitUser_1()
+{
+  char resultStr[100];
+  if (1== TestWaitForStringInput("Please enter your name", 20000))
+  {
+     TestGetStringInput(resultStr, 100);
+     Write("name = %s", resultStr);
+  }
+  
+}
+
+
+testcase TestWaitUser_2 ()
+{
+  char resultStr[100];
+  if (1== TestWaitForValueInput ("Please enter your ID", 20000))
+  {
+    Write("Test ID = %.f", TestGetValueInput());
+    TestGetStringInput(resultStr, 100);
+    Write("Test ID = %s", resultStr);
+  }
+  
+}
+
+
+testcase TestWaitSymbols_signal (Signal * Name)
+{
+  long result;
+  result = TestWaitForSignalMatch(Name, 80, 100000);
+  if(result==1)
+    testStepPass("", "xxxx passed");
+  else
+     TestStepFail("", "xxxx failed"); 
+  
+}
+
+
+
+testcase TestWaitSymbols_Var ()
+{
+  long result;
+  //result = TestWaitForSignalMatch(sysvar::Engine::EngineSpeedDspMeter, 80, 100000);
+   result = TestWaitForSignalMatch(en_bmw_test, 1, 100000);
+  if(result==1)
+    testStepPass("", "xxxx passed");
+  else
+     TestStepFail("", "xxxx failed"); 
+
+}
+
+testcase TestWaitMessage (dword can_id) 
+{
+  long result;
+  result = TestWaitForMessage(can_id, 100000);
+  if(result==1)
+    write("received");
+  else
+    write("not received");
+}
+
+
+on key 'a'
+{
+  TestSupplyTextEvent("test string");
+
+}
+
+
+testcase TestWaitTextEvent  (char aText[], dword aTimeout) 
+{
+  long result;
+  result = TestWaitForTextEvent(aText, aTimeout);
+  if(result==1)
+    write("received");
+  else
+    write("not received");
+}
+
+testcase TestWaitDiag  () 
+{
+  DiagRequest Door.DefaultSession_Start req;
+  long result;
+
+  req.SendRequest();
+  // waits until request is completely sent
+  if (TestWaitForDiagRequestSent(req, 100)== 1)
+  {
+     TestStepPass("Request was sent successfully!");   
+      if (TestWaitForDiagResponse(req, 1000)== 1)
+         TestStepPass("Response was Received successfully!");   
+       else
+          TestStepFail("Response was not Received");
+  }
+   
+  else
+    TestStepFail("Request could not be sent!");
+}
+
+
+void MainTest ()
+{
+
+   //TestWaitUser_1();
+   //TestWaitUser_2();
+   //TestWaitSymbols_signal(EngineSpeed);
+   // TestWaitSymbols_Var();
+   // TestWaitMessage(0x123);
+    // TestWaitTextEvent("test string",10000);
+  TestWaitDiag();
+}

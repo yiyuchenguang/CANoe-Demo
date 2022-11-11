@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_LCDControl">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2" Children="Controls" ControlName="Group Box 2">
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl3" Children="Controls" ControlName="Static Text">
+        <Property Name="Name">StaticTextControl3</Property>
+        <Property Name="Size">39, 13</Property>
+        <Property Name="Location">6, 52</Property>
+        <Property Name="Text">电压：</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl4" Children="Controls" ControlName="Static Text">
+        <Property Name="Name">StaticTextControl4</Property>
+        <Property Name="Size">30, 13</Property>
+        <Property Name="Location">6, 143</Property>
+        <Property Name="Text">电流:</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.LCDControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="LCDControl1" ControlName="LCD Control">
+        <Property Name="Name">LCDControl1</Property>
+        <Property Name="Size">132, 50</Property>
+        <Property Name="Location">54, 32</Property>
+        <Property Name="NumberIntDigits">2</Property>
+        <Property Name="DecimalPlaces">2</Property>
+        <Property Name="BackColor">64, 64, 64</Property>
+        <Property Name="ColorOn">AliceBlue</Property>
+        <Property Name="ColorOff">Black</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;LCD_Voltage;2;;;-1;;;</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.LCDControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="LCDControl2" ControlName="LCD Control">
+        <Property Name="Name">LCDControl2</Property>
+        <Property Name="Size">132, 50</Property>
+        <Property Name="Location">54, 110</Property>
+        <Property Name="NumberIntDigits">2</Property>
+        <Property Name="DecimalPlaces">2</Property>
+        <Property Name="ColorOn">Blue</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;LCD_Current;2;;;-1;;;</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl2</Property>
+      <Property Name="Size">212, 182</Property>
+      <Property Name="Location">66, 143</Property>
+      <Property Name="BackColor">146, 208, 80</Property>
+      <Property Name="Text">电压电流读取</Property>
+      <Property Name="TabIndex">7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+      <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl1" ControlName="LED Control">
+        <Property Name="Name">LEDControl1</Property>
+        <Property Name="Size">18, 20</Property>
+        <Property Name="Location">180, 13</Property>
+        <Property Name="UsedLEDColorOn">Lime</Property>
+        <Property Name="UsedLEDColorOff">Gray</Property>
+        <Property Name="IsProportional">False</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;LED_1;1;;;-1;;;</Property>
+        <Property Name="TabIndex">6</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl1" Children="Controls" ControlName="Combo Box">
+        <Property Name="Name">ComboBoxControl1</Property>
+        <Property Name="Size">129, 24</Property>
+        <Property Name="Location">72, 46</Property>
+        <Property Name="DropDownWidth">172</Property>
+        <Property Name="BackColor">Window</Property>
+        <Property Name="ForeColor">255, 192, 0</Property>
+        <Property Name="Font">Microsoft Sans Serif, 7.8pt, style=Bold</Property>
+        <Property Name="DisplayedRows">UseMaxDropDownItems</Property>
+        <Property Name="TextBackColor">Window</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">Port:</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;Port;1;;;-1;;;</Property>
+        <Property Name="TabIndex">3</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text">
+        <Property Name="Name">StaticTextControl2</Property>
+        <Property Name="Size">60, 13</Property>
+        <Property Name="Location">6, 84</Property>
+        <Property Name="Text">BaudRate:</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl2" Children="Controls" ControlName="Combo Box">
+        <Property Name="Name">ComboBoxControl2</Property>
+        <Property Name="Size">129, 24</Property>
+        <Property Name="Location">72, 84</Property>
+        <Property Name="DropDownWidth">172</Property>
+        <Property Name="BackColor">Window</Property>
+        <Property Name="ForeColor">WindowText</Property>
+        <Property Name="MaxDropDownItems">3</Property>
+        <Property Name="DisplayedRows">UseMaxDropDownItems</Property>
+        <Property Name="TextBackColor">141, 179, 226</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">BaudRate:</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;BaudRate;1;;;-1;;;</Property>
+        <Property Name="TabIndex">2</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text">
+        <Property Name="Name">StaticTextControl1</Property>
+        <Property Name="Size">48, 13</Property>
+        <Property Name="Location">6, 46</Property>
+        <Property Name="Text">Port：</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">212, 117</Property>
+      <Property Name="Location">66, 20</Property>
+      <Property Name="BackColor">141, 179, 226</Property>
+      <Property Name="Text">串口配置</Property>
+      <Property Name="TabIndex">6</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">384, 351</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

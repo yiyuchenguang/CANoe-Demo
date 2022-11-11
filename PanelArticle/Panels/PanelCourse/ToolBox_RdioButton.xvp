@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_RdioButton">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box">
+      <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl1" Children="Controls" ControlName="Radio Button">
+        <Property Name="Name">RadioButtonControl1</Property>
+        <Property Name="Size">92, 16</Property>
+        <Property Name="Location">0, 32</Property>
+        <Property Name="Text">RadioButton_Int</Property>
+        <Property Name="TextAlign">MiddleCenter</Property>
+        <Property Name="SwitchValue">2</Property>
+        <Property Name="ForeColor">0, 176, 80</Property>
+        <Property Name="CheckAlign">MiddleRight</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;RadioButton_Int;1;;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2" Children="Controls" ControlName="Radio Button">
+        <Property Name="Name">RadioButtonControl2</Property>
+        <Property Name="Size">138, 20</Property>
+        <Property Name="Location">0, 65</Property>
+        <Property Name="Text">RadioButton_Double</Property>
+        <Property Name="TextAlign">MiddleCenter</Property>
+        <Property Name="ForeColor">240, 0, 0</Property>
+        <Property Name="CheckAlign">TopRight</Property>
+        <Property Name="SymbolConfiguration">5;16;Panel;;;RadioButton_Double;2;;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">156, 104</Property>
+      <Property Name="Location">48, 26</Property>
+      <Property Name="Font">Microsoft Sans Serif, 7.8pt</Property>
+      <Property Name="Text">Description</Property>
+      <Property Name="ForeColor">0, 176, 80</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">408, 219</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

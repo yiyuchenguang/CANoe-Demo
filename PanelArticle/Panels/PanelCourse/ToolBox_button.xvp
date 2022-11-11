@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_button">
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="Button">
+      <Property Name="Name">ButtonControl1</Property>
+      <Property Name="Size">102, 52</Property>
+      <Property Name="Location">96, 65</Property>
+      <Property Name="FlatStyle">CustomFlat</Property>
+      <Property Name="BackColor">255, 255, 0</Property>
+      <Property Name="Text">StartRun</Property>
+      <Property Name="UseWindowsStyle">False</Property>
+      <Property Name="BorderColor">Red</Property>
+      <Property Name="HoverColor">Fuchsia</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;Test_3;1;;;-1;;;</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">312, 176</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

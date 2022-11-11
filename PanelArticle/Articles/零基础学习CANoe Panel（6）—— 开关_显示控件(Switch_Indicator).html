@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（6）—— 开关/显示控件(Switch/Indicator)</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_11"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>🍅   <font color="gray">  在<code>Panel</code>设计中，<code>Switch/Indicator</code> 是最常用的控件，兼容<code>button</code> 控件 ，既可以作为开关，也可以作为显示，功能很多，下面就通过示例逐个讲解下属性设置。</font></li>
+<li>🍅 <font color="gray">演示软硬件环境 Win11 x64 ； CANoe 11 SP2 x64<br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_11">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororange_Image_File_26">📙 &lt;font color=orange&gt; 图片文件(Image File)</a></li><li><a href="#_font_colororange_SwitchIndicator__35">📙 &lt;font color=orange&gt; Switch/Indicator 控件的电平变化</a></li><li><a href="#_font_colororange_SwitchIndicator__65">📙 &lt;font color=orange&gt; Switch/Indicator 控件的按键行为</a></li><li><a href="#font_colororange_79">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<h1><a id="_font_colororange_Image_File_26"></a>📙 <font color="orange"> 图片文件(Image File)</font></h1>
+<p><font size="4">1️⃣ </font> 如下图,这些控件都是<code>Switch/Indicator</code>控件,之所以在<code>panel</code>中大量使用这个控件,就是因为<code>Image File</code>属性,可以让这个控件表现出物理性质,一目了然；</p>
+<ul>
+<li>🚩 <a href="https://wuliang.blog.csdn.net/article/details/125898298">零基础学习CANoe Panel（5）——改变变量的值，控件图像也改变,这是怎么回事?点击跳转👇</a><br>
+<img src="https://img-blog.csdnimg.cn/129004cb434b46f8a794c521554cbd14.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr>
+<h1><a id="_font_colororange_SwitchIndicator__35"></a>📙 <font color="orange"> Switch/Indicator 控件的电平变化</font></h1>
+<ul>
+<li><font size="4">1️⃣ </font></li>
+<li>下面的第一个控件绑定的位图就3种颜色，对应这2个值,所以我 不断的点击鼠标左键，Test_1变量的值就在0和1之间变换</li>
+<li>下面的第二个控件绑定的位图有6种颜色，对应这5个值,所以我 不断的点击鼠标左键，Test_2变量的值就在0和4之间变换，到了4之后，再点击，就回到了0.</li>
+<li>如果我通过Data窗口设置Test_2的值大于4呢，比如5，那么第二个控件的颜色保持不变，因为超出了位图能表示的值了。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/fd18f8a0272e47cdb09cb58800ea3058.png" alt="在这里插入图片描述"></p>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/af0848c62d3542d3813d6ed18fc27249.png" alt="在这里插入图片描述"></p>
+ <hr>
+<p><font size="4">2️⃣</font> 设置成类似于Button 控件的自恢复类型</p>
+<ul>
+<li>如下图,将Test_1的Button Behavior属性打成 True,就和Button一样了,自恢复.<br>
+<img src="https://img-blog.csdnimg.cn/bcfa412fff4e43f086a237a0f6f50577.png" alt="在这里插入图片描述"></li>
+</ul>
+ <hr>
+<p><img src="https://img-blog.csdnimg.cn/fb8971cd3b6641f3b00a739014a6a7c2.png" alt="在这里插入图片描述"></p>
+ <hr>
+<h1><a id="_font_colororange_SwitchIndicator__65"></a>📙 <font color="orange"> Switch/Indicator 控件的按键行为</font></h1>
+<ul>
+<li>正常情况下, 鼠标的行为我们选择Only Left ,即只有鼠标左键起作用,如果设置成鼠标<code>Left And Right</code>呢<br>
+<img src="https://img-blog.csdnimg.cn/170f53ebbbbd45ca9f14a29ccaf4d4ec.png" alt="在这里插入图片描述"></li>
+</ul>
+ <hr>
+<ul>
+<li>
+<p>设置成鼠标<code>Left And Right</code>，信号行为：右键+1，左键-1；<br>
+<img src="https://img-blog.csdnimg.cn/b7ec0499f79a4e1aa92d6986e8c59760.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+</li>
+</ul>
+<h1><a id="font_colororange_79"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font size="3" color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font size="3" color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

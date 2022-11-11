@@ -1,0 +1,60 @@
+/*@!Encoding:936*/
+
+
+ on key 'a'
+  
+{
+  char timeBuffer[64];
+  char tempText[256]; 
+  int i ;
+    
+
+  getLocalTimeString(timeBuffer);
+  snprintf(tempText,elCount(tempText),"%s:开始执行测试。。。\n",timeBuffer);
+  putValueToControl("ToolBox_CAPLOutView","CAPLOutputView",tempText);
+  
+  getLocalTimeString(timeBuffer);
+  snprintf(tempText,elCount(tempText),"%s:正在执行测试步骤（1）。。。\n",timeBuffer);
+  putValueToControl("ToolBox_CAPLOutView","CAPLOutputView",tempText);
+  
+  getLocalTimeString(timeBuffer);
+  snprintf(tempText,elCount(tempText),"%s:测试结束，结果PASS\n",timeBuffer);
+  putValueToControl("ToolBox_CAPLOutView","CAPLOutputView",tempText);
+}
+
+ on key 'b' 
+{ 
+  openPanel("PanelCAPL_Fucntions"); 
+}
+ on key 'c' 
+{  
+  closePanel("PanelCAPL_Fucntions"); 
+}
+ on key 'd' 
+{  
+   SetControlVisibility("PanelCAPL_Fucntions","Button",0); //隐藏一个控件
+  //SetControlVisibility("PanelCAPL_Fucntions","",0);//隐藏全部控件
+  // SetControlVisibility("","",0);//隐藏全部打开Panel的全部控件
+  //SetControlVisibility("","Button",0);//隐藏全部打开Panel的Button控件
+}
+ on key 'e' 
+{  
+  enableControl("PanelCAPL_Fucntions","Button",0);
+}
+
+ on key 'f' 
+{  
+  SetControlForeColor("PanelCAPL_Fucntions", "Button", MakeRGB(252,64,17));//红色
+} 
+on key 'g' 
+{  
+  SetControlBackColor("PanelCAPL_Fucntions", "Button", MakeRGB(48,242,41));//绿色
+}
+on key 'h' 
+{  
+  SetControlColors("PanelCAPL_Fucntions", "Button", MakeRGB(0,0,0),MakeRGB(255,255,255));
+}
+on key 'j' 
+{  
+  SetDefaultControlColors ("PanelCAPL_Fucntions", "Button");
+}

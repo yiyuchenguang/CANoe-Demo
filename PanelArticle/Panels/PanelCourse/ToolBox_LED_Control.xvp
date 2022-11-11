@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_LED_Control">
+    <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl2" ControlName="LED Control 2">
+      <Property Name="Name">LEDControl2</Property>
+      <Property Name="Size">46, 50</Property>
+      <Property Name="Location">132, 123</Property>
+      <Property Name="UsedLEDColorOff">0, 176, 80</Property>
+      <Property Name="IsProportional">False</Property>
+      <Property Name="LEDStyle">Rectangle</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;LED_2;1;;;-1;;;</Property>
+      <Property Name="TabIndex">3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl1" ControlName="LED Control">
+      <Property Name="Name">LEDControl1</Property>
+      <Property Name="Size">46, 50</Property>
+      <Property Name="Location">132, 32</Property>
+      <Property Name="UsedLEDColorOff">0, 176, 80</Property>
+      <Property Name="IsProportional">False</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;LED_1;1;;;-1;;;</Property>
+      <Property Name="TabIndex">2</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">288, 234</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_HexTextEditor">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl3" Children="Controls" ControlName="Static Text">
+      <Property Name="Name">StaticTextControl3</Property>
+      <Property Name="Size">39, 13</Property>
+      <Property Name="Location">36, 312</Property>
+      <Property Name="Text">字符串</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.HexEditorControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="HexEditorControl3" Children="Controls" ControlName="Hex/Text Editor 3">
+      <Property Name="Name">HexEditorControl3</Property>
+      <Property Name="Size">330, 87</Property>
+      <Property Name="Location">138, 280</Property>
+      <Property Name="ColumnCount">36</Property>
+      <Property Name="ViewLayout">OnlyTextfield</Property>
+      <Property Name="SymbolDataType">String</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;Editor_String;4;;;-1;;;</Property>
+      <Property Name="TabIndex">3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text">
+      <Property Name="Name">StaticTextControl2</Property>
+      <Property Name="Size">50, 13</Property>
+      <Property Name="Location">30, 52</Property>
+      <Property Name="Text">Byte 数组</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text">
+      <Property Name="Name">StaticTextControl1</Property>
+      <Property Name="Size">50, 13</Property>
+      <Property Name="Location">30, 169</Property>
+      <Property Name="Text">整形数组</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.HexEditorControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="HexEditorControl1" Children="Controls" ControlName="Hex/Text Editor 2">
+      <Property Name="Name">HexEditorControl1</Property>
+      <Property Name="Size">97, 87</Property>
+      <Property Name="Location">144, 143</Property>
+      <Property Name="ColumnCount">4</Property>
+      <Property Name="ViewLayout">OnlyHexfield</Property>
+      <Property Name="SymbolDataType">LongArray</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;Editor_IntArrary;16;;;-1;;;</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.HexEditorControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="HexEditorControl2" Children="Controls" ControlName="Hex/Text Editor">
+      <Property Name="Name">HexEditorControl2</Property>
+      <Property Name="Size">169, 87</Property>
+      <Property Name="Location">144, 20</Property>
+      <Property Name="ViewLayout">OnlyHexfield</Property>
+      <Property Name="SymbolDataType">ByteArray</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;Editor_ByteArrary;8;;;-1;;;</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">552, 424</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

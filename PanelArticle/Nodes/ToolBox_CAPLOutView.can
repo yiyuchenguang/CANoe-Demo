@@ -1,0 +1,23 @@
+/*@!Encoding:936*/
+
+
+ on key 'a'
+  
+{
+  char timeBuffer[64];
+  char tempText[256]; 
+  int i ;
+    
+
+  getLocalTimeString(timeBuffer);
+  snprintf(tempText,elCount(tempText),"%s:开始执行测试。。。\n",timeBuffer);
+  putValueToControl("ToolBox_CAPLOutView","CAPLOutputView",tempText);
+  
+  getLocalTimeString(timeBuffer);
+  snprintf(tempText,elCount(tempText),"%s:正在执行测试步骤（1）。。。\n",timeBuffer);
+  putValueToControl("ToolBox_CAPLOutView","CAPLOutputView",tempText);
+  
+  getLocalTimeString(timeBuffer);
+  snprintf(tempText,elCount(tempText),"%s:测试结束，结果PASS\n",timeBuffer);
+  putValueToControl("ToolBox_CAPLOutView","CAPLOutputView",tempText);
+}

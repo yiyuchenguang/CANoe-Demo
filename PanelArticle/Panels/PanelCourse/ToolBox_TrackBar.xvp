@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_TrackBar">
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl3" Children="Controls" ControlName="Track Bar">
+      <Property Name="Name">TrackBarControl3</Property>
+      <Property Name="Size">115, 47</Property>
+      <Property Name="Location">114, 96</Property>
+      <Property Name="Maximum">100</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">10</Property>
+      <Property Name="BackColor">White</Property>
+      <Property Name="Minimum">10</Property>
+      <Property Name="TickStyle">TopLeft</Property>
+      <Property Name="LargeChange">6</Property>
+      <Property Name="SmallChangeDouble">0.5</Property>
+      <Property Name="LargeChangeDouble">6</Property>
+      <Property Name="TickFrequencyDouble">10</Property>
+      <Property Name="MaximumDouble">100</Property>
+      <Property Name="MinimumDouble">10</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="CommitValue">OnlyLastValue</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;TrackBar;1;;;-1;;;</Property>
+      <Property Name="TabIndex">29</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="NumericUpDownControl2" Children="Controls" ControlName="Numeric Up/Down">
+      <Property Name="Name">NumericUpDownControl2</Property>
+      <Property Name="Size">54, 22</Property>
+      <Property Name="Location">241, 99</Property>
+      <Property Name="DecimalPlaces">1</Property>
+      <Property Name="TextAlign">Right</Property>
+      <Property Name="Increment">0.1</Property>
+      <Property Name="SymbolConfiguration">5;16;Panel;;;TrackBar;1;;;-1;;;</Property>
+      <Property Name="TabIndex">28</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl3" Children="Controls" ControlName="Static Text">
+      <Property Name="Name">StaticTextControl3</Property>
+      <Property Name="Size">46, 13</Property>
+      <Property Name="Location">69, 99</Property>
+      <Property Name="BackColor">White</Property>
+      <Property Name="TextAlign">MiddleCenter</Property>
+      <Property Name="Text">Voltage:</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl4" Children="Controls" ControlName="Static Text">
+      <Property Name="Name">StaticTextControl4</Property>
+      <Property Name="Size">14, 13</Property>
+      <Property Name="Location">301, 101</Property>
+      <Property Name="BackColor">White</Property>
+      <Property Name="TextAlign">MiddleCenter</Property>
+      <Property Name="Text">V</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">480, 219</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

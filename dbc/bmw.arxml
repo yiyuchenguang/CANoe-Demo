@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--This file was saved with a tool from Vector Informatik GmbH-->
-<AUTOSAR xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd" xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<AUTOSAR xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-1-2.xsd" xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AR-PACKAGES>
     <AR-PACKAGE>
       <SHORT-NAME>VectorAutosarExplorerGeneratedObjects</SHORT-NAME>
@@ -13,6 +13,51 @@
               <FIBEX-ELEMENTS>
                 <FIBEX-ELEMENT-REF-CONDITIONAL>
                   <FIBEX-ELEMENT-REF DEST="CAN-CLUSTER">/VectorAutosarExplorerGeneratedObjects/BMW/BMW</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="ECU-INSTANCE">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="ECU-INSTANCE">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Engine</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="ECU-INSTANCE">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Light</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="CAN-FRAME">/VectorAutosarExplorerGeneratedObjects/FRAME/EngineState_Frame</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="CAN-FRAME">/VectorAutosarExplorerGeneratedObjects/FRAME/LightState_Frame</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL-I-PDU">/VectorAutosarExplorerGeneratedObjects/PDUS/EngineState</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_788d0d69fa5c40b29e57e7b6fec57e9e_Tx</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_e158588527f74ac4acd169edaf95850c_Rx</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL-I-PDU">/VectorAutosarExplorerGeneratedObjects/PDUS/LightState</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_55cabddd762242148624ddebfa78fee3_Tx</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_587b637f2d9f4a368546472ab73c80e2_Rx</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/OnOff</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/EngineSpeed</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/HeadLight</FIBEX-ELEMENT-REF>
+                </FIBEX-ELEMENT-REF-CONDITIONAL>
+                <FIBEX-ELEMENT-REF-CONDITIONAL>
+                  <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/FlashLight</FIBEX-ELEMENT-REF>
                 </FIBEX-ELEMENT-REF-CONDITIONAL>
               </FIBEX-ELEMENTS>
             </SYSTEM>
@@ -28,14 +73,652 @@
                   <BAUDRATE>250000</BAUDRATE>
                   <PHYSICAL-CHANNELS>
                     <CAN-PHYSICAL-CHANNEL>
-                      <SHORT-NAME>CANL</SHORT-NAME>
+                      <SHORT-NAME>CANChannel</SHORT-NAME>
+                      <COMM-CONNECTORS>
+                        <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e</COMMUNICATION-CONNECTOR-REF>
+                        </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                        <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Engine/Connector_Engine_5335f7047b1429bc</COMMUNICATION-CONNECTOR-REF>
+                        </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                        <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Light/Connector_Light_334471814cc65d1e</COMMUNICATION-CONNECTOR-REF>
+                        </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                      </COMM-CONNECTORS>
+                      <FRAME-TRIGGERINGS>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>NewFrameTriggering_3f8585c1dea2d9de</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Engine/Connector_Engine_5335f7047b1429bc/framePort_dbcb7467b6ee20c0</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/framePort_c72ec52c1a2a663e</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/VectorAutosarExplorerGeneratedObjects/FRAME/EngineState_Frame</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/VectorAutosarExplorerGeneratedObjects/BMW/BMW/CANChannel/NewPduTriggering_979e26bd90bca63b</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FD-FRAME-SUPPORT>false</CAN-FD-FRAME-SUPPORT>
+                          <IDENTIFIER>291</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>NewFrameTriggering_3161459ca3deeb43</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Light/Connector_Light_334471814cc65d1e/framePort_8d371976474c89a2</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/framePort_a25a1f39359e1ee2</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/VectorAutosarExplorerGeneratedObjects/FRAME/LightState_Frame</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/VectorAutosarExplorerGeneratedObjects/BMW/BMW/CANChannel/NewPduTriggering_61119afd73ad3ba9</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FD-FRAME-SUPPORT>false</CAN-FD-FRAME-SUPPORT>
+                          <IDENTIFIER>801</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                      </FRAME-TRIGGERINGS>
+                      <I-SIGNAL-TRIGGERINGS>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>NewSignalTriggering_382015d8905fdf8d</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Engine/Connector_Engine_5335f7047b1429bc/SP_a2bf9bfa89804b98a5f5a3cc4cd966f6_Tx</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/SP_33f7986d52b04b32ac741d51d1f30a4b_Rx</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/OnOff</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>NewSignalTriggering_68235d4c9fb5ea99</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Engine/Connector_Engine_5335f7047b1429bc/SP_f738c84f122d49e2adb49d1e58a7b4e9_Tx</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/SP_d35d4317614749bea31407ae0fff2c45_Rx</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/EngineSpeed</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>NewSignalTriggering_c10b77ea423fafbf</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Light/Connector_Light_334471814cc65d1e/SP_bc81c151ea6a46d4ad7d3dec26b36cbb_Tx</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/SP_d0955236bf3243ee8f81a099a7798ee0_Rx</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/HeadLight</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>NewSignalTriggering_6193fac4f11c7901</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Light/Connector_Light_334471814cc65d1e/SP_69ab6af3e57b4a1fbed9ddc8eeac1cf0_Tx</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/SP_05e5e6ad567c49ff821ff4960859502e_Rx</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/FlashLight</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                      </I-SIGNAL-TRIGGERINGS>
+                      <PDU-TRIGGERINGS>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>NewPduTriggering_979e26bd90bca63b</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Engine/Connector_Engine_5335f7047b1429bc/PP_8796eece756d4f36910bf1da65cdbf4b_Tx</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/PP_1b2de7bab7764c3790250234fb1c4046_Rx</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/VectorAutosarExplorerGeneratedObjects/PDUS/EngineState</I-PDU-REF>
+                          <I-SIGNAL-TRIGGERINGS>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/VectorAutosarExplorerGeneratedObjects/BMW/BMW/CANChannel/NewSignalTriggering_382015d8905fdf8d</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/VectorAutosarExplorerGeneratedObjects/BMW/BMW/CANChannel/NewSignalTriggering_68235d4c9fb5ea99</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                          </I-SIGNAL-TRIGGERINGS>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>NewPduTriggering_61119afd73ad3ba9</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Light/Connector_Light_334471814cc65d1e/PP_dba01b1ecbd44870afa0be2ec6d88413_Tx</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Connector_Display_9612af67f144021e/PP_cda254264a194f0ebd27600e5cb31577_Rx</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/VectorAutosarExplorerGeneratedObjects/PDUS/LightState</I-PDU-REF>
+                          <I-SIGNAL-TRIGGERINGS>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/VectorAutosarExplorerGeneratedObjects/BMW/BMW/CANChannel/NewSignalTriggering_c10b77ea423fafbf</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/VectorAutosarExplorerGeneratedObjects/BMW/BMW/CANChannel/NewSignalTriggering_6193fac4f11c7901</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                          </I-SIGNAL-TRIGGERINGS>
+                        </PDU-TRIGGERING>
+                      </PDU-TRIGGERINGS>
                     </CAN-PHYSICAL-CHANNEL>
                   </PHYSICAL-CHANNELS>
                   <PROTOCOL-NAME>CAN</PROTOCOL-NAME>
-                  <SPEED>500000</SPEED>
+                  <SPEED>250000</SPEED>
                 </CAN-CLUSTER-CONDITIONAL>
               </CAN-CLUSTER-VARIANTS>
             </CAN-CLUSTER>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>PDUS</SHORT-NAME>
+          <ELEMENTS>
+            <I-SIGNAL-I-PDU>
+              <SHORT-NAME>EngineState</SHORT-NAME>
+              <LENGTH>2</LENGTH>
+              <I-PDU-TIMING-SPECIFICATIONS>
+                <I-PDU-TIMING>
+                  <MINIMUM-DELAY>0.01</MINIMUM-DELAY>
+                  <TRANSMISSION-MODE-DECLARATION>
+                    <TRANSMISSION-MODE-FALSE-TIMING>
+                      <CYCLIC-TIMING>
+                        <TIME-OFFSET>
+                          <VALUE>0</VALUE>
+                        </TIME-OFFSET>
+                        <TIME-PERIOD>
+                          <VALUE>0.1</VALUE>
+                        </TIME-PERIOD>
+                      </CYCLIC-TIMING>
+                    </TRANSMISSION-MODE-FALSE-TIMING>
+                    <TRANSMISSION-MODE-TRUE-TIMING>
+                      <CYCLIC-TIMING>
+                        <TIME-OFFSET>
+                          <VALUE>0</VALUE>
+                        </TIME-OFFSET>
+                        <TIME-PERIOD>
+                          <VALUE>0.1</VALUE>
+                        </TIME-PERIOD>
+                      </CYCLIC-TIMING>
+                    </TRANSMISSION-MODE-TRUE-TIMING>
+                  </TRANSMISSION-MODE-DECLARATION>
+                </I-PDU-TIMING>
+              </I-PDU-TIMING-SPECIFICATIONS>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_84068d0706a4a416</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/OnOff</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>0</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_244d8efaa77e8439</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/EngineSpeed</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>1</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+              </I-SIGNAL-TO-PDU-MAPPINGS>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU>
+              <SHORT-NAME>LightState</SHORT-NAME>
+              <LENGTH>1</LENGTH>
+              <I-PDU-TIMING-SPECIFICATIONS>
+                <I-PDU-TIMING>
+                  <MINIMUM-DELAY>0.01</MINIMUM-DELAY>
+                  <TRANSMISSION-MODE-DECLARATION>
+                    <TRANSMISSION-MODE-FALSE-TIMING>
+                      <CYCLIC-TIMING>
+                        <TIME-OFFSET>
+                          <VALUE>0</VALUE>
+                        </TIME-OFFSET>
+                        <TIME-PERIOD>
+                          <VALUE>0.1</VALUE>
+                        </TIME-PERIOD>
+                      </CYCLIC-TIMING>
+                    </TRANSMISSION-MODE-FALSE-TIMING>
+                    <TRANSMISSION-MODE-TRUE-TIMING>
+                      <CYCLIC-TIMING>
+                        <TIME-OFFSET>
+                          <VALUE>0</VALUE>
+                        </TIME-OFFSET>
+                        <TIME-PERIOD>
+                          <VALUE>0.1</VALUE>
+                        </TIME-PERIOD>
+                      </CYCLIC-TIMING>
+                    </TRANSMISSION-MODE-TRUE-TIMING>
+                  </TRANSMISSION-MODE-DECLARATION>
+                </I-PDU-TIMING>
+              </I-PDU-TIMING-SPECIFICATIONS>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_436840085ec4b1f3</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/HeadLight</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>0</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_29240337f3374b2e</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/VectorAutosarExplorerGeneratedObjects/I_SIGNALS/FlashLight</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>2</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+              </I-SIGNAL-TO-PDU-MAPPINGS>
+            </I-SIGNAL-I-PDU>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>I_SIGNALS</SHORT-NAME>
+          <ELEMENTS>
+            <I-SIGNAL>
+              <SHORT-NAME>OnOff</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/VectorAutosarExplorerGeneratedObjects/BASE_TYPES/boolean</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/VectorAutosarExplorerGeneratedObjects/SYSTEM_SIGNALS/OnOff_4bd55a4f0060c8e7</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>EngineSpeed</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <LENGTH>15</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/VectorAutosarExplorerGeneratedObjects/BASE_TYPES/sint16</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/VectorAutosarExplorerGeneratedObjects/SYSTEM_SIGNALS/EngineSpeed_0c8b31472246a90e</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>HeadLight</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/VectorAutosarExplorerGeneratedObjects/BASE_TYPES/boolean</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/VectorAutosarExplorerGeneratedObjects/SYSTEM_SIGNALS/HeadLight_3539a271b0a2cd9a</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>FlashLight</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/VectorAutosarExplorerGeneratedObjects/BASE_TYPES/boolean</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/VectorAutosarExplorerGeneratedObjects/SYSTEM_SIGNALS/FlashLight_93d373075656f3ec</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>ECU_INSTANCES</SHORT-NAME>
+          <ELEMENTS>
+            <ECU-INSTANCE>
+              <SHORT-NAME>Display</SHORT-NAME>
+              <ASSOCIATED-COM-I-PDU-GROUP-REFS>
+                <ASSOCIATED-COM-I-PDU-GROUP-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_e158588527f74ac4acd169edaf95850c_Rx</ASSOCIATED-COM-I-PDU-GROUP-REF>
+                <ASSOCIATED-COM-I-PDU-GROUP-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_587b637f2d9f4a368546472ab73c80e2_Rx</ASSOCIATED-COM-I-PDU-GROUP-REF>
+              </ASSOCIATED-COM-I-PDU-GROUP-REFS>
+              <COMM-CONTROLLERS>
+                <CAN-COMMUNICATION-CONTROLLER>
+                  <SHORT-NAME>Controller_Display_1b410d56f33a84de</SHORT-NAME>
+                  <CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                    <CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                      <CAN-CONTROLLER-ATTRIBUTES>
+                        <CAN-CONTROLLER-CONFIGURATION />
+                      </CAN-CONTROLLER-ATTRIBUTES>
+                    </CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                  </CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                </CAN-COMMUNICATION-CONTROLLER>
+              </COMM-CONTROLLERS>
+              <CONNECTORS>
+                <CAN-COMMUNICATION-CONNECTOR>
+                  <SHORT-NAME>Connector_Display_9612af67f144021e</SHORT-NAME>
+                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Display/Controller_Display_1b410d56f33a84de</COMM-CONTROLLER-REF>
+                  <ECU-COMM-PORT-INSTANCES>
+                    <FRAME-PORT>
+                      <SHORT-NAME>framePort_c72ec52c1a2a663e</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>framePort_a25a1f39359e1ee2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PP_1b2de7bab7764c3790250234fb1c4046_Rx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PP_cda254264a194f0ebd27600e5cb31577_Rx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_33f7986d52b04b32ac741d51d1f30a4b_Rx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_d35d4317614749bea31407ae0fff2c45_Rx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_d0955236bf3243ee8f81a099a7798ee0_Rx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_05e5e6ad567c49ff821ff4960859502e_Rx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                  </ECU-COMM-PORT-INSTANCES>
+                </CAN-COMMUNICATION-CONNECTOR>
+              </CONNECTORS>
+              <DIAGNOSTIC-ADDRESS>0</DIAGNOSTIC-ADDRESS>
+            </ECU-INSTANCE>
+            <ECU-INSTANCE>
+              <SHORT-NAME>Engine</SHORT-NAME>
+              <ASSOCIATED-COM-I-PDU-GROUP-REFS>
+                <ASSOCIATED-COM-I-PDU-GROUP-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_788d0d69fa5c40b29e57e7b6fec57e9e_Tx</ASSOCIATED-COM-I-PDU-GROUP-REF>
+              </ASSOCIATED-COM-I-PDU-GROUP-REFS>
+              <COMM-CONTROLLERS>
+                <CAN-COMMUNICATION-CONTROLLER>
+                  <SHORT-NAME>Controller_Engine_a2cd5b1271393735</SHORT-NAME>
+                  <CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                    <CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                      <CAN-CONTROLLER-ATTRIBUTES>
+                        <CAN-CONTROLLER-CONFIGURATION />
+                      </CAN-CONTROLLER-ATTRIBUTES>
+                    </CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                  </CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                </CAN-COMMUNICATION-CONTROLLER>
+              </COMM-CONTROLLERS>
+              <CONNECTORS>
+                <CAN-COMMUNICATION-CONNECTOR>
+                  <SHORT-NAME>Connector_Engine_5335f7047b1429bc</SHORT-NAME>
+                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Engine/Controller_Engine_a2cd5b1271393735</COMM-CONTROLLER-REF>
+                  <ECU-COMM-PORT-INSTANCES>
+                    <FRAME-PORT>
+                      <SHORT-NAME>framePort_dbcb7467b6ee20c0</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PP_8796eece756d4f36910bf1da65cdbf4b_Tx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_a2bf9bfa89804b98a5f5a3cc4cd966f6_Tx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_f738c84f122d49e2adb49d1e58a7b4e9_Tx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                  </ECU-COMM-PORT-INSTANCES>
+                </CAN-COMMUNICATION-CONNECTOR>
+              </CONNECTORS>
+              <DIAGNOSTIC-ADDRESS>0</DIAGNOSTIC-ADDRESS>
+            </ECU-INSTANCE>
+            <ECU-INSTANCE>
+              <SHORT-NAME>Light</SHORT-NAME>
+              <ASSOCIATED-COM-I-PDU-GROUP-REFS>
+                <ASSOCIATED-COM-I-PDU-GROUP-REF DEST="I-SIGNAL-I-PDU-GROUP">/VectorAutosarExplorerGeneratedObjects/PDU_GROUP/PduGroup_55cabddd762242148624ddebfa78fee3_Tx</ASSOCIATED-COM-I-PDU-GROUP-REF>
+              </ASSOCIATED-COM-I-PDU-GROUP-REFS>
+              <COMM-CONTROLLERS>
+                <CAN-COMMUNICATION-CONTROLLER>
+                  <SHORT-NAME>Controller_Light_c574d35da0a1a1a7</SHORT-NAME>
+                  <CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                    <CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                      <CAN-CONTROLLER-ATTRIBUTES>
+                        <CAN-CONTROLLER-CONFIGURATION />
+                      </CAN-CONTROLLER-ATTRIBUTES>
+                    </CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                  </CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                </CAN-COMMUNICATION-CONTROLLER>
+              </COMM-CONTROLLERS>
+              <CONNECTORS>
+                <CAN-COMMUNICATION-CONNECTOR>
+                  <SHORT-NAME>Connector_Light_334471814cc65d1e</SHORT-NAME>
+                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/VectorAutosarExplorerGeneratedObjects/ECU_INSTANCES/Light/Controller_Light_c574d35da0a1a1a7</COMM-CONTROLLER-REF>
+                  <ECU-COMM-PORT-INSTANCES>
+                    <FRAME-PORT>
+                      <SHORT-NAME>framePort_8d371976474c89a2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PP_dba01b1ecbd44870afa0be2ec6d88413_Tx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_bc81c151ea6a46d4ad7d3dec26b36cbb_Tx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SP_69ab6af3e57b4a1fbed9ddc8eeac1cf0_Tx</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                  </ECU-COMM-PORT-INSTANCES>
+                </CAN-COMMUNICATION-CONNECTOR>
+              </CONNECTORS>
+              <DIAGNOSTIC-ADDRESS>0</DIAGNOSTIC-ADDRESS>
+            </ECU-INSTANCE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>FRAME</SHORT-NAME>
+          <ELEMENTS>
+            <CAN-FRAME>
+              <SHORT-NAME>EngineState_Frame</SHORT-NAME>
+              <FRAME-LENGTH>2</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrameMapping_38814d1598559142</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/VectorAutosarExplorerGeneratedObjects/PDUS/EngineState</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>LightState_Frame</SHORT-NAME>
+              <FRAME-LENGTH>1</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrameMapping_9f7f559254e47ad1</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/VectorAutosarExplorerGeneratedObjects/PDUS/LightState</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>PDU_GROUP</SHORT-NAME>
+          <ELEMENTS>
+            <I-SIGNAL-I-PDU-GROUP>
+              <SHORT-NAME>PduGroup_788d0d69fa5c40b29e57e7b6fec57e9e_Tx</SHORT-NAME>
+              <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+            </I-SIGNAL-I-PDU-GROUP>
+            <I-SIGNAL-I-PDU-GROUP>
+              <SHORT-NAME>PduGroup_e158588527f74ac4acd169edaf95850c_Rx</SHORT-NAME>
+              <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+            </I-SIGNAL-I-PDU-GROUP>
+            <I-SIGNAL-I-PDU-GROUP>
+              <SHORT-NAME>PduGroup_55cabddd762242148624ddebfa78fee3_Tx</SHORT-NAME>
+              <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+            </I-SIGNAL-I-PDU-GROUP>
+            <I-SIGNAL-I-PDU-GROUP>
+              <SHORT-NAME>PduGroup_587b637f2d9f4a368546472ab73c80e2_Rx</SHORT-NAME>
+              <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+            </I-SIGNAL-I-PDU-GROUP>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>BASE_TYPES</SHORT-NAME>
+          <ELEMENTS>
+            <SW-BASE-TYPE>
+              <SHORT-NAME>boolean</SHORT-NAME>
+              <BASE-TYPE-ENCODING>BOOLEAN</BASE-TYPE-ENCODING>
+            </SW-BASE-TYPE>
+            <SW-BASE-TYPE>
+              <SHORT-NAME>sint16</SHORT-NAME>
+              <BASE-TYPE-SIZE>16</BASE-TYPE-SIZE>
+              <BASE-TYPE-ENCODING>2C</BASE-TYPE-ENCODING>
+            </SW-BASE-TYPE>
+            <SW-BASE-TYPE>
+              <SHORT-NAME>New_BaseType</SHORT-NAME>
+              <BASE-TYPE-ENCODING>BOOLEAN</BASE-TYPE-ENCODING>
+            </SW-BASE-TYPE>
+            <SW-BASE-TYPE>
+              <SHORT-NAME>New_BaseType_1</SHORT-NAME>
+              <BASE-TYPE-SIZE>16</BASE-TYPE-SIZE>
+              <BASE-TYPE-ENCODING>NONE</BASE-TYPE-ENCODING>
+            </SW-BASE-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>COMPUMETHODS</SHORT-NAME>
+          <ELEMENTS>
+            <COMPU-METHOD>
+              <SHORT-NAME>OnOff_Encoding</SHORT-NAME>
+              <CATEGORY>SCALE_LINEAR_AND_TEXTTABLE</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>Cx0_Off</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT>1</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>Cx1_On</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>EngineSpeed_Encoding</SHORT-NAME>
+              <CATEGORY>LINEAR</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT>16384</LOWER-LIMIT>
+                    <UPPER-LIMIT>16383</UPPER-LIMIT>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>HeadLight_Encoding</SHORT-NAME>
+              <CATEGORY>LINEAR</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>FlashLight_Encoding</SHORT-NAME>
+              <CATEGORY>LINEAR</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>SYSTEM_SIGNALS</SHORT-NAME>
+          <ELEMENTS>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>OnOff_4bd55a4f0060c8e7</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/VectorAutosarExplorerGeneratedObjects/COMPUMETHODS/OnOff_Encoding</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>EngineSpeed_0c8b31472246a90e</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/VectorAutosarExplorerGeneratedObjects/COMPUMETHODS/EngineSpeed_Encoding</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>HeadLight_3539a271b0a2cd9a</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/VectorAutosarExplorerGeneratedObjects/COMPUMETHODS/HeadLight_Encoding</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>FlashLight_93d373075656f3ec</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/VectorAutosarExplorerGeneratedObjects/COMPUMETHODS/FlashLight_Encoding</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
           </ELEMENTS>
         </AR-PACKAGE>
       </AR-PACKAGES>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ToolBox_CAPLOutView">
+    <Object Type="Vector.CANalyzer.Panels.Design.CAPLOutputViewControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.55.0, Culture=neutral, PublicKeyToken=null" Name="CAPLOutputViewControl1" Children="Controls" ControlName="CAPLOutputView">
+      <Property Name="Name">CAPLOutputViewControl1</Property>
+      <Property Name="Size">396, 208</Property>
+      <Property Name="Location">66, 13</Property>
+      <Property Name="BoxTextColor">0, 176, 80</Property>
+      <Property Name="BoxFont">Microsoft Sans Serif, 9.8pt</Property>
+      <Property Name="BoxBackgroundColor">0, 0, 0</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">552, 263</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

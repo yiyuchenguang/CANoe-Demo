@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2022-08-10 17:15:26" timestamp="   2.909603" verdicts="2_basic">
+  <testcase starttime="2022-08-10 17:15:26" timestamp="   2.909603">
+    <teststep timestamp="   2.910849" level="1" type="auto" ident="Resume reason" result="na">Resumed on Diagnostics request sent functionally to &apos;Door&apos; Elapsed time=1.246ms (max=100ms)</teststep>
+    <teststep timestamp="   2.910849" type="user" ident="" result="pass">Request was sent successfully!</teststep>
+    <teststep timestamp="   3.060849" level="1" type="auto" ident="Resume reason" result="na">Resumed on Communication error with &apos;Door&apos; Elapsed time=150ms (max=1000ms)</teststep>
+    <teststep timestamp="   3.060849" type="user" ident="" result="fail">Response was not Received</teststep>
+    <verdict time="2022-08-10 17:15:26" timestamp="   3.060849" endtime="2022-08-10 17:15:26" endtimestamp="   3.060849" result="fail" />
+    <title>TestWaitDiag</title>
+  </testcase>
+  <verdict time="2022-08-10 17:15:26" timestamp="   3.060849" endtime="2022-08-10 17:15:26" endtimestamp="   3.060849" result="fail" />
+  <title>TestWait_TestJoinxx</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>carl.wu</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.FlexRay.Ethernet 11.0.55 (SP2)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>D:\CANoe-Demo\bmw_test.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database bmw_crc8 on CAN</name>
+      <description>D:\CANoe-Demo\dbc\bmw_crc8.dbc (2022-06-29 18:39:23)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>TestWait_TestJoinxx</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>D:\CANoe-Demo\TestModule\DisableNodes\TestWait_TestJoinxx.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2022-08-10, 17:15:21</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>CN03-OF-WL0051</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.55.0, C:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLVECTOR</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.16.47 (Jul  4 2017 16:10:44) , C:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLVECTOR.DLL</description>
+    </xinfo>
+  </testsetup>
+</testmodule>
+<!--footprint="0cece94f8b88aca8596258260de88541" version="1"-->

@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>零基础学习CANoe Panel（12）—— 进度条（Progress Bar）</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<ul>
+<li><font color="green">🍅 我是<a href="https://blog.csdn.net/qq_34414530"><em><strong>蚂蚁小兵</strong></em></a>，专注于车载诊断领域，尤其擅长于对CANoe工具的使用</font><br>
+<br></li>
+<li><font color="blue">🍅  寻找组织 ，答疑解惑，摸鱼聊天，博客源码，点击加入👉<a href="https://docs.qq.com/doc/DWnlqcWVyVldjTmlP">【相亲相爱一家人】</a><br>
+<br></font></li>
+<li><font color="YellowGreen">🍅 <a href="https://mp.csdn.net/mp_blog/manage/column/columnManage/11925901">零基础学习CANoe Panel设计目录汇总，点击跳转👉</a> </font></li>
+</ul>
+</blockquote>
+<hr>
+<h1><a id="font_colororange_10"></a><font color="orange">📘前言</font></h1>
+<ul>
+<li>
+<p>🍅   <font color="gray"> 进度条（<code>Progress Bar</code>）条，任何UI设计工具都有的，下面我简单写一个<code>刷写服务</code>来演示下进度条的使用</font></p>
+</li>
+<li>
+<p>🍅 <font color="gray">演示软硬件环境 <code>Windows11 x64</code> ； <code>CANoe 11 SP2 x64</code><br>
+<img src="https://img-blog.csdnimg.cn/cd1d9d9011754197b735528ebff62ae3.gif#pic_center" alt="请添加图片描述"></font></p>
+</li>
+</ul>
+<p></p><div class="toc"><h3><font color="orange">目录</font></h3><ul><li><a href="#font_colororange_10">&lt;font color=orange&gt;📘前言</a></li><li><a href="#_font_colororange_Progress_Bar_27">📙 &lt;font color=orange&gt; 进度条（Progress Bar）</a></li><li><a href="#_font_colororange___93">📙 &lt;font color=orange&gt;  属性设置</a></li><li><a href="#_font_colororange__119">📙 &lt;font color=orange&gt; 怎么把进度条设计的花里胡哨</a></li><li><a href="#font_colororange_151">🌎&lt;font color=orange&gt;总结</a></li></ul></div><p></p>
+<p><img src="https://img-blog.csdnimg.cn/da3c974f29a34086b5d95318b5b98e5f.png#pic_center" alt="在这里插入图片描述" width="700" height="400"></p>
+<hr>
+<h1><a id="_font_colororange_Progress_Bar_27"></a>📙 <font color="orange"> 进度条（Progress Bar）</font></h1>
+<p><font size="4">1️⃣ </font> 下面我拉了三个控件 <code>Button</code> ,<code>Input/Output box</code> ,<code>Progress Bar</code> 来模拟下载服务</p>
+<ul>
+<li><code>Button</code>：开始下载</li>
+<li><code>Input/Output box</code>：下载进度描述，属性设置透明额，所以截图看不到</li>
+<li><code>Progress Bar</code> ：下载进度百分比</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/1bba777ff551479a8dbd3a7e42af2550.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>  因为目的在于演示进度条的使用，所以这里简单模拟的下载过程，这里定义一个定时器，加到100，模拟刷写的进度。</p>
+<pre><code class="prism language-cpp"><span class="token comment">/*@!Encoding:936*/</span>
+variables
+<span class="token punctuation">{</span>
+  msTimer timer_demo<span class="token punctuation">;</span>
+  <span class="token keyword">char</span>  tempText<span class="token punctuation">[</span><span class="token number">0x500</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> step_counter<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+on timer timer_demo
+<span class="token punctuation">{</span>
+    step_counter <span class="token operator">=</span> step_counter <span class="token operator">+</span><span class="token number">1</span> <span class="token punctuation">;</span>
+
+    <span class="token function">snprintf</span><span class="token punctuation">(</span>tempText<span class="token punctuation">,</span><span class="token function">elCount</span><span class="token punctuation">(</span>tempText<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"Downloading %.2f%%......"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>step_counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sysSetVariableString</span> <span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>ProgressBar_Log<span class="token punctuation">,</span>tempText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sysSetVariableFloat</span><span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>ProgressBar_Self<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>step_counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>step_counter <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">)</span>
+        <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_demo<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+on sysvar Panel<span class="token double-colon punctuation">::</span>ProgressBar_Start
+<span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>@<span class="token keyword">this</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token function">snprintf</span><span class="token punctuation">(</span>tempText<span class="token punctuation">,</span><span class="token function">elCount</span><span class="token punctuation">(</span>tempText<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"Satrt Downloading......"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sysSetVariableString</span> <span class="token punctuation">(</span>sysvar<span class="token double-colon punctuation">::</span>Panel<span class="token double-colon punctuation">::</span>ProgressBar_Log<span class="token punctuation">,</span>tempText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">StartDownload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">StartDownload</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   step_counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token function">setTimer</span><span class="token punctuation">(</span>timer_demo<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*以上代码时Editor控件演示代码*/</span>
+
+</code></pre>
+<hr> 
+<p><font size="4">3️⃣</font>  Run起CANoe,测试过程如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/32ec0280303e4118ab5f82ac7d850ea0.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h1><a id="_font_colororange___93"></a>📙 <font color="orange">  属性设置</font></h1>
+<p>上面的示例，我并没有做任何的属性设置，完全时默认的</p>
+<p><font size="4">1️⃣ </font> 隐藏进度条本身的文本</p>
+<ul>
+<li>大多数我们并不用它，会使用前面示例的那样，所以都是先择把它隐藏掉</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/35f7805fc8cb4f119499f3a3a9d9bc94.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>   进度条方向</p>
+<ul>
+<li>可以选择垂直或者水平进度条</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/482dda7aecbe47a987040344ab62ff2d.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">3️⃣</font>  文本小数点位数</p>
+<ul>
+<li>如果你不设置隐藏文本，那么设置才有意义。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/d0fce0e5a9404eda812db3afb0984cb9.png" alt="在这里插入图片描述"></p>
+<hr> 
+<h1><a id="_font_colororange__119"></a>📙 <font color="orange"> 怎么把进度条设计的花里胡哨</font></h1>
+<p><font size="4">1️⃣ </font> 看下图，默认<code>Style</code> 属性事 <code>Windows Style</code>的，进度条的颜色和背景色都是灰的，不可设置，所以我们要设计好看的进度条，就要改下Style属性</p>
+<p><img src="https://img-blog.csdnimg.cn/1d053323d5c843b1aa8afe8115ac0277.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">2️⃣</font>  下面我选择  <code>Classic Style With Frame</code> 模式，并把进度条的背景色设置成浅黄，进度条设置成正黄，如下图</p>
+<p><img src="https://img-blog.csdnimg.cn/49d7bc5b4ef54260a6d70aa7f01e7926.png" alt="在这里插入图片描述"></p><hr><p></p>
+<p><font size="4">3️⃣</font>  运行效果图</p>
+<p><img src="https://img-blog.csdnimg.cn/03c8516a733e41d3a5263c09a4cd8459.png" alt="在这里插入图片描述"></p>
+<hr> 
+<p><font size="4">4️⃣</font>  里程表样式（Level Meter Style）（可选了解）</p>
+<ul>
+<li>只有<code>Style</code>属性选择其<code>Level Meter Style</code>，<code>Level Meter setting</code> 里面的属性才可以被设置，就是进度条最前面加了一条可选择颜色的竖线。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/019069a23dec456298d78d39fb3c5c3f.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/57140e12a9b74d5581ad61e5d3c7f19f.gif#pic_center" alt="在这里插入图片描述" width="500" height="300"></p>
+<h1><a id="font_colororange_151"></a>🌎<font color="orange">总结</font></h1>
+<p><img src="https://img-blog.csdnimg.cn/20201215164350761.gif" alt="23"></p>
+  <span id="jump">
+</span><ul>
+<li>🍅 <a href="#jump2">有需要演示中所用demo工程的，可以关注下方公众号网盘自取啦，感谢阅读。</a><br>
+<br></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20201215163633654.gif" alt="7"></p>
+<blockquote>
+<ul>
+<li><font color="green">🚩要有最朴素的生活，最遥远的梦想，即使明天天寒地冻，路遥马亡！</font><br>
+<br></li>
+<li><font color="YellowGreen">🚩如果这篇博客对你有帮助，请 <font color="red"> “点赞” “评论”“收藏”一键三连</font> 哦！码字不易，大家的支持就是我坚持下去的动力。</font><br>
+<img src="https://img-blog.csdnimg.cn/20201215164245657.gif" alt="18"><br>
+<span id="jump2"></span></li>
+</ul>
+</blockquote>
+</div>
+</body>
+
+</html>

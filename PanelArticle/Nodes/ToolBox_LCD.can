@@ -1,0 +1,102 @@
+/*@!Encoding:936*/
+
+
+variables
+{
+  msTimer timer_V;
+  msTimer timer_C;
+  char  tempText[0x500];
+  int Port;
+  int BaudRate;
+  int res;
+
+  byte GetCurrentCommand [6] = {'I','O','U','T',13,10};//13 CR ; 10 LF
+  byte GetVoltageCommand [6] = {'I','O','U','T',13,10};//13 CR ; 10 LF
+}
+
+on timer timer_V
+{
+  //RS232Send(Port, GetCurrentCommand, elCount(GetCurrentCommand));
+  //模拟随机值,真实硬件情况下，把RS232Send打开，然后在RS232OnReceive解析返回值
+  sysSetVariableFloat(sysvar::Panel::LCD_Voltage,random(5)/10.0+random(10));
+  setTimer(timer_V,1000);
+}
+
+on timer timer_C
+{
+  //RS232Send(Port, GetCurrentCommand, elCount(GetCurrentCommand));
+  //模拟随机值,真实硬件情况下，把RS232Send打开，然后在RS232OnReceive解析返回值
+  sysSetVariableFloat(sysvar::Panel::LCD_Current,random(5)/10.0);
+  setTimer(timer_C,600);
+}
+
+
+on sysvar Panel::Port
+{
+  InitPower();
+}
+
+on sysvar Panel::BaudRate
+{
+  InitPower();
+}
+
+
+RS232OnReceive(dword port, byte buffer[], dword number)
+{
+  if(buffer[0] =='V')
+  {
+    sysSetVariableFloat(sysvar::Panel::LCD_Voltage,random(5)/10+random(10)); //模拟随机值
+  }
+  else if(buffer[0] =='C')
+  {
+    sysSetVariableFloat(sysvar::Panel::LCD_Current,random(5)/10);//模拟随机值
+  }
+  
+}
+
+
+int InitPower()
+{
+
+  Port = sysGetVariableInt(sysvar::Panel::Port);
+  BaudRate = sysGetVariableInt(sysvar::Panel::BaudRate);
+  
+  write("Port:%d ;BaudRate:%d ",Port,BaudRate);
+  
+  res = RS232Open(Port); 
+  if(res!=1)
+  {
+    write("Open COM %d Failed!",Port);
+    return 0;
+  }
+   res = RS232Configure(Port,BaudRate,8,1,0);
+  
+   if(res!=1)
+  {
+    write("Configure COM %d Failed! :%d",Port,res);
+    return 0;
+  }
+   res = RS232SetHandshake(Port,0,0,0,0,0);
+    
+   if(res!=1)
+  {
+    write(" Configure handshaking COM %d Failed!",Port);
+    return 0;
+  }
+    //配置成功
+    setTimer(timer_V,500);
+    setTimer(timer_C,600);
+    sysSetVariableInt(sysvar::Panel::LED_1,1);
+    write("Configure COM %d Ok!",Port);
+    return 1; 
+}
+
+
+
+
+on stopMeasurement
+{
+  rs232Close(Port);
+}
+
